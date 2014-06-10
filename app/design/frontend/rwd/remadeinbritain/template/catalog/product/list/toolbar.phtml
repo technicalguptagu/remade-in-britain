@@ -56,16 +56,6 @@
 			<ul>
 			<?php $i=1;
 			    foreach($this->getAvailableOrders() as $_key=>$_order):?>
-				<?php if($_key=='position'): ?>
-				    <?php echo $this->isOrderCurrent($_order); ?>
-                     <?php echo $this->isOrderCurrent($_order); ?>
-                    <li class="<?php echo $_key; ?> asc-desc <?php if($this->getCurrentDirection() == 'asc'): ?> active<?php endif; ?> <?php if($this->getCurrentOrder() == 'position'): ?> selected<?php endif; ?><?php if(($this->getCurrentOrder() != 'name')&&($this->getCurrentOrder() != 'news_from_date') && ($this->getCurrentOrder() != 'price')): ?> selected<?php endif; ?>">
-					    <a onclick="setLocation('<?php echo $this->getOrderUrl($_key, 'asc') ?>')" title="<?php echo $this->__('Set Ascending Direction') ?>">
-                            <span class="sorter_name"><?php echo $this->__('MOST POPULAR') ?></span>
-                        </a>
-						<span class="sorter_line"><?php echo $this->__('&nbsp;&nbsp;/ ') ?></span>
-                    </li>
-				<?php endif; ?>	 
 			    <?php if($_key=='price'):	?>
 				    <li class="<?php echo $_key; ?> desc-asc <?php if($this->getCurrentOrder() == 'price'): if($this->getCurrentDirection() == 'desc'): ?> selected<?php endif; endif;?>">
                         <a onclick="setLocation('<?php echo $this->getOrderUrl($_key, 'desc') ?>')" title="<?php echo $this->__('sort by highest price') ?>">
@@ -78,6 +68,23 @@
                             <span class="sorter_name"><?php echo $this->__('LOWEST') ?> <?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?></span>
                         </a>
 				    </li>                    
+				<?php endif; ?>
+				<?php if($_key=='name'):?>
+                    <li class="<?php echo $_key; ?> asc-desc <?php if($this->getCurrentOrder() == 'name'): if($this->getCurrentDirection() == 'asc'): ?> selected<?php endif; endif;?>">
+                        <a onclick="setLocation('<?php echo $this->getOrderUrl($_key, 'asc') ?>')" title="<?php echo $this->__('A-Z'); ?>">
+                            <span class="sorter_name"><?php echo $this->__('A-Z'); ?></span>
+                        </a>
+				    </li>                    
+				<?php endif; ?>
+				<?php if($_key=='position'): ?>
+				    <?php echo $this->isOrderCurrent($_order); ?>
+                     <?php echo $this->isOrderCurrent($_order); ?>
+                    <li class="<?php echo $_key; ?> asc-desc <?php if($this->getCurrentDirection() == 'asc'): ?> active<?php endif; ?> <?php if($this->getCurrentOrder() == 'position'): ?> selected<?php endif; ?><?php if(($this->getCurrentOrder() != 'name')&&($this->getCurrentOrder() != 'news_from_date') && ($this->getCurrentOrder() != 'price')): ?> selected<?php endif; ?>">
+					    <a onclick="setLocation('<?php echo $this->getOrderUrl($_key, 'asc') ?>')" title="<?php echo $this->__('Set Ascending Direction') ?>">
+                            <span class="sorter_name"><?php echo $this->__('RATING') ?></span>
+                        </a>
+						<span class="sorter_line"><?php echo $this->__('&nbsp;&nbsp;/ ') ?></span>
+                    </li>
 				<?php endif; ?>
 			<?php endforeach; ?>
 			</ul>			

@@ -590,8 +590,28 @@ body, label, button, input, select, table, textarea {
   float: right;
   width: 70%;
   }
-.account-create .scaffold-form .form-list li label.required {}
-.account-create .scaffold-form .form-list li .input-box input{}
+.account-create .scaffold-form .form-list li label.required {
+  width:30%;
+  float: left;
+  }
+.account-create .scaffold-form .form-list li .input-box input{
+  width:70%;
+ }
+.account-create .scaffold-form, .account-create .scaffold-form.buttons-set {
+    margin-left: 35px;
+    margin-right: 30px;
+  }
+.account-create .scaffold-form .buttons-set {
+   max-width: none;
+  }
+.account-create .scaffold-form .buttons-set  .required {
+    color: #494956;
+    font-family: oswald;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0 0 5px;
+}
+
 
  @media only screen and (min-width:965px) and (max-width:1199px){
 
