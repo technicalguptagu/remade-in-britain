@@ -3961,10 +3961,10 @@ a.skip-link {
   padding: 0 15px 0 0;
   width: 21%;
 }
-.footer .block-title strong {
+.footer .collapsible .block-title strong {
   font-weight: normal;
 }
-.footer .block-title,
+.footer .collapsible .block-title,
 .footer address {
   color: #3399cc;
 }
@@ -9838,8 +9838,8 @@ box-shadow: 0 -6px 5px 0 #B3B3B9;
 .latest-products .content-heading .latest-Pleft { position: absolute; left: 15px; top: 0; background: url(../images/bannerleftaro.png) no-repeat 0 0; width: 10px; height: 23px; }
 
 .latest-products .content-heading .latest-Pright { position: absolute; right: 15px; top: 0; background: url(../images/bannerrightaro.png) no-repeat 0 0; width: 10px; height: 23px; }
-.footer-block .block-title strong span { font-family: Oswald; font-weight: 300; font-size: 17px; color: #494956; text-transform: capitalize; margin: 0 0 8px; display: block; }
-.footer-block .block-title li a { font-family: Oswald; font-weight: 300; font-size: 13px; color: #75757C; text-transform: capitalize; }
+.footer-block .collapsible .block-title strong span { font-family: Oswald; font-weight: 300; font-size: 17px; color: #494956; text-transform: capitalize; margin: 0 0 8px; display: block; }
+.footer-block .collapsible .block-title li a { font-family: Oswald; font-weight: 300; font-size: 13px; color: #75757C; text-transform: capitalize; }
 .footer-connect .connect-heading span {
 	color: #494956;
     font-family: Oswald;
@@ -9884,8 +9884,8 @@ box-shadow: 0 -6px 5px 0 #B3B3B9;
 .tel .tel-no, .email .email-add a { color: #D36B53; font-family: Oswald; font-size: 17px; font-weight: 300; }
 .footer-connect .connect { margin: 0 0 43px; }
 .accepted-payment { margin: 0 0 41px; }
-.footer-block .block-title #nav li a { text-transform: uppercase; }
-.footer-block .block-title #nav ul { display: none; }
+.footer-block .collapsible .block-title #nav li a { text-transform: uppercase; }
+.footer-block .collapsible .block-title #nav ul { display: none; }
 .footer-bottom .footer-logo { float: left; width: 225px; margin: 0 20px 0 0; }
 .footer-bottom .copyright { float: left; margin: 14px 0 0; }
 .footer-bottom .ecommerce-logo { float: right; }
