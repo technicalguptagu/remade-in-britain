@@ -10112,10 +10112,12 @@ box-shadow: 0 -6px 5px 0 #B3B3B9;
 
 .subscriber-title-content .block-title .subscriber-heading { display: none; }
 .subscriber-title-content .block-title .subscriber-heading-mobile { display: block !important; color: #FFFFFF; font-family: Oswald; font-size: 19px; font-weight: 400; margin: 0 10px 0 0; text-transform: capitalize; }
-.subscriber-title-content .block-title { width: 20%; }
-.subscriber-title-content .block-content { width: 81%; }
+.subscriber-title-content .subscriber-title-content1 { padding: 17px 5px; }
+.subscriber-title-content .block-title { width: 24%; }
+.subscriber-title-content .block-content { width: 76%; }
 .footer-newsletter .block-subscribe .subscribe-contant .subscriber-title-content { width: 76%; }
 .subscriber-title-content .block-content .input-box input[type="email"] { width: 210px; }
+.collapsible .block-content { display: none ! important; }
 }
 
 
