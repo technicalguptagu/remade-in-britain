@@ -553,7 +553,7 @@ margin-bottom: 2% !important;
   color: #494956;
 }
 .blog-index-list .postTitle {
-  background: url("../images/spritestrip.png") repeat-x scroll 0 26px rgba(0, 0, 0, 0);
+  background: url("../images/spritestrip.png") repeat-x scroll 0 26px transparent;
   border: medium none;
 }
 .blog-index-list  .postwrapper .postTitle a {
@@ -563,6 +563,10 @@ margin-bottom: 2% !important;
   font-weight: 300;
   text-transform: capitalize;
 }
+.blog-index-list .breadcrumbs {
+  background: url("../images/spritestrip.png") repeat-x scroll 0 16px transparent;
+  margin:0 0 23px 0;
+ }
 
 
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
@@ -875,9 +879,6 @@ padding: 3% 2% 7% ;
 }
 .what-is-upcycling {
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.about-us-image {
- width: 100%;
 }
 .delivery-details-image{
  width: 70%;
