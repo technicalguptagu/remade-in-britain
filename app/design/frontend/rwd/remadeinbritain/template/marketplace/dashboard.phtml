@@ -30,8 +30,7 @@ if (Mage::getSingleton('customer/session')->isLoggedIn()) {
         $sellerProduct = Mage::getModel('marketplace/sellerprofile')->sellerProduct($id);
         $lifetime_sales = array();
         $order_ids = Mage::getModel("sales/order")->getCollection;
-		print_r($order_ids);
-		exit;
+		
 
         $product_ids = array();
         $averageOrders = '';
