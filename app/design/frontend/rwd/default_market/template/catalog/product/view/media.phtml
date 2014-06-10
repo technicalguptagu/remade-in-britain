@@ -1,0 +1,58 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2012
+ * @Modified By     Swathi
+ * @Modified Date   Apr 07 2014
+ *
+ * */
+?>
+
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+<p class="product-image product-image-zoom">
+    <?php
+        $_img = '<img id="image" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(370, 315).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+</p>
+<?php else: ?>
+<p class="product-image">
+    <?php
+        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(370, 315).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+</p>
+<?php endif; ?>
+<?php if (count($this->getGalleryImages()) > 0): 
+    $count = count($this->getGalleryImages());
+    ?>
+<div class="more-views">
+    <ul>
+        <?php $increment = 1; ?>
+    <?php foreach ($this->getGalleryImages() as $_image): ?>
+        <li>
+            <a href="#" onclick="changeImage(<?php echo $increment; ?>)" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>"><img id="thumbnail<?php echo $increment; ?>" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(77); ?>" width="77" height="77" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" /></a>
+            <img style="display:none;" id="thumb<?php echo $increment; ?>" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(370, 315); ?>"  alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" />
+        </li> 
+        <?php $increment++; ?>
+    <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif; ?>
+
+<script type="text/javascript">
+    function changeImage(val) {
+         var src = document.getElementById("thumb"+val).src; 
+         document.getElementById("image").src = src;   
+   }     
+</script>

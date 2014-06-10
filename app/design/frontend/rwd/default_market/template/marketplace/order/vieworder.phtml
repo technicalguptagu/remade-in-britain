@@ -1,0 +1,129 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2012
+ * @Modified By     Jenifer Ratchanya
+ * @Modified Date   Mar 27 2014
+ *
+ * */
+?>
+<?php //Get order id and order details
+$order_id = $this->getRequest()->getParam('orderid'); 
+$orderDetails = Mage::getModel('sales/order')->load($order_id);
+//Display Order date
+$created_date = date('M j, Y', strtotime($orderDetails['created_at'])); ?>
+<div class="page-title sellers_store"><h1><?php echo $this->__('Order Id #').$orderDetails['increment_id'].'-'.$orderDetails['status']; ?> </h1><p class="order-date"><?php echo $this->__('Order Date:'). $created_date; ?></p></div>
+
+<?php //Display shipping address ?>
+<div class="col2-set order-info-box">
+<div class="col-1">
+    <div class="box">
+        <div class="box-title">
+            <h2><?php echo $this->__('Shipping Address'); ?> </h2>
+        </div>
+        <div class="box-content">
+            <?php
+            $addr_entity_id = $orderDetails['shipping_address_id'];
+            $shippingaddress = Mage::getModel('sales/order_address');
+            $shippingaddress->load($addr_entity_id);
+            $shipaddgetdat = $shippingaddress->getData();
+            if(!empty($shipaddgetdat)){
+                echo $shipaddgetdat['firstname'] . ' ' . $shipaddgetdat['lastname'] . '<br/>';
+                echo $shipaddgetdat['street'] . '<br/>';
+                echo $shipaddgetdat['city'].', ';
+                echo $shipaddgetdat['postcode'] . '<br/>';
+                echo $shipaddgetdat['region'] . '<br/>';
+                echo 'T:'.' '.$shipaddgetdat['telephone'] . '<br/>';
+            } else {
+                echo $this->__('Shipping Address Not Applicable');
+            }
+          //  Display Shipping Method ?>          
+        </div>
+    </div>
+</div>
+<div class="col-2">
+    <div class="box">
+        <div class="box-title">
+            <h2><?php echo $this->__('Shipping Method'); ?></h2>
+        </div>
+        <div class="box-content"><?php if(isset($orderDetails['shipping_description'])) { echo $orderDetails['shipping_description']; } else { echo $this->__('Shipping Method Not Applicable'); } ?>
+        </div>
+    </div>
+</div>
+</div>
+<!--Display Billing Address -->
+<div class="col2-set order-info-box">
+    <div class="col-1">
+        <div class="box">
+            <div class="box-title">
+                <h2><?php echo $this->__('Billing Address'); ?></h2>
+            </div>
+            <div class="box-content">
+                <?php
+                $biladdr_entity_id = $orderDetails['billing_address_id'];
+                $billingaddress = Mage::getModel('sales/order_address');
+                $billingaddress->load($biladdr_entity_id);
+                $billaddgetdat = $billingaddress->getData();
+                echo $billaddgetdat['firstname'] . ' ' . $billaddgetdat['lastname'] . '<br/>';
+                echo $billaddgetdat['street'] . '<br/>';
+                echo $billaddgetdat['city'] .', ';
+                echo $billaddgetdat['postcode'] . '<br/>';
+                echo $billaddgetdat['region'] . '<br/>';
+                echo 'T:'.' '.$billaddgetdat['telephone'] . '<br/>';
+                ?>
+            </div>
+        </div>
+    </div>
+    <!--Display Payment Method-->
+    <div class="col-2">
+        <div class="box box-payment">
+            <div class="box-title">
+                <h2><?php echo $this->__('Payment Method'); ?></h2>
+            </div>
+            <div class="box-content">
+<?php echo $orderDetails->getPayment()->getMethodInstance()->getTitle(); ?>
+            </div>
+        </div>
+    </div>
+</div>
+<?php //Display Items Ordered ?>
+<h2><?php echo $this->__('Items Ordered'); ?></h2>
+
+<?php //Display Product Order Information
+$order = $this->viewOrder($order_id); ?> 
+    <table class="data-table" id="my-orders-table" summary="<?php echo $this->__('Items Ordered') ?>">    
+    <thead>
+        <tr>
+            <th><?php echo $this->__('Product Name') ?></th>    
+            <th class="a-center"><?php echo $this->__('Qty') ?></th>
+            <th class="a-center"><?php echo $this->__('Price') ?></th> 
+            <th class="a-center"><?php echo $this->__('Seller Amount') ?></th>
+            <th class="a-center"><?php echo $this->__('Status') ?></th>
+        </tr>
+    </thead>            
+        <tbody>  
+          <?php foreach($order as $_order){ 
+              $orderDetails = Mage::getModel('sales/order')->load($_order->getOrderId()); 
+              $getProductId = $_order->getProductId();
+              $item_item = Mage::getModel('catalog/product')->load($getProductId);              
+              ?>
+            <tr>
+                <td><?php echo $item_item->getName(); ?></td>
+                <td class="a-center"><?php echo $_order->getProductQty() ?></td>
+                <td class="a-center"><?php echo Mage::helper('core')->currency($_order->getProductAmt(), true, false); ?></td>
+                <td class="a-center"><?php echo Mage::helper('core')->currency($_order->getSellerAmount(), true, false); ?></td>
+                <td class="a-center"><?php echo $orderDetails->getStatus(); ?></td>                
+            </tr>  
+            <?php } ?>
+        </tbody>        
+        <tfoot>
+        <?php echo $this->getChildHtml('order_totals') ?>
+    </tfoot>
+</table>
+<div class="buttons-set mp_view_order_back"><a href="<?php echo Mage::helper('marketplace/marketplace')->getManageOrderUrl(); ?>"><small><< </small><?php echo $this->__('Back to Orders'); ?> </a></div>

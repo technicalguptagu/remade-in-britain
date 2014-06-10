@@ -1,0 +1,75 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2012
+ * @Modified By     Jenifer Ratchanya
+ * @Modified Date   Mar 27 2014
+ *
+ * */
+?>
+<?php
+$category_info = $this->getCategoryinfo();
+$currentDate = Mage::getModel('core/date')->date('Y-m-d');
+$sort_product = $this->getRequest()->getParam('sorting');
+?>
+<h1><?php echo $category_info->getName(); ?></h1>
+<?php if ($category_info->getImageUrl()) { ?>
+    <img src="<?php echo $category_info->getImageUrl(); ?>" height="258" width="686" />
+    <?php
+}
+$collection = $this->getCollection();
+if (count($collection) > 0) {
+    ?>
+    <div class="sorter">
+        <form name="category_products_list" id="mp_category_products" action="" method="post"> 
+            <select name="sorting" onchange="this.form.submit();" id="sorting">
+                <option value="name" <?php if ($sort_product == 'name') { ?>selected="selected" <?php } ?>><?php echo $this->__('Name'); ?></option>
+                <!--<option value="position" <?php if ($sort_product == 'position') { ?>selected="selected" <?php } ?>><?php echo $this->__('Position'); ?></option>-->
+                <option value="price" <?php if ($sort_product == 'price') { ?>selected="selected" <?php } ?>><?php echo $this->__('Price'); ?></option>
+            </select>
+        </form>
+    </div>
+    <ul class="mp_product_list sellers_product_categories clearfix">
+        <?php foreach ($collection as $_collection) { ?>
+            <li>
+                <a href="<?php echo $_collection->getProductUrl(); ?>">
+                    <?php
+                    $newproduct = $this->helper('catalog/image')->init($_collection, 'image')
+                            ->constrainOnly(TRUE)
+                            ->keepAspectRatio(TRUE)
+                            ->keepFrame(FALSE)
+                            ->resize(324, null)
+                    ?>
+                    <img class="product-image" src="<?php echo $newproduct ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_collection, 'small_image'), null, true) ?>" />
+                </a>
+                <div class="mp_product_shop"> 
+                    <a href="<?php echo $_collection->getProductUrl(); ?>"> <?php echo $_collection->getName(); ?></a>
+                    <?php
+                    //Display Product Price
+                    $price = $_collection->getPrice();
+                    $spl_price = $_collection->getSpecialPrice();
+                    $dealExpireDate = $_collection->getspecial_to_date();
+                    if (!empty($spl_price) && ($dealExpireDate != '') && ($dealExpireDate >= $currentDate)) {
+                        ?>
+                        <p><?php echo '<del>' . Mage::helper('core')->currency($price, true, false) . '</del>'; ?></p>
+                        <p class="mp_category_price"><?php echo Mage::helper('core')->currency($spl_price, true, false); ?></p>
+        <?php } else { ?>
+                        <p><?php echo Mage::helper('core')->currency($price, true, false); ?></p>
+            <?php } ?>
+                    <p><?php echo $_collection->getShortDescription(); ?></p>
+                </div>
+            </li>
+    <?php } ?>
+    </ul>
+    <?php echo $this->getPagerHtml(); ?>
+<?php
+} else {
+    echo 'No products exists';
+}
+?>

@@ -1,0 +1,126 @@
+<?php
+/**
+* @category Oscp
+* @package Oscp_ImageGallery
+*/ 
+
+$_helper = $this->helper('imagegallery');
+$_imageSize = $_helper->getPhotoSizeInSlideShow();
+$_imageEffect = $_helper->getGalleryEffect();
+$_maxItemDisplay = $_helper->maxItemDisplay();
+if ($_imageEffect == 'autoslide') {
+?>
+    <script type="text/javascript">
+        jQuery.noConflict();
+        jQuery(document).ready(function($) {
+            var buttons = {previous: $('#lofslidecontent45 .lof-previous'), next: $('#lofslidecontent45 .lof-next')};
+            $obj = $('#lofslidecontent45')
+                .lofJSidernews({interval: 5000,
+                easing: 'easeInOutExpo',
+                // direction : 'opacity',
+                duration: 2000,
+                auto: true,
+                maxItemDisplay: <?php echo $_maxItemDisplay; ?>,
+                startItem: 0,
+                navPosition: 'horizontal', // horizontal
+                navigatorHeight: 15,
+                navigatorWidth: 20,
+                buttons: buttons,
+                mainWidth: '<?php echo $_imageSize["width"]; ?>'
+            });
+        });</script>
+    <div id="simple-slide" class="lof-container">
+
+    <?php } elseif ($_imageEffect == 'fadding-fadout') { ?>
+        <script type="text/javascript">
+            jQuery.noConflict();
+            jQuery(document).ready(function($) {
+                var buttons = {previous: $('#lofslidecontent45 .lof-previous'), next: $('#lofslidecontent45 .lof-next')};
+                $obj = $('#lofslidecontent45')
+                    .lofJSidernews({interval: 5000,
+                    direction: 'opacity',
+                    duration: 2000,
+                    auto: true,
+                    maxItemDisplay: <?php echo $_maxItemDisplay; ?>,
+                    startItem: 0,
+                    navPosition: 'horizontal', // horizontal
+                    navigatorHeight: 15,
+                    navigatorWidth: 25,
+                    buttons: buttons,
+                    mainWidth: '<?php echo $_imageSize["width"]; ?>'
+                });
+            });</script>
+        <div id="fadein" class="lof-container">
+        <?php } ?>
+        <div id="lofslidecontent45" class="lof-slidecontent">
+            <div class="lof-main-outer" style="width: <?php echo $_imageSize['width']; ?>px; height:<?php echo $_imageSize['height']; ?>px" >
+                <ul class="lof-main-wapper">
+                    <?php
+                    $_collection = $this->getCollection();
+                    $_thumbSize = $_helper->getThumbSize();
+                    $_rowIndex = 0;
+                    $_thumbCounter = 0;
+                    foreach ($_collection as $_image):
+                        if ($_rowIndex == 0):
+                    ?>
+                    <?php /* block starts == developer7 */ ?>
+                       <li class="widget widget-static-block">   
+                           <a href="<?php echo $_image->getWeblink(); ?>" >
+                               <img title="<?php echo $_image->getTitle(); ?>" alt="<?php echo $_image->getTitle(); ?>" 
+                               src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $_image->getLargeimage(); ?>" 
+                               width="<?php echo $_imageSize['width']; ?>" height="<?php echo $_imageSize['height']; ?>" />
+                           </a>
+                           <?php if ($_helper->canShowTitle()): ?>
+                               <div class="title"><div class="bann-ttit-prive">&nbsp;</div>
+                                   <h1><?php echo $_image->getTitle(); ?></h1>
+                                   <div class="bann-ttit-next">&nbsp;</div>
+                               </div>  
+                                <?php endif; ?>
+
+                                <?php if ($_helper->canShowDescription()): ?>
+                                    <?php if ($_helper->getDescriptionLength()): ?>      
+                                        <div class="desc">
+                                            <?php echo substr($_image->getContent(), 0, $_helper->getDescriptionLength());
+                                                if (strlen($_image->getContent()) > $_helper->getDescriptionLength()): echo '..';
+                                                else: echo '';
+                                                endif;
+                                            ?>
+                                            <br/>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endif; ?>  
+                           </li>
+                        <?php
+                            else:
+                            $_thumbCounter++;
+                                if ($_thumbCounter == 1):
+                                    $_liClass = ''
+                        ?>
+                        <ul class="horizontal">
+                        <?php
+                            else:
+                            $_liClass = '';
+                                endif;
+                                if ($_thumbCounter == $_helper->getImageInRows()):
+                                    break;
+                                endif;
+                        ?>
+                            <li class="outer <?php echo $_liClass; ?>">
+                                <a href="<?php echo $_image->getWeblink(); ?>" >
+                                <img title="<?php echo $_image->getTitle(); ?>" alt="<?php echo $_image->getTitle(); ?>" 
+                                src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $_image->getSmallimage(); ?>" 
+                                width="<?php echo $_thumbSize['width']; ?>" height="<?php echo $_thumbSize['height']; ?>" />
+                                </a>       
+                            </li>
+                        <?php
+                        endif;
+                        $_rowIndex++;
+                        endforeach;
+                        ?>
+                    </ul>
+                    <div class="lof-previous" onclick="return false"></div>
+                    <div class="lof-next" onclick="return false"></div> 
+            </div>
+        </div>
+    </div>
+    <?php /* block endss == developer7 */ ?>

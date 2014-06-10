@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <config>
+   <placeholders>
+	<ecommerceteam_sln>
+            <block>ecommerceteam_sln/ecommerceteam_sln</block>
+            <placeholder>ECOMMERCETEAM_SLN_FILTER</placeholder>
+            <container>EcommerceTeam_Sln_Model_Container_Cache</container>
+            <cache_lifetime>86400</cache_lifetime>
+        </ecommerceteam_sln>	
+    </placeholders>
+</config>

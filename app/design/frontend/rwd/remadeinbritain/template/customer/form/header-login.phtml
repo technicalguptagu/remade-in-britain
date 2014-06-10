@@ -1,0 +1,77 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<!-- EOF 25/7/2012 developer 11 (display home page on hover set template as per design  ) -->
+<div class="block block-login">
+		<?php if (! Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+		<div class="before-login">	
+			<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="mini-login-form">
+				<div class="block-content">
+					 <h2 class="customer-login"><?php echo $this->__('Already a member? Login here') ?></h2>
+					 <a href="<?php echo $this->getForgotPasswordUrl() ?>" class="f-left"><?php echo $this->__('Forgotten your password?') ?></a>
+					<div class="login-inputs">
+						<input type="text" placeholder="<?php echo $this->__('Enter email address here') ?>" name="login[username]" id="mini-login"  title="<?php echo $this->__('Enter email address here') ?>"     class="input-text required-entry validate-email" />
+						<input type="password"  placeholder="<?php echo $this->__('Enter your password here') ?>" name="login[password]" id="mini-password"  title="<?php echo $this->__('Enter your password here') ?>" value="" class="input-text required-entry validate-password" />
+					</div>
+					<div class="actions">
+						<button type="submit" class="button" title="<?php echo $this->__('Login') ?>" name="send" id="send2"><span><span><?php echo $this->__('Login<br>Now') ?></span></span></button>
+					</div>
+					<div style="clear: both; height: 0;">&nbsp;</div>
+				</div>
+			</form>
+			<script type="text/javascript">
+			//<![CDATA[
+				var dataForm = new VarienForm('mini-login-form', true);
+			//]]>
+			</script>
+			<div class="new-account">
+					<a href='<?php echo $this->getCreateAccountUrl() ?>' class="creat-acc"><?php echo $this->__('Not a Remade member yet?') ?></a>
+					<button type="button" onclick="setLocation('<?php echo $this->getUrl('customer/account/create')?>')" class="button create-account" title="<?php echo $this->__('Create an Account') ?>"><span><span><?php echo $this->__('Create an Account') ?></span></span></button>
+					<span class="or"><?php echo $this->__('Or')?></span>
+					<button type="button" onclick="setLocation('<?php echo $this->getUrl('marketplace/seller/create')?>')" class="button become-remade" title="<?php echo $this->__('Become a Remade Retailer') ?>"><span><span><?php echo $this->__('Become a Remade Retailer') ?></span></span></button>
+			</div>
+	</div>
+	<?php else: ?>
+	<div class="after-login">
+        <div class="block-content">
+			<div class="login logout">
+				<div class="logintext">
+					<ul>
+						<li class="account-info"><a href="<?php echo $this->getUrl('#')?>"><span><?php echo $this->__('Account Info')?></span></a></li>
+						<li class="my-wishlist"><a href="<?php echo $this->getUrl('#')?>"><span><?php echo $this->__('My Wishlist')?></span></a></li>
+						<li class="compare"><a href="<?php echo $this->getUrl('#')?>"><span><?php echo $this->__('Compare')?></span></a></li>
+						<li class="logout"><a href="<?php echo $this->getUrl('customer/account/logout')?>"><span><?php echo $this->__('Logout')?></span></a></li>
+					</ul>
+				</div>
+			</div>
+        </div>
+	</div>
+	<?php endif; ?>
+	
+</div>
+
+<!-- EOF 25/7/2012 developer 11 (display home page on hover set template as per design  ) -->
+

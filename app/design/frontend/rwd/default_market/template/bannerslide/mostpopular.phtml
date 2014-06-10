@@ -1,0 +1,200 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2014
+ * @Modified By     Swathi
+ * @Modified Date   Apr 07 2014
+ *
+ * */
+?>
+<div class="carousel" id="mostpopular">
+    <?php
+    if (!Mage::helper('marketplace')->checkMarketplaceKey()) {
+        $popular_products = $this->getMostpopular();
+        $popular_count = count($popular_products);
+        $currentDate = Mage::getModel('core/date')->date('Y-m-d');
+        if ($popular_count >= 1) {   ?>  
+            <h2 class="home_pdt_name"><span><?php echo $this->__('Most Popular'); ?></span></h2>
+            <?php if ($popular_count > 4) { ?>
+            <a href="javascript:" class="carousel-control next" rel="next">&rsaquo;</a>
+            <a href="javascript:" class="carousel-control prev" rel="prev">&lsaquo;</a>
+            <?php } ?>
+            <div class="middle products-grid">
+                <div class="inner" style="width: <?php echo 257*$popular_count; ?>px;">
+                    <ul>
+                        <?php
+                        foreach ($popular_products as $popular) {
+                            $popularproduct_img = $this->helper('catalog/image')->init($popular, 'small_image')
+                                    ->constrainOnly(TRUE)
+                                    ->keepAspectRatio(FALSE)
+                                    ->keepFrame(FALSE)
+                                    ->resize(226, 226);
+                            ?>
+                            <li class="item">
+                                <a class="product_image" href="<?php echo $popular->getProductUrl(); ?>">
+                                    <img class="product-image f-left" src="<?php echo $popularproduct_img; ?>" alt="<?php echo $popular->getName(); ?>" title="<?php echo $popular->getName(); ?>" />
+                                </a>
+                                <div class="products_gridview_page">
+                                    <div class="price-box">
+                                        <span class="regular-price">
+                                            <span class="price">
+                                                <?php
+                                                //Display Product Price
+                                                $price = $popular->getPrice();
+                                                $spl_price = $popular->getSpecialPrice();
+                                                $dealExpireDate = $popular->getspecial_to_date();
+                                                if (!empty($spl_price) && ($dealExpireDate != '') && ($dealExpireDate >= $currentDate)) {
+                                                    echo Mage::helper('core')->currency($spl_price, true, false);
+                                                } else {
+                                                    echo Mage::helper('core')->currency($price, true, false);
+                                                }
+                                                ?></span></span>
+                                    </div>                            
+                                </div>
+                                <div class="products-grid-details">
+                                    <div class="product_grid_left">
+                                        <h2 class="product-name">
+                                            <a href="<?php echo $popular->getProductUrl(); ?>">
+                                                <?php
+                                                $pr_name = $popular->getName();
+                                                $len_pr_name = strlen($popular->getName());
+                                                $sub_pr_name = substr($pr_name, 0, 26);
+                                                if ($len_pr_name >= 26) {
+                                                    $pr_name_fix = $sub_pr_name . "...";
+                                                } else {
+                                                    $pr_name_fix = $pr_name;
+                                                }
+                                                echo $pr_name_fix;
+                                                ?>
+                                            </a>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </li>                 
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
+        <?php }
+    } ?>
+</div>
+<script type="text/javascript">
+    window.innerWidth;
+    new Carousel($('mostpopular').down('.middle'), $('mostpopular').down('.inner').select('img'), $('mostpopular').select('.carousel-control'), {
+        duration: 0.5,
+        transition: 'sinoidal',
+        visibleSlides: 4,
+        circular: false        
+    });
+</script>
+<div class="carousel" id="newproducts">
+    <?php
+    if (!Mage::helper('marketplace')->checkMarketplaceKey()) {
+        $new_products = $this->getNewproduct();
+        $new_count = count($new_products);
+        if ($new_count >= 1) {
+            ?>
+
+            <h2  class="home_pdt_name"><span><?php echo $this->__('Latest Arrivals'); ?></span></h2>
+            <?php if ($new_count > 4) { ?>
+            <a href="javascript:" class="carousel-control next" rel="next">&rsaquo;</a>
+            <a href="javascript:" class="carousel-control prev" rel="prev">&lsaquo;</a>
+            <?php } ?>
+            <div class="middle products-grid">
+                <div class="inner" style="width: <?php echo 257*$new_count; ?>px;">
+                    <ul>
+                        <?php
+                        foreach ($new_products as $new) {
+                            $newproduct = $this->helper('catalog/image')->init($new, 'small_image')
+                                    ->constrainOnly(TRUE)
+                                    ->keepAspectRatio(FALSE)
+                                    ->keepFrame(FALSE)
+                                    ->resize(226, 226)
+                            ?>  
+            <?php //Display New Products of this seller   ?>     
+                        <li class="item">
+
+                            <a class="product_image" href="<?php echo $new->getProductUrl(); ?>">
+                                <img class="product-image f-left" src="<?php
+                                if ($new->getImage() != 'no_selection') {
+                                    echo $newproduct;
+                                } else {
+                                    echo $new->getImageUrl();
+                                }
+                                ?>" 
+                                     alt="<?php echo $new->getName(); ?>" title="<?php echo $new->getName(); ?>" />
+                            </a>
+                            <div class="products_gridview_page">
+                                <div class="price-box">
+                                    <span class="regular-price">
+                                        <span class="price">
+
+                                            <?php
+                                            //Display Product Price
+                                            $new_price = $new->getPrice();
+                                            $new_spl_price = $new->getSpecialPrice();
+                                            $new_dealExpireDate = $new->getspecial_to_date();
+                                            if (!empty($new_spl_price) && ($new_dealExpireDate != '') && ($new_dealExpireDate >= $currentDate)) {
+
+                                                echo Mage::helper('core')->currency($new_spl_price, true, false);
+                                            } else {
+                                                echo Mage::helper('core')->currency($new_price, true, false);
+                                            }
+                                            ?>
+                                        </span></span>
+                                </div>                            
+                            </div>
+                            <div class="products-grid-details">
+                                <h2 class="product-name">
+                                    <a href="<?php echo $new->getProductUrl(); ?>">
+                                        <?php
+                                        $newpr_name = $new->getName();
+                                        $newlen_pr_name = strlen($new->getName());
+                                        $newsub_pr_name = substr($newpr_name, 0, 26);
+                                        if ($newlen_pr_name >= 26) {
+                                            $newpr_name_fix = $newsub_pr_name . "...";
+                                        } else {
+                                            $newpr_name_fix = $newpr_name;
+                                        }
+                                        echo $newpr_name_fix;
+                                        ?>
+
+                                    </a>
+                                </h2>
+                                <?php
+                                $new_desc = $new->getShortDescription();
+                                $newlen_desc = strlen($new->getShortDescription());
+                                $newsub_desc = substr($new_desc, 0, 45);
+                                if ($newlen_desc >= 45) {
+                                    $newpr_desc_fix = $newsub_desc . "...";
+                                } else {
+                                    $newpr_desc_fix = $new_desc;
+                                }
+                                ?>
+
+                            </div>
+                        </li>         
+                     <?php } ?>
+                    </ul>
+                </div>
+            </div>
+            <?php
+        }
+    }
+    ?>
+</div>
+<script type="text/javascript">
+    window.innerWidth;
+    new Carousel($('newproducts').down('.middle'), $('newproducts').down('.inner').select('img'),  $('newproducts').select('.carousel-control'), {
+        duration: 0.5,
+        transition: 'sinoidal',
+        visibleSlides: 4,
+        circular: false       
+    });
+</script>

@@ -1,0 +1,17 @@
+<?php
+/**
+* @category Oscp
+* @package Oscp_ImageGallery
+*/ 
+?>
+
+<tr>
+    <td class="label"><?php echo $this->getElement()->getLabel() ?></td>
+    <td colspan="10" class="value">
+     <input id="mobileimage" type="file" value="" name="mobileimage">
+     <?php if($this->getElement()->getValue()): ?>
+ <img style="width:40px; height:45px;" 
+          src="<?php echo Mage::getBaseUrl('media'). DS.$this->getElement()->getValue();?>" alt="Mobile Image" title="Mobile Image" />
+<?php endif; ?>
+   </td>
+</tr>

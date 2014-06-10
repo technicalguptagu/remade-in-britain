@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+* @category Oscp
+* @package Oscp_Contactrewrite
+*/ 
+-->
+<config>
+    <modules>
+	    <Oscp_Contactrewrite>
+		    <version>1.0.0</version>           
+		</Oscp_Contactrewrite>
+    </modules>
+	<global>
+		<resources>
+			<contactrewrite_setup>
+				<setup>
+					<module>Oscp_Contactrewrite</module>
+				</setup>
+				<connection>
+				    <use>core_setup</use>
+				</connection>
+			</contactrewrite_setup>
+			<contactrewrite_write>
+			    <connection>
+				    <use>core_write</use>
+				</connection>
+			</contactrewrite_write>
+			<contactrewrite_read>
+			    <connection>
+				    <use>core_read</use>
+				</connection>
+			</contactrewrite_read>
+		</resources>
+			 
+	</global>
+		
+	<frontend>
+        <routers>
+            <contacts>
+                <args>
+                    <modules>
+                        <oscp_contactrewrite before="Mage_Contacts">Oscp_Contactrewrite_Contacts</oscp_contactrewrite>
+                    </modules>
+                </args>
+            </contacts>
+        </routers>
+    </frontend>
+</config>

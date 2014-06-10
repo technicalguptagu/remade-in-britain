@@ -1,0 +1,133 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+
+<div id="header" class="page-header">
+    <div class="page-header-container">
+        <a class="logo" href="<?php echo $this->getUrl('') ?>">
+            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="large" />
+            <img src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="small" />
+        </a>
+		<!-- **************************** -->
+		<div class="header-right">
+		<div class="header-right-top">
+			<div class="information-advice">
+				<?php echo $this->getLayout()->createBlock('cms/block')->setblockId('information-advice')->toHtml(); ?>
+			</div>
+			<div class="dropdown">
+				<div id="viewlogin" <?php if (! Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+				class="isnotlogin"
+				<?php else: ?>
+				class="isnotlogout"
+				<?php endif; ?>style="position:relative;"></div>
+				   <?php $_login = Mage::getSingleton("customer/session")->isLoggedIn(); ?>
+					<div id="login-head" class="login">
+						<div class="logintext">
+							<ul class="links">
+							<?php if (! Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+							<li class="head-link login-logout"><a title="Login/Register"><?php echo $this->__('Login / Register') ?></a></li>
+							<?php else: ?>
+							<li class="head-link login-logout"><a title="My Account"><?php echo $this->__('My Account')
+							?></a></li>
+							<?php endif; ?>
+							</ul>
+						</div>
+						<div id="loginheader">
+							<div class="login-bottom-img">
+								<?php echo $this->getChildHtml('customer_form_header_login'); ?> 
+							</div>
+						</div>
+					</div>
+				</div>
+			    <div class="cart-sude-bar">
+					<div class="head-sidebar">
+						<div id="viewcart" class="viewcart head-link">
+							<div class="mycart">
+								<div id="cartHeader">
+									<?php echo $this->getChildHtml('header_sidebar'); ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		   <div class="header-right-btm">
+				<!-- Search -->
+				<div id="header-search" class="skip-content">
+					<?php echo $this->getChildHtml('topSearch'); ?>
+				</div>
+		   </div>
+		</div>
+			<div style="clear: both; height: 0;">&nbsp;</div>
+		</div>
+        
+        <div id="header-account" class="skip-content">
+            <?php echo $this->getChildHtml('topLinks'); ?>
+        </div>
+    
+	
+    <?php //echo $this->getChildHtml('topMenu') ?>
+	<script type="text/javascript">
+	//<![CDATA[
+		jQuery(document).ready(function(){
+			jQuery("#loginheader").hide();
+
+			jQuery('.login').hover(function() {			
+				jQuery('#loginheader').stop().show();
+			}, function(){		
+				jQuery('#loginheader').stop().hide();
+				
+
+			});			
+		});
+	//]]>
+	</script>
+
+	<script type="text/javascript">
+	//<![CDATA[
+		jQuery(document).ready(function(){
+			jQuery("#cartHeader .block-content").hide();
+
+			jQuery('.mycart').hover(function() {			
+				jQuery('#cartHeader .block-content').stop().show();
+				jQuery('#cartHeader').find('.block-title').addClass('active');
+			}, function(){		
+				jQuery('#cartHeader .block-content').stop().hide();
+				jQuery('#cartHeader').find('.block-title').removeClass('active');
+			});			
+		});
+	//]]>
+	</script>
+
+	<?php echo $this->getChildHtml('topContainer'); ?>
+
+<div id="header-nav" class="skip-content">
+		<?php echo $this->getChildHtml('topMenu'); ?>
+	</div>
+	</div>

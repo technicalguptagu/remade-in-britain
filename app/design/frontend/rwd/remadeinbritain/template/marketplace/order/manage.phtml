@@ -1,0 +1,223 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2012
+ * @Modified By     Jenifer Ratchanya
+ * @Modified Date   Mar 27 2014
+ *
+ * */
+?>
+<script type="text/javascript">
+    document.observe("dom:loaded", function() {
+        var selected = document.getElementById("select_filter");
+        var selectedValue = selected.options[selected.selectedIndex].value;
+        console.log(selectedValue);
+        if (selectedValue !== 'custom') {
+            // initially hide all containers for tab content  
+            $$('#date_from').invoke('hide');
+            $$('#date_to').invoke('hide');
+        }
+    });
+</script>
+<?php
+$from_display = $to_display = $data = $status = $select_filter = '';
+$data = $this->getRequest()->getPost();
+if (isset($data['status']) || isset($data['select_filter']) || isset($data['date_from']) || isset($data['date_to'])) {
+    $status = $data['status'];
+    $select_filter = $data['select_filter'];
+    $from_date = $data['date_from'];
+    $to_date = $data['date_to'];
+}
+switch ($select_filter) {
+    case "today":
+        // today interval
+        $start_day = strtotime("-1 today midnight");
+        $from_display = date("Y-m-d", $start_day);
+        $to_display = date("Y-m-d", $start_day);
+        break;
+    case "yesterday":
+        // yesterday interval
+        $start_day = strtotime("-1 yesterday midnight");
+        $from_display = date("Y-m-d", $start_day);
+        $to_display = date("Y-m-d", $start_day);
+        break;
+    case "lastweek":
+        // last week interval
+        $to = date('d-m-Y');
+        $to_day = date('l', strtotime($t));
+        // if today is monday, take last monday
+        if ($to_day == 'Monday') {
+            $start_day = strtotime("-1 monday midnight");
+            $end_day = strtotime("yesterday");
+        } else {
+            $start_day = strtotime("-2 monday midnight");
+            $end_day = strtotime("-1 sunday midnight");
+        }
+        $from = date("Y-m-d", $start_day);
+        $to = date("Y-m-d", $end_day);
+        $to = date('Y-m-d', strtotime($to . ' + 1 day'));
+        $from_display = $from;
+        $to_display = date("Y-m-d", $end_day);
+        break;
+    case "lastmonth":
+        // last month interval
+        $from = date('Y-m-01', strtotime('last month'));
+        $to = date('Y-m-t', strtotime('last month'));
+        $to = date('Y-m-d', strtotime($to . ' + 1 day'));
+        $from_display = $from;
+        $to_display = date('Y-m-t', strtotime('last month'));
+        break;
+    case "custom":
+        // last custom interval
+        $from = date('Y-m-d', strtotime($data['date_from']));
+        $to = date('Y-m-d', strtotime($data['date_to'] . ' + 1 day'));
+        $from_display = $from;
+        $to_display = date('Y-m-d', strtotime($data['date_to']));
+        break;
+}
+?>
+<div class="account-login" id="market_place_manage_products_order">
+    <div class="page-title sellers_store">
+        <h1><?php echo $this->__('Orders') ?></h1>
+        <div class="top_amount">
+            <span class="right_space">
+                <?php echo $this->__('Total Amount Received') ?> : <b><?php echo Mage::helper('marketplace/marketplace')->getAmountReceived(); ?></b>
+            </span>
+            <span>
+                <?php echo $this->__('Amount Pending') ?> :  <b><?php echo Mage::helper('marketplace/marketplace')->getAmountRemaining(); ?></b>
+            </span>
+        </div> 
+    </div>    
+    <div class="clear"></div>
+    <form name="orders" method="post" action="">
+        <div class="mp_sellers_order">
+            <select name="status" onchange="this.form.submit();" id="sales_order_grid_filter_status" class="no-changes">
+                <option value=""><?php echo $this->__('Select a Status'); ?></option>
+                <option value="canceled" <?php if ($status == 'canceled') { ?>selected="selected" <?php } ?>><?php echo $this->__('Canceled'); ?></option>
+                <option value="closed" <?php if ($status == 'closed') { ?>selected="selected" <?php } ?>><?php echo $this->__('Closed'); ?></option>
+                <option value="complete" <?php if ($status == 'complete') { ?>selected="selected" <?php } ?>><?php echo $this->__('Complete'); ?></option>
+                <option value="fraud" <?php if ($status == 'fraud') { ?>selected="selected" <?php } ?>><?php echo $this->__('Suspected Fraud'); ?></option>
+                <option value="holded" <?php if ($status == 'holded') { ?>selected="selected" <?php } ?>><?php echo $this->__('On Hold'); ?></option>
+                <option value="payment_review" <?php if ($status == 'payment_review') { ?>selected="selected" <?php } ?>><?php echo $this->__('Payment Review'); ?></option>
+                <option value="paypal_canceled_reversal" <?php if ($status == 'paypal_canceled_reversal') { ?>selected="selected" <?php } ?>><?php echo $this->__('PayPal Canceled Reversal'); ?></option>
+                <option value="paypal_reversed" <?php if ($status == 'paypal_reversed') { ?>selected="selected" <?php } ?>><?php echo $this->__('PayPal Reversed'); ?></option>
+                <option value="pending" <?php if ($status == 'pending') { ?>selected="selected" <?php } ?>><?php echo $this->__('Pending'); ?></option>
+                <option value="pending_payment" <?php if ($status == 'pending_payment') { ?>selected="selected" <?php } ?>><?php echo $this->__('Pending Payment'); ?></option>
+                <option value="pending_paypal" <?php if ($status == 'pending_paypal') { ?>selected="selected" <?php } ?>><?php echo $this->__('Pending PayPal'); ?></option>
+                <option value="processing" <?php if ($status == 'processing') { ?>selected="selected" <?php } ?>><?php echo $this->__('Processing'); ?></option>
+            </select>        
+            <select name="select_filter" id="select_filter" onchange="selectFilter();">
+                <option name="" value=""><?php echo $this->__('Select a Range'); ?></option>
+                <option name="custom" value="custom" <?php if ($select_filter == 'custom') { ?> selected="selected" <?php } ?>><?php echo $this->__('Custom'); ?></option>
+                <option name="today" value="today"  <?php if ($select_filter == 'today') { ?> selected="selected" <?php } ?>><?php echo $this->__('Today'); ?></option>
+                <option name="yesterday" value="yesterday"  <?php if ($select_filter == 'yesterday') { ?> selected="selected" <?php } ?>><?php echo $this->__('Yesterday'); ?></option>
+                <option name="lastweek" value="lastweek"  <?php if ($select_filter == 'lastweek') { ?> selected="selected" <?php } ?>><?php echo $this->__('Last Week'); ?></option>
+                <option name="lastmonth" value="lastmonth"  <?php if ($select_filter == 'lastmonth') { ?> selected="selected" <?php } ?>><?php echo $this->__('Last Month'); ?></option>
+            </select>
+            <input type="text" placeholder="mm/dd/yyyy" class="input-text required-entry" name="date_from" id="date_from" value="<?php if ($select_filter == 'custom') {
+                    echo $from_date;
+                } ?>" />
+            <input type="text" placeholder="mm/dd/yyyy" class="input-text required-entry" name="date_to" id="date_to" value="<?php if ($select_filter == 'custom') {
+                    echo $to_date;
+                } ?>" />
+            <button type="submit" class="button"  title="<?php echo $this->__('Submit') ?>" name="filter_submit" id="multi_submit" ><span><span><?php echo $this->__('Submit') ?></span></span></button>
+<?php if ($from_display != '' && $to_display != '' && $select_filter != 'custom') { ?>
+                <p> <b><?php echo $this->__('Start date:'); ?></b>&nbsp; <?php echo $from_display; ?>
+                    <b><?php echo $this->__('End date:'); ?></b>&nbsp; <?php echo $to_display; ?> </p>
+        <?php } ?>
+        </div>
+        <div class="clear"></div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php $_orders = $this->getCollection(); ?> 
+
+        <table class="data-table" id="my-product-table" width="100%">
+            <col width="1" />
+            <col width="1" />
+            <col />
+            <col width="1" />
+            <col width="1" />
+            <col width="1" />
+            <thead>
+                <tr>
+                    <th class="text_left"><?php echo $this->__('Order #') ?></th>
+                    <th colspan="2" class="text_left"><?php echo $this->__('Product Details') ?></th>
+                    <th><?php echo $this->__('Product price') ?></th>
+                    <th><?php echo $this->__('Earned Amount') ?></th>         
+                    <th><?php echo $this->__('Status') ?></th>
+                    <th><?php echo $this->__('Order Date') ?></th>
+                    <th class="no-border-right"></th>
+                </tr>
+                <tr class="mp_filter_function">
+
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                if ($_orders->getSize()):
+                    foreach ($_orders as $order):
+                        $getOrderId = $order->getOrderId();
+                        $orderDetails = Mage::getModel('sales/order')->load($getOrderId);
+                        ?>
+                        <tr>
+                            <td class="text_left"><?php echo $order->getIncrementId(); ?></td>
+                            <td colspan="2" class="text_left"><?php
+                        $getProductId = $order->getProductId();
+                        $item_item = Mage::getModel('catalog/product')->load($getProductId);
+                        echo $item_item->getName() . ' X ' . '<strong>' . $order->getProductQty() . '</strong>';
+                        ?></td>
+                            <td><?php echo Mage::helper('core')->currency($order->getProductAmt(), true, false); ?></td>
+                            <td><?php echo Mage::helper('core')->currency($order->getSellerAmount(), true, false); ?></td>
+                            <td><span><?php echo $orderDetails->getStatus(); ?></span></td>
+                            <td><?php $date = $orderDetails->getCreatedAtDate();
+                echo $new_date = date('M j, Y', strtotime($date)); ?></td>
+                            <td><a href="<?php echo Mage::helper('marketplace/marketplace')->getVieworder($getOrderId); ?>" ><?php echo $this->__('View'); ?></a></td>
+                        </tr>
+        <?php endforeach; ?>
+                </tbody>
+<?php else: ?>
+                <tfoot><tr><td colspan="7" class="a-center no_product_content"><?php echo $this->__('You have no Order.'); ?></td></tr></tfoot>
+<?php endif ?>
+        </table>
+    </form> 
+<?php echo $this->getPagerHtml(); ?>
+    <script type="text/javascript">
+        var dataForm = new VarienForm('orders');
+    </script>
+    <script type="text/javascript">
+        decorateTable('my-product-table');
+        // <![CDATA[
+        Calendar.setup({
+            inputField: 'date_from',
+            ifFormat: '%m/%e/%y',
+            button: 'date_from',
+            align: 'Bl',
+            singleClick: true
+        });
+
+        Calendar.setup({
+            inputField: 'date_to',
+            ifFormat: '%m/%e/%y',
+            button: 'date_to',
+            align: 'Bl',
+            singleClick: true
+        });
+// ]]>
+        function selectFilter() {
+            var filter = $('select_filter')[$('select_filter').selectedIndex].value;
+            if (filter === 'custom') {
+                $$('#date_from').invoke('show');
+                $$('#date_to').invoke('show');
+            }
+            else {
+                $$('#date_from').invoke('hide');
+                $$('#date_to').invoke('hide');
+            }
+        }
+    </script>
+</div>

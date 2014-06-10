@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+	<Oscp_ProductStickers>		
+		<active>true</active>
+		<codePool>local</codePool>		
+	</Oscp_ProductStickers>
+	</modules>
+</config>

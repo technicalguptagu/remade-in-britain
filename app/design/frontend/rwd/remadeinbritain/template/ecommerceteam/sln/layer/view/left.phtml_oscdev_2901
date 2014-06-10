@@ -1,0 +1,56 @@
+<?php
+    /**
+    * EcommerceTeam.com
+    *
+    * Seo Layered Navigation
+    *
+    * @category     Magento Extension
+    * @copyright    Copyright (c) 2011 Ecommerce Team (http://www.ecommerce-team.com)
+    * @author       Ecommerce Team
+    * @version      3.0
+    */
+
+
+/** @var $this EcommerceTeam_Sln_Block_Layer_View */
+?>
+<?php if($this->canShowBlock()): ?>
+<div id="<?php echo $this->getBlockId();?>" class="block block-layered-nav">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Refine Your search') ?></span></strong>
+    </div>
+    <div class="block-content">
+        <?php echo $this->getStateHtml() ?>
+        <?php if($this->canShowOptions()): ?>
+            <p class="block-subtitle"><?php echo $this->__('Filter Products') ?></p>
+            <dl id="narrow-by-list">
+                <?php $_filters = $this->getFilters() ?>
+                <?php foreach ($_filters as $_filter):?>
+                <?php if($_filter->canShow()):?>
+                    <dt>
+                        <?php if($this->__($_filter->getName()) == 'Category'): ?>
+							<span><?php echo $this->__('By Category') ?></span>
+							 
+                        <?php else: ?>
+							<span><?php echo $this->__($_filter->getName()) ?></span>
+                            
+						<?php endif; ?>
+                        <?php if($filterComment = $_filter->getComment()):?>
+                        <img onmouseover="showFilterComment('<?php echo $_filter->getRequestVar()?>', this)"
+                              onmouseout="hideFilterComment('<?php echo $_filter->getRequestVar()?>', this)"
+                              class="filter-details"
+                              src="<?php echo $this->getSkinUrl('images/ecommerceteam/sln/help.png')?>"
+                              alt="Filter Details" />
+                        <?php endif;?>
+                    </dt>
+                    <dd><?php echo $_filter->getHtml() ?>
+                    <?php if ($_item->getCount() > 0 && $_item->getIsSelected()): ?>
+					<a href="<?php echo $_filter->getRemoveUrl() ?>" title="<?php echo $this->__('Remove This Item') ?>" class="btn-remove1"><?php echo $this->__('Clear') ?></a></dd>
+                   <?php endif; ?>
+                <?php endif; ?>
+                <?php endforeach; ?>
+            </dl>
+            <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oscp_ProductStickers>
+            <version>0.1.0</version>
+		</Oscp_ProductStickers>
+    </modules>   
+    <global>  
+		 <blocks>
+			<productstickers>
+				<class>Oscp_ProductStickers_Block</class>
+			</productstickers>		
+		</blocks>
+	<helpers>
+      <productstickers>
+        <class>Oscp_ProductStickers_Helper</class>
+      </productstickers>      
+    </helpers>	
+  </global>
+</config>

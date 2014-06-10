@@ -1,0 +1,82 @@
+<?php
+/**
+ * @category Oscp
+ * @package Oscp_ImageGallery
+ */
+$_helper = $this->helper('imagegallery');
+$_imageSize = $_helper->getPhotoSizeInSlideShow();
+$_imageEffect = ($_helper->getGalleryEffect() == 'random') ? 'autoslide' : $_helper->getGalleryEffect();
+$_maxItemDisplay = $_helper->maxItemDisplay();
+if ($_imageEffect == 'autoslide') {
+    ?>
+    <script type="text/javascript">
+        //<![CDATA[						
+        jQuery(window).load(function() {
+            jQuery('.the-slideshow').flexslider({
+                namespace: "",
+                animation: 'slide',
+                easing: 'easeInOutCubic',
+                useCSS: false,
+                animationLoop: 1,
+                smoothHeight: true,
+                slideshowSpeed: <?php echo (int) $_helper->timeInterval() * 2500; ?>,
+                animationSpeed: <?php echo (int) $_helper->timeInterval() * 1000; ?>,
+                pauseOnHover: 1
+            });
+        });
+        //]]>
+    </script>
+    <div id="simple-slide" class="lof-container">
+    <?php } else { ?>
+        <script type="text/javascript">
+            //<![CDATA[				
+            jQuery(window).load(function() {
+                jQuery('.the-slideshow').flexslider({
+                    namespace: "",
+                    animation: 'fade',
+                    easing: 'easeInOutCubic',
+                    useCSS: false,
+                    animationLoop: 1,
+                    smoothHeight: true,
+                    slideshowSpeed: <?php echo (int) $_helper->timeInterval() * 2500; ?>,
+                    animationSpeed: <?php echo (int) $_helper->timeInterval() * 1000; ?>,
+                    pauseOnHover: 1
+                });
+            });
+            //]]>
+        </script>
+        <div id="fadein" class="lof-container">
+        <?php } ?>
+        <?php //BOF developer-19 18/12/2013  ?>
+        <div class="the-slideshow gen-slider-arrows2 gen-slider-pager1 gen-slider-pager1-pos-bottom-right grid12-12 ">
+            <ul class="slides">
+                <?php
+                $_collection = $this->getCollection();
+                $_rowIndex = 0;
+                $_thumbCounter = 0;
+                foreach ($_collection as $_image):
+                    if ($_rowIndex == 0):
+                        ?>
+                        <li class="slide">
+                            <div class="banner">
+                                <a href="<?php echo $_image->getWeblink(); ?>" ><img title="<?php echo $_image->getTitle(); ?>" alt="<?php echo $_image->getTitle(); ?>" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $_image->getLargeimage(); ?>" /></a>
+                                <?php if ($_helper->canShowTitle()): ?>
+                                    <div class="desc">
+                                        <h1 class="banner-title">
+                                            <?php echo $_image['title'] ?>
+                                        </h1>  
+                                        <div class="banner-desc"><?php echo $_image['description'] ?></div>
+                                        <a href="<?php echo $_image->getWeblink(); ?>" ><span class="read-more">Read more</span></a>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </li>   
+
+                        <?php
+                    endif;
+                endforeach;
+                ?>
+            </ul>
+        </div>        
+    </div>
+    <?php //EOF developer-19 18/12/2013   ?>

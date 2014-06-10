@@ -1,0 +1,574 @@
+<?xml version="1.0"?>   
+<!--
+/**
+*
+* @package         Apptha Marketplace
+* @version         1.2.1
+* @since           Magento 1.5
+* @author          Apptha Team
+* @copyright       Copyright (C) 2014 Powered by Apptha
+* @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+* @Creation Date   Oct 23 2013
+* @Modified By     Swathi
+* @Modified Date   Apr 07 2014
+*
+**/
+-->
+<layout version="1.0.0">
+    <default>        
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action>
+        </reference>        
+    </default>
+    <customer_account translate="label">
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>        
+        <reference name="left">            
+            <remove name="left.permanent.callout" />
+            <remove name="catalog.compare.sidebar" />
+            <remove name="cart_sidebar" />            
+            <remove name="sale.reorder.sidebar" />
+           
+            <block type="marketplace/marketplace" name="marketplace_page_left" before='-'>
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/page/left.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </customer_account>
+    <marketplace_index_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">       
+            <block type="marketplace/marketplace" name="marketplace_marketplace">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/marketplace.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </marketplace_index_index>
+
+    <marketplace_seller_changebuyer>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">       
+            <block type="marketplace/marketplace" name="marketplace_marketplace">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/marketplace.phtml</template>
+                </action>
+            </block> 
+        </reference>
+    </marketplace_seller_changebuyer>
+
+    <marketplace_seller_login>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">        
+            <block type="marketplace/form_login" name="marketplace_form_login">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/seller/form/login.phtml</template>
+                </action>
+            </block>
+        </reference>
+
+    </marketplace_seller_login>
+
+    <marketplace_seller_create>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">     
+            <block type="marketplace/form_register" name="marketplace_form_register">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/seller/form/register.phtml</template>
+                </action>          
+                
+                <block type="wrapper" name="customer.form.register.fields.before" as="form_fields_before" translate="label">
+                    <label>Form Fields Before</label>
+                </block>
+            </block>
+        </reference>
+    </marketplace_seller_create>
+
+    <marketplace_product_new>         
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action>    
+            <action method="addItem">
+                <type>js_css</type>
+                <name>calendar/calendar-win2k-1.css</name>
+                <params></params>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <name>calendar/calendar.js</name>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <name>calendar/calendar-setup.js</name>
+            </action>
+            <block type="core/html_calendar" name="head.calendar" as="calendar" template="page/js/calendar.phtml"></block>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <update handle="customer_account"/>        
+        <reference name="my.account.wrapper">           
+            <block type="marketplace/product_new" name="marketplace_productnew">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/product/new.phtml</template>
+                </action>
+            </block>
+        </reference>
+        
+    </marketplace_product_new>
+
+    <marketplace_product_manage>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action>
+        </reference>
+        <reference name="root">
+            
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">           
+            <block type="marketplace/product_manage" name="marketplace_productmanage">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/product/manage.phtml</template>
+                </action>
+            </block>       
+        </reference>
+    </marketplace_product_manage>
+
+    <marketplace_product_edit>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action>    
+            <action method="addItem">
+                <type>js_css</type>
+                <name>calendar/calendar-win2k-1.css</name>
+                <params></params>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <name>calendar/calendar.js</name>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <name>calendar/calendar-setup.js</name>
+            </action>
+            <block type="core/html_calendar" name="head.calendar" as="calendar" template="page/js/calendar.phtml"></block>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">      
+            <block type="marketplace/product_edit" name="marketplace_productedit">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/product/edit.phtml</template>
+                </action>
+            </block> 
+        </reference>
+    </marketplace_product_edit>
+    <marketplace_order_manage>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action>    
+            <action method="addItem">
+                <type>js_css</type>
+                <name>calendar/calendar-win2k-1.css</name>
+                <params></params>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <name>calendar/calendar.js</name>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <name>calendar/calendar-setup.js</name>
+            </action>
+            <block type="core/html_calendar" name="head.calendar" as="calendar" template="page/js/calendar.phtml"></block>
+        </reference>
+        <reference name="root">            
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper"> 
+            <block type="core/html_calendar" name="head.calendar" as="calendar" template="page/js/calendar.phtml"/>                 
+            <block type="marketplace/order_manage" name="marketplace_ordermanage">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/order/manage.phtml</template>
+                </action>
+            </block>    
+        </reference>
+    </marketplace_order_manage>
+    <marketplace_seller_addprofile>
+        <reference name="head">          
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action>            
+        </reference>        
+        <reference name="root">            
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">          
+            <block type="marketplace/addprofile" name="marketplace_addprofile">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/addprofile.phtml</template>
+                </action>
+            </block>   
+        </reference>
+    </marketplace_seller_addprofile> 
+    <marketplace_seller_displayseller>
+        <reference name="head">          
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action> 
+        </reference>  
+        <reference name="root">            
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="marketplace/displayseller" name="marketplace_displayseller">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/displayseller.phtml</template>
+                </action>
+            </block>             
+        </reference>
+    </marketplace_seller_displayseller>
+    <marketplace_seller_dashboard>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>calendar/calendar-win2k-1.css</name>
+                <params></params>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <name>calendar/calendar.js</name>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <name>calendar/calendar-setup.js</name>
+            </action>
+            <block type="core/html_calendar" name="head.calendar" as="calendar" template="page/js/calendar.phtml"></block>
+        </reference>  
+        <reference name="root">            
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="marketplace/dashboard" name="marketplace_dashboard">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/dashboard.phtml</template>
+                </action>
+            </block>            
+        </reference>
+    </marketplace_seller_dashboard>
+    <catalog_product_view>
+        <reference name="head">          
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action>             
+        </reference>  
+        <reference name="product.info.extrahint">        
+            <block type="marketplace/linkseller" name="marketplace_linkseller" after="">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/linkseller.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </catalog_product_view> 
+    <marketplace_contact_form>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action>
+            <action method="setTitle">
+                <params><![CDATA[Contact Admin]]></params>
+            </action> 
+        </reference>
+        <reference name="root">            
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">           
+            <block type="marketplace/contact_form" name="marketplace_contactform">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/contact/form.phtml</template>
+                </action>
+            </block>       
+        </reference>
+    </marketplace_contact_form>     
+    <marketplace_seller_topseller>
+        <reference name="head">          
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action> 
+        </reference>  
+        <reference name="root">            
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+     
+        <reference name="content"> 
+            <block type="marketplace/topseller" name="marketplace_topseller">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/topseller.phtml</template>
+                </action>
+            </block>            
+        </reference>
+    </marketplace_seller_topseller>
+    <marketplace_seller_home>
+        <reference name="head">          
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action> 
+        </reference>  
+        <reference name="root">            
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>     
+        <reference name="content"> 
+            <block type="marketplace/index" name="marketplace_index">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/index.phtml</template>
+                </action>
+            </block>            
+        </reference>
+    </marketplace_seller_home>
+    <catalog_category_default>
+        <reference name="head">          
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action>             
+        </reference> 
+        <reference name="topseller">
+            <block type="marketplace/topseller" name="marketplace_topseller" after="product_list">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/topseller.phtml</template>
+                </action>
+            </block>            
+        </reference>
+    </catalog_category_default>
+    <marketplace_seller_allseller>
+        <reference name="head">          
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action>              
+        </reference>  
+        <reference name="root">            
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>     
+        <reference name="content"> 
+            <block type="marketplace/allseller" name="marketplace_allseller">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/allseller.phtml</template>
+                </action>
+            </block>            
+        </reference>
+    </marketplace_seller_allseller>
+    <marketplace_order_vieworder>
+        <reference name="head">          
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action> 
+        </reference>  
+        <reference name="root">            
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper"> 
+            <block type="marketplace/order_vieworder" name="marketplace_vieworder">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/order/vieworder.phtml</template>
+                </action>
+            </block>            
+        </reference>
+    </marketplace_order_vieworder>
+    <marketplace_order_viewtransaction>
+        <reference name="head">          
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action> 
+        </reference>  
+        <reference name="root">            
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper"> 
+            <block type="marketplace/order_viewtransaction" name="marketplace_viewtransaction">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/order/viewtransaction.phtml</template>
+                </action>
+            </block>            
+        </reference>
+    </marketplace_order_viewtransaction>
+    <marketplace_seller_categorylist>
+        <reference name="head">          
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action> 
+        </reference>  
+        <reference name="root">            
+            <action method="setTemplate">
+                <template>page/2columns-right.phtml</template>
+            </action>
+        </reference>
+      
+        <reference name="content"> 
+            <block type="marketplace/categorylist" name="marketplace_categorylist">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/categorylist.phtml</template>
+                </action>
+            </block>            
+        </reference>
+    </marketplace_seller_categorylist>
+    <marketplace_seller_allreview>
+        <reference name="head">          
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action> 
+        </reference>  
+        <reference name="root">            
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+      
+        <reference name="content">
+            <block type="marketplace/allreview" name="marketplace_allreview">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/allreview.phtml</template>
+                </action>
+            </block>            
+        </reference>
+    </marketplace_seller_allreview>
+    <marketplace_seller_customerreview>
+        <reference name="head">          
+            <action method="addCss">
+                <stylesheet>marketplace/marketplace.css</stylesheet>
+            </action> 
+        </reference>  
+        <reference name="root">            
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper"> 
+            <block type="marketplace/customerreview" name="marketplace_customerreview">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/customerreview.phtml</template>
+                </action>
+            </block>            
+        </reference>
+    </marketplace_seller_customerreview> 
+    <cms_index_index>
+        <reference name="head"> 
+            <action method="addCss">
+                <stylesheet>css/styles.css</stylesheet>
+            </action>          
+            <action method="addCss">
+                <stylesheet>css/protoshow.css</stylesheet>
+            </action> 
+            <action method="addJs">
+                <script>prototype/prototype.js</script>
+            </action> 
+            <action method="addJs">
+                <script>scriptaculous/scriptaculous.js</script>
+            </action>            
+            <action method="addItem">
+                <type>js</type>
+                <name>marketplace/protoshow.js</name>
+            </action>                   
+            <action method="addItem">
+                <type>js</type>
+                <name>marketplace/carousel.js</name>
+            </action> 
+        </reference>
+        <reference name="top.menu" after="topMenu">
+            <block type="marketplace/bannerslide" name="bannerslide">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>bannerslide/bannerslide.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="content">
+            <block type="marketplace/bannerslide" name="newpopular"> 
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>bannerslide/mostpopular.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="topseller">
+            <block type="marketplace/topseller" name="marketplace_topseller">
+                <action method="setTemplate" ifconfig="marketplace/marketplace/activate">
+                    <template>marketplace/topseller.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </cms_index_index>
+</layout>   

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <marketplaceadmin_adminhtml_manageseller_index>
+        <reference name="content">
+            <block type="marketplace/adminhtml_manageseller" name="manageseller" />
+        </reference>
+    </marketplaceadmin_adminhtml_manageseller_index>
+    <marketplaceadmin_adminhtml_order_index>
+        <reference name="content">
+            <block type="marketplace/adminhtml_order" name="order" />
+        </reference>
+    </marketplaceadmin_adminhtml_order_index>
+      <marketplaceadmin_adminhtml_orderview_index>
+        <reference name="content">
+            <block type="marketplace/adminhtml_orderview" name="orderview" />
+        </reference>
+    </marketplaceadmin_adminhtml_orderview_index>
+    <marketplaceadmin_adminhtml_commission_index>
+        <reference name="content">
+            <block type="marketplace/adminhtml_commission" name="order" />
+        </reference>
+    </marketplaceadmin_adminhtml_commission_index>
+     <marketplaceadmin_adminhtml_paymentinfo_index>
+        <reference name="content">
+            <block type="marketplace/adminhtml_Paymentinfo" name="paymentinfo" />
+        </reference>
+    </marketplaceadmin_adminhtml_paymentinfo_index>
+    <marketplaceadmin_adminhtml_products_index>
+        <reference name="content">
+            <block type="marketplace/adminhtml_products" name="products" />
+        </reference>
+    </marketplaceadmin_adminhtml_products_index>
+      <marketplaceadmin_adminhtml_sellerreview_index>
+        <reference name="content">
+            <block type="marketplace/adminhtml_sellerreview" name="sellerreview" />
+        </reference>
+    </marketplaceadmin_adminhtml_sellerreview_index>
+     <marketplaceadmin_adminhtml_commission_addcomment>
+        <reference name="content">
+            <block type="marketplace/adminhtml_commission_edit" name="add_comment" />
+        </reference>
+    </marketplaceadmin_adminhtml_commission_addcomment>
+    <marketplaceadmin_adminhtml_manageseller_setcommission>
+        <reference name="content">
+            <block type="marketplace/adminhtml_manageseller_edit" name="set_commission" />
+        </reference>
+    </marketplaceadmin_adminhtml_manageseller_setcommission>    
+</layout>

@@ -1,0 +1,89 @@
+<?php //developer18 11-01-2014 ?> 
+<div class="form-subscribe-header">
+    <label><?php echo $this->__('Want Coupons &amp; Special Offers 	&#63;') ?></label><br/>
+    <label><?php echo $this->__('Subscribe to our mailing list here') ?></label>
+</div>
+<div id="newsletter-msg" style="display: none;"><span id="newsletter-msg-txt"></span><span id="newsletter-form-again">&nbsp;</span> </div>
+<form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail-popup">
+    <div class="form-subscribe">
+        <div class="input-button">
+		    <input type="hidden" name="ajaxAction" value="1" />
+		    <div class="v-fix"><input name="email" type="text" id="newsletter1" value="<?php echo $this->__('Enter your email address') ?>" onclick="this.value=='<?php echo $this->__('Enter your email address') ?>'?this.value='':''" onblur="this.value==''?this.value='<?php echo $this->__('Enter your email address') ?>':''" class="input-text required-entry validate-email" /></div>
+            <button type="submit" class="button" title="<?php echo $this->__('Subscribe') ?>"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+		</div>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+   // var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail-popup');
+//]]>
+</script>
+ <script type="text/javascript">
+    //<![CDATA[
+       // var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+  var check=false;
+   var newsletterSubscriberFormDetail = new Validation($('newsletter-validate-detail-popup'), { 
+    onFormValidate : function(result, form){
+     if(result && !check){
+    check=true;
+      var newsletterSubscriberFormDetailAjax = new Ajax.Updater(
+       {
+        /*success:'newsletter-msg'*/
+       },
+       "<?php echo $this->getFormActionUrl() ?>",
+       {
+        asynchronous:true, 
+        evalScripts:false,
+        onComplete:function(request, json){ 
+        
+         $('newsletter-validate-detail-popup').hide();
+         $('newsletter-msg').show()
+        },
+        onSuccess: function(response){
+           var json = response.responseText.evalJSON();
+           if(json.success == 'true'){ 
+			   
+			  
+          $('newsletter-validate-detail-popup').hide();          
+          $('newsletter-msg-txt').update(json.msg);
+		  
+          $('newsletter-msg').show();
+		  
+          $('newsletter-form-again').show();
+         
+          $('newsletter-form-again').stopObserving();
+		  
+          $('newsletter-form-again').observe('click', function(){
+           $('newsletter-validate-detail-popup').reset();
+           $('newsletter-validate-detail-popup').show(); 
+           $('newsletter-msg').hide();
+           
+          });
+           
+		   setTimeout("$('fancybox-overlay').click()",3000);
+		  
+           }else{
+			    
+          $('newsletter-validate-detail-popup').show();
+          $('newsletter-msg-txt').update(json.msg);
+          $('newsletter-msg').show();
+          $('newsletter-form-again').hide();
+           }
+        },
+        onLoading:function(request, json){},
+        parameters: $('newsletter-validate-detail-popup').serialize(this)
+       }
+      ); 
+     }else{
+      jQuery('.validation-failed').each(function(){
+       //jQuery('label[for="'+jQuery(this).attr('id')+'"]').addClass('validation-failed-label');
+       jQuery(this).parent().addClass('validation-failed-label');
+       jQuery('.subscribe-content').addClass('validation-failed-div');
+      });
+     }
+   },
+   addClassNameToContainer : true
+  })
+  
+    //]]>
+</script>

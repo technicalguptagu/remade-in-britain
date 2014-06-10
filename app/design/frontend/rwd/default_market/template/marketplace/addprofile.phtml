@@ -1,0 +1,191 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2012
+ * @Modified By     Jenifer Ratchanya
+ * @Modified Date   Mar 27 2014
+ *
+ * */
+?>
+<script src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>marketplace/nicEdit.js" type="text/javascript"></script>
+<script type="text/javascript">
+    document.observe("dom:loaded", function() {
+        // initially hide all containers for payment details
+        if (document.getElementById('bank_pay').checked) {
+            $$('#paypal_id').invoke('hide');
+        } else {
+            $$('#bank_payment').invoke('hide');
+        }
+
+    });
+</script>
+<div id="errormsg"></div>
+<?php
+if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+    $seller_data = Mage::getSingleton('customer/session')->getCustomer();
+    $seller_id = $seller_data->getId();
+    $profile_data = $this->editprofile($seller_id);
+}
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('My Profile'); ?></h1>
+</div>
+<form action="<?php echo $this->addprofile(); ?>" method="post"  id="addprofile"   enctype="multipart/form-data"> 
+    <div class="fieldset">
+        <h2 class="legend"><?php echo $this->__('Profile Information'); ?></h2>
+        <ul class="form-list">
+            <!-- seller id -->
+            <input type="hidden" name="seller_id" id="seller_id" value="<?php echo $seller_id; ?>"/>      
+            <!-- Store Name -->
+            <li class="fields">          
+                <div class="field">
+                    <label for="store_name" class="required">  <?php echo $this->__('Store Name'); ?> <em><?php echo $this->__('*'); ?></em> </label>
+                    <div class="input-box"><input type="text" name="store_name" id="store_name" value="<?php echo $profile_data['store_title']; ?>" class="input-text required-entry" /></div> 
+                </div>               
+            </li> 
+<!--            <li class="fields">
+            <div>
+                    Country
+                    <label for="country"><?php //echo $this->__('Country'); ?>  </label>  
+                    <?php
+                    //$_countries = Mage::getResourceModel('directory/country_collection')
+                           // ->loadData()
+                           // ->toOptionArray(false)
+                    ?>
+                            <?php //if (count($_countries) > 0) { ?>
+                        <select name="country" id="country" class="validate-select" title="Country" >
+                            <option value="">-- Please Select --</option>
+                            <?php //foreach ($_countries as $_country) { ?>
+                                <option value="<?php //echo $_country['value']; ?>" <?php //echo $profile_data['country'] == $_country['value'] ? ' selected="selected"' : ''; ?>>
+                            <?php //echo $_country['label'] ?>
+                                </option>
+                            <?php //} ?>
+                        </select>
+                    <?php //} ?>
+                </div>                 
+            </li>-->
+            <li class="fields">
+                    <label for="contact" class="required"><?php echo $this->__('Contact Number'); ?> <em><?php echo $this->__('*'); ?></em>   </label>
+                    <div class="input-box"><input type="text" name="contact" id="contact" value="<?php echo $profile_data['contact']; ?>" class="input-text required-entry" /></div> 
+            </li>
+
+            <!--Description -->      
+            <li class="wide fields">
+                <div>
+                    <label for="description"><?php echo $this->__('Description'); ?>  </label>
+                    <div class="input-box"> <textarea name="description" rows="10" cols="75" id="description" class="validate-length maximum-length-255 textarea"/><?php echo $profile_data['description']; ?></textarea>
+                    </div>
+                </div>
+            </li>
+           
+            <!--Store Logo-->
+            <li class="fields">
+                <div class="field_store_logos">
+                    <label for="store_logo"><?php echo $this->__('Store Logo'); ?>  </label>                    
+                    <div class="store_logos">
+                    <input type="file" name="store_logo" id="store_logo" onchange="return validateFileExtension(this);"/>
+                    <div class="clear"></div>                    
+                            <?php if (strpos($profile_data['store_logo'], '.') && !empty($profile_data['store_logo'])) { ?>
+                            <img src="<?php echo Mage::getBaseUrl('media') . "marketplace/resized/" . $profile_data['store_logo']; ?>" alt="store logo" class="store_img"/>
+                            <div style="clear:both;"></div>
+                            <p>
+                                <span class="market_place_image_sizes"><?php echo $this->__('Upload image size 160 X 160'); ?></span>
+                            </p>
+                            <div style="clear:both;"></div>
+                            <input type="checkbox" name="remove" value="1"> <?php echo $this->__('Remove'); ?>
+                    <?php } ?>
+                    </div>            
+                </div>
+            </li>
+<!--            Twitter Id 
+            <li class="fields">
+                <div class="field">         
+                    <label for="twitter_id" class="required"><?php //echo $this->__('Twitter Id'); ?></label>
+                    <div class="input-box"><input type="text" name="twitter_id" id="twitter_id" value="<?php //echo $profile_data['twitter_id']; ?>" class="input-text"/>
+                    <?php// echo 'Ex: https://www.twitter.com/example'; ?>
+                    </div>                    
+                </div>
+            </li>
+            <li class="fields">
+                Facebook Id 
+                <div class="field">       
+                    <label for="facebook_id" class="required"><?php //echo $this->__('Facebook Id'); ?></label>
+                    <div class="input-box"><input type="text" name="facebook_id" id="facebook_id" value="<?php //echo $profile_data['facebook_id']; ?>" class="input-text"/>
+                    <?php //echo 'Ex: https://www.facebook.com/example'; ?>
+                    </div>                    
+                </div> 
+            </li>             -->
+            <!--Meta Keyword-->
+            <li class="fields">  
+                <div class="field">       
+                    <label for="meta_keyword" class="required"> <?php echo $this->__('Meta Keyword'); ?>  </label>
+                    <div class="input-box"> 
+                        <textarea id="meta_keyword" name="meta_keyword"  rows="5" cols="60" class="input-text"><?php echo $profile_data['meta_keyword']; ?></textarea> </br></br>
+                    </div>
+                </div>
+                <!--Meta Description -->
+                <div class="field">       
+                    <label for="meta_description" class="required"><?php echo $this->__('Meta Description'); ?>  </label>
+                    <div class="input-box"> 
+                        <textarea id="meta_description" name ="meta_description"  rows="5" cols="60" class="input-text"><?php echo $profile_data['meta_description']; ?></textarea></br></br>
+                    </div>
+                </div>
+            </li>
+            <!--Payment Details -->
+            <li class="fields">   
+                <label class="payment_hint"><?php echo $this->__('Process Payment via Bank/Paypal Account'); ?></label>
+                <div class="field payment-snipt"> 
+                    <div class="input-box market_place_payment_process"> 
+                        <input type="radio" name="bank" id="bank_pay" class="radio" value="bankpayment" onclick="payment();" <?php if ($profile_data['bank_payment']) { ?> checked="checked" <?php } ?>> <label class="required" style="float: none;"><?php echo $this->__('Bank Payment'); ?> </label>
+                        <textarea name="bank_payment" id="bank_payment" class="input-text"><?php echo $profile_data['bank_payment']; ?></textarea>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="input-box market_place_payment_process">                         
+                        <input type="radio" name="bank" id="paypal_pay" class="radio" value="paypal" onclick="payment();" <?php if ($profile_data['paypal_id']) { ?> checked="checked" <?php } ?>> <label class="required" style="float: none;"></em> <?php echo $this->__('Paypal Id'); ?> </label>
+                        <input type="text" name="paypal_id" id="paypal_id" value="<?php echo $profile_data['paypal_id']; ?>" class="input-text validate-email"/>
+                    </div>  
+                </div>   
+            </li> 
+        </ul>
+    </div>
+    <!--Submit button -->
+    <div class="buttons-set">
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p> 
+        <input type="checkbox" name="show_profile" value="1"  <?php if ($profile_data['show_profile'] == 1) { ?> checked="checked" <?php } ?>> <?php echo $this->__('Display your profile link in product detail page'); ?>
+        <button type="submit" class="button"  title="<?php echo $this->__('Save Profile') ?>" name="save_profile" id="save_profile" ><span><span><?php echo $this->__('Save Profile') ?></span></span></button>   
+    </div>    
+</form>  
+
+<!--  Form validation script -->
+<script type="text/javascript">
+    var dataForm = new VarienForm('addprofile');
+    function payment() {
+        if (document.getElementById('bank_pay').checked) {
+            document.getElementById('bank_payment').show();
+            document.getElementById('paypal_id').hide();
+        } else if (document.getElementById('paypal_pay').checked) {
+            document.getElementById('paypal_id').show();
+            document.getElementById('bank_payment').hide();
+        }
+    }
+    function validateFileExtension(fld) {
+        if (!/(\.bmp|\.png|\.gif|\.jpg|\.jpeg)$/i.test(fld.value)) {
+            fld.form.reset();
+            fld.focus();
+            document.getElementById("errormsg").innerHTML = "invalid file format";
+            return false;
+        }
+        return true;
+    }
+//<![CDATA[
+    bkLib.onDomLoaded(function() {
+        new nicEditor({iconsPath: '<?php echo $this->getSkinUrl('marketplace/nicEditorIcons.gif'); ?>'}).panelInstance('description');
+    });
+    //]]>
+</script>

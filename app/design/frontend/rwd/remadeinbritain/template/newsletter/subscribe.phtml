@@ -1,0 +1,115 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<div class="block block-subscribe">
+	<div class="subscribe-contant">
+		<div class="subscriber-img"><img src="<?php echo $this->getskinUrl('images/footer-subscriber-logo.png') ?>" alt="" /></div>
+		<div class="subscriber-title-content">
+			<div class="subscriber-title-content1">
+				<div class="block-title">
+					<span class="subscriber-heading"><?php echo $this->__('Remade In Britain Newsletter') ?></span>
+					<span class="subscriber-heading-mobile" style="display: none"><?php echo $this->__('Newsletter') ?></span>
+					<span class="subscriber-label"><label for="newsletter"><?php echo $this->__('Join our monthly mail list today for all the latest offers and more') ?></label></span>
+				</div>
+				<form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
+					<div class="block-content">
+						<div class="input-box">
+						   <input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="email" id="newsletter" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text required-entry validate-email" placeholder="<?php echo $this->__('Enter your email address here') ?>" />
+						   <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div style="clear: left; height: 0;">&nbsp;</div>
+		<script type="text/javascript">
+		//<![CDATA[
+			var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+		//]]>
+		</script>
+	</div>
+</div>
+<a class="fancy-terms" href="#termscondi" onclick="return false;" id="news"></a>
+<?php if($_SESSION['news'] == 'true'):?>
+<div style="display: none;">
+     <div id="termscondi">
+	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('news')->toHtml(); ?>
+     </div>
+</div>
+<script type="text/javascript">
+jQuery(window).load(function(){
+jQuery('#news').click();
+});
+
+$(".fancy-terms").fancybox({
+    openEffect  : 'none',
+    closeEffect : 'none',
+    afterLoad   : function() {
+        this.inner.prepend( '<h1>1. My custom title</h1>' );
+        this.content = '<h1>2. My custom title</h1>' + this.content.html();
+    }
+});
+var customContent = "<div class='customHTML'>My custom content</div>";
+$('.fancybox-inner').prepend(customContent);
+</script>
+<script>
+	jQuery(document).ready(function() {	
+	jQuery("a.fancy-terms").fancybox();
+	}); 
+
+jQuery(document).on('click', '#cancel-filters-btn', function(){
+    jQuery.fancybox.close();
+});
+
+</script>
+<?php elseif($_SESSION['news'] == 'false'):?>
+<div style="display: none;">
+     <div id="termscondi">
+	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('error')->toHtml(); ?>
+     </div>
+</div>
+
+<script type="text/javascript">
+jQuery(window).load(function(){
+jQuery('#news').click();
+});
+
+
+</script>
+<script>
+	jQuery(document).ready(function() {	
+	jQuery("a.fancy-terms").fancybox();
+	}); 
+
+jQuery(document).on('click', '#cancel-filters-btn', function(){
+    jQuery.fancybox.close();
+});
+</script>
+<?php endif; ?>
+<?php $_SESSION['news'] = null; ?>
+
+

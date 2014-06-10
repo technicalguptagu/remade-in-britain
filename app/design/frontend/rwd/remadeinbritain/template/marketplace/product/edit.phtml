@@ -1,0 +1,1722 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2012
+ * @Modified By     Jenifer Ratchanya
+ * @Modified Date   Mar 27 2014
+ *
+ * */
+?>
+<!-- Including js file for text editor -->
+<script src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>marketplace/nicEdit.js" type="text/javascript"></script>
+<?php
+// Initilize product id
+$product_id = $this->getRequest()->getParam('id');
+// Initilize product data
+if (!empty($product_id)) {
+    $product = $this->getProductData($product_id);
+}
+// Initilising product custom options
+$option_count = $select_sub_option_count = $product_custom_options_enable = 0;
+$product_custom_options_enable = Mage::helper('marketplace')->getPrdouctCustomOptions();
+// Initilising downloadable product optins
+$sample_count = $link_count = 0;
+?>
+
+<?php
+// Checking whether product exist or not
+if (!empty($product) && count($product) == 1) {
+// Initilize product data   
+    $type = $product_name = $product_description = $product_short_description = $product_meta_title = $product_meta_keyword = $set_banner = $product_meta_description = $product_special_price = $special_from_date = $special_to_date = $product_special_from_date = $product_special_to_date = '';
+    $product_weight = $product_price = $product_qty = 0;
+    $product_is_in_stock = 1;
+    $product_images = array();
+    $type = $product->getTypeId();
+    $product_name = $product->getName();
+    $product_weight = $product->getWeight();
+    $set_banner = $product->getSetbanner();
+    $product_description = $product->getDescription();
+    $product_short_description = $product->getShortDescription();
+    $product_price = $product->getPrice();
+    $product_special_price = $product->getSpecialPrice();
+    $special_price_date_format = 'd/m/Y';
+    $special_from_date = $product->getSpecialFromDate();
+    $special_to_date = $product->getSpecialToDate();
+    if (!empty($special_from_date) && !empty($special_to_date)) {
+        $product_special_from_date = Mage::getModel('core/date')->date('m/d/Y', strtotime($special_from_date));
+        $product_special_to_date = Mage::getModel('core/date')->date('m/d/Y', strtotime($special_to_date));
+    }
+    $product_meta_title = $product->getMetaTitle();
+    $product_meta_keyword = $product->getMetaKeyword();
+    $product_meta_description = trim($product->getMetaDescription());
+    $product_images = $product->getGalleryImages();
+    $product_qty = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product_id)->getQty();
+    $product_is_in_stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product_id)->getIsInStock();
+    $categoryids = array();
+    $category_ids = array();
+    $categoryids[] = $product->getCategoryIds();
+    $category_ids = $this->getCategoryIds($categoryids);
+    $selected_product_image = $product->getImage();
+    ?>
+
+    <!-- Marketplace wrapper -->
+    <div class="marketplace-wrapper" id="marketplace-wrapper">     
+        <div class="page-title">
+            <h1><?php echo $this->__('Edit Product'); ?></h1>
+        </div>
+        <form action="<?php echo $this->editProductAction(); ?>" method="post" id="edit_exist_product_form" enctype="multipart/form-data">    
+            <!-- Marketplace category type container -->
+            <div class="fieldset marketplace-category-type">
+                <h2 class="legend"><?php echo $this->__('Product Categories'); ?></h2>
+                <div class="clear"></div>
+                <div class="block-category">
+                    <?php
+                    $rootcatId = Mage::app()->getStore()->getRootCategoryId(); // get default store root category id
+                    $categories = Mage::getModel('catalog/category')->getCategories($rootcatId); // else use default category id =2
+                    // Displaying product categories
+                    echo $this->getCategoriesTree($categories, $category_ids);
+                    ?>
+                </div>   
+            </div>
+            <!-- Marketplace product general information container -->
+            <div class="fieldset marketplace-general">
+                <h2 class="legend"><?php echo $this->__('General'); ?></h2>
+                <div class="clear"></div>
+                <ul class="form-list">
+                    <li class="fields wide">
+                        <div class="field">  
+                            <label for="name" class="required"> <em>*</em> <?php echo $this->__('Name'); ?></label>
+                            <div class="input-box"><input id="name" name="product[name]" value="<?php
+                                if (!empty($product_name)) {
+                                    echo $product_name;
+                                }
+                                ?>" class="required-entry input-text" type="text"></div>
+                        </div>
+                    </li>
+                    <li class="fields wide">
+                        <div class="field">   
+                            <label for="description" class="required"> <em>*</em> <?php echo $this->__('Description'); ?> </label>  
+                            <div class="input-box"><textarea id="description" name="product[description]" class="required-entry textarea" rows="2" cols="15"><?php if (!empty($product_description)) { echo $product_description; }?></textarea></div>
+                        </div>
+                    </li>
+                    <li class="fields wide">
+                        <div class="field">   
+                            <label for="short_description" class="required"> <em>*</em> <?php echo $this->__('Short Description'); ?> </label>  
+                            <div class="input-box"><textarea id="short_description" name="product[short_description]" class="required-entry textarea" rows="2" cols="15"><?php if (!empty($product_short_description)) { echo $product_short_description; }?></textarea></div>
+                        </div>
+                    </li>
+                    <li class="fields wide">
+                        <div class="field">   
+                            <div class="marketplace_weight_div" <?php
+                            if (!empty($type)) {
+                                if ($type != 'simple') {
+                                    echo 'style="display:none;"';
+                                }
+                            }
+                            ?>>
+                                <label for="weight"  class="required"> <em>*</em><?php echo $this->__('Weight'); ?> </label>
+                                <div class="input-box"><input id="weight" name="product[weight]" value="<?php
+                                    if (isset($product_weight)) {
+                                        echo $product_weight;
+                                    }
+                                    ?>" class="required-entry validate-number validate-zero-or-greater validate-number-range number-range-0-99999999.9999 input-text" type="text" <?php
+                                                              if (!empty($type)) {
+                                                                  if ($type != 'simple') {
+                                                                      echo 'disabled="disabled"';
+                                                                  }
+                                                              }
+                                                              ?>></div>
+                                
+                            </div>            
+                        </div>
+                    </li>
+                      <?php   if(Mage::getStoreConfig('marketplace/product/set_banner')==1){ ?>
+                    <li class="fields wide">
+                        <div class="field">   
+                           <label for="setbanner"> <?php echo $this->__('Display Product in Homepage Banner') ?></label>                       
+                            <input type="checkbox" name="product[setbanner]" id="setbanner" value="1" <?php if($set_banner==1){ echo 'checked'; } ?> />
+                        </div>
+                    </li>
+                    <?php } ?>
+                </ul>
+            </div> 
+            <!-- Marketplace product price information container -->
+            <div class="fieldset marketplace-price">
+                <h2 class="legend"><?php echo $this->__('Prices'); ?></h2>
+                <div class="clear"></div>
+                <ul class="form-list">
+                    <li class="fields">
+
+                        <label for="price" class="required"><em>*</em> <?php echo $this->__('Price'); ?> </label>   
+                        <div class="input-box" style="width: auto;"> <input id="price" name="product[price]" value="<?php
+                            if (isset($product_price)) {
+                                echo $product_price;
+                            }
+                            ?>" class="required-entry validate-zero-or-greater input-text" type="text">    
+                            <strong>
+                                [<?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getBaseCurrencyCode())->getShortName(); ?>]
+                            </strong></div>
+
+                    </li>
+                </ul>
+
+                <ul class="form-list">
+                    <li class="fields">     
+                        <label for="special_price"><?php echo $this->__('Special Price'); ?></label>   
+                        <div class="input-box" style="width: auto;"><input id="special_price" name="product[special_price]" value="<?php
+                            if (isset($product_special_price)) {
+                                echo $product_special_price;
+                            }
+                            ?>" class="validate-zero-or-greater input-text" type="text">   
+                            <strong>
+                                [<?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getBaseCurrencyCode())->getShortName(); ?>]
+                            </strong>
+                        </div>                    
+                    </li>
+                    <li class="fields">
+                        <label for="special_from_date"><?php echo $this->__('Special Price From Date'); ?></label>
+                        <div class="input-box" style="width: auto;">
+                            <input name="product[special_from_date]" id="special_from_date" value="<?php
+                            if (!empty($product_special_from_date)) {
+                                echo $product_special_from_date;
+                            }
+                            ?>" class="validate-date validate-date-range date-range-date-from" type="text" /> 
+                            <img src="<?php echo $this->getSkinUrl("images/calendar.gif"); ?>" alt="" class="v-middle" id="special_from_date_trig" title="<?php echo $this->__('Select Date'); ?>" style="" /> 
+                        </div>
+                    </li>
+
+                    <li class="fields">
+                        <label for="special_to_date"><?php echo $this->__('Special Price To Date'); ?></label>
+                        <div class="input-box" style="width: auto;">
+                            <input name="product[special_to_date]" id="special_to_date" value="<?php
+                            if (!empty($product_special_to_date)) {
+                                echo $product_special_to_date;
+                            }
+                            ?>" class="validate-date validate-date-range date-range-date-to" type="text" /> <img src="<?php echo $this->getSkinUrl("images/calendar.gif"); ?>" alt="" class="v-middle" id="special_to_date_trig" title="<?php echo $this->__('Select Date'); ?>" style="" /> 
+                        </div>
+                    </li>                                       
+                </ul>
+
+            </div> 
+            <!-- Marketplace product image information container -->
+            <div class="fieldset marketplace-image">
+                <h2 class="legend"><?php echo $this->__('Images'); ?></h2>
+                <div class="clear"></div>
+                <?php $_images = Mage::getModel('catalog/product')->load($product->getId())->getMediaGalleryImages(); ?>
+                <?php if ($_images) { ?>   
+                    <ul>
+                        <?php
+                        $i = 0;
+                        foreach ($_images as $_image) {
+                            $i++;
+                            ?>
+
+                            <li <?php
+                            if ($i > 0) {
+                                if ($i % 5 == 0) {
+                                    echo 'class="remove-margin"';
+                                }
+                            }
+                            ?>>  <img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail', $_image->getFile())->resize(108, 90); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()); ?>" title="<?php $this->htmlEscape($_image->getLabel()); ?>" />
+                                <span class="market_place_img_set">
+                                    <span class="remove_img"><input type="checkbox" id="<?php echo 'image_check' . $i; ?>" name="deleteimages[]" value="<?php echo $_image->getFile(); ?>" > <label for="<?php echo 'image_check' . $i; ?>"><?php echo $this->__('Remove'); ?></label></span>
+                                    <span class="bg_img"> <input type="radio" id="<?php echo 'image_radio' . $i; ?>" name="baseimage" <?php
+                                        if (!empty($selected_product_image)) {
+                                            if ($selected_product_image == $_image->getFile()) {
+                                                echo 'checked="checked"';
+                                            }
+                                        }
+                                        ?> value="<?php echo $_image->getFile(); ?>" > <label for="<?php echo 'image_radio' . $i; ?>"><?php echo $this->__('Set as base image'); ?></label></span>
+                                </span>
+                            </li> 
+        <?php }
+        ?> </ul><?php }
+    ?>
+                <div class="clear"></div>
+
+                <button class="button right"  type="button" onclick="addNewImage()"> <span><span>+ <?php echo $this->__('Add Image'); ?></span></span></button> 
+                <div id="marketplace_image_list"></div>
+                <div class="clear"></div>
+            </div> 
+            <!-- Marketplace product meta information container -->
+            <div class="fieldset marketplace-meta-information">
+                <h2 class="legend"><?php echo $this->__('Meta Information'); ?></h2>
+                <div class="clear"></div>
+                <ul class="form-list">
+                    <li class="fields wide">
+                        <div class="field">      
+                            <label for="meta_title"><?php echo $this->__('Meta Title'); ?></label>
+                            <div class="input-box"> <input id="meta_title" name="product[meta_title]" value="<?php
+                            if (!empty($product_meta_title)) {
+                                echo $product_meta_title;
+                            }
+                            ?>" class=" input-text" type="text"></div>
+                        </div>
+                    </li>
+                    <li class="fields">
+                        <div class="field">  
+                            <label for="meta_keyword"><?php echo $this->__('Meta Keywords'); ?></label>
+                            <div class="input-box"><textarea id="meta_keyword" name="product[meta_keyword]" class=" textarea" rows="2" cols="15"><?php if (!empty($product_meta_keyword)){ echo $product_meta_keyword; } ?></textarea></div>
+                        </div>
+                        <div class="field">   
+                            <label for="meta_description"><?php echo $this->__('Meta Description'); ?></label>
+                            <div class="input-box">
+                                <textarea id="meta_description" name="product[meta_description]" class="validate-length maximum-length-255 textarea" rows="2" cols="15"><?php  if (!empty($product_meta_description)) {echo $product_meta_description;} ?></textarea>
+                                <p class="note"><?php echo $this->__('Maximum 255 chars'); ?></p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>       
+            <!-- Marketplace product inventory information container -->
+            <div class="fieldset marketplace-inventory">
+                <h2 class="legend"><?php echo $this->__('Inventory'); ?></h2>
+                <div class="clear"></div>
+                <ul class="form-list">
+                    <li class="fields">
+                        <div class="field">  
+                            <label for="inventory_qty" class="required"><em>*</em> <?php echo $this->__('Qty'); ?></label>  
+                            <div class="input-box"><input type="text" class="input-text required-entry validate-number" id="inventory_qty" name="product[stock_data][qty]" value="<?php
+                            if (isset($product_qty)) {
+                                echo $product_qty;
+                            }
+                            ?>"></div>
+                        </div>
+                        <div class="field">      
+                            <label for="inventory_stock_availability"><?php echo $this->__('Stock Availability'); ?></label>
+                            <div class="input-box"><select id="inventory_stock_availability" name="product[stock_data][is_in_stock]" class="select">
+                                    <option value="1" <?php
+                                    if (isset($product_is_in_stock)) {
+                                        if ($product_is_in_stock == 1) {
+                                            echo 'selected';
+                                        }
+                                    }
+                                    ?> ><?php echo $this->__('In Stock'); ?></option>
+                                    <option value="0" <?php
+                                    if (isset($product_is_in_stock)) {
+                                        if ($product_is_in_stock == 0) {
+                                            echo 'selected';
+                                        }
+                                    }
+                                    ?> ><?php echo $this->__('Out of Stock'); ?></option>
+                                </select></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+
+<!-- Marketplace downloadable product information container -->            
+    <?php
+    // Checking whether product type as downloadable or not
+    if($type == 'downloadable'){
+    $samples_title = $links_title = $links_purchased_separately = '';
+    $samples_title = $product->getSamplesTitle();
+    $links_title = $product->getLinksTitle();
+    $links_purchased_separately = $product->getLinksPurchasedSeparately();
+    ?>
+            <div id="marketplace_downloadable_product_div" class="fieldset marketplace-downloadable-products">
+                <h4 class="legend"><?php echo $this->__('Downloadable Information'); ?></h4>
+                <ul class="form-list">
+                    <li class="mp_dp_head"><?php echo $this->__('Samples'); ?></li>
+                    <li class="fields mp_dp_fields">
+                        <div class="headings">
+                            <span class="label"><label for="name"><?php echo $this->__('Title'); ?></label>
+                            </span>
+                            <span class="value">
+                                <input type="text" class="input-text" name="product[samples_title]" value="<?php if (isset($samples_title)) {
+        echo $samples_title;
+    } ?>">
+                            </span>
+<!--                            <span class="scope-label">[<?php echo $this->__('STORE VIEW'); ?>]</span>       -->
+                        </div>
+                        <div class="marketplace-sample">                     
+                            <table cellspacing="0" class="data border">
+                                <thead>
+                                    <tr class="headings">
+                                        <th><label><?php echo $this->__('Title'); ?><span class="required">*</span></label></th>
+                                        <th><label><?php echo $this->__('File'); ?></label></th>
+                                        <th><label class="nobr"><?php echo $this->__('Sort Order'); ?></label></th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sample_items_body"> 
+
+                                    <?php
+                                    $downloadable_sample = Mage::getModel('downloadable/sample')->getCollection()
+                                            ->addProductToFilter($product->getId())
+                                            ->addTitleToResult($product->getStoreId());
+
+                                    $sample_count = 0;
+                                    foreach ($downloadable_sample as $sample) {
+                                        $sample_title = $sample_type = $sample_file = $sample_order = '';
+                                        $sample_title = $sample->getTitle();
+                                        $sample_type = $sample->getSampleType();
+                                        $sample_file = $sample->getSampleFile();
+                                        $sample_order = $sample->getSortOrder();
+                                        $sample_url = $sample->getSampleUrl();
+                                        ?>
+
+                                        <tr id="<?php echo 'marketplace_download_sample_row_' . $sample_count; ?>">
+                                            <td>
+                                                <input type="hidden" class="__delete__" name="<?php echo 'downloadable[sample][' . $sample_count . '][is_delete]'; ?>" value="">
+                                                <input type="hidden" name="<?php echo 'downloadable[sample][' . $sample_count . '][sample_id]'; ?>" value="<?php echo $sample_count; ?>">
+                                                <input type="text" class="required-entry input-text" name="<?php echo 'downloadable[sample][' . $sample_count . '][title]'; ?>" value="<?php if (isset($sample_title)) {
+                                            echo $sample_title;
+                                        } ?>">
+                                                <input type="hidden" name="<?php echo 'downloadable[sample][' . $sample_count . '][sample_file]'; ?>" value="<?php if (isset($sample_file)) {
+                                            echo $sample_file;
+                                        } ?>">
+                                            </td>
+                                            <td>
+                                                <div class="files-wide">
+                                                    <div class="marketplace_row">
+                                                        <div id="<?php echo 'downloadable_sample_' . $sample_count . '_file_save-old'; ?>" class="file-row-info"><span class="file-info"><b><span class="file-info-name"><?php if (isset($sample_file)) {
+                                                                echo $sample_file;                                                           
+                                                            } ?></span></b> <span class="file-info-size">
+                                                            </span></span></div>
+                                                        <label for="<?php echo 'downloadable_sample_' . $sample_count . '_file_type'; ?>">
+                                                            <input type="radio" class="radio validate-one-required-by-name" id="<?php echo 'downloadable_sample_' . $sample_count . '_file_type'; ?>" name="<?php echo 'downloadable[sample][' . $sample_count . '][type]'; ?>" value="file" <?php if ($sample_type == 'file') {
+                                                        echo 'checked="checked"';
+                                                    } ?>> 
+        <?php echo $this->__('File'); ?>:</label>
+                                                        <input type="file" class="validate-downloadable-file" id="<?php echo 'downloadable_sample_' . $sample_count . '_file_save'; ?>" name="<?php echo 'sample_' . $sample_count; ?>" value="" onchange="hideOldFileName(this.id)">
+                                                        
+                                                        <div id="<?php echo 'downloadable_sample_' . $sample_count . '_file'; ?>">
+                                                            <div class="no-display" id="<?php echo 'downloadable_sample_' . $sample_count . '_file-template'; ?>">
+                                                            </div>
+                                                        </div></div><div class="row">
+                                                        <label for="<?php echo 'downloadable_sample_' . $sample_count . '_url_type'; ?>">
+                                                            <input type="radio" class="radio validate-one-required-by-name" id="<?php echo 'downloadable_sample_' . $sample_count . '_url_type'; ?>" name="<?php echo 'downloadable[sample][' . $sample_count . '][type]'; ?>" value="url" <?php if ($sample_type == 'url') {
+            echo 'checked="checked"';
+        } ?>> 
+                                        <?php echo $this->__('URL'); ?>:</label> <input type="text" class="validate-downloadable-url input-text" name="<?php echo 'downloadable[sample][' . $sample_count . '][sample_url]'; ?>" value="<?php if (isset($sample_url)) {
+                                    echo $sample_url;
+                                } ?>">
+                                                    </div>
+                                                    <div>
+                                                        <span id="<?php echo 'downloadable_sample_' . $sample_count . '_container'; ?>"></span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="a-center">
+                                                <input type="text" name="<?php echo 'downloadable[sample][' . $sample_count . '][sort_order]'; ?>" value="<?php if (isset($sample_order)) {
+                                    echo $sample_order;
+                                } ?>" class="input-text sort marketplace_sort_order">
+                                            </td>
+                                            <td>
+                                                <button onclick="removeMarketPlaceDownloadableSamplesRow(this)" type="button" class="scalable button">
+                                                    <span><span><span><?php echo $this->__('Delete'); ?></span></span></span></button>
+                                            </td>
+                                        </tr>  
+        <?php
+        $sample_count = $sample_count + 1;
+    }
+    // End foreach for downloadable sample data   
+    ?>  
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="100" class="a-right">
+                                            <button id="add_sample_item" name="sample_items_body"  title="<?php echo $this->__('Add New Row'); ?>" type="button" class="button scalable add add-select-row" onclick="addMarketPlaceDownloadableSamplesRow(this.name)">
+                                                <span><span><?php echo $this->__('Add New Row'); ?></span></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>   
+                        </div>                    
+                    </li>
+                    <li class="mp_dp_head"><?php echo $this->__('Download'); ?></li>
+                    <li class="fields mp_dp_fields">
+                        <div class="headings">
+                        <span class="label"><label for="name"><?php echo $this->__('Title'); ?></label></span>
+                        <span class="value"><input type="text" class="input-text" id="downloadable_links_title" name="product[links_title]" value="<?php if (isset($links_title)) {
+        echo $links_title;
+    } ?>"></span><div class="clear"></div>
+<span class="label"><label for="name"><?php echo $this->__('Links can be purchased separately'); ?></label></span>
+              <select name="product[links_purchased_separately]" id="downloadable_link_purchase_type" class="" title=""><option value="1" <?php if (isset($links_purchased_separately)) {
+        if ($links_purchased_separately == 1) {
+            echo 'selected="selected"';
+        }
+    } ?> ><?php echo $this->__('Yes'); ?></option><option value="0" <?php if (isset($links_purchased_separately)) {
+                                if ($links_purchased_separately == 0) {
+                                    echo 'selected="selected"';
+                                }
+                            } ?>><?php echo $this->__('No'); ?></option></select>
+<!--                        [<?php echo $this->__('GLOBAL'); ?>]-->
+                        <div class="clear"></div>
+</div>
+                        <table width="100%" cellspacing="CCC">
+<!--                            <colgroup><col width="33%">
+                                <col>
+                                <col>
+                                <col>
+                                <col width="1">
+                                <col width="1">
+                                <col width="1">
+                                <col width="1">
+                            </colgroup>-->
+<!--                            <thead>
+                                <tr class="headings">
+                                    <th><?php echo $this->__('Title'); ?><span class="required">*</span></th>
+                                    <th>Price</th>
+                                    <th><span class="nobr"><?php echo $this->__('Max. Downloads'); ?></span></th>
+                                    <th><?php echo $this->__('Shareable'); ?></th>
+                                    <th><?php echo $this->__('Sample'); ?></th>
+                                    <th><?php echo $this->__('File'); ?></th>
+                                    <th><span class="nobr"><?php echo $this->__('Sort Order'); ?></span></th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>    -->
+                            <tbody id="link_items_body">
+    <?php
+    $downloadable_link = Mage::getModel('downloadable/link')->getCollection()
+            ->addProductToFilter($product->getId())
+            ->addTitleToResult($product->getStoreId())
+            ->addPriceToResult($product->getStore()->getWebsiteId());
+
+    $link_count = 0;
+
+    foreach ($downloadable_link as $link) {
+
+        $link_tilte = $link->getTitle();
+        $number_of_downloads = $link->getNumberOfDownloads();
+        $is_shareable = $link->getIsShareable();
+        $sort_order = $link->getSortOrder();
+        $link_url = $link->getLinkUrl();
+        $link_sample_url = $link->getSampleUrl();
+        $link_type = $link->getLinkType();
+        $link_sample_type = $link->getSampleType();
+        $link_price = $link->getPrice();
+        $link_file = $link->getLinkFile();
+        $link_sample_file = $link->getSampleFile();
+        ?>
+        <tr id="<?php echo 'marketplace_download_link_row_' . $link_count; ?>">
+                                        <td>
+                                            <table border="0" cellspacing="0" cellpadding="0" width="100%" class="marketplace_download_info_table">
+                                                <tr>
+                                                    <th><label><?php echo $this->__('Title'); ?></label><span class="required">*</span></th>
+                                                    <td>
+                                                        <input type="hidden" class="__delete__" name="<?php echo 'downloadable[link][' . $link_count . '][is_delete]'; ?>" value="">
+                                                        <input type="hidden" name="<?php echo 'downloadable[link][' . $link_count . '][link_id]'; ?>" value="<?php echo $link_count; ?>">
+                                                        <input type="hidden" name="<?php echo 'downloadable[link][' . $link_count . '][link_file]'; ?>" value="<?php
+                                    if (isset($link_file)) {
+                                        echo $link_file;
+                                    }
+                                ?>">
+                                    <input type="hidden" name="<?php echo 'downloadable[link][' . $link_count . '][link_sample_file]'; ?>" value="<?php
+                                    if (isset($link_sample_file)) {
+                                        echo $link_sample_file;
+                                    } ?>">
+                             <input type="text" class="required-entry input-text" name="<?php echo 'downloadable[link][' . $link_count . '][title]'; ?>" value="<?php
+                                    if (isset($link_tilte)) {
+                                        echo $link_tilte;
+                                    }
+                                ?>">
+                         </td>
+                     </tr>
+                     <tr><th><label><?php echo $this->__('Price'); ?></label></th>
+                         <td class="input-price">
+                             <input type="text" id="<?php echo 'downloadable_link_' . $link_count . '_price_value'; ?>" class="input-text validate-number link-prices" name="<?php echo 'downloadable[link][' . $link_count . '][price]'; ?>" value="<?php
+                                    if (isset($link_price)) {
+                                        echo $link_price;
+                                    }
+                                ?>">
+                                    <p> [<?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getBaseCurrencyCode())->getShortName(); ?>]</p>
+                         </td></tr>
+                     <tr>
+                         <th><label class="nobr"><?php echo $this->__('Max. Downloads'); ?></label></th>
+                            <td>
+                                <input type="text" id="<?php echo 'downloadable_link_' . $link_count . '_downloads'; ?>" name="<?php echo 'downloadable[link][' . $link_count . '][number_of_downloads]'; ?>" class="input-text downloads" value="<?php
+                                    if (isset($number_of_downloads)) {
+                                        echo $number_of_downloads;
+                                    }
+                                ?>">
+                            <p>
+                                <input type="checkbox" class="checkbox" id="<?php echo 'downloadable_link_' . $link_count . '_is_unlimited'; ?>" name="<?php echo 'downloadable[link][' . $link_count . '][is_unlimited]'; ?>" value="1" <?php
+                                    if (isset($number_of_downloads)) {
+                                        if ($number_of_downloads == 0) {
+                                            echo 'checked="checked"';
+                                        }
+                                    } ?>>
+                                    <label for="<?php echo 'downloadable_link_' . $link_count . '_is_unlimited'; ?>"><?php echo $this->__('Unlimited'); ?></label>
+                            </p></td>
+                    </tr>
+                    <tr>
+                        <th><label><?php echo $this->__('Shareable'); ?></label></th>
+                                <td><select id="<?php echo 'downloadable_link_' . $link_count . '_shareable'; ?>" name="<?php echo 'downloadable[link][' . $link_count . '][is_shareable]'; ?>">
+                                <option value="1" <?php
+                                        if (isset($is_shareable)) {
+                                            if ($is_shareable == 1) {
+                                                echo 'selected="selected"';
+                                            }
+                                        }
+                                ?>><?php echo $this->__('Yes'); ?></option>
+                                <option value="0" <?php
+                                        if (isset($is_shareable)) {
+                                            if ($is_shareable == 0) {
+                                                echo 'selected="selected"';
+                                            }
+                                        }
+                                ?>><?php echo $this->__('No'); ?></option>
+                                <option value="2" <?php
+                                        if (isset($is_shareable)) {
+                                            if ($is_shareable == 2) {
+                                                echo 'selected="selected"';
+                                            }
+                                        }
+                                ?>><?php echo $this->__('Use config'); ?></option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <th><label><?php echo $this->__('Sample'); ?></label></th>
+                        <td>
+                            <div class="files-wide">
+                                <div class="marketplace_row">
+                                    <div id="<?php echo 'downloadable_link_' . $link_count . '_file_save-old'; ?>" class="file-row-info"><span class="file-info"><b><span class="file-info-name"><?php
+                                                   if (isset($link_sample_file)) {
+                                                       echo $link_sample_file;
+                                                   }
+?></span></b><span class="file-info-size"></span></span></div>
+                                    <label for="<?php echo 'downloadable_link_' . $link_count . '_sample_file_type'; ?>">
+                                        <input type="radio" class="radio" id="<?php echo 'downloadable_link_' . $link_count . '_sample_file_type'; ?>" name="<?php echo 'downloadable[link][' . $link_count . '][sample][type]'; ?>" value="file" <?php
+                                                   if (isset($link_sample_type)) {
+                                                       if ($link_sample_type == 'file') {
+                                                           echo 'checked="checked"';
+                                                       }
+                                                   }
+                                ?>>
+<?php echo $this->__('File'); ?>:</label>
+                                        <input type="file" class="validate-downloadable-file" id="<?php echo 'downloadable_link_' . $link_count . '_file_save'; ?>" name="<?php echo 'l_sample_' . $link_count; ?>" value="" onchange="hideOldFileName(this.id)">                                                                               
+                                   </div>
+                                <div class="row"><label for="<?php echo 'downloadable_link_' . $link_count . '_sample_url_type'; ?>">
+                                                <input type="radio" class="radio" id="<?php echo 'downloadable_link_' . $link_count . '_sample_url_type'; ?>" name="<?php echo 'downloadable[link][' . $link_count . '][sample][type]'; ?>" value="url" <?php
+                                                   if (isset($link_sample_type)) {
+                                                       if ($link_sample_type == 'url') {
+                                                           echo 'checked="checked"';
+                                                       }
+                                                   } ?>>
+<?php echo $this->__('URL'); ?>:</label>
+                                                   <input type="text" class="input-text" name="<?php echo 'downloadable[link][' . $link_count . '][sample][url]'; ?>" value="<?php
+                                                   if (isset($link_url)) {
+                                                       echo $link_sample_url;
+                                                   } ?>">
+                                       </div>
+                               </div>
+                           </td>
+                       </tr>
+                       <tr>
+                           <th><label><?php echo $this->__('File'); ?></label></th>
+                            <td>
+                                <div class="files-wide">
+                                    <div class="marketplace_row">
+                                        <div id="<?php echo 'downloadable_sample_link_' . $link_count . '_file_save-old'; ?>" class="file-row-info"><span class="file-info"><b><span class="file-info-name"><?php
+                                                   if (isset($link_file)) {
+                                                       echo $link_file;
+                                                   }
+                            ?></span></b><span class="file-info-size"></span></span></div>
+                                        <label for="<?php echo 'downloadable_link_' . $link_count . '_file_type'; ?>">
+                                        <input type="radio" class="radio validate-one-required-by-name" id="<?php echo 'downloadable_link_' . $link_count . '_file_type'; ?>" name="<?php echo 'downloadable[link][' . $link_count . '][type]'; ?>" value="file" <?php
+                                                   if (isset($link_type)) {
+                                                       if ($link_type == 'file') {
+                                                           echo 'checked="checked"';
+                                                       }
+                                                   }
+?>>
+                            <?php echo $this->__('File'); ?>:
+                                                           </label>
+                                                           <input type="file" class="validate-downloadable-file" id="<?php echo 'downloadable_sample_link_' . $link_count . '_file_save'; ?>" name="<?php echo 'links_' . $link_count; ?>" value="" onchange="hideOldFileName(this.id)">                                                    
+                                                </div><div class="row">
+                                                    <label for="<?php echo 'downloadable_link_' . $link_count . '_url_type'; ?>">
+                                                        <input type="radio" class="radio validate-one-required-by-name" id="<?php echo 'downloadable_link_' . $link_count . '_url_type'; ?>" name="<?php echo 'downloadable[link][' . $link_count . '][type]'; ?>" value="url" <?php
+                                                   if (isset($link_type)) {
+                                                       if ($link_type == 'url') {
+                                                           echo 'checked="checked"';
+                                                       }
+                                                   }
+                            ?>>
+<?php echo $this->__('URL'); ?>:</label><input type="text" class="validate-downloadable-url input-text" name="<?php echo 'downloadable[link][' . $link_count . '][link_url]'; ?>" value="<?php
+                                                   if (isset($link_url)) {
+                                                       echo $link_url;
+                                                   }
+?>">
+                                                                           </div>
+                                                                       </div>
+                                                                   </td>
+                                                               </tr>
+                                                               <tr>
+                                                                   <th><label class="nobr"><?php echo $this->__('Sort Order'); ?></label>
+                                                                   <td>
+                                                                       <input type="text" name="<?php echo 'downloadable[link][' . $link_count . '][sort_order]'; ?>" value="<?php
+                                                   if (isset($sort_order)) {
+                                                       echo $sort_order;
+                                                   }
+?>" class="input-text sort"></td>
+                                                               </tr>
+                                                               <tr><th>&nbsp;</th>
+                                                                   <td>
+                                                                       <button id="<?php echo 'downloadable_link_' . $link_count . '_delete_button'; ?>" onclick="removeMarketPlaceDownloadableLinksRow(this);"  type="button" class="scalable button">
+                                                                           <span><span><span> <?php echo $this->__('Delete'); ?></span></span></span></button></td>
+                                                               </tr>
+                                                           </table>
+                                                       </td>
+                                                   </tr>
+
+
+                                                    <?php
+                                                    $link_count = $link_count + 1;
+                                                }  // End foreach for downloadable link data   
+                                                ?>
+
+                            </tbody> 
+                            <tfoot>
+                                <tr>
+                                    <td colspan="8" class="a-right">
+                                        <button id="add_link_item" class="button" title="Add New Row" type="button"  name="link_items_body" onclick="addMarketPlaceDownloadableLinksRow(this.name)">
+                                            <span><span><span><?php echo $this->__('Add New Row'); ?></span></span></span></button></td>
+                                </tr>
+                            </tfoot>   
+                        </table>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div> 
+    <?php } // End if for downloadable products
+    ?>            
+           
+            <!-- If checking whether product custom options enabled or not -->
+    <?php if ($product_custom_options_enable == 1) { ?>
+             <!-- Marketplace product custom options container -->
+                <div class="fieldset marketplace-custom-option">
+                    <h2 class="legend"><?php echo $this->__('Custom Options'); ?></h2> 
+                    <!-- Custom option add button -->
+                    <div class="right" id="marketplace_custom_option">
+                        <button id="marketplace_new_custom_option" class="button" type="button" onclick="addMarketPlaceCustomOption()"><span><span><?php echo $this->__('Add New Option'); ?></span></span></button>
+                    </div>
+                    <div class="clear"></div>
+                    <!-- Displaying All options list -->
+                    <!-- Marketplace custom option container -->   
+                    <div id="marketplace_custom_option_list">   
+                        <?php
+                        // Display product custom option, If it's exist
+                        $option_count = 1;
+                        $child_option_count = 1;
+                        $select_sub_option_count = 0;
+                        $product_options = array();
+                        $product_options = $product->getOptions();
+                        if (!(empty($product_options))) {
+                            foreach ($product_options as $o) {
+                                if ($o->getIsDelete() != 1) {
+                                    $optionTitle = $optionType = $optionIsRequire = $optionSortOrder = '';
+                                    $optionTitle = $o->getTitle();
+                                    $optionType = $o->getType();
+                                    $optionIsRequire = $o->getIsRequire();
+                                    $optionSortOrder = $o->getSortOrder();
+                                    ?>  
+                                    <div class="dont-remove market_place_option-box">    
+                                        <!-- Div for removing custom option -->
+                                        <table id="product_option_<?php echo $option_count; ?>" class="option-header form-list" cellpadding="0" cellspacing="0">
+                                            <input type="hidden" id="product_option_<?php echo $option_count; ?>_is_delete" name="product[options][<?php echo $option_count; ?>][is_delete]" value="">
+                                            <input type="hidden" id="product_option_<?php echo $option_count; ?>_previous_type" name="product[options][<?php echo $option_count; ?>][previous_type]" value="">
+                                            <input type="hidden" id="product_option_<?php echo $option_count; ?>_previous_group" name="product[options][<?php echo $option_count; ?>][previous_group]" value="">
+                                            <input type="hidden" id="product_option_<?php echo $option_count; ?>_id" name="product[options][<?php echo $option_count; ?>][id]" value="<?php echo $option_count; ?>">
+                                            <input type="hidden" id="product_option_<?php echo $option_count; ?>_option_id" name="product[options][<?php echo $option_count; ?>][option_id]" value="0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="opt-title"><label class="required"><em>*</em> <?php echo $this->__('Title'); ?></label></th>
+                                                    <th class="opt-type"><label class="required"><em>*</em> <?php echo $this->__('Input Type'); ?></label></th>
+                                                    <th class="opt-req"><label><?php echo $this->__('Is Required'); ?></label></th>
+                                                   
+                                                    <th class="a-right"><button id="delete_product_option_<?php echo $option_count; ?>" title="<?php echo $this->__('Delete Option'); ?>" type="button" class="button scalable delete delete-product-option " onclick="removeMarketPlaceCustomOption(this)" style=""><span><span><?php echo $this->__('Delete Option'); ?></span></span></button></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><input type="text" class="required-entry input-text" id="product_option_<?php echo $option_count; ?>_title" name="product[options][<?php echo $option_count; ?>][title]" value="<?php
+                                           if (!empty($optionTitle)) {
+                                               echo $optionTitle;
+                                           }
+                                           ?>"></td>
+                                                    <td>
+                                                        <select onchange="changeMarketPlaceCustomOption(this,<?php echo $option_count; ?>)" name="product[options][<?php echo $option_count; ?>][type]" id="product_option_<?php echo $option_count; ?>_type" class="select validate-select" title="">
+                                                            <option value="">-- <?php echo $this->__('Please select'); ?> --</option>
+                                                            <optgroup label="<?php echo $this->__('Text'); ?>">
+                                                                <option value="field" <?php
+                                                                if (isset($optionType)) {
+                                                                    if ($optionType == 'field') {
+                                                                        echo 'selected';
+                                                                    }
+                                                                }
+                                                                ?>><?php echo $this->__('Field'); ?></option>
+                                                                <option value="area" <?php
+                                                                if (isset($optionType)) {
+                                                                    if ($optionType == 'area') {
+                                                                        echo 'selected';
+                                                                    }
+                                                                }
+                                                                ?>><?php echo $this->__('Area'); ?></option>
+                                                            </optgroup>
+                                                            <optgroup label="<?php echo $this->__('File'); ?>">
+                                                                <option value="file" <?php
+                                                                if (isset($optionType)) {
+                                                                    if ($optionType == 'file') {
+                                                                        echo 'selected';
+                                                                    }
+                                                                }
+                                                                ?>><?php echo $this->__('File'); ?></option>
+                                                            </optgroup>
+                                                            <optgroup label="<?php echo $this->__('Select'); ?>">
+                                                                <option value="drop_down" <?php
+                                                                if (isset($optionType)) {
+                                                                    if ($optionType == 'drop_down') {
+                                                                        echo 'selected';
+                                                                    }
+                                                                }
+                                                                ?>><?php echo $this->__('Drop-down'); ?></option>
+                                                                <option value="radio" <?php
+                                                                if (isset($optionType)) {
+                                                                    if ($optionType == 'radio') {
+                                                                        echo 'selected';
+                                                                    }
+                                                                }
+                                                                ?>><?php echo $this->__('Radio Buttons'); ?></option>
+                                                                <option value="checkbox" <?php
+                                                                if (isset($optionType)) {
+                                                                    if ($optionType == 'checkbox') {
+                                                                        echo 'selected';
+                                                                    }
+                                                                }
+                                                                ?>><?php echo $this->__('Checkbox'); ?></option>
+                                                                <option value="multiple" <?php
+                                                                if (isset($optionType)) {
+                                                                    if ($optionType == 'multiple') {
+                                                                        echo 'selected';
+                                                                    }
+                                                                }
+                                                                ?>><?php echo $this->__('Multiple Select'); ?></option>
+                                                            </optgroup>
+                                                            <optgroup label="<?php echo $this->__('Date'); ?>">
+                                                                <option value="date" <?php
+                                                                if (isset($optionType)) {
+                                                                    if ($optionType == 'date') {
+                                                                        echo 'selected';
+                                                                    }
+                                                                }
+                                                                ?>><?php echo $this->__('Date'); ?></option>
+                                                                <option value="date_time" <?php
+                                                                if (isset($optionType)) {
+                                                                    if ($optionType == 'date_time') {
+                                                                        echo 'selected';
+                                                                    }
+                                                                }
+                                                                ?>><?php echo $this->__('Date'); ?> &amp; <?php echo $this->__('Time'); ?></option>
+                                                                <option value="time" <?php
+                                                                if (isset($optionType)) {
+                                                                    if ($optionType == 'time') {
+                                                                        echo 'selected';
+                                                                    }
+                                                                }
+                                                                ?>><?php echo $this->__('Time'); ?></option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </td>
+                                                    <td class="opt-req">
+                                                        <select name="product[options][<?php echo $option_count; ?>][is_require]" id="product_option_<?php echo $option_count; ?>_is_require" class="select" title="">
+                                                            <option value="1" <?php
+                                                            if (isset($optionIsRequire)) {
+                                                                if ($optionIsRequire == 1) {
+                                                                    echo 'selected';
+                                                                }
+                                                            }
+                                                            ?>><?php echo $this->__('Yes'); ?></option>
+                                                            <option value="0" <?php
+                                                            if (isset($optionIsRequire)) {
+                                                                if ($optionIsRequire == 0) {
+                                                                    echo 'selected';
+                                                                }
+                                                            }
+                                                            ?>><?php echo $this->__('No'); ?></option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="validate-zero-or-greater input-text" name="product[options][<?php echo $option_count; ?>][sort_order]" value="<?php echo $optionSortOrder; ?>">
+                                                    </td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <?php
+                                        if ($optionType == 'drop_down' || $optionType == 'radio' || $optionType == 'checkbox' || $optionType == 'multiple') {
+                                            $values = $o->getValues();
+                                            ?>  
+                                            <!--<div id="<?php
+                                                $option_count_value = $option_count;
+                                                echo 'product_option_' . $option_count_value . '_type_select';
+                                                ?>" class="grid tier form-list">-->
+                                            <table class="border form-list market_place_dropdown_row" cellpadding="0" cellspacing="0">
+                                                <input type="hidden" class="required-option-select-type-rows" name="<?php
+                                                $option_count_value = $option_count;
+                                                echo 'validation_' . $option_count_value . '_result';
+                                                ?>" value="">
+                                                <thead>
+                                                    <tr class="headings">
+                                                        <th class="type-title"><label class="required"> <em>*</em> <?php echo $this->__('Title'); ?> </label>
+
+                                                        </th>
+                                                        <th class="type-price"><label><?php echo $this->__('Price'); ?></label></th>
+                                                        <th class="type-type"><label><?php echo $this->__('Price Type'); ?></label></th>
+                                                        <th class="type-sku"><label><?php echo $this->__('SKU'); ?></label></th>
+                                                        <th class="type-order"><label><?php echo $this->__('Sort Order'); ?></label></th>
+                                                        <th class="type-butt last">&nbsp;</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="<?php
+                                                           $option_count_value = $option_count;
+                                                           echo 'select_option_type_row_' . $option_count_value;
+                                                           ?>"> 
+                                                           <?php
+                                                           foreach ($values as $k => $v) {
+                                                               $optionSubTitle = $optionPrice = $optionPrice = $optionPriceType = $optionSku = $optionSortOrder = '';
+                                                               $optionSubTitle = $v->getTitle();
+                                                               $optionPrice = $v->getPrice();
+                                                               $optionPriceType = $v->getPriceType();
+                                                               $optionSku = $v->getSku();
+                                                               $optionSortOrder = $v->getSortOrder();
+                                                               ?>    
+                                                        <tr id="<?php
+                                                                $option_count_value = $option_count;
+                                                                echo 'product_option_' . $option_count_value . '_select_' . $select_sub_option_count;
+                                                                ?>">
+                                                            <td>
+                                                                <input type="hidden" name="<?php
+                                                                $option_count_value = $option_count;
+                                                                echo 'product[options][' . $option_count_value . '][values][' . $select_sub_option_count . '][option_type_id]';
+                                                                ?>" value="-1">
+                                                                <input type="hidden" id="<?php
+                                           $option_count_value = $option_count;
+                                           echo 'product_option_' . $option_count_value . '_select_' . $select_sub_option_count . '_is_delete';
+                                           ?>" name="<?php
+                                                                $option_count_value = $option_count;
+                                                                echo 'product[options][' . $option_count_value . '][values][' . $select_sub_option_count . '][is_delete]';
+                                                                ?>" value="">
+                                                                <input type="text" class="required-entry input-text select-type-title" id="<?php
+                                           $option_count_value = $option_count;
+                                           echo 'product_option_' . $option_count_value . '_select_' . $select_sub_option_count . '_title';
+                                           ?>" name="<?php
+                                                                $option_count_value = $option_count;
+                                                                echo 'product[options][' . $option_count_value . '][values][' . $select_sub_option_count . '][title]';
+                                                                ?>" value="<?php echo $optionSubTitle; ?>">
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="input-text validate-number product-option-price" id="<?php
+                                                                    $option_count_value = $option_count;
+                                                                    echo 'product_option_' . $option_count_value . '_select_' . $select_sub_option_count . '_price';
+                                                                    ?>" name="<?php
+                                                                    $option_count_value = $option_count;
+                                                                    echo 'product[options][' . $option_count_value . '][values][' . $select_sub_option_count . '][price]';
+                                                                    ?>" value="<?php echo $optionPrice; ?>">
+                                                            </td>
+                                                            <td>
+                                                                <select name="<?php
+                                                                    $option_count_value = $option_count;
+                                                                    echo 'product[options][' . $option_count_value . '][values][' . $select_sub_option_count . '][price_type]';
+                                                                    ?>" id="<?php
+                                                $option_count_value = $option_count;
+                                                echo 'product_option_' . $option_count_value . '_select_' . $select_sub_option_count . '_price_type';
+                                                ?>" class="select product-option-price-type" title="">
+                                                                    <option value="fixed" <?php
+                                                                if (isset($optionPriceType)) {
+                                                                    if ($optionPriceType == 'fixed') {
+                                                                        echo 'selected';
+                                                                    }
+                                                                }
+                                                                ?>><?php echo $this->__('Fixed'); ?></option>
+                                                                    <option value="percent" <?php
+                                    if (isset($optionPriceType)) {
+                                        if ($optionPriceType == 'percent') {
+                                            echo 'selected';
+                                        }
+                                    }
+                                    ?>><?php echo $this->__('Percent'); ?></option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="input-text" name="<?php
+                                                        $option_count_value = $option_count;
+                                                        echo 'product[options][' . $option_count_value . '][values][' . $select_sub_option_count . '][sku]';
+                                                        ?>" value="<?php echo $optionSku; ?>">
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="validate-zero-or-greater input-text" name="<?php
+                                                                $option_count_value = $option_count;
+                                                                echo 'product[options][' . $option_count_value . '][values][' . $select_sub_option_count . '][sort_order]';
+                                                                ?>" value="<?php echo $optionSortOrder; ?>">
+                                                            </td>
+                                                            <td class="last">
+                                                                <span title="Delete row">
+                                                                    <button id="delete_select_row_button" title="Delete Row" type="button" class="button scalable delete delete-select-row icon-btn" onclick="removeMarketPlaceChildSelectOption(this)" style="">
+                                                                        <span> <span><?php echo $this->__('Delete Row'); ?></span></span></button></span>
+                                                            </td>
+                                                        </tr>
+                                                <?php
+                                                $select_sub_option_count = $select_sub_option_count + 1;
+                                            }
+                                            ?>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="100" class="a-right">
+                                                            <button id="<?php
+                                            $option_count_value = $option_count;
+                                            echo 'add_select_row_button_' . $option_count_value;
+                                            ?>" name="<?php
+                                            $option_count_value = $option_count;
+                                            echo 'select_option_type_row_' . $option_count_value;
+                                            ?>" title="<?php echo $this->__('Add New Row'); ?>" type="button" class="button scalable add add-select-row" onclick="addMarketPlaceChildSelectOption(this.name,<?php echo $option_count; ?>)">
+                                                                <span><span><?php echo $this->__('Add New Row'); ?></span></span>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                            <!--</div>-->
+                        <?php
+                        $child_option_count = $child_option_count + 1;
+                    }
+                    if ($optionType == 'field' || $optionType == 'area') {
+                        $optionPrice = $optionPriceType = $optionSku = $optionMaxCharacters = '';
+                        $optionPrice = $o->getPrice();
+                        $optionPriceType = $o->getPriceType();
+                        $optionSku = $o->getSku();
+                        $optionMaxCharacters = $o->getMaxCharacters();
+                        ?>  
+                                            <!--<div id="<?php echo 'product_option_' . $child_option_count . '_type_text'; ?>" class="grid tier form-list">-->
+                                            <table class="border form-list" cellpadding="0" cellspacing="0">
+                                                <tbody>
+                                                    <tr class="headings">
+                                                        <th class="type-price"><label><?php echo $this->__('Price'); ?></label></th>
+                                                        <th class="type-type"><label><?php echo $this->__('Price Type'); ?></label></th>
+                                                        <th class="type-sku"><label><?php echo $this->__('SKU'); ?></label></th>
+                                                        <th class="type-last last"><label><?php echo $this->__('Max Characters'); ?></label></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="input-text validate-number product-option-price" id="<?php echo 'product_option_' . $child_option_count . '_price'; ?>" name="<?php echo 'product[options][' . $child_option_count . '][price]' ?>" value="<?php echo $optionPrice; ?>">
+                                                        </td>
+                                                        <td>
+                                                            <select name="<?php echo 'product[options][' . $child_option_count . '][price_type]'; ?>" id="<?php echo 'product_option_' . $child_option_count . '_price_type'; ?>" class="select product-option-price-type" title="">
+                                                                <option value="fixed" <?php
+                                                if (isset($optionPriceType)) {
+                                                    if ($optionPriceType == 'fixed') {
+                                                        echo 'selected';
+                                                    }
+                                                }
+                        ?>><?php echo $this->__('Fixed'); ?></option>
+                                                                <option value="percent"  <?php
+                                            if (isset($optionPriceType)) {
+                                                if ($optionPriceType == 'percent') {
+                                                    echo 'selected';
+                                                }
+                                            }
+                                            ?>><?php echo $this->__('Percent'); ?></option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="input-text" name="<?php echo 'product[options][' . $child_option_count . '][sku]'; ?>" value="<?php echo $optionSku; ?>">
+                                                        </td>
+                                                        <td class="type-last last">
+                                                            <input type="text" class="input-text validate-zero-or-greater" name="<?php echo 'product[options][' . $child_option_count . '][max_characters]'; ?>" value="<?php echo $optionMaxCharacters; ?>">
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table> 
+                                            <!--</div>    -->
+                        <?php
+                        $child_option_count = $child_option_count + 1;
+                    }
+                    if ($optionType == 'file') {
+                        $optionPrice = $optionPriceType = $optionSku = $optionFileExtension = $optionImageSizeX = $optionImageSizeY = '';
+                        $optionPrice = $o->getPrice();
+                        $optionPriceType = $o->getPriceType();
+                        $optionSku = $o->getSku();
+                        $optionFileExtension = $o->getFileExtension();
+                        $optionImageSizeX = $o->getImageSizeX();
+                        $optionImageSizeY = $o->getImageSizeY();
+                        ?>
+                                            <div id="<?php echo 'product_option_' . $child_option_count . '_type_file'; ?>" class="grid tier form-list">
+                                            <table class="border form-list mareket_place_price_table" cellpadding="0" cellspacing="0">
+                                                <tbody><tr class="headings">
+                                                        <th class="type-price"><label><?php echo $this->__('Price'); ?></label></th>
+                                                        <th class="type-type"><label><?php echo $this->__('Price Type'); ?></label></th>
+                                                        <th class="type-sku"><label><?php echo $this->__('SKU'); ?></label></th>
+                                                        <th class="type-title"><label><?php echo $this->__('Allowed File Extensions'); ?></label></th>
+                                                        <th class="last"><label><?php echo $this->__('Maximum Image Size'); ?></label></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input class="input-text validate-zero-or-greater" type="text" name="<?php echo 'product[options][' . $child_option_count . '][price]'; ?>" value="<?php echo $optionPrice; ?>">
+                                                        </td>
+                                                        <td>
+                                                            <select name="<?php echo 'product[options][' . $child_option_count . '][price_type]'; ?>" id="<?php echo 'product_option_' . $child_option_count . '_price_type'; ?>" class="select product-option-price-type" title="">    
+                                                                <option value="fixed" <?php
+                                                if (isset($optionPriceType)) {
+                                                    if ($optionPriceType == 'fixed') {
+                                                        echo 'selected';
+                                                    }
+                                                }
+                                                ?>><?php echo $this->__('Fixed'); ?></option>
+                                                                <option value="percent" <?php
+                                                if (isset($optionPriceType)) {
+                                                    if ($optionPriceType == 'percent') {
+                                                        echo 'selected';
+                                                    }
+                                                }
+                        ?>><?php echo $this->__('Percent'); ?></option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="input-text" name="<?php echo 'product[options][' . $child_option_count . '][sku]'; ?>" value="<?php echo $optionSku; ?>">
+                                                        </td>
+                                                        <td>
+                                                            <input class="input-text" type="text" name="<?php echo 'product[options][' . $child_option_count . '][file_extension]'; ?>" value="<?php echo $optionFileExtension; ?>">
+                                                        </td>
+                                                        <td class="type-last last" nowrap="">
+                                                            <input class="input-text" type="text" name="<?php echo 'product[options][' . $child_option_count . '][image_size_x]'; ?>" value="<?php echo $optionImageSizeX; ?>"><?php echo $this->__('x'); ?> 
+                                                            <input class="input-text" type="text" name="<?php echo 'product[options][' . $child_option_count . '][image_size_y]'; ?>" value="<?php echo $optionImageSizeY; ?>"><?php echo $this->__('px') . '.'; ?>
+                                                            <br><?php echo $this->__('leave blank if its not an image'); ?>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            </div>
+                        <?php
+                        $child_option_count = $child_option_count + 1;
+                    }
+                    if ($optionType == 'date' || $optionType == 'date_time' || $optionType == 'time') {
+                        $optionPrice = $optionPriceType = $optionSku = '';
+                        $optionPrice = $o->getPrice();
+                        $optionPriceType = $o->getPriceType();
+                        $optionSku = $o->getSku();
+                        ?>  
+                                            <!--<div id="<?php echo 'product_option_' . $child_option_count . '_type_date'; ?>" class="grid tier form-list" style="">-->
+                                            <table class="border form-list" cellpadding="0" cellspacing="0">
+                                                <tbody>
+                                                    <tr class="headings">
+                                                        <th class="type-price"><label><?php echo $this->__('Price'); ?></label></th>
+                                                        <th class="type-type"><label><?php echo $this->__('Price Type'); ?></label></th>
+                                                        <th class="last"><label><?php echo $this->__('SKU'); ?></label></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="input-text validate-number product-option-price" id="<?php echo 'product_option_' . $child_option_count . '_price'; ?>" name="<?php echo 'product[options][' . $child_option_count . '][price]'; ?>" value="<?php echo $optionPrice; ?>">
+                                                        </td>
+                                                        <td>
+                                                            <select name="<?php echo 'product[options][' . $child_option_count . '][price_type]'; ?>" id="<?php echo 'product_option_' . $child_option_count . '_price_type'; ?>" class="select product-option-price-type" title="">
+                                                                <option value="fixed" <?php
+                                                if (isset($optionPriceType)) {
+                                                    if ($optionPriceType == 'fixed') {
+                                                        echo 'selected';
+                                                    }
+                                                }
+                        ?>><?php echo $this->__('Fixed'); ?></option>
+                                                                <option value="percent"  <?php
+                        if (isset($optionPriceType)) {
+                            if ($optionPriceType == 'percent') {
+                                echo 'selected';
+                            }
+                        }
+                        ?>><?php echo $this->__('Percent'); ?></option>
+                                                            </select>
+                                                        </td>
+                                                        <td class="last">
+                                                            <input type="text" class="input-text type-sku" name="<?php echo 'product[options][' . $child_option_count . '][sku]'; ?>" value="<?php echo $optionSku; ?>">
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <!--</div>  -->
+                                    <?php
+                                    $child_option_count = $child_option_count + 1;
+                                }
+                                $option_count = $option_count + 1;
+                                ?>
+                                        <!-- Div for removing custom option -->
+                                    </div> 
+                    <?php
+                }
+            }
+        }
+        ?> 
+                        <!-- End marketplace custom option container -->    
+                    </div>
+                </div>
+    <?php } // End if for checking whether product option enabled or not   ?>
+
+            <!-- Marketplace product hidden fields container -->
+            <div class="marketplace-hidden-values">
+                <input type="hidden" name="product_id" value="<?php echo $product->getId(); ?>" id="marketplace_product_id">
+                <input type="hidden" name="type" value="<?php
+    if (!empty($type)) {
+        echo $type;
+    } else {
+        echo 'simple';
+    }
+    ?>" id="hidden_type">
+            </div>
+            <div class="buttons-set">
+                <p class="required">* <?php echo $this->__('Required Fields') ?></p>
+                <button class="button" onclick ="checkTextarea()" type="submit" title="<?php echo $this->__('Submit') ?>" class="button"><span><?php echo $this->__('Submit') ?></span></button>
+            </div>
+        </form>
+    </div>
+
+    <?php
+// End for checking whether product data exist or not
+}
+?>
+
+<!-- Following div dynamically create custom options  -->
+<div class="hidden-custom-option" style="display:none;">
+
+    <div class="option-box" id="marketplace_custom_option_YYY"> 
+        <!-- Div for removing custom option -->
+        <div class="dont-remove market_place_option-box">    
+            <!-- Product custom option table -->   
+            <table id="product_option_XXX" class="option-header form-list" cellpadding="0" cellspacing="0">
+                <input type="hidden" id="product_option_XXX_is_delete" name="product[options][XXX][is_delete]" value="">
+                <input type="hidden" id="product_option_XXX_previous_type" name="product[options][XXX][previous_type]" value="">
+                <input type="hidden" id="product_option_XXX_previous_group" name="product[options][XXX][previous_group]" value="">
+                <input type="hidden" id="product_option_XXX_id" name="product[options][XXX][id]" value="XXX">
+                <input type="hidden" id="product_option_XXX_option_id" name="product[options][XXX][option_id]" value="0">
+                <thead>
+                    <tr>
+                        <th class="opt-title"><label class="required"><em>*</em> <?php echo $this->__('Title'); ?></label> </th>
+                        <th class="opt-type"><label class="required"><em>*</em> <?php echo $this->__('Input Type'); ?></label></th>
+                        <th class="opt-req"><label><?php echo $this->__('Is Required'); ?></label></th>
+                        <!--<th class="opt-order"><label><?php echo $this->__('Sort Order'); ?></label></th>-->
+                        <th class="a-right"><button id="delete_product_option_XXX" title="<?php echo $this->__('Delete Option'); ?>" type="button" class="button scalable delete delete-product-option " onclick="removeMarketPlaceCustomOption(this)" style=""><span><span><?php echo $this->__('Delete Option'); ?></span></span></button></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" class="required-entry input-text" id="product_option_XXX_title" name="product[options][XXX][title]" value=""></td>
+                        <td>
+                            <select onchange="changeMarketPlaceCustomOption(this, XXX)" name="product[options][XXX][type]" id="product_option_XXX_type" class="select validate-select" title="">
+                                <option value="">-- <?php echo $this->__('Please select'); ?> --</option>
+                                <optgroup label="<?php echo $this->__('Text'); ?>">
+                                    <option value="field"><?php echo $this->__('Field'); ?></option>
+                                    <option value="area"><?php echo $this->__('Area'); ?></option>
+                                </optgroup>
+                                <optgroup label="<?php echo $this->__('File'); ?>">
+                                    <option value="file"><?php echo $this->__('File'); ?></option>
+                                </optgroup>
+                                <optgroup label="<?php echo $this->__('Select'); ?>">
+                                    <option value="drop_down"><?php echo $this->__('Drop-down'); ?></option>
+                                    <option value="radio"><?php echo $this->__('Radio Buttons'); ?></option>
+                                    <option value="checkbox"><?php echo $this->__('Checkbox'); ?></option>
+                                    <option value="multiple"><?php echo $this->__('Multiple Select'); ?></option>
+                                </optgroup>
+                                <optgroup label="<?php echo $this->__('Date'); ?>">
+                                    <option value="date"><?php echo $this->__('Date'); ?></option>
+                                    <option value="date_time"><?php echo $this->__('Date'); ?> &amp; <?php echo $this->__('Time'); ?></option>
+                                    <option value="time"><?php echo $this->__('Time'); ?></option>
+                                </optgroup>
+                            </select>
+                        </td>
+                        <td class="opt-req">
+                            <select name="product[options][XXX][is_require]" id="product_option_XXX_is_require" class="select" title="">
+                                <option value="1"><?php echo $this->__('Yes'); ?></option>
+                                <option value="0"><?php echo $this->__('No'); ?></option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" class="validate-zero-or-greater input-text" name="product[options][XXX][sort_order]" value="">
+                        </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Product custom option text -->  
+    <div id="product_option_CCC_type_text" class="grid tier form-list">
+        <table class="form-list border" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr class="headings">
+                    <th class="type-price"> <label><?php echo $this->__('Price'); ?></label></th>
+                    <th class="type-type"><label><?php echo $this->__('Price Type'); ?></label></th>
+                    <th class="type-sku"><label><?php echo $this->__('SKU'); ?></label></th>
+                    <th class="type-last last"><label><?php echo $this->__('Max Characters'); ?></label></th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="input-text validate-number product-option-price" id="product_option_CCC_price" name="product[options][CCC][price]" value="">
+                    </td>
+                    <td>
+                        <select name="product[options][CCC][price_type]" id="product_option_CCC_price_type" class="select product-option-price-type" title="">
+                            <option value="fixed"><?php echo $this->__('Fixed'); ?></option>
+                            <option value="percent"><?php echo $this->__('Percent'); ?></option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" class="input-text" name="product[options][CCC][sku]" value="">
+                    </td>
+                    <td class="type-last last">
+                        <input type="text" class="input-text validate-zero-or-greater" name="product[options][CCC][max_characters]" value="">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Product custom option file -->  
+    <div id="product_option_CCC_type_file" class="grid tier">
+        <table class="border form-list mareket_place_price_table" cellpadding="0" cellspacing="0">
+            <tbody><tr class="headings">
+                    <th class="type-price"><label><?php echo $this->__('Price'); ?></label></th>
+                    <th class="type-type"><label><?php echo $this->__('Price Type'); ?></label></th>
+                    <th class="type-sku"><label><?php echo $this->__('SKU'); ?></label></th>
+                    <th class="type-title"><label><?php echo $this->__('Allowed File Extensions'); ?></label></th>
+                    <th class="last"><label><?php echo $this->__('Maximum Image Size'); ?></label></th>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="input-text validate-zero-or-greater" type="text" name="product[options][CCC][price]" value="">
+                    </td>
+                    <td>
+                        <select name="product[options][CCC][price_type]" id="product_option_CCC_price_type" class="select product-option-price-type" title="">    
+                            <option value="fixed"><?php echo $this->__('Fixed'); ?></option>
+                            <option value="percent"><?php echo $this->__('Percent'); ?></option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" class="input-text" name="product[options][CCC][sku]" value="">
+                    </td>
+                    <td>
+                        <input class="input-text" type="text" name="product[options][CCC][file_extension]" value="">
+                    </td>
+                    <td class="type-last last" nowrap="">
+                        <input class="input-text" type="text" name="product[options][CCC][image_size_x]" value=""><?php echo $this->__('x'); ?>&nbsp;
+                        <input class="input-text" type="text" name="product[options][CCC][image_size_y]" value=""><?php echo $this->__('px') . '.'; ?>
+                        <br><?php echo $this->__('leave blank if its not an image'); ?>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>   
+    <!-- Product custom option date -->  
+    <div id="product_option_CCC_type_date" class="grid tier form-list" style="">
+        <table class="border form-list" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr class="headings">
+                    <th class="type-price"><label><?php echo $this->__('Price'); ?></label></th>
+                    <th class="type-type"><label><?php echo $this->__('Price Type'); ?></label></th>
+                    <th class="last"><label><?php echo $this->__('SKU'); ?></label></th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="input-text validate-number product-option-price" id="product_option_CCC_price" name="product[options][CCC][price]" value="">
+                    </td>
+                    <td>
+                        <select name="product[options][CCC][price_type]" id="product_option_CCC_price_type" class="select product-option-price-type" title="">
+                            <option value="fixed"><?php echo $this->__('Fixed'); ?></option>
+                            <option value="percent"><?php echo $this->__('Percent'); ?></option>
+                        </select>
+                    </td>
+                    <td class="last">
+                        <input type="text" class="input-text type-sku" name="product[options][CCC][sku]" value="">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>    
+    <!-- Product custom option select -->  
+    <div id="product_option_CCC_type_select" class="grid tier form-list">
+        <table class="border market_place_dropdown_row form-list" cellpadding="0" cellspacing="0">
+            <input type="hidden" class="required-option-select-type-rows" name="validation_CCC_result" value="">
+            <thead>
+                <tr class="headings">
+                    <th class="type-title"> <label class="required"> <em>*</em> <?php echo $this->__('Title'); ?> </label></th>
+                    <th class="type-price"><label><?php echo $this->__('Price'); ?></label></th>
+                    <th class="type-type"><label><?php echo $this->__('Price Type'); ?></label></th>
+                    <th class="type-sku"><label><?php echo $this->__('SKU'); ?></label></th>
+                    <th class="type-order"><label><?php echo $this->__('Sort Order'); ?></label></th>
+                    <th class="type-butt last">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody id="select_option_type_row_CCC"> 
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="100" class="a-right">
+                        <button id="add_select_row_button_CCC" name="select_option_type_row_CCC" title="<?php echo $this->__('Add New Row'); ?>" type="button" class="button scalable add add-select-row" onclick="addMarketPlaceChildSelectOption(this.name, CCC)">
+                            <span><span><?php echo $this->__('Add New Row'); ?></span></span>
+                        </button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- Product custom option select add row -->  
+    <table>    
+        <tr id="product_option_CCC_select_AAA">
+            <td>
+                <input type="hidden" name="product[options][CCC][values][AAA][option_type_id]" value="-1">
+                <input type="hidden" id="product_option_CCC_select_AAA_is_delete" name="product[options][CCC][values][AAA][is_delete]" value="">
+                <input type="text" class="required-entry input-text select-type-title" id="product_option_CCC_select_AAA_title" name="product[options][CCC][values][AAA][title]" value="">
+            </td>
+            <td>
+                <input type="text" class="input-text validate-number product-option-price" id="product_option_CCC_select_AAA_price" name="product[options][CCC][values][AAA][price]" value="">
+            </td>
+            <td>
+                <select name="product[options][CCC][values][AAA][price_type]" id="product_option_CCC_select_AAA_price_type" class="select product-option-price-type" title="">
+                    <option value="fixed"><?php echo $this->__('Fixed'); ?></option>
+                    <option value="percent"><?php echo $this->__('Percent'); ?></option>
+                </select>
+            </td>
+            <td>
+                <input type="text" class="input-text" name="product[options][CCC][values][AAA][sku]" value="">
+            </td>
+            <td>
+                <input type="text" class="validate-zero-or-greater input-text" name="product[options][CCC][values][AAA][sort_order]" value="">
+            </td>
+            <td class="last">
+                <span title="Delete row">
+                    <button id="delete_select_row_button" title="Delete Row" type="button" class="button scalable delete delete-select-row icon-btn" onclick="removeMarketPlaceChildSelectOption(this)" style="">
+                        <span> <span><?php echo $this->__('Delete Row'); ?></span></span></button></span>
+            </td>
+        </tr>
+    </table>      
+</div>
+
+<!-- Dynamically downloadable products Sample and Sample_links row -->
+<table style="display:none;"> 
+    <tr id="marketplace_download_sample_row_CCC">
+        <td>
+            <input type="hidden" class="__delete__" name="downloadable[sample][CCC][is_delete]" value="">
+            <input type="hidden" name="downloadable[sample][CCC][sample_id]" value="CCC">
+            <input type="text" class="required-entry input-text" name="downloadable[sample][CCC][title]" value="">
+        </td>
+        <td>
+            <div class="files-wide">
+                <div class="marketplace_row">
+                    <label for="downloadable_sample_CCC_file_type">
+                        <input type="radio" class="radio validate-one-required-by-name" id="downloadable_sample_CCC_file_type" name="downloadable[sample][CCC][type]" value="file" checked="checked"> 
+<?php echo $this->__('File'); ?>:</label>
+                    <input type="file" class="validate-downloadable-file" id="downloadable_sample_CCC_file_save" name="sample_CCC" value="">
+                    <div id="downloadable_sample_CCC_file">
+                        <div class="no-display" id="downloadable_sample_CCC_file-template">
+                        </div>
+                    </div></div><div class="row">
+                    <label for="downloadable_sample_CCC_url_type">
+                        <input type="radio" class="radio validate-one-required-by-name" id="downloadable_sample_CCC_url_type" name="downloadable[sample][CCC][type]" value="url"> 
+<?php echo $this->__('URL'); ?>:</label> <input type="text" class="validate-downloadable-url input-text" name="downloadable[sample][CCC][sample_url]" value="">
+                </div>
+                <div>
+                    <span id="downloadable_sample_CCC_container"></span>
+                </div>
+            </div>
+        </td>
+        <td class="a-center">
+            <input type="text" name="downloadable[sample][CCC][sort_order]" value="" class="input-text sort marketplace_sort_order">
+        </td>
+        <td>
+            <button onclick="removeMarketPlaceDownloadableSamplesRow(this)" type="button" class="scalable button">
+                <span><span><span><?php echo $this->__('Delete'); ?></span></span></span></button>
+        </td>
+    </tr>
+</table>
+
+<!-- Dynamically downloadable products Links row -->
+<table style="display:none;"> 
+    <tr id="marketplace_download_link_row_CCC">
+        <td class="marketplace_download_info_td">
+            <table border="0" cellspacing="0" cellpadding="0" width="100%" class="marketplace_download_info_table">
+                <tr><th><label><?php echo $this->__('Title'); ?></label><span class="required">*</span></th>
+                    <td>
+            <input type="hidden" class="__delete__" name="downloadable[link][CCC][is_delete]" value="">
+            <input type="hidden" name="downloadable[link][CCC][link_id]" value="CCC">
+            <input type="text" class="required-entry input-text" name="downloadable[link][CCC][title]" value="">
+        </td>
+                </tr>
+                <tr><th><label><?php echo $this->__('Price'); ?></label></th>
+                <td class="input-price">
+            <input type="text" id="downloadable_link_CCC_price_value" class="input-text validate-number link-prices" name="downloadable[link][CCC][price]" value="0">
+            <p><label> [<?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getBaseCurrencyCode())->getShortName(); ?>]</label></p>
+        </td>
+                </tr>
+                <tr><th><label class="nobr"><?php echo $this->__('Max. Downloads'); ?></label></th>
+                <td>
+            <input type="text" id="downloadable_link_CCC_downloads" name="downloadable[link][CCC][number_of_downloads]" class="input-text downloads" value="0">
+            <p>
+                <input type="checkbox" class="checkbox" id="downloadable_link_CCC_is_unlimited" name="downloadable[link][CCC][is_unlimited]" value="1" checked="checked">
+                <label for="downloadable_link_CCC_is_unlimited"><?php echo $this->__('Unlimited'); ?></label>
+            </p></td>
+                </tr>
+                <tr><th><label><?php echo $this->__('Shareable'); ?></label></th>
+                    <td><select id="downloadable_link _CCC_shareable" name="downloadable[link][CCC][is_shareable]">
+                <option value="1"><?php echo $this->__('Yes'); ?></option>
+                <option value="CCC"><?php echo $this->__('No'); ?></option>
+                <option value="2" selected="selected"><?php echo $this->__('Use config'); ?></option>
+            </select></td>
+                </tr>
+                <tr><th><label><?php echo $this->__('Sample'); ?></label></th>
+                    <td>
+            <div class="files-wide">
+                <div class="marketplace_row">
+                    <label for="downloadable_link_CCC_sample_file_type">
+                        <input type="radio" class="radio" id="downloadable_link_CCC_sample_file_type" name="downloadable[link][CCC][sample][type]" value="file">
+<?php echo $this->__('File'); ?>:</label>
+                    <input type="file" class="validate-downloadable-file" id="downloadable_link_CCC_file_save" name="l_sample_CCC" value="">
+                    </div><div class="row"><label for="downloadable_link_CCC_sample_url_type">
+                            <input type="radio" class="radio" id="downloadable_link_CCC_sample_url_type" name="downloadable[link][CCC][sample][type]" value="url">
+<?php echo $this->__('URL'); ?>:</label>
+                        <input type="text" class="input-text" name="downloadable[link][CCC][sample][url]" value="">
+                    </div>                
+            </div>
+        </td>
+                </tr>
+                <tr><th><label><?php echo $this->__('File'); ?></label></th>
+                    <td>
+            <div class="files-wide">
+                <div class="marketplace_row">
+                    <label for="downloadable_link_CCC_file_type">
+                        <input type="radio" class="radio validate-one-required-by-name" id="downloadable_link_CCC_file_type" name="downloadable[link][CCC][type]" value="file" checked="checked">
+<?php echo $this->__('File'); ?>:
+                    </label>
+                    <input type="file" class="validate-downloadable-file" id="downloadable_sample_link_CCC_file_save" name="links_CCC" value="">
+                </div><div class="row">
+                    <label for="downloadable_link_CCC_url_type">
+                        <input type="radio" class="radio validate-one-required-by-name" id="downloadable_link_CCC_url_type" name="downloadable[link][CCC][type]" value="url">
+<?php echo $this->__('URL'); ?>:</label><input type="text" class="validate-downloadable-url input-text" name="downloadable[link][CCC][link_url]" value="">
+                </div>
+            </div>
+        </td>
+                </tr>
+                <tr><th><label class="nobr"><?php echo $this->__('Sort Order'); ?></label></th>
+                <td>
+            <input type="text" name="downloadable[link][CCC][sort_order]" value="" class="input-text sort"></td>
+                </tr>
+                <tr><th>&nbsp;</th>
+                <td>
+            <button id="downloadable_link_CCC_delete_button" onclick="removeMarketPlaceDownloadableLinksRow(this);"  type="button" class="scalable button">
+                <span><span><span> <?php echo $this->__('Delete'); ?></span></span></span></button></td>
+                </tr>
+            </table>
+        </td>  
+        </tr>
+</table> 
+
+<script type="text/javascript">
+                var addProductForm = new VarienForm('edit_exist_product_form', true);
+                function checkTextarea(){
+                                  var nicE = new nicEditors.findEditor('description');
+                                  var question = nicE.getContent();
+                                  if(question==''){
+                                      $('description').show();                                     
+                                      $('description').setStyle({
+                                            'width':'529px',
+                                            'margin-top':'-140px',
+                                            'border': 'none !important',
+                                            'background': 'none !important',
+                                            'padding': '0px',
+                                            'position': 'absolute',
+                                            'z-index': '-1'
+                                      });  
+                                     
+                                  }
+                                  var nicE = new nicEditors.findEditor('short_description');
+                                  var question = nicE.getContent();
+                                  if(question==''){
+                                      $('short_description').show();                                     
+                                      $('short_description').setStyle({
+                                            'width':'529px',
+                                            'margin-top':'-140px',
+                                            'border': 'none !important',
+                                            'background': 'none !important',
+                                            'padding': '0px',
+                                            'position': 'absolute',
+                                            'z-index': '-1'
+                                      });  
+                                     
+                                  }
+                              }
+</script>
+
+<!-- Special from date picket -->
+<script type="text/javascript">
+    //<![CDATA[
+    Calendar.setup({
+        inputField: "special_from_date",
+        ifFormat: "%m/%e/%Y",
+        showsTime: false,
+        button: "special_from_date_trig",
+        align: "Bl",
+        singleClick: true
+    });
+    //]]>
+</script> 
+
+<!-- Special to date picket -->
+<script type="text/javascript">
+    //<![CDATA[
+    Calendar.setup({
+        inputField: "special_to_date",
+        ifFormat: "%m/%e/%Y",
+        showsTime: false,
+        button: "special_to_date_trig",
+        align: "Bl",
+        singleClick: true
+    });
+    //]]>
+</script> 
+
+<!-- Category child node show/hide -->  
+<script type="text/javascript">
+    $$('.block-category li.parent ul').each(function(item) {
+        item.hide();
+    });
+
+    $$('.block-category li.parent > a span').each(function(element) {
+
+        element.observe('click', function(e) {
+            e.element().toggleClassName('end-minus', true);
+            e.element().toggleClassName('end-plus', true);
+            var idd = e.element().up().next('ul');
+            Effect.toggle(idd, 'blind', {duration: 0.5});
+
+            e.preventDefault();
+        });
+    });
+</script>     
+
+<!-- Multiple image upload -->
+<script type="text/javascript">
+    var fields = 0;
+    function addNewImage() {
+        var id = "image" + fields;
+        $("marketplace_image_list").insert("<div class='market_place_add_image'><input type='file' name='" + id + "' /><button type='button' class='button' onclick='removeAddedImage(this)' /><span><span><?php echo $this->__('Remove'); ?></span></span></button>");
+        fields += 1;
+    }
+    function removeAddedImage(value) {
+        value.up('div').remove();
+    }
+</script> 
+
+<!-- Product custom option and dynamically add downloadable product data --> 
+<script type="text/javascript">
+  var customOptionCount = <?php echo $option_count ?>;
+    var selectSubChildCustomOptionCount = <?php echo $select_sub_option_count ?>;
+    function addMarketPlaceCustomOption() {
+        var html = $("marketplace_custom_option_YYY").innerHTML.replace(/XXX/g, customOptionCount);
+        var new_html = html.replace(/YYY/g, customOptionCount);
+        $("marketplace_custom_option_list").insert(new_html);
+        customOptionCount = customOptionCount + 1;
+    }
+
+    function removeMarketPlaceCustomOption(value) {
+        value.up('div').remove();
+    }
+
+    function changeMarketPlaceCustomOption(value, option_value) {
+
+        var child_html;
+
+        var child_custom_option_value = value.getValue();
+        switch (child_custom_option_value) {
+            case "field":
+            case "area":
+                child_html = $("product_option_CCC_type_text").innerHTML.replace(/CCC/g, option_value);
+                break;
+            case "file":
+                child_html = $("product_option_CCC_type_file").innerHTML.replace(/CCC/g, option_value);
+                break;
+            case "drop_down":
+            case "radio":
+            case "checkbox":
+            case "multiple":
+                child_html = $("product_option_CCC_type_select").innerHTML.replace(/CCC/g, option_value);
+                break;
+            case "date":
+            case "date_time":
+            case "time":
+                child_html = $("product_option_CCC_type_date").innerHTML.replace(/CCC/g, option_value);
+                break;
+            default :
+                child_html = $("product_option_CCC_type_text").innerHTML.replace(/CCC/g, option_value);
+        }
+        if (value.up('table').nextSiblings('table') != '')
+        {
+            value.up('table').next('table').remove();
+            value.up('div').insert(child_html);
+        }
+        else
+        {
+            value.up('div').insert(child_html);
+        }
+    }
+
+    function addMarketPlaceChildSelectOption(value, sub_option_value) {
+
+        var selectChildCustomOption = $("product_option_CCC_select_AAA").innerHTML.replace(/CCC/g, sub_option_value);
+        var new_selectChildCustomOption = selectChildCustomOption.replace(/AAA/g, selectSubChildCustomOptionCount);
+        $(value).insert(new_selectChildCustomOption);
+        selectSubChildCustomOptionCount = selectSubChildCustomOptionCount + 1;
+
+    }
+    function removeMarketPlaceChildSelectOption(value) {
+        value.up('tr').remove();
+    }
+    var marketplaceDownloadableSampleRow = <?php echo $sample_count; ?>;
+    var marketplaceDownloadableLinkRow = <?php echo $link_count; ?>;
+    function addMarketPlaceDownloadableSamplesRow(value) {
+        var selectSampleOption = $("marketplace_download_sample_row_CCC").innerHTML.replace(/CCC/g, marketplaceDownloadableSampleRow);
+        $(value).insert(selectSampleOption);
+        marketplaceDownloadableSampleRow = marketplaceDownloadableSampleRow + 1;
+    }
+    function removeMarketPlaceDownloadableSamplesRow(value) {
+        value.up('tr').remove();
+    }
+    function addMarketPlaceDownloadableLinksRow(value) {
+        var selectLinkOption = $("marketplace_download_link_row_CCC").innerHTML.replace(/CCC/g, marketplaceDownloadableLinkRow);
+        $(value).insert(selectLinkOption);
+        marketplaceDownloadableLinkRow = marketplaceDownloadableLinkRow + 1;
+    }
+    function removeMarketPlaceDownloadableLinksRow(value) {
+        value.up('table').remove();
+    }
+
+    // Hiding existing sample, link and link sample files name
+    function hideOldFileName(id)
+    {
+        var hide_div = id+'-old';
+        $(hide_div).hide();
+    }
+
+    // For text editor
+    //<![CDATA[
+    bkLib.onDomLoaded(function() {
+       new nicEditor({iconsPath : '<?php echo $this->getSkinUrl('marketplace/nicEditorIcons.gif');?>'}).panelInstance('description');
+   });
+    //]]>
+    // For text editor
+    //<![CDATA[
+    bkLib.onDomLoaded(function() {
+       new nicEditor({iconsPath : '<?php echo $this->getSkinUrl('marketplace/nicEditorIcons.gif');?>'}).panelInstance('short_description');
+   });
+    //]]>
+</script>
+
+
+
+
+
+
+

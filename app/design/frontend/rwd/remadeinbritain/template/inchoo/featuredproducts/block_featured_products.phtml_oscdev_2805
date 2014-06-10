@@ -1,0 +1,107 @@
+<?php
+/**
+ * @category     Inchoo
+ * @package     Inchoo Featured Products
+ * @author        Domagoj Potkoc, Inchoo Team <web@inchoo.net>
+ * @modified    Mladen Lotar <mladen.lotar@surgeworks.com>, Vedran Subotic <vedran.subotic@surgeworks.com>
+ */
+?>
+<?php $image_size = (int) Mage::getStoreConfig("featuredproducts/cmspage/max_image_dimension") ?>
+<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+     <div class="Featured-contant">
+            <?php
+            $i = 0;
+            $row = 0;
+            foreach ($_products->getItems() as $_product):
+                ?>
+
+                    <?php if ($i == 0): ?>
+                        <?php $row++; ?>
+                    <div class="<?php echo (($row % 2) > 0) ? 'odd' : 'even' ?>">
+        <?php endif; ?>
+                    <div>
+                        <?php if ($_product->getNews_from_date()): ?>
+                            <?php if ($_product->getNews_to_date()): ?>
+                                <span class="new">
+                                    <img src="<?php echo $this->getskinUrl('images/new.png') ?>" width="82" height="72" alt=""/>
+                                </span>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
+                            <img class="product-img" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($image_size, $image_size) ?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" />
+                        </a>
+                        <div class="product-description">
+                            <p>
+                                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>)">
+                            <?php echo $this->htmlEscape($_product->getName()) ?>
+                                </a>
+                            </p>
+                            <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+
+                            <?php if (Mage::getStoreConfig('featuredproducts/general/price_visible')): ?>
+
+							<?php if ($_product->getSpecialPrice()): ?>
+                                <?php
+                                $_coreHelper = $this->helper('core');
+                                $_taxHelper = $this->helper('tax');
+                                ?>
+                                <span class="sale">
+                                    <img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
+                                </span>
+								<div class="sale-price">
+                                    <div class="was">
+                                        <label><?php echo $this->__('Was'); ?></label>
+                                        <span class="price"><?php
+                                            // echo $regular_price 
+                                            $_realPrice = $_taxHelper->getPrice($_product, $_product->getPrice());
+                                            echo $_coreHelper->currency($_realPrice, true, false);
+                                            ?>
+                                        </span>
+                                    </div>
+                                    <div class="now">
+                                        <span class="price"><?php
+                                            //echo $special_price;
+                                            $_price = $_taxHelper->getPrice($_product, $_product->getFinalPrice());
+                                            echo $_coreHelper->currency($_price, true, false);
+                                            ?>
+                                        </span>
+                                    </div>
+                                </div>
+								<?php else:?>
+								<?php echo $this->getPriceHtml($_product, true, '-new') ?>
+								<?php endif ?>
+
+                                <?php //echo $this->getPriceHtml($_product, true, '-new') ?>
+
+								<div class="product-links">
+								<?php if ($this->helper('wishlist')->isAllow()) : ?>
+										<li><a href="<?php echo $this->getAddToWishlistUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+									<?php endif; ?>
+									<?php if ($_compareUrl = $this->getAddToCompareUrl($_product)): ?>
+										<li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+									<?php endif; ?>
+									<div class="view-details">
+					                <button type="button" title="<?php echo $this->__('View Product') ?>" class="button view-product" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('View Product') ?></span></span></button>
+									</div>
+
+                                <?php if ($_product->isSaleable()): ?>
+                                    <button type="button" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                                <?php else: ?>
+                                    <div class="out-of-stock"><?php echo $this->__('Out of stock') ?></div>
+                                <?php endif; ?>
+								</div>
+
+        <?php endif; ?>
+
+                        </div>
+                    </div>
+
+                    <?php $i++;
+                    if ($i == $this->getItemsPerRow()):
+                        ?>
+                    <?php $i = 0; ?>
+                    </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+    </div>
+<?php endif; ?>

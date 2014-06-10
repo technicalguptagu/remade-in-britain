@@ -1,0 +1,47 @@
+jQuery(document).ready(function() {
+    jQuery("#loginheader").hide();
+	jQuery("#viewcart .block-content").hide();
+	jQuery("#headercms .block-content").hide();
+	jQuery("#cate-search .block-content").hide();
+
+	jQuery('#viewlogin .block-title').click(function() {   
+    jQuery('#loginheader').toggle();
+    jQuery('#viewlogin').find('.block-title').toggleClass('active'); 
+	jQuery('#viewcart').find('.block-title').removeClass('active'); 
+	jQuery('#headercms').find('.block-title').removeClass('active');
+	jQuery('#cate-search').find('.block-title').removeClass('active');
+	jQuery('#viewcart .block-content').hide();
+	jQuery("#headercms .block-content").hide();
+	jQuery("#cate-search .block-content").hide();
+	 });
+    jQuery('#viewcart .block-title').click(function() {   
+    jQuery('#viewcart .block-content').toggle();
+    jQuery('#viewcart').find('.block-title').toggleClass('active');
+	jQuery('#viewlogin').find('.block-title').removeClass('active');  
+	jQuery('#headercms').find('.block-title').removeClass('active');
+	jQuery('#cate-search').find('.block-title').removeClass('active');
+	jQuery("#loginheader").hide();
+	jQuery("#headercms .block-content").hide();
+	jQuery("#cate-search .block-content").hide();
+	 });
+    jQuery('#headercms .block-title').click(function() {   
+    jQuery('#headercms .block-content').toggle();
+    jQuery('#headercms').find('.block-title').toggleClass('active');
+	jQuery('#viewlogin').find('.block-title').removeClass('active'); 
+	jQuery('#viewcart').find('.block-title').removeClass('active');
+	jQuery('#cate-search').find('.block-title').removeClass('active');
+	jQuery("#loginheader").hide();
+	jQuery("#viewcart .block-content").hide();
+	jQuery("#cate-search .block-content").hide();
+   });   
+    jQuery('#cate-search .block-title').click(function() {   
+    jQuery('#cate-search .block-content').toggle();
+    jQuery('#cate-search').find('.block-title').toggleClass('active');
+	jQuery('#viewlogin').find('.block-title').removeClass('active'); 
+	jQuery('#headercms').find('.block-title').removeClass('active');
+	jQuery('#viewcart').find('.block-title').removeClass('active');
+	jQuery("#loginheader").hide();
+	jQuery("#viewcart .block-content").hide();
+	jQuery("#headercms .block-content").hide();
+   });   
+});   

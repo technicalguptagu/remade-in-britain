@@ -1,0 +1,29 @@
+<?php $posts = $this->getPosts(); ?>
+<div id="messages_product_view">
+    <?php Mage::app()->getLayout()->getMessagesBlock()->setMessages(Mage::getSingleton('customer/session')->getMessages(true)); ?>
+    <?php echo Mage::app()->getLayout()->getMessagesBlock()->getGroupedHtml(); ?>
+</div>
+<?php $i=0; foreach ($posts as $post): ?>
+    <?php if($i==1) break; ?>
+	<div class="block-title">
+        <strong><span><?php echo $this->__('Remade Blog'); ?></span></strong>
+		<h3><?php echo Mage::helper('blog')->__('Posted on'); ?> <?php echo $post->getCreatedTime(); ?><br/><?php echo $this->__('by')?> <?php echo $post->getUser(); ?></h3>
+    </div>
+    <div class="postWrapper">
+        <div class="postTitle">
+            <h2><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h2>           
+        </div>
+        <div class="postContent"><?php //echo $post->getPostContent(); ?><?php
+                                $_postName = $post->getPostContent();
+                                        $_count = strlen($_postName);
+                                        echo strip_tags(substr($_postName, 0, 680));
+                                        if ($_count > 680) {
+                                            echo '...';
+                                        }
+                                        ?><a class="aw-blog-read-more" href="<?php echo $this->getUrl('news') ?>">Read More</a></div>
+
+        <?php echo $this->getBookmarkHtml($post) ?>
+        <div class="tags"><?php echo $this->getTagsHtml($post) ?></div>
+    </div>
+	<?php $i++;?>
+<?php endforeach; ?>

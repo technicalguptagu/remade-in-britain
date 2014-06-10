@@ -1,0 +1,46 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2012
+ * @Modified By     Jenifer Ratchanya
+ * @Modified Date   Mar 27 2014
+ *
+ * */
+?>
+<?php if (!Mage::helper('marketplace')->checkMarketplaceKey()) { ?>
+    <?php
+    $fb_page = Mage::getStoreConfig('marketplace/marketplace/facebook_page');
+    $twitter_page = Mage::getStoreConfig('marketplace/marketplace/twitter_page');
+    $google_page = Mage::getStoreConfig('marketplace/marketplace/google_page');
+    ?>
+    <div class="footer-container">
+        <div class="footer">
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links')->toHtml() ?>                       
+        </div>
+        <div class="footer_bottom_container"> 
+            <div class="footer_bottom_blocks">         
+            <?php echo $this->getChildHtml('footer.newsletter'); ?>     
+                <dl class="follow-us">
+                    <dt><?php echo $this->__('Follow Us On'); ?></dt>              
+                    <dd><a target="_blank" href="https://www.facebook.com/<?php echo $fb_page; ?>" class="facebook_sprite"><img src="<?php echo $this->getSkinUrl('images/facebook_follow.gif') ?>" alt="facebook" title="facebook"/></a></dd>
+                    <dd><a target="_blank" href="https://twitter.com/<?php echo $twitter_page; ?>" class="twitter_sprite"><img src="<?php echo $this->getSkinUrl('images/twitter_follow.gif') ?>" alt="twitter" title="twitter"/></a></dd>
+                    <dd><a target="_blank" href="https://plus.google.com/<?php echo $google_page; ?>" class="google_sprite"><img src="<?php echo $this->getSkinUrl('images/google_follow.png') ?>" alt="google" title="google"/></a></dd>                                   
+                </dl>
+                <dl class="payment">
+                    <dt><?php echo $this->__('Pay Securely By'); ?></dt>  
+                    <dd class="visa_cards"><img src="<?php echo $this->getSkinUrl('images/cards.png') ?>" alt="cards" title="cards"/></dd>
+                </dl>          
+            </div>
+            <div class="footer_nav">                
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-navigation')->toHtml() ?> 
+                <address><?php echo $this->getCopyright() ?></address>  
+            </div>
+        </div>
+    </div>
+<?php } ?>

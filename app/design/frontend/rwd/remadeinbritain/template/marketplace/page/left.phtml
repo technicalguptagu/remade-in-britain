@@ -1,0 +1,47 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2012
+ * @Modified By     Jenifer Ratchanya
+ * @Modified Date   Mar 27 2014
+ *
+ * */
+?>
+<?php
+$loginId = Mage::getSingleton('customer/session')->isLoggedIn();
+$groupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
+$getGroupId = Mage::helper('marketplace')->getGroupId();
+$customer = Mage::getSingleton("customer/session")->getCustomer();
+$customer_status = $customer->getCustomerstatus();
+?>
+  <div class="block-title">
+        <strong><span><?php echo Mage::helper('marketplace')->__('Market Place') ?></span></strong>
+    </div>
+<div class="block block-account">
+    
+    <div class="block-content">
+        <?php if ($groupId == $getGroupId && $loginId && $customer_status != 2 && $customer_status != 0) { ?>
+            <ul><?php //For sellers  ?>
+                <li class="<?php if (Mage::helper('core/url')->getCurrentUrl() == Mage::helper('marketplace/marketplace')->dashboardUrl()) { ?>active<?php } ?>"><a href="<?php echo Mage::helper('marketplace/marketplace')->dashboardUrl(); ?>"><?php echo $this->__('Seller Dashboard'); ?></a></li>
+                <li class="<?php if (Mage::helper('core/url')->getCurrentUrl() == Mage::helper('marketplace/marketplace')->getManageProductUrl() || Mage::helper('core/url')->getCurrentUrl() == Mage::helper('marketplace/marketplace')->getNewProductUrl()) { ?>active<?php } ?>"><a href="<?php echo Mage::helper('marketplace/marketplace')->getManageProductUrl() ?>"> <?php echo $this->__('Manage Products') ?> </a></li>
+                <li class="<?php if (Mage::helper('core/url')->getCurrentUrl() == Mage::helper('marketplace/marketplace')->getManageOrderUrl()) { ?>active<?php } ?>"><a href="<?php echo Mage::helper('marketplace/marketplace')->getManageOrderUrl(); ?>"> <?php echo $this->__('Orders') ?> </a></li>
+                <li class="<?php if (Mage::helper('core/url')->getCurrentUrl() == Mage::helper('marketplace/marketplace')->getViewtransaction()) { ?>active<?php } ?>"><a href="<?php echo Mage::helper('marketplace/marketplace')->getViewtransaction(); ?>"> <?php echo $this->__('Transaction History') ?> </a></li>
+                <li class="<?php if (Mage::helper('core/url')->getCurrentUrl() == Mage::helper('marketplace/marketplace')->addprofileUrl()) { ?>active<?php } ?>"><a href="<?php echo Mage::helper('marketplace/marketplace')->addprofileUrl(); ?>"><?php echo $this->__('My Profile') ?></a></li>
+                <?php if (Mage::getStoreConfig('marketplace/admin_approval_seller_registration/contact_admin') == 1) { ?>
+                    <li class="<?php if (Mage::helper('core/url')->getCurrentUrl() == Mage::helper('marketplace/marketplace')->getContactFormUrl()) { ?>active<?php } ?> last"><a href="<?php echo Mage::helper('marketplace/marketplace')->getContactFormUrl(); ?>"> <?php echo $this->__('Contact Admin') ?> </a></li>
+                <?php } ?>
+            </ul>
+        <?php } else { ?>
+            <ul><?php //For Buyers  ?>
+                <li class="<?php if (Mage::helper('core/url')->getCurrentUrl() == Mage::helper('marketplace/marketplace')->becomemerchantUrl()) { ?>active<?php } ?>"><a href="<?php echo Mage::helper('marketplace/marketplace')->becomemerchantUrl(); ?>"> <?php echo $this->__('Become a Seller') ?> </a></li>
+                <li class="<?php if (Mage::helper('core/url')->getCurrentUrl() == Mage::helper('marketplace/marketplace')->customerreviewUrl()) { ?>active<?php } ?> last"><a href="<?php echo Mage::helper('marketplace/marketplace')->customerreviewUrl(); ?>"> <?php echo $this->__('Seller Reviews') ?> </a></li>
+            </ul>
+        <?php } ?>
+    </div>
+</div>

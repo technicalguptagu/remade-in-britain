@@ -1,0 +1,132 @@
+<?php
+/**
+ * @category     Inchoo
+ * @package     Inchoo Featured Products
+ * @author        Domagoj Potkoc, Inchoo Team <web@inchoo.net>
+ * @modified    Mladen Lotar <mladen.lotar@surgeworks.com>, Vedran Subotic <vedran.subotic@surgeworks.com>
+ */
+?>
+<?php $image_size = (int) Mage::getStoreConfig("featuredproducts/cmspage/max_image_dimension") ?>
+<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+<?php
+    $_coreHelper = $this->helper('core');
+    $_taxHelper = $this->helper('tax');
+?>
+					             
+     <div class="Featured-contant">
+	 <ul class="products-grid">
+            <?php
+            $i = 0;
+            $row = 0;
+            foreach ($_products->getItems() as $_product):
+                ?> 
+                    <li class="item">
+						<div class="productbg">
+                        <?php if ($_product->getNews_from_date()): ?>
+                            <?php if ($_product->getNews_to_date()): ?>
+                                <span class="new-lable">
+                                    <img src="<?php echo $this->getskinUrl('images/new.png') ?>" width="82" height="72" alt=""/>
+                                </span>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+                        <?php $_lowQuantity= Mage::helper('productstickers')->getNotifyStock($_product);?>
+
+						<?php $_productQuantity= Mage::helper('productstickers')->getNotifyStockQty($_product);?>
+							<?php if($_productQuantity<=$_lowQuantity):?>
+							<span class="limited-lable">
+								<img src="<?php echo $this->getSkinUrl('images/limited.png') ?>" alt=""/>
+							</span>
+                        <?php endif; ?>
+						
+						<?php if ($_product->getSpecialPrice()): ?>
+                                <span class="sale">
+                                    <img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
+                                </span>
+						<?php endif; ?>
+						
+                        <div href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="product-image">
+                            <img class="product-img" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(230, 230) ?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" />
+							<span class="transparent-img">&nbsp;</span>
+							<div class="actions"> 
+								<div class="product-rating">
+									<?php echo $this->getReviewsSummaryHtml($_product, true, '-new') ?>
+								</div>
+								<div class="product-links">
+									<ul class="add-to-links">
+										<?php if ($this->helper('wishlist')->isAllow()) : ?>
+										<li class="add-wishlist"><a href="<?php echo $this->getAddToWishlistUrl($_product) ?>" class="link-wishlist">&nbsp;</a></li>
+										<?php endif; ?>
+										<?php if ($_compareUrl = $this->getAddToCompareUrl($_product)): ?>
+										<li class="add-compare"><a href="<?php echo $_compareUrl ?>" class="link-compare">&nbsp;</a></li>
+										<?php endif; ?>
+										<li class="view-products">
+											<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->__('View Product') ?>" class="view-prod">&nbsp;</a>
+										</li>
+										<?php if ($_product->isSaleable()): ?>
+										<li class="add-cart">
+											<a href="<?php echo $this->getAddToCartUrl($_product) ?>" title="<?php echo $this->__('Add to Cart') ?>">&nbsp;</a>
+										</li>
+										<?php else: ?>
+										<li class="out-of-stock"><?php echo $this->__('Out of stock') ?></li>
+										<?php endif; ?>
+									 </ul>
+								</div>
+							</div>
+                        </div>
+						<h3 class="product-name">
+							<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>)">
+							<?php
+                                $_productName = $this->escapeHtml($_product->getName());
+                                $_count = strlen($_productName);
+                                echo strip_tags(substr($_productName, 0, 50));
+                                if ($_count > 50) {
+                                echo '...';
+                            }?>
+							
+							</a>
+						</h3> 
+				
+                        <div class="product-description"> 
+							<?php if ($_product->getSpecialPrice()): ?>
+                              <div class="sale-price">
+                                    <div class="now">
+                                        <span class="price"><?php
+                                            
+                                            $_price = $_taxHelper->getPrice($_product, $_product->getFinalPrice());
+                                            echo $_coreHelper->currency($_price, true, false);
+                                            ?>
+                                        </span>
+                                    </div>
+									<div class="was">
+                                        <label><?php echo $this->__('was'); ?></label>
+                                        <span class="price"><?php
+                                            
+                                            $_realPrice = $_taxHelper->getPrice($_product, $_product->getPrice());
+                                            echo $_coreHelper->currency($_realPrice, true, false);
+                                            ?>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+							
+								<?php else:?>
+								<?php echo $this->getPriceHtml($_product, true, '-new') ?>
+								<?php $_lowQuantity= Mage::helper('productstickers')->getNotifyStock($_product);?>
+				                <?php $_productQuantity= Mage::helper('productstickers')->getNotifyStockQty($_product);?>
+				                <?php if($_productQuantity<=$_lowQuantity):?>
+						            <div class="availability_p low-stock">
+								          <span><?php echo $this->__('Limited Number Available')?></span>
+						           </div>
+						        <?php endif; ?>
+								<?php endif ?>
+
+                                
+								</div>
+								
+                            </li> 
+    <?php endforeach; ?>
+									
+    </ul>
+	</div>
+<?php endif; ?>

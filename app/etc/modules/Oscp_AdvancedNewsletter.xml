@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oscp_AdvancedNewsletter>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Oscp_AdvancedNewsletter>
+    </modules>
+</config>

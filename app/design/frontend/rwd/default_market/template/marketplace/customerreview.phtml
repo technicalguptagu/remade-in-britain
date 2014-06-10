@@ -1,0 +1,62 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2012
+ * @Modified By     Jenifer Ratchanya
+ * @Modified Date   Mar 27 2014
+ *
+ * */
+?>
+<?php if (Mage::getSingleton('customer/session')->isLoggedIn()) { ?>
+    <h2> <?php echo $this->__('Seller Reviews'); ?></h2>
+    <?php
+    $collection = $this->getCollection();
+    if (count($collection) > 0) {
+        foreach ($collection as $_collection) {
+            ?>
+            <div class="all_review_container">   
+                <div class="all_reviews_details">
+                    <p class="all_reviews_block">
+                        <?php
+                        $id = $_collection['seller_id'];
+                        $store_name = Mage::getModel('marketplace/sellerreview')->getSellerInfo($id);
+
+                        //Display seller rating
+                        if ($_collection['rating'] == 1) {
+                            ?>
+                            <label class="all_review_rating" style="width:20%;"></label>
+                        <?php } elseif ($_collection['rating'] == 2) { ?>
+                            <label class="all_review_rating" style="width:40%;"></label>
+                        <?php } elseif ($_collection['rating'] == 3) { ?>
+                            <label class="all_review_rating" style="width:60%;"></label>
+                        <?php } elseif ($_collection['rating'] == 4) { ?>
+                            <label class="all_review_rating" style="width:80%;"></label>
+                        <?php } else { ?>
+                            <label class="all_review_rating" style="width:100%;"></label>
+            <?php } ?>   
+                    </p>
+                    <b><?php echo $store_name . '</br>'; ?></b>                 
+                    <span>
+                        <?php $date = $_collection['created_at'];
+                        echo $new_date = date('M j, Y', strtotime($date)) . '</br>';
+                        ?>               
+                    </span>
+                </div> 
+                <p class="all_reviews_comments">
+            <?php echo $review = $_collection['review'] . '</br>'; ?> 
+                </p>
+            </div>
+        <?php
+        }
+        echo $this->getPagerHtml();
+    } else {
+        echo $this->__('You have not review any seller');
+    }
+}
+?>

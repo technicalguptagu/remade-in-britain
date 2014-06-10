@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @category Oscp
+* @package Oscp_ImageGallery
+*/ 
+-->
+<layout version="0.1.0">
+    <default> 
+        <reference name="head">			
+        </reference>   
+    </default>
+    <imagegallery_index_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>		
+        <reference name="content">
+            <block type="imagegallery/imagegallery" name="style"  />
+        </reference>        
+    </imagegallery_index_index>	 
+</layout> 

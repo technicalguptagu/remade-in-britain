@@ -1,0 +1,111 @@
+
+/*===============================bof developer 11 22/7/2012 display home banner slider ====================================================*/
+#simple-slide .lof-slidecontent, .lof-slidecontent a {	color:#FFF;	}
+#simple-slide.lof-container { width: 95%; margin: 0 auto; }
+#simple-slide .lof-slidecontent{	position: relative;}
+#simple-slide .lof-slidecontent .preload{	position:absolute;	top:0;	left:0;	z-index:2; height: 100%; width: 100%;}
+#simple-slide .lof-main-outer {position: relative; overflow:hidden; margin: 0 auto; }
+#simple-slide .lof-main-outer .lof-next, #simple-slide .lof-main-outer .lof-previous{ display:block; width:9px; color:#FFF; cursor:pointer; position:absolute;	height:13px; top:199px; }
+#simple-slide .lof-main-outer .lof-next { background: url("../images/all-images-sprite.png") no-repeat scroll -968px -369px transparent; height: 131px; right: 7px; top: 130px; width: 32px; }
+#simple-slide .lof-main-outer .lof-previous { background: url("../images/all-images-sprite.png") no-repeat scroll -1px -331px transparent; cursor: pointer; height: 131px; left: 7px; top: 126px; width: 32px; }
+.pikachoose #simple-slide .lof-main-outer .lof-previous { top: 26px; }
+.pikachoose #simple-slide .lof-main-outer .lof-next {  top: 30px; }
+#simple-slide .lof-main-wapper li {border: none !important;}
+
+/* main flash */
+#simple-slide ul.lof-main-wapper{ margin-right:auto; 	background: transparent;	padding:0 !important;	margin:0 !important;	position: relative;}
+#simple-slide ul.lof-main-wapper ul { padding:0 !important;	margin:0 !important;}
+#simple-slide ul.lof-main-wapper li{ padding:0 !important; margin:0 !important; float:left; list-style: none;position:relative; overflow: hidden; width: 1001px; }
+#simple-slide ul.lof-main-wapper li a img {border:none !important;}
+/*#simple-slide .lof-opacity { overflow:visible  !important; position:absolute !important; }
+#simple-slide .lof-opacity  li{	position:absolute  !important; top:0; left:0; margin:0;	padding:0;	float:inherit  !important; }*/
+#simple-slide ul.lof-main-wapper li img{	padding:0 !important; margin:0 !important; max-width: none !important; }
+
+/* item navigator */
+#simple-slide .lof-navigator-wapper { background: none repeat scroll 0 0 transparent; bottom: 18px; height: 9px; position: absolute; right: 467px; width: 85px; }
+#simple-slide .lof-navigator-outer{width:85px !important;display: inline-block; position:relative;z-index:1;	height:9px !important;overflow:hidden;color:#FFF;margin:0;padding:0;}
+#simple-slide ul.lof-navigator{ display: block; top:0; padding:0; margin:0; position:relative; width:85 !important;}
+#simple-slide ul.lof-navigator li { cursor:pointer; list-style:none; padding:0 10px 0 0; margin: 0;	overflow:hidden;	float:left;	display:block;	text-align:left; border: none; background:url(../images/banner-active-inactive-icon.png) 0 100% no-repeat; width:9px !important; height:9px !important; }
+#simple-slide ul.lof-navigator li:last-child { padding: 0; }
+#simple-slide ul.lof-navigator li span {	display: none;}
+#simple-slide ul.lof-navigator li.active { display:block; background: url(../images/banner-active-inactive-icon.png) 0 -1px no-repeat; }
+#simple-slide .lof-main-outer .gallery_slide { height: 132px; padding: 20px 0 0 23px; position: absolute; right: -15px; top: 64px; width: 370px; z-index: 2; }
+#simple-slide .lof-main-outer .gallery_slide h1{font-size:28px;font-family:Georgiaw;font-weight:normal;color:#FFFFFF;}
+#simple-slide .lof-main-outer .gallery_slide p{font-size:13px;font-family:Helvetica;font-weight:normal;color:#FFFFFF;line-height: 17px;}
+#simple-slide .title h1 { color: #FFFFFF; left: 10px; top: 10px; position: absolute; }
+#simple-slide .widget-static-block .desc { bottom: 48px; position: absolute; left: 398px; text-align: left; }
+
+
+
+
+/*===============================Eof developer 11 22/7/2012 display home banner slider ====================================================*/
+
+
+/*===============================Eof developer 11 22/7/2012 display home banner slider fadein/fadeout ====================================================*/
+
+#fadein .lof-slidecontent, .lof-slidecontent a {  /*#6B6251;*/color: #C6BDAC; font-size: 16px; font-style: italic; font-weight: normal; text-decoration: none; }
+#simple-slide .desc a span { float: left; width: auto; }
+#simple-slide .desc a span.arrow { background: url("../images/all-images-sprite.png") no-repeat scroll -1px -879px transparent; height: 6px; margin: 10px 0 0 5px; width: 7px; float: left; }
+#fadein.lof-container {}
+#fadein .lof-slidecontent{	position: relative;}
+#fadein .lof-slidecontent .preload{	position:absolute;	top:0;	left:0;	z-index:2; height: 100%; width: 100%;}
+#fadein .lof-main-outer { margin: 0 auto; overflow: hidden; padding: 30px 0 30px 0; position: relative; }
+/*#fadein .lof-main-outer .lof-next,  .lof-main-outer .lof-previous{	display:block;	width:40px;	color:#FFF;	cursor:pointer;	position:absolute;	height:100%;	top:0;}
+#fadein .lof-main-outer .lof-next {	right:10px;}
+#fadein .lof-main-outer .lof-previous {	left:10px;}*/
+#fadein .lof-main-wapper li {border: none !important;}
+#fadein .title h1 { top: 10px; left: 10px; position: absolute; color:#fff; }
+/* main flash */
+#fadein ul.lof-main-wapper{	/* margin-right:auto; */	background: transparent;	padding:0 !important;	margin:0 !important;	position: relative;}
+#fadein ul.lof-main-wapper li{	padding:0 !important;	margin:0 !important;	float:left;	list-style: none;	position:relative;}
+#fadein ul.lof-main-wapper li a img {border:none !important;}
+#fadein .lof-opacity {	overflow:visible  !important;;	position:absolute !important;}
+#fadein .lof-opacity  li{	position:absolute  !important;;	top:0;	left:0;	margin:0;	padding:0;	float:inherit  !important;}
+#fadein ul.lof-main-wapper li img{	padding:0 !important; margin:0 !important; max-width: none !important; }
+
+/* item navigator */
+#fadein .lof-navigator-wapper { bottom: 40px; position: absolute; right: 175px; }
+#fadein .lof-navigator-outer{	position:relative;	z-index:1;	height:180px;	overflow:hidden;	color:#FFF;	margin:0;	padding:0;}ul.lof-navigator{	top:0;	padding:0;	margin:0;	position:relative;	width:100%;}
+#fadein ul.lof-navigator li{ background: url("../images/banner-inactive-img.png") no-repeat scroll 0 0 transparent;	 cursor:pointer; list-style:none; padding:0; margin: 0;	overflow:hidden;	float:left;	display:block;	text-align:left; border: none !important;}
+#fadein ul.lof-navigator li span {	display: none;}
+#fadein ul.lof-navigator li.active { background: url("../images/banner-active-img.png") no-repeat scroll 0 0 transparent; display:block;}
+
+/*===============================Eof developer 11 22/7/2012 display home banner slider ====================================================*/
+
+
+
+/*************** for imagegallary first ************************/
+.col-main #imagegallary1 { padding: 20px 0; }
+#imagegallary1 .widget.widget-static-block { float: left; height: 362px; margin: 0 8px 8px 0; position: relative; width: 662px; }
+#imagegallary1 ul.verical { float: right; width: 328px; }
+#imagegallary1 ul.verical li { margin: 0 0 8px 0; }
+#imagegallary1 ul.horizontal { clear: both; height: 178px; width: 1000px; }
+#imagegallary1 ul.horizontal li { float:left; }
+#imagegallary1 ul.horizontal li + li { margin:0 0 0 8px ; } 
+#imagegallary1 .title h1 { color: #FFFFFF; left: 20px; position: absolute; top: 20px; }
+.widget-static-block .desc { }
+
+/*************** for imagegallary second ************************/
+
+
+.col-main #imagegallary2 { padding: 20px 0; }
+#imagegallary2 .widget.widget-static-block { float: left; height: 362px; margin: 0 8px 0 0; width: 662px; position: relative; }
+#imagegallary2 .title h1 { top: 10px; left: 10px; position: absolute; color:#fff; }
+#imagegallary2 ul.verical { float: right; width: 328px; }
+#imagegallary2 ul.verical li { margin: 0 ; }
+#imagegallary2 ul.verical li + li { margin: 8px 0 0 0; }
+
+
+
+/*************** for imagegallary third ************************/
+
+
+.col-main #imagegallary2 { padding: 20px 0; }
+#imagegallary3 .widget.widget-static-block { display: block; height: 362px; width: 662px; position: relative; margin:0 auto 8px; }
+#imagegallary3 .title h1 { top: 0; left: 257px; position: absolute; color:#fff; }
+#imagegallary3 ul.horizontal {  width: 1000px; }
+#imagegallary3 ul.horizontal li { float:left; }
+#imagegallary3 ul.horizontal li + li { margin:0 0 0 8px; }
+.lof-container ol { display: none; }
+#simple-slide.lof-container .direction-nav li a.prev { background: url(../images/spritearrow.png) no-repeat 0 1px; height: 25px; right: 0; position: absolute; text-indent: -10000px; top: 48%; width: 20px; }
+#simple-slide.lof-container .direction-nav li a.next { background: url(../images/spritearrow.png) no-repeat -61px 1px; height: 25px; left: 0; position: absolute; text-indent: -10000px; top: 48%; width: 20px; }

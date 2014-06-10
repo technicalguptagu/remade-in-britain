@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- /**
+/**
+* @category Oscp
+* @package Oscp_ImageGallery
+*/ 
+-->
+<layout version="0.1.0">
+    <imagegallery_adminhtml_imagegallery_index>
+        <reference name="content">
+            <block type="imagegallery/adminhtml_imagegallery" name="imagegallery" />
+        </reference>
+    </imagegallery_adminhtml_imagegallery_index>
+    <imagegallery_adminhtml_bannerconfiguration_index>
+        <reference name="content">
+            <block type="imagegallery/adminhtml_bannerconfiguration" name="bannerconfiguration" />
+        </reference>
+    </imagegallery_adminhtml_bannerconfiguration_index>
+</layout>

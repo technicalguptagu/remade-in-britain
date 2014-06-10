@@ -1,0 +1,29 @@
+<?php
+
+class Oscp_ProductStickers_Helper_Data extends Mage_Core_Helper_Abstract 
+{
+    
+    public function getProductShortDescription($productId)
+    {	
+		return Mage::getModel('catalog/product')->load($productId);
+    }
+
+
+	public function getRewardPoint($_product)
+    {	
+		$product = Mage::getModel('catalog/product')->load($_product->getEntityId());
+		return $product->getResource()->getAttribute('reward_point')->getFrontend()->getValue($product);		
+    }
+
+	/*
+	@var $_imageUrl	
+	return $this
+	*/
+
+	public function getRewardPointImage()
+    {		
+		$_imageUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'catalog/stickers/';	
+		return $_imageUrl ;
+	}
+   
+}

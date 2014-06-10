@@ -1,0 +1,79 @@
+<?php
+/**
+* @category Oscp
+* @package Oscp_ImageGallery
+*/ 
+
+$_collection = $this->getCollection();
+$_helper = $this->helper('imagegallery');
+
+$_thumbSize = $_helper->getThumbSize();
+$_imageSize = $_helper->getPhotoSizeInSlideShow();
+$_rowIndex = 0;
+$_thumbCounter = 0;
+?>
+<link type="text/css" rel="stylesheet" href="<?php echo $this->getSkinUrl('css/gallery.css'); ?>"></link>
+<?php
+foreach ($_collection as $_image):
+    if ($_rowIndex == 0):
+?>
+        <div id="imagegallary1">
+            <div class="widget widget-static-block">   
+                <a href="<?php echo $_image->getWeblink(); ?>" >
+                    <img title="<?php echo $_image->getTitle(); ?>" alt="<?php echo $_image->getTitle(); ?>" 
+                         src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $_image->getLargeimage(); ?>" 
+                         width="<?php echo $_imageSize['width']; ?>" height="<?php echo $_imageSize['height']; ?>" />
+                </a>
+                <?php if ($_helper->canShowTitle()): ?>
+                    <div class="title"><h1><?php echo $_image->getTitle(); ?></h1></div>  
+                <?php endif; ?>
+
+                <?php if ($_helper->canShowDescription()): ?>
+                    <?php if ($_helper->getDescriptionLength()): ?>      
+                        <div class="desc">
+                            <?php echo substr($_image->getDescription(), 0, $_helper->getDescriptionLength());
+                            if (strlen($_image->getContent()) > $_helper->getDescriptionLength()): echo '..';
+                            else: echo '';
+                            endif;
+                            ?>
+                            <br/>
+                            <a href="<?php echo $_image->getWeblink(); ?>" >More details<span> &#187;</span></a>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>  
+            </div>
+            <?php
+            else:
+            $_thumbCounter++;
+            if (($_thumbCounter == 1)):
+                $_liClass = 'baseLi';
+                ?>
+                <ul class="Vertical">      
+                    <?php elseif ($_thumbCounter == 2):
+                        $_liClass = 'baseLi';
+                        ?>
+                    <?php elseif ($_thumbCounter == 3): ?>
+                </ul>
+                <ul class="horizontal">			
+                    <?php
+                    $_liClass = 'horizontal';
+                    else:
+                    $_liClass = 'horizontal';
+                    endif;
+                    if ($_thumbCounter == $_helper->getImageInRows()):
+                    break;
+                    endif;
+                    ?>
+                    <li class="outer <?php echo $_liClass; ?>">
+                        <a href="<?php echo $_image->getWeblink(); ?>" >
+                            <img title="<?php echo $_image->getTitle(); ?>" alt="<?php echo $_image->getTitle(); ?>" 
+                            src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $_image->getSmallimage(); ?>"width="<?php echo $_thumbSize['width']; ?>" height="<?php echo $_thumbSize['height']; ?>" />
+                        </a>       
+                    </li>
+            <?php
+            endif;
+            $_rowIndex++;
+endforeach;
+            ?>
+                </ul>
+        </div>

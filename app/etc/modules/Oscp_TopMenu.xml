@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Oscp_TopMenu>
+            <active>true</active>
+            <codePool>local</codePool>            
+        </Oscp_TopMenu>
+    </modules>
+</config>

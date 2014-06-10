@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oscp_AdvancedNewsletter>
+            <version>0.1.0</version>
+        </Oscp_AdvancedNewsletter>
+    </modules>
+    <global>
+		<helpers>
+            <advancednewsletter>
+                <class>Oscp_AdvancedNewsletter_Helper</class>
+            </advancednewsletter>
+        </helpers>	   
+    </global>
+	<frontend>
+        <routers>
+            <newsletter>
+                <args>
+                    <modules>
+                        <oscp_advancednewsletter before="Mage_Newsletter">Oscp_AdvancedNewsletter_Newsletter</oscp_advancednewsletter>
+                    </modules>
+                </args>
+            </newsletter>
+        </routers> 
+    </frontend>  
+</config>

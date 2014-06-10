@@ -1,0 +1,114 @@
+<?php
+    /**
+    * EcommerceTeam.com
+    *
+    * Seo Layered Navigation
+    *
+    * @category     Magento Extension
+    * @copyright    Copyright (c) 2011 Ecommerce Team (http://www.ecommerce-team.com)
+    * @author       Ecommerce Team
+    * @version      3.0
+    */
+
+
+/** @var $this EcommerceTeam_Sln_Block_Layer_View */
+?>
+<?php if($this->canShowBlock()): ?>
+<div id="<?php echo $this->getBlockId();?>" class="block block-layered-nav">
+    <div class="block-title"><strong><span>
+		<div class="showdiv"><?php echo $this->__('Refine Your Search') ?></div>
+		<div class="hidediv"><?php echo $this->__('Refine Your Search') ?></div>
+		</span></strong>
+    </div>
+    <div class="block-content">
+        <?php echo $this->getStateHtml() ?>
+        <?php if($this->canShowOptions()): ?>
+            <!-- <p class="block-subtitle"><?php echo $this->__('Shopping Options') ?></p> -->
+            <dl id="narrow-by-list">
+                <?php $_filters = $this->getFilters() ?>
+                <?php foreach ($_filters as $_filter):?>
+                <?php if($_filter->canShow()):?>
+                    <dt>
+                        <span><?php echo $this->__($_filter->getName()) ?></span>
+                        <?php if($filterComment = $_filter->getComment()):?>
+                        <img onmouseover="showFilterComment('<?php echo $_filter->getRequestVar()?>', this)"
+                              onmouseout="hideFilterComment('<?php echo $_filter->getRequestVar()?>', this)"
+                              class="filter-details"
+                              src="<?php echo $this->getSkinUrl('images/ecommerceteam/sln/help.png')?>"
+                              alt="Filter Details" />
+                        <?php endif;?>
+                    </dt>
+                    <dd><?php echo $_filter->getHtml() ?></dd>
+                <?php endif; ?>
+                <?php endforeach; ?>
+            </dl>
+            <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+        <?php endif; ?>
+    </div>
+	<div class="searchrefine">
+	<div class="detailes show_hide">Read Less</div>
+	<div class="detailes slidingDiv">...Read More</div>
+	</div>
+	<script type="text/javascript"> 
+			jQuery(document).ready(function(){ 
+				jQuery(".slidingDiv").show(); 
+				jQuery(".show_hide").hide();
+				jQuery(".showdiv").show(); 
+				jQuery(".hidediv").hide();
+			
+			if(getCookie('selectedTab')!='')
+					{
+					jQuery(".block-title").addClass('active');
+				jQuery(".block-content").toggleClass("active");				
+				jQuery(".show_hide").show();
+				jQuery(".slidingDiv").hide(); 
+				jQuery(".hidediv").show();
+				jQuery(".showdiv").hide(); 
+					}
+				jQuery('.slidingDiv, .showdiv').click(function(){
+					setCookie('selectedTab', 'open');
+				jQuery(".block-title").addClass('active');
+				jQuery(".block-content").toggleClass("active");				
+				jQuery(".show_hide").show();
+				jQuery(".slidingDiv").hide(); 
+				jQuery(".hidediv").show();
+				jQuery(".showdiv").hide(); 
+				}); 
+
+				jQuery('.show_hide, .hidediv').click(function(){
+					setCookie('selectedTab', '');
+				jQuery(".block-title").removeClass('active');
+				jQuery(".block-content").toggleClass("active");				
+				jQuery(".slidingDiv").show();
+				jQuery(".show_hide").hide(); 
+				jQuery(".showdiv").show();
+				jQuery(".hidediv").hide(); 
+				});
+
+			}); 
+		function setCookie(name, val) {
+		document.cookie = name+" =" +escape( val );
+		//alert(document.cookie);
+		}
+function getCookie(name) {
+if (document.cookie.length>0)
+{
+c_start=document.cookie.indexOf(name + "=");
+//alert(document.cookie);
+if (c_start!=-1)
+{
+c_start=c_start + name.length+1;
+c_end=document.cookie.indexOf(";",c_start);
+if (c_end==-1) c_end=document.cookie.length;
+return unescape(document.cookie.substring(c_start,c_end));
+}
+}
+//alert(c_end);
+return "";
+}
+</script>
+
+
+</div>
+<div class= "refine-search-bottom">&nbsp;</div>
+<?php endif; ?>

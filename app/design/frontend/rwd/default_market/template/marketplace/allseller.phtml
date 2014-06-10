@@ -1,0 +1,50 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2012
+ * @Modified By     Jenifer Ratchanya
+ * @Modified Date   Mar 27 2014
+ *
+ * */
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('All sellers'); ?> </h1>
+</div>
+<ul class="mp_all_sellers_container f-left" border="0" cellspacing="0" cellpadding="0">
+    <?php
+    //Get seller data collection
+    $seller_collection = $this->getCollection();
+    $seller_count = count($seller_collection);
+    if ($seller_count > 0) {
+        foreach ($seller_collection as $_seller_collection) {
+            $seller_id = $_seller_collection['entity_id'];
+            $get_requestPath = Mage::helper('marketplace/marketplace')->getSellerRewriteUrl($seller_id);
+            if (strpos($_seller_collection['store_logo'], '.') && $_seller_collection['store_title'] != '') {
+                ?>                    
+                <li class="f-left">
+                    <a class="mp_all_sellers_view" href="<?php echo $get_requestPath; ?>" title="<?php echo $_seller_collection['store_title']; ?>">
+                        <img src="<?php echo Mage::getBaseUrl('media') . "marketplace/resized/" . $_seller_collection['store_logo']; ?>" style="vertical-align: middle;" width="95" height="62" /> 
+                    </a>
+                </li>
+        <?php } elseif (!strpos($_seller_collection['store_logo'], '.') && $_seller_collection['store_title'] != '') { ?>
+                <li class="f-left">
+                    <a class="mp_all_sellers_view" href="<?php echo $get_requestPath; ?>" title="<?php echo $_seller_collection['store_title']; ?>">
+                        <img src="<?php echo Mage::getBaseUrl('skin') . "frontend/default/market_place/marketplace/images/image.jpg"; ?>"style="vertical-align: middle;" width="95" height="62" />
+                    </a> 
+                </li>
+        <?php }
+    } ?> 
+    </ul>
+    <div style="clear: both;"></div>  
+    <?php
+    echo $this->getPagerHtml();
+} else {
+    echo $this->__('There is no seller(s) to show');
+}
+?>

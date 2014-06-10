@@ -1,0 +1,180 @@
+<?php
+/**
+ * Apptha
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.apptha.com/LICENSE.txt
+ *
+ * ==============================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * ==============================================================
+ * This package designed for Magento COMMUNITY edition
+ * Apptha does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Apptha does not provide extension support in case of
+ * incorrect edition usage.
+ * ==============================================================
+ *
+ * @category    Apptha
+ * @package     Apptha_Marketplace
+ * @version     1.2.1
+ * @author      Apptha Team <developers@contus.in>
+ * @copyright   Copyright (c) 2014 Apptha. (http://www.apptha.com)
+ * @license     http://www.apptha.com/LICENSE.txt
+*/
+?>
+<?php
+$filter_id = $this->getRequest()->getParam('filter_id');
+$filter_name = $this->getRequest()->getParam('filter_name');
+$filter_price = $this->getRequest()->getParam('filter_price');
+$filter_quantity = $this->getRequest()->getParam('filter_quantity');
+$filter_status = $this->getRequest()->getParam('filter_status');
+?>
+<div class="account-login" id="market_place_manage_products">
+    <div class="page-title">
+        <h1 class="manage_products_head"><?php echo $this->__('Manage Products') ?></h1>
+        <div class="top_amount">
+        <span class="right_space">
+        <?php echo $this->__('Total Amount Received') ?> : <b><?php echo Mage::helper('marketplace/marketplace')->getAmountReceived(); ?></b>
+    </span>   
+     <span>
+        <?php echo $this->__('Amount Pending') ?> :  <b><?php echo Mage::helper('marketplace/marketplace')->getAmountRemaining(); ?></b>
+    </span> 
+    </div>         
+    </div>
+    <button onclick="window.location='<?php echo Mage::helper('marketplace/marketplace')->getNewProductUrl(); ?>';" title="Add new product" class="button right mp_addnew_pdt"> <span><span><?php echo $this->__('Add New Product'); ?> </span></span></button>
+    <form name="multiple_select" id="multiple_select" method="post" action="<?php echo $this->getmultiselectUrl(); ?>">
+    <div class="mp_action"><b><?php echo $this->__('Action'); ?> </b>
+    <select name="multi">
+        <option name="" value="Select an option"><?php echo $this->__('Select an option'); ?></option>
+        <option name="delete" value="delete"><?php echo $this->__('Delete'); ?></option>      
+    </select>
+    
+    <button type="submit" class="button"  title="<?php echo $this->__('Submit') ?>" name="multi_submit" id="multi_submit" ><span><span><?php echo $this->__('Submit') ?></span></span></button>   
+    
+    </div>
+    <div style="clear: both;"></div>       
+<?php echo $this->getMessagesBlock()->getGroupedHtml(); 
+$_products = $this->getCollection(); 
+/*
+ * set sno in collection
+ */
+ $sno = 1;
+ $current_page = Mage::getBlockSingleton('page/html_pager')->getCurrentPage();
+ $getPageSize = $_products->getPageSize();
+if ($current_page >= 2) {
+    $cal_page = ceil($_products->getSize() / $getPageSize);
+    if ($current_page <= $cal_page) {
+        $sno = abs(($current_page * $getPageSize) - $getPageSize) + 1;
+    } else {
+        $sno = abs(($cal_page * $getPageSize) - $getPageSize) + 1;
+    }
+} else {
+    $sno = 1;
+}
+ ?>
+   <table class="data-table" id="my-product-table">
+    <col width="1" />
+    <col width="1" />
+    <col />
+    <col width="1" />
+    <col width="1" />
+    <col width="1" />
+    <thead>
+        <tr>
+            <th><?php echo $this->__('#') ?></th>            
+            <th class="mtext_left"><?php echo $this->__('Id') ?></th>
+            <th colspan="2" width="33%" class="mtext_left"><?php echo $this->__('Product Name') ?></th>
+            <th><?php echo $this->__('Quantity') ?></th>
+            <th><?php echo $this->__('Price') ?></th>
+            <th width="12%"><?php echo $this->__('Status') ?></th>
+            <th class="no-border-right"><?php echo $this->__('Action') ?></th>
+        </tr>
+        <tr class="mp_filter_function">
+            <th></th>
+            <th class="mtext_left"><input type="text" value="<?php echo $filter_id; ?>" name="filter_id" style="width:30px;" id="filter_id"/></th>
+             <th colspan="2" width="33%" class="mtext_left"><input type="text" value="<?php echo $filter_name; ?>" name="filter_name" id="filter_name"/></th>           
+             <th><input type="text" name="filter_quantity" id="filter_quantity" value="<?php echo $filter_quantity; ?>"/></th>
+             <th><input type="text" value="<?php echo $filter_price; ?>" name="filter_price" id="filter_price"/></th>
+            <th width="12%">                
+                <select name="filter_status"  onchange="this.form.submit();">
+                    <option name="select" value="0"><?php echo $this->__('Select a status'); ?></option>
+                    <option name="enabled" value="1" <?php if($filter_status==1){ ?> selected="selected" <?php } ?>><?php echo $this->__('Enabled'); ?></option>  
+                    <option name="disabled" value="2"  <?php if($filter_status==2){ ?> selected="selected" <?php } ?>><?php echo $this->__('Disabled'); ?></option> 
+                </select>                
+            </th>
+            <th class="a-center"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php if($_products->getSize()): 
+        foreach ($_products as $_product): ?>
+        <tr>            
+            <td><input type="checkbox" name="id[]" id="id" value="<?php echo $_product->getId(); ?>"/></td>
+            <td class="mtext_left"><em><?php echo $_product->getId(); ?></em></td>
+           <td class="img_td">
+               <?php if($_product->getStatus() == 1){ ?>
+               <a href="<?php echo $_product->getProductUrl() ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(55,45); ?>" width="55" height="45" alt="<?php echo $_product->getName(); ?>" />
+                   <div class="big_image">
+                <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(146,196); ?>" width="146" height="196" alt="<?php echo $_product->getName(); ?>" /><div><h5><?php echo $_product->getName(); ?></h5><p><?php echo $_product->getShortDescription(); ?></p></div></div>
+               </a>                
+               <?php }else{ ?>
+               <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(55,45); ?>" width="55" height="45" alt="<?php echo $_product->getName(); ?>" title="<?php echo $_product->getName(); ?>" />
+               <?php } ?>            
+           </td>
+            <td class="mtext_left">
+            <?php if($_product->getStatus() == 1){ ?>
+            <a href="<?php echo $_product->getProductUrl();  ?>" class="get_pdct_name" ><?php echo $_product->getName(); ?>            
+            </a>
+            <?php }else{ ?>
+            <span class="get_pdct_name"><?php echo $_product->getName(); ?></span>
+            <?php } ?>
+            <?php
+            $categoryIds = $_product->getCategoryIds();            
+            $count = count($categoryIds);
+            $cat = Mage::getModel('catalog/category')->getCollection()
+                    ->addAttributeToSelect('category_id');
+            $inc_cat = 1;
+            if($count>0){
+            echo $this->__('(');
+            foreach($categoryIds as $_categoryIds){
+               $cat = Mage::getModel('catalog/category');
+               $cat->load($_categoryIds);
+               
+               ?>
+              <a href="<?php echo $cat->getUrl(); ?>"><?php echo $cat->getName(); ?></a> 
+               <?php               
+               if($inc_cat != $count){ echo ' ,'; }
+               $inc_cat = $inc_cat + 1;
+               
+             }
+              echo $this->__(')');
+             ?>
+            <?php } ?>   
+            </td>
+            <td width="14%"> <em><?php if($_product->isSaleable()): ?>
+<?php echo $val = (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty();?>
+<?php else: ?><?php echo $this->__('Out of Stock') ?><?php endif; ?></em></td>
+            <td><em><?php echo Mage::helper('core')->currency($_product->getPrice(),true,false); ?></em></td>
+            <td width="12%"><em><span><?php if($_product->getStatus()==1):  echo $this->__('Enabled'); else:  echo '<em>'.$this->__('Disabled').'</em>'; endif; ?></span></em></td>
+            <td>
+                <em>
+                <span class="nobr"><a href="<?php echo Mage::getUrl('marketplace/product/edit/',array('id' => $_product->getId())); ?>" > <img src="<?php echo $this->getSkinUrl('marketplace/images/edit.png') ?>" alt="" title="<?php echo $this->__('Edit') ?>"/> </a>               
+               <a href="<?php echo Mage::getUrl('marketplace/product/delete/',array('id' => $_product->getId())); ?>" onclick="return confirm('<?php echo $this->__('Are you sure want to delete?'); ?>');" > <img src="<?php echo $this->getSkinUrl('marketplace/images/delete.png') ?>" alt="" title="<?php echo $this->__('Delete') ?>"/> </a>
+                </span>
+                </em>
+            </td>
+        </tr>
+        <?php $sno++; endforeach; ?>
+    </tbody>
+    <?php else: ?>
+    <p><tr class="mtext_center"><td colspan="9" class="no_product_content"><?php echo $this->__('You have no product.'); ?></td></tr></p>
+ <?php endif ?>
+</table>   
+<script type="text/javascript">decorateTable('my-product-table');</script>
+   <?php echo $this->getPagerHtml(); ?>
+</div></form>

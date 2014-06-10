@@ -1,0 +1,177 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2012
+ * @Modified By     Swathi
+ * @Modified Date   April 07 2014
+ *
+ * */
+?>
+<div class="carousel" id="relatedproducts">
+    <?php
+    if ($this->getItems()->getSize()) {
+        $new_count = $this->getItems()->getSize();        ?>  
+        <h2  class="home_pdt_name"><span><?php echo $this->__('Related Products'); ?></span></h2>
+           <?php if ($new_count > 4) { ?>
+                <a href="javascript:" class="carousel-control next" rel="next">&rsaquo;</a>
+                <a href="javascript:" class="carousel-control prev" rel="prev">&lsaquo;</a>
+           <?php } ?>
+        <div class="middle products-grid">
+            <div class="inner" style="width: <?php echo 257 * $new_count.px; ?>">
+                <ul>
+                    <?php
+                    foreach ($this->getItems() as $new) {
+                        $newproduct = $this->helper('catalog/image')->init($new, 'small_image')
+                                ->constrainOnly(TRUE)
+                                ->keepAspectRatio(FALSE)
+                                ->keepFrame(FALSE)
+                                ->resize(224, 224)
+                        ?>  
+                        <?php //Display New Products of this seller   ?>     
+                        <li class="item">                                                   
+                              <?php 
+                              $new_price = $new->getPrice();
+                              $new_spl_price = $new->getSpecialPrice();
+                              $new_dealExpireDate = $new->getSpecialToDate();
+                              $currentDate = Mage::getModel('core/date')->date('Y-m-d');
+                              if (!empty($new_spl_price) && ($new_dealExpireDate != '') && ($new_dealExpireDate >= $currentDate)) { ?>
+                              <span class="mp_product_sale"><?php echo $this->__('Sale'); ?></span>
+                              <?php } ?>
+                              <?php 
+                               $new_from = $new->getNewsFromDate();
+                               $new_to = $new->getNewsToDate();                          
+                             if($new_from <= $currentDate && $new_to >= $currentDate){ ?>
+                               <p class="mp_product_new"><span><?php echo $this->__('New'); ?></span></p>
+                             <?php } elseif($new_from <= $currentDate && $new_to==''){ ?>
+                                 <p class="mp_product_new"><span><?php echo $this->__('New'); ?></span></p>
+                            <?php } ?>
+                            <a class="product_image" href="<?php echo $new->getProductUrl(); ?>">
+                                <img class="product-image f-left" src="<?php
+                                if ($new->getImage() != 'no_selection') {
+                                    echo $newproduct;
+                                } else {
+                                    echo $new->getImageUrl();
+                                }
+                                ?>" 
+                                     alt="<?php echo $new->getName(); ?>" title="<?php echo $new->getName(); ?>" />
+                            </a> 
+                                 <?php
+                                    $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($new);
+                                ?>
+                                   <ul class="add-to-links">                        
+                                    <li>
+                                        <?php if ($_compareUrl): ?>
+                                        <a href="<?php echo $_compareUrl; ?>" class="link-compare"><span class="addto_compare_image"></span></a>
+                                     <?php else: ?>
+                                       <p class="availability out-of-stock"></p>
+                                     <?php endif; ?>
+                                    </li>
+                                    <li><a href='<?php echo $this->helper('wishlist')->getAddUrl($new); ?>' class="link-wishlist"><span class="addto_wishlist_image"></span></a></li>                          
+                                </ul>                             
+                                <div class="products-grid-details">
+                                    <h2 class="product-name">                                        
+                                        <a href="<?php echo $new->getProductUrl(); ?>">
+                                            <?php
+                                            $newpr_name = $new->getName();
+                                            $newlen_pr_name = strlen($new->getName());
+                                            $newsub_pr_name = substr($newpr_name, 0, 26);
+                                            if ($newlen_pr_name >= 26) {
+                                                $newpr_name_fix = $newsub_pr_name . "...";
+                                            } else {
+                                                $newpr_name_fix = $newpr_name;
+                                            }
+                                            echo $newpr_name_fix;
+                                            ?>
+                                        </a>
+                                    </h2>
+                                    <?php
+                                    $new_desc = $new->getShortDescription();
+                                    $newlen_desc = strlen($new->getShortDescription());
+                                    $newsub_desc = substr($new_desc, 0, 45);
+                                    if ($newlen_desc >= 45) {
+                                        $newpr_desc_fix = $newsub_desc . "...";
+                                    } else {
+                                        $newpr_desc_fix = $new_desc;
+                                    }
+                                    ?>
+                                </div>
+                              <div class="products_gridview_page">
+                                <div class="price-box">
+                                    <span class="regular-price">
+                                        <span class="price">
+                                            <?php
+                                            //Display Product Price
+                                            if (!empty($new_spl_price) && ($new_dealExpireDate != '') && ($new_dealExpireDate >= $currentDate)) { ?>
+                                               <del><?php echo Mage::helper('core')->currency($new_price, true, false); ?></del>
+                                               <?php echo Mage::helper('core')->currency($new_spl_price, true, false);
+                                            } else {
+                                                echo Mage::helper('core')->currency($new_price, true, false);
+                                            }
+                                            ?>
+                                        </span></span>
+                                    </div>                            
+                                </div>
+                                <?php if ($new->isSaleable()){ ?>
+                                    <button type="button" title="Add to Cart" class="button btn-cart mp_addtocart_button" onclick="setLocation('<?php echo Mage::helper('checkout/cart')->getAddUrl($new);?>');"><span class="mp_addtocart"></span></button>                                        
+                                    <?php } else { ?>
+                                    <p class="availability out-of-stock"></p>
+                                <?php } ?>
+                        </li>      
+                    <?php } ?>
+                </ul>
+            </div>
+</div>
+        <?php    }    ?>
+</div>
+<script type="text/javascript">
+   window.innerWidth;    
+    new Carousel($('relatedproducts').down('.middle'), $('relatedproducts').down('.inner').select('img'), $('relatedproducts').select('.carousel-control'), {
+        duration: 0.5,
+        transition: 'sinoidal',
+        visibleSlides: 4,
+        circular: false
+    });
+</script>
+<script type="text/javascript">
+//<![CDATA[
+    $$('.related-checkbox').each(function(elem) {
+        Event.observe(elem, 'click', addRelatedToProduct)
+    });
+
+    var relatedProductsCheckFlag = false;
+    function selectAllRelated(txt) {
+        if (relatedProductsCheckFlag == false) {
+            $$('.related-checkbox').each(function(elem) {
+                elem.checked = true;
+            });
+            relatedProductsCheckFlag = true;
+            txt.innerHTML = "<?php echo $this->__('unselect all') ?>";
+        } else {
+            $$('.related-checkbox').each(function(elem) {
+                elem.checked = false;
+            });
+            relatedProductsCheckFlag = false;
+            txt.innerHTML = "<?php echo $this->__('select all') ?>";
+        }
+        addRelatedToProduct();
+    }
+
+    function addRelatedToProduct() {
+        var checkboxes = $$('.related-checkbox');
+        var values = [];
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked)
+                values.push(checkboxes[i].value);
+        }
+        if ($('related-products-field')) {
+            $('related-products-field').value = values.join(',');
+        }
+    }
+//]]>
+</script>

@@ -1,0 +1,111 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2012
+ * @Modified By     Jenifer Ratchanya
+ * @Modified Date   May 6 2014
+ *
+ * */
+?>
+<?php
+if (!Mage::helper('marketplace')->checkMarketplaceKey()) {
+    $loginId = Mage::getSingleton('customer/session')->isLoggedIn();
+    $groupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
+    $getGroupId = Mage::helper('marketplace')->getGroupId();
+    $customer = Mage::getSingleton("customer/session")->getCustomer();
+    $customer_status = $customer->getCustomerstatus();
+    $fb_page = Mage::getStoreConfig('marketplace/marketplace/facebook_page');
+    $twitter_page = Mage::getStoreConfig('marketplace/marketplace/twitter_page');
+    ?>
+    <div class="top_header_nav">
+        <div class="top_menu_wrapper">
+            <!--Market Place link -->
+
+            <ul id="mp_top_nav">
+                <li class="mp_engage_tab"><a><span><?php echo $this->__('Engage'); ?> <img src="<?php echo $this->getSkinUrl('images/top_nav_arrow.png') ?>" alt="Arrow" title=""/></span></a>                
+                    <div><img src="<?php echo $this->getSkinUrl('images/tooltip_arrow.png') ?>" alt="tooltip" title=""/>
+                        <ul>
+                            <li><a href="https://www.facebook.com/<?php echo $fb_page; ?>" title="" target="_blank"><span><?php echo $this->__('Join us on facebook'); ?></span></a></li>
+                            <li><a href="https://www.twitter.com/<?php echo $twitter_page; ?>" title="" target="_blank"><span><?php echo $this->__('Join us on twitter'); ?></span></a></li>
+                        </ul></div>
+                </li>
+                <li><a><span><?php echo $this->__('Sellers'); ?> <img src="<?php echo $this->getSkinUrl('images/top_nav_arrow.png') ?>" alt="Arrow" title=""/></span></a>
+                    <div><img src="<?php echo $this->getSkinUrl('images/tooltip_arrow.png') ?>" alt="tooltip" title=""/>
+                        <ul>
+                            <?php if ($groupId != $getGroupId && $loginId) { ?>
+                                <li><a href="<?php echo Mage::getUrl('marketplace/seller/changebuyer'); ?>" title=""><span><?php echo $this->__('Become a seller'); ?></span></a></li>
+                            <?php } elseif ($groupId != $getGroupId || !$loginId) { ?>
+                                <li><a href="<?php echo Mage::helper('marketplace/marketplace')->getregisterUrl(); ?>" title=""><span><?php echo $this->__('Register as seller '); ?></span></a></li> 
+                            <?php } ?>
+                            <?php if ($groupId == $getGroupId && $loginId && $customer_status == 1) { ?>
+                                <li><a href="<?php echo Mage::helper('marketplace/marketplace')->dashboardUrl(); ?>" title="" ><span><?php echo $this->__('Seller dashboard'); ?></span></a></li>
+                            <?php } elseif ($groupId != $getGroupId && !$loginId) { ?>
+                                <li><a href="<?php echo Mage::helper('marketplace/marketplace')->getregister(); ?>" title="" ><span><?php echo $this->__('Seller login'); ?></span></a></li>
+                            <?php } else { ?>
+                                <li><a href="<?php echo Mage::getUrl('customer/account'); ?>" title="" ><span><?php echo $this->__('Account Dashboard'); ?></span></a></li>
+                            <?php } ?>
+                        </ul></div>
+                </li>
+                <li class="mp_sellers_tab"><a><span><?php echo $this->__('Our sellers'); ?> <img src="<?php echo $this->getSkinUrl('images/top_nav_arrow.png') ?>" alt="Arrow" title=""/></span></a>
+                    <?php $increment = 0; ?>
+                    <div><img src="<?php echo $this->getSkinUrl('images/tooltip_arrow.png') ?>" alt="tooltip" title=""/>                
+                        <ul><?php
+                            $model = Mage::getModel('customer/customer')->getCollection()->addAttributeToFilter('customerstatus', 1);
+                            $id = array();
+                            if ($model->getSize() > 0) {
+                                foreach ($model as $_model) {
+                                    $id[] = $_model['entity_id'];
+                                }
+                                $collection = Mage::getModel('marketplace/sellerprofile')->topSeller($id);
+                                foreach ($collection as $_collection) {
+                                    $seller_id = $_collection['seller_id'];
+                                    $target_path = 'marketplace/seller/displayseller/id/' . $seller_id;
+                                    $mainUrlRewrite = Mage::getModel('core/url_rewrite')->load($target_path, 'target_path');
+                                    $getRequestPath = $mainUrlRewrite->getRequestPath();
+                                    $get_requestPath = Mage::getUrl($getRequestPath);
+                                    if ($increment < 5 && $_collection['store_title'] != '') {
+                                        ?>
+                                        <li>                   		
+                                            <a href="<?php echo $get_requestPath; ?>" title="<?php echo $_collection['store_title']; ?>">
+                                                <span><?php echo $_collection['store_title']; ?></span>
+                                            </a>                   		
+                                        </li>
+                                    <?php
+                                    } $increment++;
+                                }
+                            }
+                            ?>
+                            <li><a href="<?php echo Mage::helper('marketplace/marketplace')->getviewallsellerUrl(); ?>"><span><?php echo $this->__('View All'); ?></span></a></li>
+                        </ul></div>
+                </li>
+            </ul>
+    <?php echo $this->getChildHtml('topLinks') ?>
+            <p class="welcome-msg"><?php echo $this->getChildHtml('welcome') ?> <?php echo $this->getAdditionalHtml() ?></p>
+        </div>
+    </div>
+    <div class="header-container">
+        <div class="header">
+            <?php if ($this->getIsHomePage()): ?>
+                <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+            <?php else: ?>
+                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+            <?php endif ?>
+                <?php echo $this->getChildHtml('topcart'); ?>
+            <div class="quick-access">            
+                <?php echo $this->getChildHtml('topSearch') ?>
+            <?php // echo $this->getChildHtml('store_language')  ?>
+            </div>
+    <?php echo $this->getChildHtml('topContainer'); ?>        
+
+        </div>
+    </div>
+    <div class="clear"></div>
+    <?php echo $this->getChildHtml('topMenu') ?>
+
+<?php } ?>

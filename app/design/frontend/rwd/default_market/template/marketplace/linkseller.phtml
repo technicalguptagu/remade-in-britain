@@ -1,0 +1,34 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2012
+ * @Modified By     Jenifer Ratchanya
+ * @Modified Date   Mar 27 2014
+ *
+ * */
+?>
+<div style="clear: both;"></div>
+<div  class="linker_seller">   
+    <?php
+    $active = Mage::getStoreConfig('marketplace/admin_approval_seller_registration/displayproductpage');
+    if ($active == 1) {
+        $seller_id      = Mage::registry('current_product')->getSellerId();
+        $seller_data    = $this->sellerdisplay($seller_id);
+        $show_profile   = $this->sellerprofiledisplay($seller_id);
+        if ($show_profile == 1) {
+            $target_path = 'marketplace/seller/displayseller/id/' . $seller_id;
+            $mainUrlRewrite     = Mage::getModel('core/url_rewrite')->load($target_path, 'target_path');
+            $getRequestPath     = $mainUrlRewrite->getRequestPath();
+            $get_requestPath    = Mage::getUrl($getRequestPath);
+            ?>
+            <?php echo $this->__('Seller'); ?>: 
+            <a href='<?php echo $get_requestPath; ?>' class="link_seller"><?php echo $seller_data; ?></a>
+        <?php }
+    } ?>
+</div>

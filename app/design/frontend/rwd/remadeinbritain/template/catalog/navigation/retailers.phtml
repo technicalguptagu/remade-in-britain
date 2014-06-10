@@ -1,0 +1,26 @@
+<?php if (!Mage::registry('current_category')) return ?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php //BOF developer-19 12/02/2013 ?>
+<?php
+$_currentCategory = $this->getCurrentCategory();
+//print_r($_currentCategory);
+//if (($_imgUrl = $_currentCategory->getImageUrl()) || ($_description = $_currentCategory->getDescription())):
+    ?>
+<?php //endif; ?>	
+<?php $_currentChild = $this->getCurrentChildCategories() ?>
+<?php $_count = is_array($_currentChild) ? count($_currentChild) : $_currentChild->count(); ?>
+<div class="retailer-title">
+<h2><?php echo $_helper->categoryAttribute($_currentCategory, $_currentCategory->getName(), 'name') ?></h2></div>
+    <div class="subs_category">			
+        <?php foreach ($_currentChild as $_category): ?>			 
+                <ul class="retailername">              				
+                    <li class="item">	
+                        <div class="retailer-view">
+                            <h3 class="retailer-name"><a href="<?php echo $this->getCategoryUrl($_category) ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>"><?php echo $this->htmlEscape($_category->getName()) ?></a></h3>
+                        </div>
+                    </li>
+                </ul>							
+        <?php endforeach; ?>
+    </div>
+<?php
+//EOF developer-19 12/02/2013 ?>

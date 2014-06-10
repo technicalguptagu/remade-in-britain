@@ -1,0 +1,753 @@
+.checkout-onepage-index .page-title h1,
+.account-login .page-title h1,
+.account-create .page-title h1 {
+   border-bottom:none;
+   text-transform: uppercase;
+   font-size: 27px;
+   margin-bottom: 20px;
+   color: #FFFFFF;
+   font-family: oswald;
+   font-weight: 300;
+  }
+.opc.opc-firststep-login {
+   padding: 0 0 30px;
+   }
+.opc .section.active .step-title {
+   border: 1px solid #727A5E !important;
+   background:#fff;
+  }
+.opc .section .step-title {
+   background: url("../images/spritestrip.png") repeat-x scroll 0 -43px transparent;
+   border-top: none;
+   position: static;
+  }
+.opc .section .step-title .number{
+  background-color: #494956 !important;
+  display: block;
+  float: left;
+  width:28px !important;
+  margin: 10px 12px !important;
+  position:static !important;
+  height: 28px !important;
+  line-height: 28px !important;
+  }
+.opc.opc-firststep-login #opc-login.section .step-title h2 {
+   float: left;
+   height: 45px;
+   line-height: 45px;
+   font-family: oswald;
+   }
+.checkout-onepage-index #checkoutSteps {
+   margin:0 0 20px 0;
+  }
+.checkout-onepage-index .col2-set .col-1, .checkout-onepage-index .col2-set .col-2,
+.customer-account-login .col2-set .col-1, .customer-account-login .col2-set ..col-2{
+   padding:15px 30px;
+   width: 49%;
+   }
+.checkout-onepage-index .col2-set .col-1 {
+   float: right;
+   padding-left: 0;
+   }
+.checkout-onepage-index  .col2-set .col-2 {
+   float: left;
+   padding-right: 0;
+   }
+.opc .section.allow .step-title:hover h2, .opc .section.active .step-title h2 {
+   color: #494956;
+   }
+.opc .section .step-title h2 {
+   color: #494956;
+   float: left;
+   font-family: Oswald;
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 300;
+   height: 45px;
+   line-height: 45px;
+   margin:2px 4px 0 0;;
+   }
+.checkout-onepage-index .opc h3,
+.new-users .content h2,
+.registered-users h2 {
+   color: #FFFFFF;
+   font-family: oswald;
+   font-size: 20px;
+   font-weight: 500;
+   text-transform: capitalize;
+   padding: 5px 0 20px;
+   background:url("../images/spritestrip.png") repeat-x scroll 0 43px transparent;
+   }
+.checkout-onepage-index #checkout-step-login .fieldset {
+    width: 290px;
+  }
+ .checkout-onepage-index .buttons-set {
+   margin: 0 0 40px;
+  }
+.checkout-onepage-index .password-buttons-set {
+  float: left;
+  width: 100%;
+  clear: none;
+  margin: 0 0 40px;
+  }
+.checkout-onepage-index .password-reguired {
+  float: left;
+   width: 40%;
+  }
+.password-reguired p.required {
+   color: #6C6E6E;
+   float:left;
+   margin: 5px 0;
+   }
+.checkout-onepage-index .password-reguired a {
+   color: #494956;
+   float: left;
+   width: 140px;
+   }
+.checkout-onepage-index .password-buttons-set .buttons-set{
+  clear:none;
+   margin: 5px 0 0;
+  }
+
+.fieldset p.description {
+  color: #494956 !important;
+  font-family: Oswald !important;
+  font-size: 13px;
+  font-style: normal !important; 
+  margin-bottom: 12px;
+  }
+  .required {
+    color: #494956;
+	color: #494956;
+    font-family: oswald;
+    font-size: 16px;
+    font-weight: 300;
+	margin: 0 0 5px;
+    }
+label.required:after, span.required:after {
+    color:#494956;
+    content: " *";
+    font-family: Oswald,Verdana,Arial,sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+   }
+#checkout-step-login .col2-set .col-2 .buttons-set {
+   float: left;
+   width: 50%;
+   } 
+#checkoutSteps #checkout-step-login  .form-list .control label, 
+#checkoutSteps #checkout-step-billing  .form-list .control label,
+#checkoutSteps #checkout-step-shipping_method  .sp-methods dd label,
+#checkoutSteps #checkout-step-payment  .sp-methods dt label,
+#co-shipping-form li label,
+.account-create .fieldset .form-list .control label{
+  background:none;
+  color: #494956;
+  font-family: Oswald;
+  font-size: 13px;
+  padding: 3px 10px 3px 40px;
+   }
+.opc #opc-login .buttons-set {
+   border-top: 0 none;
+   padding-top: 0;
+   }
+#checkoutSteps .buttons-set #onepage-guest-register-button {
+  margin: 0 0 0 140px;
+  }
+#opc-review.section {
+  background: url("../images/spritestrip.png") repeat-x scroll 0 45px transparent;
+   }
+#opc-review.section.allow.active {
+   background: none !important;
+   }
+.data-table thead th, 
+.data-table tbody td {
+   color: #FFFFFF;
+   font-family: Oswald;
+   font-size: 13px;
+   font-weight: 300;
+   border: 1px solid #FFFFFF !important;
+   }
+.data-table tfoot tr {
+   background:none;
+  }
+.checkout-onepage-index .opc #checkout-review-table-wrapper h3,
+.checkout-onepage-index .opc #onepage-checkout-shipping-method-additional-load .gift-messages h3 {
+    background: none;
+    font-weight: 500;
+    padding: 0;
+    text-transform: capitalize;
+}
+#checkout-progress-wrapper .block-progress {
+  padding-left: 20px;
+  margin: 70px 0 0;
+  border:none;
+  }
+#checkout-progress-wrapper .block-progress .block-title strong {
+  color: #FFF;
+  font-family: Oswald;
+  font-size: 20px;
+  text-transform: capitalize;
+  background:url("../images/spritestrip.png") repeat-x scroll 0 35px transparent;
+  padding: 0 0 10px;
+  font-weight: 300;
+  }
+#checkout-progress-wrapper .block-progress dt {
+   color: #fff;
+   font-family: Oswald;
+   font-size: 13px;
+   font-style: normal;
+   font-weight: normal;
+   line-height: 1.4;
+   margin: 0 0 6px;
+   padding: 6px 0 0 30px;
+   text-transform: capitalize;
+   background: url("../images/checkout-right-img.png") no-repeat scroll 0 bottom transparent;
+   }
+#checkout-progress-wrapper .block-progress .block-content {
+   margin: 15px;
+  }
+.opc .section.allow .step-title h2 {
+  color: #494956;
+  font-weight: 400;
+ }
+.checkout-onepage-index .section a {
+ color: #494956;
+ }
+.opc .section .step {
+    padding: 10px 0;
+}
+.opc-block-progress dt a, .opc-block-progress dt .separator {
+    color: #494956;
+	}
+.col-left {
+    clear: left;
+    float: left;
+    padding-left: 15px;
+    width: 30%;
+   }
+.col2-left-layout .col-main {
+    float: right;
+    padding-right: 25px;
+	width:65%;
+   }
+.col2-left-layout .sidebar .block-account .block-title {
+  margin: 55px 0 15px;
+  }
+.col2-left-layout .sidebar .block-account .block-title strong {
+  color: #FFFFFF;
+  font-family: oswald;
+  font-size: 19px;
+  font-weight: 400;
+  text-transform: capitalize;
+  }
+.col2-left-layout .sidebar .block-account .block-content li {
+  font-family: Oswald,"Helvetica Neue",Verdana,Arial,sans-serif;
+  padding:2px 0 2px 10px;
+  background:#494956;
+  margin: 7px 0;
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: 300;
+  }
+.col2-left-layout .block-account li a {
+   color: #fff; 
+   }
+.col2-left-layout .sidebar .block-account .block-content li.current,
+.col2-left-layout .sidebar .block-account .block-content li.active{
+   background:#fff;
+   }
+.col2-left-layout .sidebar .block-account li strong,
+.col2-left-layout .sidebar .block-account li.active a {
+   color: #494956;
+   font-weight: 400;
+   }
+.dashboard .page-title {
+	float:left;
+	width: 50%;
+   }
+.my-account .page-title h1 { float:none;}
+.dashboard .page-title h1, 
+.my-account .page-title h1, 
+.marketplace-seller-customerreview .my-account h2{
+   color: #FFFFFF;
+   font-family: Oswald;
+   font-size: 19px;
+   font-weight: 400;
+   text-transform: capitalize;
+  }
+.dashboard .welcome-msg {
+   float:left;
+   }
+.dashboard .welcome-msg p {
+   color: #FFFFFF;
+   font-family: oswald;
+   font-size: 18px;
+   font-weight: 300;
+   margin-bottom: 15px;
+   padding-bottom: 3px;
+   }
+.dashboard  .hello {
+   clear: left;
+   color: #494956; 
+   background:#fff;
+   margin: 15px 0;
+   padding: 5px 15px;
+   font-family: oswald;
+   font-size: 16px;
+   font-weight: 300;
+   }
+.dashboard > p {
+	color: #fff;
+    font-family: oswald;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 15px;
+	width: 80%;
+	}
+.dashboard .box-head {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-bottom: none;
+    margin:25px 0 10px;
+    padding: 5px 15px;
+   }
+.dashboard .box-head h2,
+.my-account .addresses-list h2{
+   display: inline-block;
+    font-family: Oswald;
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 0;
+    text-transform: capitalize;
+	padding: 0 5px 0 0;
+   }
+.dashboard .box-head a {
+    font-family: Oswald;
+    font-size: 16px;
+    font-weight: 300;
+    text-transform: capitalize;
+	color:#D36B53;
+	padding: 0 0 0 10px;
+   }
+.dashboard .box-account {
+   border-bottom:none;
+   margin-bottom: 45px;
+   padding-bottom: 0;
+   }
+.dashboard .box-recent .orders {
+   margin:15px 10px 0 15px;
+   width: 80%;
+   }
+.dashboard .box-recent .orders th , .dashboard .box-recent .orders td,
+.my-account .data-table.orders th, .my-account .data-table.orders td  {
+  border: 2px solid #FFFFFF;
+   }
+#co-shipping-form .wide > label {
+    padding: 0 0 0 5px !important;
+  }
+.dashboard .col2-set .col-1, .dashboard .col2-set .col-2 {
+  padding-right: 9.097%;
+  padding-top: 10px;
+ }
+.dashboard .col2-set {
+    margin: 0 10px 0 15px;
+    width: 80%;
+   }
+.dashboard .col2-set .col-1 .box-title h3, .dashboard .col2-set .col-2 .box-title h3,
+.my-account .addresses-primary h3{
+  color: #FFFFFF;
+  font-family: Oswald;
+  font-size: 16px;
+  font-weight: 300;
+  text-transform: capitalize;
+  display:inline-block;
+  }
+.dashboard .col2-set .col-1 .box-title a, 
+.dashboard .col2-set .col-2 .box-title a {
+   line-height: 0;
+   padding: 0;
+   position:static;
+   right: 0;
+   top: 0;
+   }
+.dashboard .box-head a {
+   color: #494956;
+   font-family: oswald;
+   font-size: 16px;
+   font-weight: 300;
+   text-transform: capitalize;
+   margin: 0 0 0 10px;
+   background: url("../images/seperator1.png") no-repeat scroll 0 6px transparent;
+   }
+.dashboard .box-title a {
+   color: #494956;
+   font-family: oswald;
+   font-size: 16px;
+   font-weight: 300;
+   text-transform: capitalize;
+   margin: 0 0 0 3px;
+   padding: 0 0 0 7px !important;
+   background: url("../images/seperator2.png") no-repeat scroll 0 6px transparent;
+   }
+.dashboard .box-account p, .dashboard .box-account address {
+  font-style:normal;
+  }
+form .legend {
+  font-family: Oswald;
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 0;
+  text-transform: capitalize;
+  border-bottom:none;
+  }
+.my-account .form-list .control label {
+   background: none;
+  }
+a {
+  color: #494956;
+  text-decoration: none;
+  }
+body.newsletter-manage-index .my-account .form-list {
+  border-top: none;
+  padding-top: 10px;
+  }
+.my-account #buyer-seller .input-box {
+    padding-top: 15px;
+  }
+.my-account #buyer-seller button {
+    margin: 15px 0 0;
+  }
+.marketplace-seller-dashboard .my-account .page-title .manage_products_head {
+  float: left;
+  width: 50%;
+  margin: 5px 0 25px;
+  }
+#market_place_manage_products_order .top_amount, .mp_top_amount, #market_place_manage_products .top_amount, #mp_order_transaction .top_amount {
+   color: #FFFFFF;
+   font-family: oswald;
+   font-size: 18px;
+   font-weight: 300;
+   float: left;
+   padding: 0; 
+  }
+.lifetime-average {
+    clear: left;
+   }
+.mp_dashboard_lifetime {
+    float: left;
+    height: 116px;
+    margin: 0 0 25px;
+    width: 50%;
+	margin:0;
+   }
+.mp_dashboard_average {
+    float: right;
+    height: 116px;
+    width: 50%;
+	margin: 0 0 25px;
+	}
+.marketplace-seller-dashboard .page-title {
+    clear: both;
+    padding: 25px 0 0;
+    }
+.marketplace-seller-dashboard .page-title h3 {
+    font-size: 15px;
+    font-weight: bold;
+    padding:8px 0 6px 15px;
+	color: #494956;
+    display: inline-block;
+    font-family: Oswald;
+    font-size: 16px;
+    font-weight: 300;
+    text-transform: capitalize;
+	background:#fff;
+	width:100%;
+	margin: 0;
+	line-height: 16px;
+   }
+#market_place_manage_products_order .pager {
+   margin: 10px 0;
+   }
+.mp_dashboard_container {
+    border: medium none;
+    margin: 15px 0 0 15px;
+    width: 80%;
+   }
+.mp_seller_sales_report input[type="text"] {
+    max-width: 100%;
+    width: 150px;
+  }
+.my-account #chart_div {
+    margin: 0 15px !important;
+   }
+.mp_seller_sales_report {
+   background: none repeat scroll 0 0 #FFFFFF;
+   margin: 15px 15px 0;
+   }
+#market_place_manage_products .mp_action select, #select_filter, .mp_sellers_order select, #my-orders-table select {
+    font-family: arial;
+    font-size: 11px;
+    margin: 5px 0 0 5px;
+    padding: 3px;
+   }
+.my-account .mp_seller_sales_report .txtbox {
+    border: 1px solid #B6B6B6;
+    font-family: arial;
+    font-size: 11px;
+    height: 24px;
+    margin: 5px 0 0;
+    padding: 2px 10px;
+    }
+.mp_seller_sales_report button {
+    margin: 6px 0 0;
+	padding: 5px 40px;
+   }
+.my-account #market_place_manage_products .page-title h1,
+.my-account #market_place_manage_products_order .page-title h1,
+ #mp_order_transaction h1 {
+    border: 0 none;
+    float: none;
+   }
+#market_place_manage_products > form {
+    padding: 20px 0 0;
+	clear: both;
+   }
+#addprofile .form-list li {
+  background:none;
+  }
+#addprofile .form-list label {
+   padding-bottom: 4px;
+   width: 100%;
+  }
+#market_place_manage_products_order table tbody tr:last-child td {
+  border-bottom:1px solid #fff;
+  }
+#market_place_manage_products table thead .mp_filter_function th, #market_place_manage_products_order table thead .mp_filter_function th {
+  background:none;
+  }
+#market_place_manage_products table tbody tr {
+  background:none;
+  }
+#market_place_manage_products_order .top_amount, .mp_top_amount, #market_place_manage_products .top_amount, #mp_order_transaction .top_amount {
+   padding:0 0 15px 0;
+  }
+.wide.fields label, .fields .field_store_logos label {
+   color: #494956;
+   font-family: oswald;
+   font-size: 16px;
+   font-weight: 300;
+   }
+.buttons-set p.required {
+   float:left;
+  } 
+.gift-messages > h3 {
+   font-size: 14px !important;
+  }
+.gift-messages #allow-gift-message-container h4 {}
+body, label, button, input, select, table, textarea {
+    color: #636363;
+    font-family: "Oswald",Arial,sans-serif;
+    line-height: 1.5;
+	font-size: 14px !important;
+    font-weight: 300 !important;
+   }
+ .col1-layout .col-main {
+    padding: 0;
+    width: 100%;
+   }
+.customer-account-login .col2-set .buttons-set button, .customer-account-login .col2-set .buttons-set .button {
+  min-width:0;
+  }
+.customer-account-create .col-main .account-create {
+   padding: 0 15px;
+  }
+.account-create .account-detail {
+   float: left;
+   width: 30%;
+   font-size: 16px;
+   line-height: 28px;
+  }
+.account-create .create-account-detail .account-information {
+  color: #FFFFFF;
+  font-family: oswald;
+  padding: 0 112px 30px 0;
+  }
+.account-create .create-account-detail .information-query {
+  color: #494956;
+  font-family: oswald;
+  padding: 0 90px 30px 0;
+  }
+.account-create .create-account-detail .information-query a,
+.account-create .create-account-detail .imformation-retailer a{
+  text-decoration: underline;
+  }
+.account-create .create-account-detail .imformation-retailer {
+  color: #494956;
+  font-family: oswald;
+  padding: 0 90px 30px 0;
+ }
+.account-create .scaffold-form {
+  float: right;
+  width: 70%;
+  }
+.account-create .scaffold-form .form-list li label.required {}
+.account-create .scaffold-form .form-list li .input-box input{}
+
+ @media only screen and (min-width:965px) and (max-width:1199px){
+
+
+ }
+
+ @media only screen and (min-width:768px) and (max-width:964px){
+
+.col2-set .buttons-set .button, 
+.col2-set .buttons-set .button2 {
+   width: auto;
+  }
+.breadcrumbs {
+   display: block;
+  }
+.sidebar .block .block-content {
+   border: medium none !important;
+  }
+.sidebar .block:not(.block-layered-nav) .block-title > strong {
+  background:none;
+  border: medium none;
+  }
+.sidebar .block:not(.block-layered-nav) .block-title > strong:after {
+  border:none;
+   }
+.sidebar .block:not(.block-layered-nav) .block-title > strong {
+  padding: 0 0 0 10px;
+  }
+.sidebar .block:not(.block-layered-nav) .block-content{
+    border: none !important;
+	padding:0;
+  }
+
+ }
+
+
+ @media only screen and (min-width:480px) and (max-width:767px){
+
+.breadcrumbs {
+   display: block;
+   }
+.checkout-onepage-index .col2-set .col-1 {
+   float: right;
+   padding-left: 30px;
+   }
+.checkout-onepage-index .col2-set .col-1 {
+   float: left;
+   width: 100%;
+   }
+.col2-set .buttons-set .button, .col2-set .buttons-set .button2 {
+    width:auto;
+   }
+.checkout-onepage-index .col2-set .col-2 {
+   float: left;
+   width: 100%;
+   }
+.opc .section .step {
+   padding: 10px 30px;
+  }
+.checkout-onepage-index .opc #checkout-review-table-wrapper h3 {
+  background: none ;
+  padding: 0;
+  text-transform: lowercase;
+  }
+#review-buttons-container .buttons-set {
+  width: 160px;
+  }
+ .sidebar .block .block-content {
+   border: medium none !important;
+  }
+.sidebar .block:not(.block-layered-nav) .block-title > strong {
+  background:none;
+  border: medium none;
+  }
+.sidebar .block:not(.block-layered-nav) .block-title > strong:after {
+  border:none;
+   }
+.sidebar .block:not(.block-layered-nav) .block-title > strong {
+  padding: 0 0 0 10px;
+  }
+.sidebar .block:not(.block-layered-nav) .block-content{
+  border: none !important;
+  padding:0;
+  }
+.col2-left-layout .col-main {
+   float: left;
+   padding-left: 25px;
+   width: 100%
+   }
+.dashboard .welcome-msg {
+   margin: 20px 0 0;
+   }
+}
+@media only screen and (min-width:320px) and (max-width:479px){
+
+ .breadcrumbs {
+   display: block;
+   }
+.checkout-onepage-index .col2-set .col-1 {
+   float: right;
+   padding-left: 30px;
+   }
+.checkout-onepage-index .col2-set .col-1 {
+   float: left;
+   width: 100%;
+   }
+.col2-set .buttons-set .button, .col2-set .buttons-set .button2 {
+    width:auto;
+   }
+.checkout-onepage-index .col2-set .col-2 {
+   float: left;
+   width: 100%;
+   }
+.opc .section .step {
+   padding: 10px 30px;
+  }
+.checkout-onepage-index .opc #checkout-review-table-wrapper h3 {
+  background: none ;
+  padding: 0;
+  text-transform: lowercase;
+  }
+#review-buttons-container .buttons-set {
+    width: 160px;
+ }
+.sidebar .block:not(.block-layered-nav) .block-title > strong {
+  background:none;
+  border: medium none;
+  }
+.sidebar .block:not(.block-layered-nav) .block-title > strong:after {
+  border:none;
+   }
+.sidebar .block:not(.block-layered-nav) .block-title > strong {
+  padding: 0 0 0 10px;
+  }
+.sidebar .block:not(.block-layered-nav) .block-content{
+  border: none !important;
+  padding:0;
+  }
+.col2-left-layout .col-main {
+   float: left;
+   padding-left: 25px;
+   width: 100%
+   }
+.dashboard .welcome-msg {
+   margin: 20px 0 0;
+   }
+.addresses-list .item {
+    float: left;
+    padding-right: 30px;
+    width: 100%;
+  }
+.data-table thead th, .data-table tbody td {
+    border-bottom: medium none !important;
+  }
+}
+
+@media only screen and (min-width:240px) and (max-width:319px){
+
+}

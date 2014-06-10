@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+* oscprofessionals extension for Magento
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this module
+* to newer versions in the future.
+*
+* @category Oscp
+* @package Oscp_ImageGallery
+*/ 
+-->
+<config>
+    <modules>
+        <Oscp_ImageGallery>
+            <active>true</active>
+            <codePool>local</codePool>            
+        </Oscp_ImageGallery>
+    </modules>
+</config>

@@ -1,0 +1,82 @@
+<?php
+/**
+ * Current category and its childs for store
+ *
+ * @see Osc_Categorynav_Block_Categorynav
+ */
+?>
+<?php
+/**
+ * 
+ */
+?>
+<?php if (!Mage::registry('current_category')) return ?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+
+<?php //BOF developer-19 12/02/2013 ?>
+<?php
+$_currentCategory = $this->getCurrentCategory();
+//print_r($_currentCategory);
+if (($_imgUrl = $_currentCategory->getImageUrl()) || ($_description = $_currentCategory->getDescription())):
+    ?>
+    <div id="img-title-des">
+        <div class="category-imgage-descri">
+            <div class="category-img-des1">
+                <?php if ($_imgUrl): ?>			
+                    <div class="sub-category-image">
+                        <img src="<?php echo $_imgUrl; ?>" width="228" height="153" alt="<?php echo $this->htmlEscape($_currentCategory->getName()) ?>" title="<?php echo $this->htmlEscape($_currentCategory->getName()) ?>" />
+                    </div>				
+                <?php endif; ?>				
+                <?php if ($_description = $_currentCategory->getDescription()): ?>
+                    <div class="category-description alllevel">
+                        <h2><?php echo $this->__('REMADE')?> <?php echo $_helper->categoryAttribute($_currentCategory, $_currentCategory->getName(), 'name') ?></h2>
+                        <?php echo $_helper->categoryAttribute($_currentCategory, $_description, 'description') ?>
+                    </div>
+                <?php endif; ?>			
+                <div class="clearer"></div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>	
+<?php $_currentChild = $this->getCurrentChildCategories() ?>
+<?php $_count = is_array($_currentChild) ? count($_currentChild) : $_currentChild->count(); ?>
+<div class="alphabetical-order">
+<h4><?php echo $this->__('REMADE')?> <?php echo $_helper->categoryAttribute($_currentCategory, $_currentCategory->getName(), 'name') ?></h4>(<?php echo $this->__('in alphabetical order')?>)</div>
+<?php if ($_count): ?>
+    <div class="subs_category">			
+        <?php $_childimageUrl = Mage::helper('categorynav')->getCateImageUrl($_currentChild); ?>		    
+        <?php $i = 0; ?>
+        <?php $j = 0; ?>
+        <?php $_columnCount = 3; ?>
+        <?php foreach ($_currentChild as $_category): ?>			 
+            <?php if ($j++ % $_columnCount == 0): ?>
+                <ul class="catagory-grid">
+                <?php endif ?>
+                <?php
+                if ($_childimageUrl[$_category->getId()]['thumb']) {
+                    $category_image = $_childimageUrl[$_category->getId()]['thumb'];
+                } else {
+                    $category_image = $_childimageUrl[$_category->getId()]['image'];
+                }
+                ?>
+                <?php if ($_category->getIsActive()): ?>				
+                    <li class="item<?php if (($j - 1) % $_columnCount == 0): ?> first<?php elseif ($j % $_columnCount == 0): ?> last<?php endif; ?>">	
+                        <a href="<?php echo $this->getCategoryUrl($_category) ?>" class="category-image" <?php /* if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; */ ?>>
+                            <img src="<?php echo $this->htmlEscape($category_image) ?>" width="243" height="202" alt="<?php echo $this->htmlEscape($_category->getName()) ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>" />
+                        </a>
+                        <div class="catagory-view">
+                            <h3 class="category-name"><a href="<?php echo $this->getCategoryUrl($_category) ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>"><?php echo $this->htmlEscape($_category->getName()) ?></a></h3>
+                            <a class="view" href="<?php echo $this->getCategoryUrl($_category) ?>"<?php if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; ?>><?php echo $this->__('View')?></a>
+                        </div>
+                    </li>
+                <?php endif; ?>
+                <?php $i++; ?>	
+                <?php if ($j % $_columnCount == 0 || $j == $_count): ?>                
+                </ul>
+            <?php endif ?>								
+        <?php endforeach; ?>
+
+    </div>
+<?php endif ?>
+<?php
+//EOF developer-19 12/02/2013 ?>

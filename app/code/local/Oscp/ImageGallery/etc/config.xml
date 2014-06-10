@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+* @category Oscp
+* @package Oscp_ImageGallery
+*/ 
+-->
+<config>
+    <modules>
+        <Oscp_ImageGallery>
+            <version>1.0.0</version>
+        </Oscp_ImageGallery>
+    </modules>
+    <!-- Frontend Router -->
+    <frontend>
+        <routers>
+            <imagegallery>
+                <use>standard</use>
+                <args>
+                    <module>Oscp_ImageGallery</module>
+                    <frontName>imagegallery</frontName>
+                </args>
+            </imagegallery>
+        </routers>
+        <layout>
+            <updates>
+                <imagegallery>
+                    <file>imagegallery.xml</file>
+                </imagegallery>
+            </updates>
+        </layout>
+    </frontend>
+    <!-- EOF Frontend Router -->
+	
+    <!-- Admin Router -->
+    <admin>
+        <routers>
+            <imagegallery>
+                <use>admin</use>
+                <args>
+                    <module>Oscp_ImageGallery</module>
+                    <frontName>imagegallery</frontName>
+                </args>
+            </imagegallery>
+        </routers>
+    </admin>
+    <!-- EOF Admin Router -->
+
+    <!-- Admin Menu and ACL -->
+    <adminhtml>
+        <menu>
+            <imagegallery module="imagegallery">
+                <title>Image Gallery</title>
+                <sort_order>71</sort_order>               
+                <children>
+                    <items module="imagegallery">
+                        <title>Manage Image Gallery</title>
+                        <sort_order>0</sort_order>
+                        <action>imagegallery/adminhtml_imagegallery</action>
+                    </items>
+                    <config module="imagegallery">
+                        <title>Gallery Configuration</title>
+                        <sort_order>1</sort_order>
+                        <action>adminhtml/system_config/edit/section/imagegallery/</action>
+                    </config>
+                </children>
+            </imagegallery>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <Oscp_ImageGallery>
+                            <title>Image Gallery Module</title>
+                            <sort_order>10</sort_order>
+                        </Oscp_ImageGallery>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <imagegallery translate="title" module="imagegallery"> 
+                                            <title>Image Gallery Settings</title>
+                                            <sort_order>50</sort_order>
+                                        </imagegallery>
+                                    </children>							
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <imagegallery>
+                    <file>imagegallery.xml</file>
+                </imagegallery>
+            </updates>
+        </layout>
+    </adminhtml>   
+    <!-- EOF Admin menu and ACL -->
+
+    <!-- Global Setting -->
+    <global>
+        <models>
+            <imagegallery>
+                <class>Oscp_ImageGallery_Model</class>
+                <resourceModel>imagegallery_mysql4</resourceModel>
+            </imagegallery>
+            <imagegallery_mysql4>
+                <class>Oscp_ImageGallery_Model_Mysql4</class>
+                <entities>
+                    <imagegallery>
+                        <table>imagegallery</table>
+                    </imagegallery>
+                </entities>
+            </imagegallery_mysql4>
+        </models>
+        <resources>
+            <imagegallery_setup>
+                <setup>
+                    <module>Oscp_ImageGallery</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </imagegallery_setup>
+            <imagegallery_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </imagegallery_write>
+            <imagegallery_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </imagegallery_read>
+        </resources>
+        <blocks>
+            <imagegallery>
+                <class>Oscp_ImageGallery_Block</class>
+            </imagegallery>
+        </blocks>
+        <helpers>
+            <imagegallery>
+                <class>Oscp_ImageGallery_Helper</class>
+            </imagegallery>
+        </helpers>
+    </global>
+    <!-- EOF Global -->
+</config>

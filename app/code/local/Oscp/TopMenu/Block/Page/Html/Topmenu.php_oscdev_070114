@@ -1,0 +1,326 @@
+<?php
+
+/**
+ * @category    Oscp
+ * @package     Oscp_TopMenu
+ */
+class Oscp_TopMenu_Block_Page_Html_Topmenu extends Mage_Page_Block_Html_Topmenu {
+
+    protected function _getHtml(Varien_Data_Tree_Node $menuTree, $childrenWrapClass) {
+        $html = '';
+
+        $children = $menuTree->getChildren();
+        $parentLevel = $menuTree->getLevel();
+        $childLevel = is_null($parentLevel) ? 0 : $parentLevel + 1;
+
+        $counter = 1;
+        $childrenCount = $children->count();
+
+        $parentPositionClass = $menuTree->getPositionClass();
+        $itemPositionClassPrefix = $parentPositionClass ? $parentPositionClass . '-' : 'nav-';
+
+
+        foreach ($children as $child) {
+
+            $child->setLevel($childLevel);
+            $child->setIsFirst($counter == 1);
+            $child->setIsLast($counter == $childrenCount);
+            $child->setPositionClass($itemPositionClassPrefix . $counter);
+
+            $outermostClassCode = '';
+            $outermostClass = $menuTree->getOutermostClass();
+
+            if ($childLevel == 0 && $outermostClass) {
+                $outermostClassCode = ' class="' . $outermostClass . '" ';
+                $child->setClass($outermostClass);
+            }
+            $units = "my-units";
+
+
+            $html .= '<li ' . $this->_getRenderedMenuItemAttributes($child) . '>';
+            $html .= '<a href="' . $child->getUrl() . '" ' . $outermostClassCode . '><span>'
+                    . $this->escapeHtml($child->getName()) . '</span></a>';
+
+
+            if ($child->hasChildren()) {
+                if (!empty($childrenWrapClass)) {
+                    $html .= '<div class="' . $childrenWrapClass . '">';
+                }
+
+                $_childId = (int) str_replace('category-node-', '', $child->getId());
+
+                $_categoryCollection = $this->getCategoryAttribute($_childId);
+
+                $_allCategoryProductCollection = $this->getAllCategoryProductCollection($_childId);
+
+                $_freeFromImage = $this->getFreeFromFoodsImage();
+
+                if ($_allCategoryProductCollection->getSize() > 0):
+                    $_subCategoryBox = " menu-left";
+                else:
+                    $_subCategoryBox = "";
+                endif;
+                $html .= '<div class="menu-bootm">';
+                $html .= '<div class="container">';
+                if ($childLevel == 0) {
+                    $html .= '<div class="nav-drop">';
+                    $html .= '<div class="sub-categories' . $_subCategoryBox . '">';
+                    $html .= '<div class="catagory"><h3>' . $this->escapeHtml($child->getName()) . '</h3>';
+                    if ($_categoryCollection) {
+                        $html .= '<span class="catagory-image"><img src="' . Mage::getBaseUrl('media') . 'catalog/category/' . $_categoryCollection . '" alt="" /></span>';
+                    }
+                    $html .='</div>';
+                }
+                $html .= '<ul class="' . $units . '">';
+
+                $html .= $this->_getHtml($child, $childrenWrapClass);
+
+                if ($this->escapeHtml($child->getName()) == 'Free From Food') {
+                    foreach ($_freeFromImage as $_image) {
+                        $html .= '<li><span><img src="' . Mage::getBaseUrl('media') . 'catalog/attribute/' . $_image['attribute_id'] . '/' . $_image['option_id'] . '/' . $_image['image'] . '" alt="" /></span><div class="value"><a href="' . Mage::getBaseUrl() . 'catalogsearch/advanced/result/?free_from_foods=' . $_image['option_id'] . '">' . $_image['label'] . '</a></div></li>';
+                    }
+                }
+                $html .= '</ul>';
+
+                if ($childLevel == 0) {
+                    $html .= '</div>';
+                }
+
+                if ($child->getLevel() == 0):
+                    if ($_allCategoryProductCollection->getSize() > 0) {
+                        $limit = 0;
+                        if ($child->getLevel() == 0):
+                            $html .= '<div class="best-seller">';
+                            $html .= '<h3>' . $this->__('Best Seller') . '</h3>';
+                            $html .= '<ul>';
+
+                            foreach ($_allCategoryProductCollection as $_product) {
+
+
+                                if ($limit > 1)
+                                    break;
+                                $data = $_product->getData();
+
+                                $limit++;
+
+                                 $_label = '';
+                                
+                                $price = $this->helper('core')
+                                        ->currency($this->helper('tax')
+                                        ->getPrice($_product, $_product->getFinalPrice()));
+
+                                if (($_product->getOptions()) || ($_product->isConfigurable())):
+                                    $_label = '<span class="label">from </span>';
+                                endif;
+
+                                if ($_product->getProductTag() == 47) {
+                                    $_tag = '<span class="sticker"><img src="' . $this->getskinUrl('images/new-in-tag.png') . '" alt=""/></span>';
+                                } else {
+                                    $_tag = '<span class="sticker"><img src="' . $this->getskinUrl('images/offer-tag.png') . '" alt=""/></span>';
+                                }
+
+                                $html .='<li><a class="best-seller-img" href="' . $_product->getProductUrl() . '">' . $_tag . '<img src="' . $_product->getImageUrl() . '" alt="' . $_product->getName() . '"/></a><div class="best-seller-content"><a class="prod-name" href="' . $_product->getProductUrl() . '">' . $_product->getName() . '</a><div class="short-description"><span>' . $_product->getShortDescription() . '</span></div><div class="price-box"><span>' . $_label . $price . '</span></div>
+					            <div class="button"><button type="button" title="Add to Cart" class="button btn-cart" onclick="setLocation(&#39;' . $this->getAddToCartUrlBest($_product) . '&#39;)"><span><span>Add to Cart</span></span></button></div></div></li>';
+                            }
+                            $html .= '</ul>';
+                            $html .= '</div>';
+                            $html .= '</div>';
+
+                        endif;
+                    }
+                endif;
+
+                $html .= '</div>';
+                $html .= '</div>';
+            }
+            $html .= '</li>';
+            $counter++;
+        }
+
+        return $html;
+    }
+
+    public function getMobileHtml($outermostClass = '', $childrenWrapClass = '') {
+        Mage::dispatchEvent('page_block_html_topmenu_gethtml_before', array(
+            'menu' => $this->_menu,
+            'block' => $this
+        ));
+
+        $this->_menu->setOutermostClass($outermostClass);
+        $this->_menu->setChildrenWrapClass($childrenWrapClass);
+
+        $html = $this->_getMobileHtml($this->_menu, $childrenWrapClass);
+
+        Mage::dispatchEvent('page_block_html_topmenu_gethtml_after', array(
+            'menu' => $this->_menu,
+            'html' => $html
+        ));
+
+        return $html;
+    }
+
+    protected function _getMobileHtml(Varien_Data_Tree_Node $menuTree, $childrenWrapClass) {
+        $html = '';
+
+        $children = $menuTree->getChildren();
+        $parentLevel = $menuTree->getLevel();
+        $childLevel = is_null($parentLevel) ? 0 : $parentLevel + 1;
+
+        $counter = 1;
+        $childrenCount = $children->count();
+
+        $parentPositionClass = $menuTree->getPositionClass();
+        $itemPositionClassPrefix = $parentPositionClass ? $parentPositionClass . '-' : 'nav-';
+
+        foreach ($children as $child) {
+
+            $child->setLevel($childLevel);
+            $child->setIsFirst($counter == 1);
+            $child->setIsLast($counter == $childrenCount);
+            $child->setPositionClass($itemPositionClassPrefix . $counter);
+
+            $outermostClassCode = '';
+            $outermostClass = $menuTree->getOutermostClass();
+
+            if ($childLevel == 0 && $outermostClass) {
+                $outermostClassCode = ' class="' . $outermostClass . '" ';
+                $child->setClass($outermostClass);
+            }
+
+
+            if ($this->escapeHtml($child->getName()) == 'Free From Food') {
+                $units = "free-units";
+            } else {
+                $units = "my-units";
+            }
+
+            $html .= '<li ' . $this->_getRenderedMenuItemAttributes($child) . '>';
+            $html .= '<a href="' . $child->getUrl() . '" ' . $outermostClassCode . '><span>'
+                    . $this->escapeHtml($child->getName()) . '</span></a>';
+
+            if ($child->hasChildren()) {
+                //if ($child->hasChildren()) {
+                $html .= '<span class="opener"></span>';
+                //}
+                if (!empty($childrenWrapClass)) {
+                    $html .= '<div class="' . $childrenWrapClass . '">';
+                }
+                $_childId = (int) str_replace('category-node-', '', $child->getId());
+
+                $_categoryCollection = $this->getCategoryAttribute($_childId);
+                $_freeFromImage = $this->getFreeFromFoodsImage();
+
+                $html .= '<div class="menu-bootm">';
+                $html .= '<div class="container">';
+                
+               
+               $_subCategoryBox = " menu-left";
+              
+                
+                if ($childLevel == 0) {
+                    $html .= '<div class="nav-drop">';
+                    $html .= '<div class="sub-categories' . $_subCategoryBox . '">';
+                    $html .= '<div class="catagory"><h3>' . $this->escapeHtml($child->getName()) . '</h3>';
+                    if ($_categoryCollection) {
+                        $html .= '<span class="catagory-image"><img src="' . Mage::getBaseUrl('media') . 'catalog/category/' . $_categoryCollection . '" alt="" /></span>';
+                    }
+                    $html .='</div>';
+                }
+
+                $html .= '<ul class="' . $units . '">';
+                $html .= $this->_getMobileHtml($child, $childrenWrapClass);
+                if ($this->escapeHtml($child->getName()) == 'Free From Food') {
+                    foreach ($_freeFromImage as $_image) {
+                        $html .= '<li><span><img src="' . Mage::getBaseUrl('media') . 'catalog/attribute/' . $_image['attribute_id'] . '/' . $_image['option_id'] . '/' . $_image['image'] . '" alt="" /></span><div class="value"><a href="' . Mage::getBaseUrl() . '/catalogsearch/advanced/result/?free_from_foods=' . $_image['option_id'] . '">' . $_image['label'] . '</a></div></li>';
+                    }
+                }
+                $html .= '</ul>';
+
+                if ($childLevel == 0) {
+                    $html .= '</div>';
+                }
+
+                if (!empty($childrenWrapClass)) {
+                    $html .= '</div>';
+                }
+                $html .= '</div>';
+                $html .= '</div>';
+            }
+            $html .= '</li>';
+
+            $counter++;
+        }
+
+        return $html;
+    }
+
+    public function getAllCategoryProductCollection($_parentId) {
+        //$_categories = $_parentId;
+        $productCollection = Mage::getResourceModel('catalog/product_collection')
+                ->addAttributeToSelect(array('image', 'small_image', 'thumbnail', 'best_seller', 'price', 'name', 'short_description', 'product_tag'))
+                ->addAttributeToFilter('best_seller', array('eq' => '1'));
+
+        $productCollection->getSelect()->distinct(false)
+                ->join(array('count_table' => $productCollection->getTable('catalog/category_product_index')), 'count_table.product_id = e.entity_id', array(
+                    'count_table.category_id',
+                        //'product_count' => new Zend_Db_Expr('COUNT(DISTINCT count_table.product_id)')
+                        )
+                )
+                ->where('count_table.store_id = ?', $productCollection->getStoreId())
+                ->where('count_table.category_id = ?', $_parentId)->limit('1');
+
+        return $productCollection->load();
+    }
+
+    public function getFreeFromFoodsImage() {
+
+        $product = Mage::getModel("catalog/product");
+        $attributes = Mage::getResourceModel("eav/entity_attribute_collection")
+                ->setEntityTypeFilter($product->getResource()->getTypeId())
+                ->addFieldToFilter("attribute_code", "free_from_foods");
+
+
+
+
+        $attribute = $attributes->getFirstItem()->setEntity($product->getResource());
+        $_optionCollection = Mage::getResourceModel("ecommerceteam_sln/attribute_collection")
+                ->addFieldToFilter("attribute_id", $attribute->getAttributeId())
+                ->load(false);
+
+        $_optionCollection->getSelect()
+                ->join(array('additional_table' => $_optionCollection->getTable('eav/attribute_option_value')), 'additional_table.option_id = `main_table`.option_id AND additional_table.store_id=0', array('label' => 'additional_table.value')
+        );
+
+
+        return $_options = $_optionCollection->getData();
+    }
+
+    public function getCategoryAttribute($id) {
+        $_data = Mage::getModel('catalog/category')->load($id)->getData('icon_image');
+        return $_data;
+    }
+
+    /**
+     * Retrieve url for direct adding product to cart
+     *
+     * @param Mage_Catalog_Model_Product $product
+     * @param array $additional
+     * @return string
+     */
+    public function getAddToCartUrlBest($product, $additional = array()) {
+        if ($this->hasCustomAddToCartUrl()) {
+            return $this->getCustomAddToCartUrl();
+        }
+
+        if ($this->getRequest()->getParam('wishlist_next')) {
+            $additional['wishlist_next'] = 1;
+        }
+
+        $addUrlKey = Mage_Core_Controller_Front_Action::PARAM_NAME_URL_ENCODED;
+        $addUrlValue = Mage::getUrl('*/*/*', array('_use_rewrite' => true, '_current' => true));
+        $additional[$addUrlKey] = Mage::helper('core')->urlEncode($addUrlValue);
+
+        return $this->helper('checkout/cart')->getAddUrl($product, $additional);
+    }
+
+}

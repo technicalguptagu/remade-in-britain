@@ -1,0 +1,48 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2012
+ * @Modified By     Jenifer Ratchanya
+ * @Modified Date   Mar 27 2014
+ *
+ * */
+?>
+<?php if ($this->getReviewsCount()): ?>
+    <div class="ratings">
+        <?php if ($this->getRatingSummary()):?>
+            <div class="rating-box">
+                <div class="rating" style="width:<?php echo $this->getRatingSummary() ?>%"></div>
+            </div>
+        <?php endif;?>
+        <p class="rating-links">
+            <a href="#customer-reviews"><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></a>
+            <span class="separator">|</span>
+            <a href="#review-form" class="add_reviews"><?php echo $this->__('Add Your Review') ?></a>
+        </p>
+    </div>
+<?php elseif ($this->getDisplayIfEmpty()): ?>
+    <p class="no-rating"><a href="#review-form" title="Write a review"><?php echo $this->__('Write a review') ?></a></p>
+            <?php endif; ?>
+<script type="text/javascript">
+       $$('.rating-links a,.no-rating a').each(function(element) {
+        element.observe('click', function(e) {  
+          
+        $$('.product-tabs li').each(function(reviewtab){
+            reviewtab.removeClassName('active');  
+        });      
+        if($('product_tabs_tabreviews').addClassName('active')){
+            $('product_tabs_tabreviews').removeClassName('active');
+            $('product_tabs_tabreviews').addClassName('active');
+            $('product_tabs_description_contents').setStyle({  display: 'none'  });
+             $('product_tabs_product.tags_contents').setStyle({  display: 'none'  });
+             $('product_tabs_tabreviews_contents').setStyle({  display: 'block'  });
+        }
+        });
+       });
+</script> 

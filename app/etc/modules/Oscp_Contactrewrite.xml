@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Oscp_Contactrewrite>
+            <active>true</active>
+            <codePool>local</codePool>            
+        </Oscp_Contactrewrite>
+    </modules>
+</config>
+
+
+

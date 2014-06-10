@@ -1,0 +1,35 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2012
+ * @Modified By     Jenifer Ratchanya
+ * @Modified Date   Mar 27 2014
+ *
+ * */
+?>
+<div class="box-account box-info">
+<p><?php echo $this->__('Turn in to a seller today and enjoy some incredible benefits like adding logo to your profile page for better branding, setting up multiple products to improve conversions, etc.'); ?></p>
+<p><?php echo $this->__('Click the button to become a Seller'); ?></p>
+ <form name="buyer-seller" id="buyer-seller" action="<?php echo $this->becomeAsellerUrl(); ?>">
+ <div class="input-box">
+            <input type="checkbox" id="privacy_policy" name="privacy_policy" value="1" title="<?php echo $this->__('I agree the Terms and Condition') ?>" class="checkbox required-entry">
+
+            <label for="is_subscribed"><?php echo $this->__('I agree the Terms and Condition') ?> (<a href="<?php echo Mage::helper('cms/page')->getPageUrl(6) ?>" target="_blank"><?php echo $this->__('Terms and Condition'); ?></a>)</label>
+        </div>
+<button class="button" >
+    <span>
+        <span><?php echo $this->__('Become a Seller') ?></span>
+    </span>
+</button>
+ </form>
+</div>
+<script type="text/javascript">
+        //<![CDATA[
+        var dataForm = new VarienForm('buyer-seller', true);
+        </script>

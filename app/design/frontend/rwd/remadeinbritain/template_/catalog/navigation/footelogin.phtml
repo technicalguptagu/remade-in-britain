@@ -1,0 +1,17 @@
+<?php //BOF developer-19 06/02/2013   ?>
+<div class="footer-account">
+    <ul>
+        <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+            <li><a title="Login/Register" href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>"><?php echo $this->__('Login / Register') ?></a></li>
+        <?php else: ?>
+            <li><a title="Logout" href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"><?php echo $this->__('Logout') ?></a></li>
+        <?php endif; ?>			   
+        <li><a title="My Account" href="<?php echo $this->getUrl('customer/account/') ?>"><?php echo $this->__('My Account') ?></a></li>
+		<li><a title="My Wishlist" href="<?php echo $this->getUrl('#') ?>"><?php echo $this->__('My Wishlist') ?></a></li>
+        <li><a title="Compare List" href="<?php echo $this->getUrl('#') ?>"><?php echo $this->__('Compare List') ?></a></li>
+		<li><a title="My Shopping Bag" href="<?php echo $this->getUrl('checkout/cart/') ?>"><?php echo $this->__('My Shopping Bag') ?></a></li>
+        <li><a title="checkout" href="<?php echo $this->getUrl('checkout/onepage/') ?>"><?php echo $this->__('Checkout') ?></a></li>
+    </ul>
+</div>
+<?php
+//EOF developer-19 06/02/2013 ?>

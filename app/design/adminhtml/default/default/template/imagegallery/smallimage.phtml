@@ -1,0 +1,16 @@
+<?php
+/**
+* @category Oscp
+* @package Oscp_ImageGallery
+*/ 
+?>
+<tr>
+    <td class="label"><?php echo $this->getElement()->getLabel() ?><span class="required">*</span></td>
+    <td colspan="10" class="smallimage">
+     <input id="smallimage" type="file" value="" name="smallimage" />
+    <?php if($this->getElement()->getValue()): ?>
+     <img style="width:40px; height:45px;" 
+          src="<?php echo Mage::getBaseUrl('media'). DS.$this->getElement()->getValue();?>" alt="Small Image" title="Small Image" />
+    <?php endif; ?>
+    </td>
+</tr>
