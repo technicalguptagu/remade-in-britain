@@ -3966,7 +3966,9 @@ a.skip-link {
 }
 .footer .collapsible .block-title,
 .footer address {
-  color: #3399cc;
+  border: medium none;
+  margin: 0;
+  padding: 0;
 }
 .footer .links {
    float: left;
@@ -9992,8 +9994,8 @@ box-shadow: 0 -6px 5px 0 #B3B3B9;
 .price-Or-retailername .sale-price .was { float: left; }
 .this-month-featured-retailer .featured-retailer .feature-product .Featured-contant .products-grid .actions ul li { margin: 0 5px 0 0; }
 .this-month-featured-retailer .featured-retailer .feature-product .Featured-contant .products-grid .actions ul li.add-cart { margin: 0; }
-.footer-block #nav li.level-top { width: 100%; float: none; margin: 0; height: auto; float: left; }
-.footer-block #nav li.level-top a { color: #75757C; font-family: Oswald; font-size: 13px; font-weight: 300; text-transform: capitalize; text-align: left; line-height: 1.4; }
+.footer-block #nav li.level-top { width: 100%; float: none; margin: 0; height: auto; float: left; padding: 0 0 5px; }
+.footer-block #nav li.level-top a { color: #75757C; font-family: Oswald; font-size: 13px; font-weight: 300; text-transform: uppercase; text-align: left; line-height: 1.4; }
 .product-rating .no-rating { margin: 11px 0; text-indent: -10000px; }
 .this-month-featured-retailer .featured-retailer .feature-product .Featured-contant .products-grid > li .productbg .product-image { box-shadow: 0 0 5px #F3F2F3; }
 .latest-products .products-grid .product-image:hover .actions { bottom: 5px; left: 0; padding: 0 3px; }
@@ -10010,6 +10012,8 @@ box-shadow: 0 -6px 5px 0 #B3B3B9;
 .page-header { background: url(../images/fabric_of_squares_gray.png) repeat 0 0; }
 #header-nav { display: block; border-bottom: 1px solid #ededed; clear: left; background: url("../images/spritestrip.png") repeat-x 0 -43px; }
 .feature-product .Featured-contant .products-grid li { float: left; }
+.collapsible .block-content li a { color: #75757C; font-family: Oswald; font-size: 13px; font-weight: 300; text-transform: capitalize; }
+.footer-block #nav li.level-top ul { display: none; }
 
  @media only screen and (min-width: 570px) and (max-width:959px){
 .header-right .information-advice #info-head span { height: 25px; padding: 0; text-indent: -10000px; width: 42px; background: url(../images/spritedrpdwn.png) no-repeat 0 0; }
@@ -10084,7 +10088,8 @@ box-shadow: 0 -6px 5px 0 #B3B3B9;
 .collapsible .block-content { display: block ! important }
 }
 
-@media only screen and (min-width: 600px) {
+
+@media only screen and (min-width: 401px) and (max-width:600px) {
 .this-month-featured-retailer .featured-retailer .feature-product .Featured-contant .products-grid > li + li {
 	display: none; 
 }
