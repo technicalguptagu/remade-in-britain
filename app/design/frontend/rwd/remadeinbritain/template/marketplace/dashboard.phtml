@@ -29,7 +29,7 @@ if (Mage::getSingleton('customer/session')->isLoggedIn()) {
         //To display Life time sales
         $sellerProduct = Mage::getModel('marketplace/sellerprofile')->sellerProduct($id);
         $lifetime_sales = array();
-        $order_ids = Mage::getModel("sales/order")->getCollection;
+        $order_ids = Mage::getModel("sales/order")->getCollection()->;
 		
 
         $product_ids = array();
