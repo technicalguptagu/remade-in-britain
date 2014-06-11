@@ -583,6 +583,12 @@ margin-bottom: 2% !important;
   font-size: 13px;
   font-weight: 300;
 }
+.blog-index-list .col-main {
+  width: 79%;
+}
+.blog-index-list .col-left {
+ width: 19%;
+}
   
 
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
