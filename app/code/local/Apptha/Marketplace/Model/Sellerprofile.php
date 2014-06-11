@@ -135,7 +135,7 @@ class Apptha_Marketplace_Model_Sellerprofile extends Mage_Core_Model_Abstract
                ->addFieldToSelect('qty_invoiced')
                ->addFieldToSelect('base_price')
                ->addAttributeToSort('order_id', 'DESC')
-                ->addFieldToFilter("increment_id", array("in" => $order_ids));      
+                ->addFieldToFilter("order_id", array("in" => $order_ids));      
        $items->getSelect()->join( array('t2'=> Mage::getConfig()->getTablePrefix().'sales_flat_order'), 'main_table.order_id = t2.entity_id', array('increment_id' => 't2.increment_id'));
        $items->getSelect()->limit(5);
 	   

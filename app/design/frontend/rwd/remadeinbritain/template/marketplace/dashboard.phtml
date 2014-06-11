@@ -29,8 +29,16 @@ if (Mage::getSingleton('customer/session')->isLoggedIn()) {
         //To display Life time sales
         $sellerProduct = Mage::getModel('marketplace/sellerprofile')->sellerProduct($id);
         $lifetime_sales = array();
-        $order_ids = Mage::getModel("sales/order")->getCollection();
-		
+
+        $order_ids = array();
+
+/*Oscdev #42 10-06-2014*/
+        $orderCollection = Mage::getModel('sales/order')->getCollection();
+        $orderCollection->getSelect()->order('entity_id DESC')->limit(5);
+		foreach($orderCollection as $orders){			
+			$order_ids[]= $orders->getEntityId();
+		}
+/*EOF Oscdev #42 10-06-2014*/
 
         $product_ids = array();
         $averageOrders = '';
@@ -61,10 +69,7 @@ if (Mage::getSingleton('customer/session')->isLoggedIn()) {
         <div class="mp_dashboard_container data-table">    
             <?php
             // To display Last Five Orders      
-			//echo '<pre>';
-			//print_r($order_ids);
-			//echo '</pre>';
-			//echo '<br>';
+			
             $data_product = Mage::getModel('marketplace/sellerprofile')->getdataProduct($order_ids);
             $size = count($data_product);
             ?>
@@ -81,7 +86,7 @@ if (Mage::getSingleton('customer/session')->isLoggedIn()) {
                 <?php
                 if ($size > 0) {
                     foreach ($data_product as $_dataproduct) {
-                       // if (in_array($_dataproduct['product_id'], $product_ids)) {
+                      //  if (in_array($_dataproduct['product_id'], $product_ids)) {
                             ?>                
                             <tr>
                                 <td><?php echo $_dataproduct['increment_id']; ?></td>
@@ -90,7 +95,7 @@ if (Mage::getSingleton('customer/session')->isLoggedIn()) {
                                 <td><?php echo round($_dataproduct['qty_invoiced']); ?></td>
                             </tr>
                             <?php
-                       // }
+                     //   }
             
         } ?>
                         </tbody>
