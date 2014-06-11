@@ -571,7 +571,7 @@ margin-bottom: 2% !important;
 .blog-index-list .postContent img {
  float: left;
  }
- .blog-index-list .postContent {
+ .blog-index-list .blog-desc{
   color: #FFFFFF;
   font-family: oswald;
   font-size: 18px;
@@ -587,7 +587,7 @@ margin-bottom: 2% !important;
   width: 79%;
 }
 .blog-index-list .col-left {
- width: 19%;
+ width: 18%;
 }
   
 
@@ -1005,6 +1005,9 @@ padding: 3% 2% 7% ;
 .about-us-image{
   width: 100%;
 }
+.blog-index-list .postContent img {
+ float:none;
+ }
 }
 
 
