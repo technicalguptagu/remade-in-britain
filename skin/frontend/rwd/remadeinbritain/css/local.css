@@ -571,6 +571,12 @@ margin-bottom: 2% !important;
 .blog-index-list .postContent img {
  float: left;
  }
+ .blog-index-list .postContent {
+  color: #FFFFFF;
+  font-family: oswald;
+  font-size: 18px;
+  font-weight: 300;
+}
   
 
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
