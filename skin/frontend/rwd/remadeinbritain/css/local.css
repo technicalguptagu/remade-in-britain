@@ -513,7 +513,7 @@ margin-bottom: 2% !important;
 
 /* - - - -  Remade Blog - - - -*/
 /* - - - -  Blog Landing - - - -*/
-.blog-index-list .menu-recent h5, .menu-categories h5 {
+.blog-index-list .menu-recent h5, .menu-categories h5, .blog-post-view .menu-recent h5{
   color: #FFFFFF;
   font-family: oswald;
   font-size: 17px;
@@ -526,13 +526,17 @@ margin-bottom: 2% !important;
   font-weight: 400;
   color: #494956;
 }
-.blog-index-list .menu-recent h3 {
+.blog-index-list .menu-recent h3, .blog-post-view .menu-recent h3  {
   font-family: oswaldlight;
   font-size: 17px;
   color: #494956;
 }
-.blog-index-list .postTitle {
+.blog-index-list .postTitle{
   background: url("../images/spritestrip.png") repeat-x scroll 0 28px transparent;
+  border: medium none;
+}
+.blog-post-view .postTitle {
+  background: url("../images/spritestrip.png") repeat-x scroll 0 22px transparent;
   border: medium none;
 }
 .blog-index-list .postTitle a {
@@ -541,30 +545,30 @@ margin-bottom: 2% !important;
   font-size: 22px;
   text-transform: capitalize;
 }
-.blog-index-list .breadcrumbs {
+.blog-index-list .breadcrumbs, .blog-post-view .breadcrumbs {
   background: url("../images/spritestrip.png") repeat-x scroll 0 16px transparent;
   margin:0 0 23px 0;
  }
-.blog-index-list .postContent img {
+.blog-index-list .postContent img, .blog-post-view .postContent img  {
  float: left;
  padding: 0 17px 0 0;
 }
-.blog-index-list .blog-desc{
+.blog-index-list .blog-desc, .blog-post-view .blog-desc{
   color: #FFFFFF;
   font-family: oswaldlight;
   font-size: 18px;
   line-height: 1.8;
 }
-.blog-index-list .postDetails,.comment,.posted-tag {
+.blog-index-list .postDetails,.comment,.posted-tag, .blog-post-view .postDetails {
   color: #494956;
   font-family: oswaldlight;
   font-size: 13px;
   line-height: 1.8;
 }
-.blog-index-list .col2-left-layout .col-main {
+.blog-index-list .col2-left-layout .col-main, .blog-post-view .col2-left-layout .col-main {
   width: 79%;
 }
-.blog-index-list .col-left {
+.blog-index-list .col-left, .blog-post-view .col-left {
  width: 19% !important;
 }
   
@@ -633,6 +637,10 @@ float:left;
  .blog-index-list .postContent img {
   float: none;
 }
+ .blog-index-list .col2-left-layout .col-main {
+  padding: 0 1%;
+  width: 98%;
+}
 /* .what-is-upcycling, .what-can-be-upcycled, .the-modern-upcycler {
   margin: 0 1% 0 0;
   width: 98%;
@@ -694,6 +702,10 @@ float:left;
 }
 .blog-index-list .postContent img {
   float: none;
+}
+ .blog-index-list .col2-left-layout .col-main {
+  padding: 0 1%;
+  width: 98%;
 }
 }
 
@@ -890,14 +902,14 @@ padding: 3% 2% 7% ;
  width: 70%;
 }
 .blog-index-list .postDetails, .comment, .posted-tag {
- font-size: 10px;
+ font-size: 11px;
+ padding: 0 0 0 7px;
 }
 .blog-index-list .postContent img {
  float:none;
 } 
 .blog-index-list .blog-desc,.blog-index-list .aw-blog-read-more  {
  font-size: 11px;
- padding: 13px 0 13px 7px;
 }
  .blog-index-list .postTitle a {
   padding: 0 0 0 10px;
@@ -1026,8 +1038,11 @@ padding: 3% 2% 7% ;
 }
 .blog-index-list .blog-desc,.blog-index-list .aw-blog-read-more  {
  font-size: 11px;
- padding: 13px 0 13px 7px;
 }
+.blog-index-list .postDetails, .comment, .posted-tag {
+ font-size: 11px;
+ padding: 0 0 0 7px; 
+ }
 }
 
 
