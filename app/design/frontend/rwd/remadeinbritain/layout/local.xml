@@ -86,7 +86,11 @@
 		<reference name="root">
             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
         </reference>
-		
+		<reference name="left_first">
+            <block type="catalog/layer_view" name="catalog.leftnav" after="currency" template="catalog/layer/view.phtml">
+                <block type="core/text_list" name="catalog.leftnav.state.renderers" as="state_renderers" />
+            </block>
+        </reference>
 	  </catalog_category_layered>
 
 

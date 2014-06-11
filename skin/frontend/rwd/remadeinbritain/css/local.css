@@ -577,6 +577,12 @@ margin-bottom: 2% !important;
   font-size: 18px;
   font-weight: 300;
 }
+.blog-index-list .postDetails,.comment,.posted-tag {
+  color: #494956;
+  font-family: oswald;
+  font-size: 13px;
+  font-weight: 300;
+}
   
 
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/

@@ -37,3 +37,4 @@ shell/compiler.php
 shell/indexer.php
 shell/log.php
 var/
+var/lock/
