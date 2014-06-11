@@ -539,6 +539,7 @@ margin-bottom: 2% !important;
   font-family: oswald;
   font-size: 17px;
   font-weight: 400;
+  padding: 0 0 0 9px;
 }
 .block-blog .menu-recent UL LI a, .block-blog .menu-categories UL LI a, .block-blog .menu-tags UL LI a {
   font-family: oswald;
@@ -557,7 +558,7 @@ margin-bottom: 2% !important;
   border: medium none;
 }
 .blog-index-list  .postwrapper .postTitle a {
-  color: #FFFFFF;
+  color: #000000;
   font-family: oswald;
   font-size: 22px;
   font-weight: 300;
