@@ -10175,3 +10175,28 @@ div.calendar table td.button {
  #search_mini_form input[type="search"] { background: url(../images/spritehome.png) no-repeat 257px -84px #FFFFFF; }
  #search_mini_form input[type="search"]:focus { background: url(../images/spritehome.png) no-repeat 257px -111px #FFFFFF; }
 }
+@media only screen and (min-width: 300px) and (max-width:599px) {
+.logo { width: 100%; }
+.header-right { width: 100%; }
+.header-right .information-advice #info-head span { height: 25px; padding: 0; text-indent: -10000px; width: 42px; background: url(../images/spritedrpdwn.png) no-repeat 0 4px; }
+.header-right .information-advice #info-head.active span { background: url(../images/spritedrpdwn.png) no-repeat 0 -28px; margin: 0 auto; }
+.header-right .dropdown .login .logintext { background: url(../images/spritedrpdwn.png) no-repeat 0 -61px; height: 25px; overflow: hidden; padding: 0; text-indent: -10000px; width: 42px; }
+.header-right .dropdown .login { width: 42px; margin: 0 42% 0 0; }
+.header-right .dropdown .login.active { margin: 0; position: absolute; right: -15px; width: 132px; }
+.header-right .information-advice .Info { margin: 0 32% 0 0; }
+.header-right .information-advice #info-head { padding: 12px 0; width: 40px; }
+.header-right .information-advice #info-head.active { position: absolute; left: -62px; width: 168px; z-index: 12; }
+.login-border { padding: 12px 0; width: 42px; }
+.header-right .information-advice #info-head.active #informationhead { left: -1px; }
+.header-right .dropdown .login.active .login-border { width: 132px; }
+.header-right .dropdown .login.active .logintext { margin: 0 auto; background: url(../images/spritedrpdwn.png) no-repeat 0 -96px; }
+.header-right .dropdown #loginheader .block-login .before-login { right: -132px; }
+.col1-layout .col-main { padding: 0 5px !important; float: left !important; }
+.about-remade .upcycling, .about-remade .blog-remade {width: 100%; }
+.about-remade .join-us {width: 100%; margin: 6% 0; }
+.this-month-featured-retailer .featured-retailer .retailer-block { width: 100%; }
+.this-month-featured-retailer .featured-retailer .feature-product { display: none; }
+.blog-socialLinks .homepage-blog { width: 100%; margin: 0; }
+.blog-socialLinks .social-links { width: 100%; }
+.blog-socialLinks .social-links h1 { float: left; }
+}
