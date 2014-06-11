@@ -274,12 +274,10 @@ margin-bottom: 2% !important;
   margin-bottom: 5%;
   padding: 0 1%;
 }
-.join-page .join-account p {
+.join-page .join-account p, .join-page .sign-desc p {
   color: #494956;
-  font-family: oswald;
+  font-family: oswaldlight;
   font-size: 20px;
-  font-weight: 300;
-  margin: 0;
   margin: 10px;
 }
 .join-page {
@@ -306,13 +304,6 @@ margin-bottom: 2% !important;
 .join-page .join-account {
   padding: 0 10px 0 7px;
 }
-.join-page .sign-desc p {
-  color: #494956;
-  font-family: oswald;
-  font-size: 20px;
-  font-weight: 300;
-  margin: 10px;
-}
 .signup-page .sign-logo {
   width: 55%;
 }
@@ -336,10 +327,9 @@ margin-bottom: 2% !important;
 
 .signup-page .sign-list a {
   color: #494956;
-  font-family: oswald;
+  font-family: oswaldlight;
   font-size: 20px;
   font-style: normal;
-  font-weight: 300;
   line-height: 1.5;
   padding: 0 0 0 3%;
 }
@@ -365,13 +355,12 @@ margin-bottom: 2% !important;
      width: 50%;
    }
 
-.std .become-remade-retailer p {
+.std .become-remade-retailer p, .why-join-rmib p {
    color: #494956;
-   font-family: oswald;
+   font-family: oswaldlight;
    font-size: 20px;
-   font-weight: 300;
    margin:10px;
-   }
+ }
 .can-sell .can-sell-image {
    padding: 30px 0 35px 5px;
    width: 34%;
@@ -381,10 +370,9 @@ margin-bottom: 2% !important;
  }
 .can-sell .description {
   color: #494956;
-  font-family: oswald;
+  font-family: oswaldlight;
   font-size: 20px;
   font-style: normal;
-  font-weight: 300;
   padding: 4% 2% 0;
  }
 .goods-img li {
@@ -396,22 +384,14 @@ margin-bottom: 2% !important;
   padding: 38px 0 16px 5px;
   width: 33%;
 }
-.why-join-rmib p {
-  font-family: oswald;
-  font-size: 20px;
-  font-weight: 300;
-  color: #494956;
-  margin: 10px;
-}
 .how-work .work-image {
   padding: 38px 0 16px 5px;
   width: 33%;
 }
 .how-work p {
   color: #494956;
-  font-family: oswald;
+  font-family: oswaldlight;
   font-size: 20px;
-  font-weight: 300;
   margin: 10px;
   padding-bottom: 15px;
   clear: both;
@@ -451,11 +431,10 @@ margin-bottom: 2% !important;
   width: 69%;
 }
 .what-is-upcycling .upcycling-desc  p, .what-can-be-upcycled .upcycled-img p, .the-modern-upcycler .modern-image p {
-  font-family: oswald;
+  font-family: oswaldlight;
   font-size: 20px;
-  font-weight: 300;
   color: #494956;
- margin: 10px 0 25px;
+  margin: 10px 0 25px;
 }
 .what-is-upcycling .upcycling {
   float: left;
@@ -548,20 +527,18 @@ margin-bottom: 2% !important;
   color: #494956;
 }
 .blog-index-list .menu-recent h3 {
-  font-family: oswald;
+  font-family: oswaldlight;
   font-size: 17px;
-  font-weight: 300;
   color: #494956;
 }
 .blog-index-list .postTitle {
-  background: url("../images/spritestrip.png") repeat-x scroll 0 26px transparent;
+  background: url("../images/spritestrip.png") repeat-x scroll 0 28px transparent;
   border: medium none;
 }
 .blog-index-list .postTitle a {
   color: #FFFFFF;
-  font-family: oswald;
+  font-family: oswaldlight;
   font-size: 22px;
-  font-weight: 300;
   text-transform: capitalize;
 }
 .blog-index-list .breadcrumbs {
@@ -570,24 +547,25 @@ margin-bottom: 2% !important;
  }
 .blog-index-list .postContent img {
  float: left;
- }
- .blog-index-list .blog-desc{
-  color: #000000;
-  font-family: oswald;
+ padding: 0 17px 0 0;
+}
+.blog-index-list .blog-desc{
+  color: #FFFFFF;
+  font-family: oswaldlight;
   font-size: 18px;
-  font-weight: 300;
+  line-height: 1.8;
 }
 .blog-index-list .postDetails,.comment,.posted-tag {
   color: #494956;
-  font-family: oswald;
+  font-family: oswaldlight;
   font-size: 13px;
-  font-weight: 300;
+  line-height: 1.8;
 }
-.blog-index-list .col-main {
+.blog-index-list .col2-left-layout .col-main {
   width: 79%;
 }
 .blog-index-list .col-left {
- width: 18%;
+ width: 19% !important;
 }
   
 
@@ -652,6 +630,9 @@ float:left;
 .contact-page .page-title > p {
   padding: 0;
   }
+ .blog-index-list .postContent img {
+  float: none;
+}
 /* .what-is-upcycling, .what-can-be-upcycled, .the-modern-upcycler {
   margin: 0 1% 0 0;
   width: 98%;
@@ -710,6 +691,9 @@ float:left;
 }
 .delivery-details-image {
   width: 70%;
+}
+.blog-index-list .postContent img {
+  float: none;
 }
 }
 
@@ -905,6 +889,27 @@ padding: 3% 2% 7% ;
 .delivery-details-image{
  width: 70%;
 }
+.blog-index-list .postDetails, .comment, .posted-tag {
+ font-size: 10px;
+}
+.blog-index-list .postContent img {
+ float:none;
+} 
+.blog-index-list .blog-desc,.blog-index-list .aw-blog-read-more  {
+ font-size: 11px;
+ padding: 13px 0 13px 7px;
+}
+ .blog-index-list .postTitle a {
+  padding: 0 0 0 10px;
+ }
+ .blog-index-list .col2-left-layout .col-main {
+  padding: 0 1%;
+  width: 98%;
+}
+.blog-index-list .blog-desc {
+ font-size: 11px;
+ padding: 13px 0 13px 7px;
+}
 }
 
 /*@media only screen and (min-width:640px){
@@ -1008,6 +1013,21 @@ padding: 3% 2% 7% ;
 .blog-index-list .postContent img {
  float:none;
  }
+.blog-index-list .blog-desc {
+ font-size: 11px;
+ padding: 13px 0 13px 7px;
+}
+.blog-index-list .postTitle a {
+  padding: 0 0 0 10px;
+}
+.blog-index-list .col2-left-layout .col-main {
+  padding: 0 1%;
+  width: 98%;
+}
+.blog-index-list .blog-desc,.blog-index-list .aw-blog-read-more  {
+ font-size: 11px;
+ padding: 13px 0 13px 7px;
+}
 }
 
 
