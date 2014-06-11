@@ -31,10 +31,10 @@
                                 $_coreHelper = $this->helper('core');
                                 $_taxHelper = $this->helper('tax');
                                 ?>
-<ul class="products-grid products-grid--max-<?php echo $_columnCount; ?>-col">
+<div class="products-grid products-grid--max-<?php echo $_columnCount; ?>-col">
         <div class="itemslider-wrapper<?php if($_count > 3):?> three<?php endif;?>">
-            <div class="nav-wrapper-similar-main gen-slider-arrows1 gen-slider-arrows1-pos-top-right" id="nav-wrapper-similar-main">&nbsp;</div>    
-            <div class="itemslider-similar-main itemslider-horizontal itemslider-responsive" id="itemslider-similar-main">
+            <div class="nav-wrapper-similar-main nav-wrapper gen-slider-arrows1 gen-slider-arrows1-pos-top-right" id="nav-wrapper-new-main">&nbsp;</div>    
+            <div class="itemslider-similar-main itemslider itemslider-horizontal itemslider-responsive" id="itemslider-new-main">
     <ul class=" slides products-grid">
              <?php foreach ($_products->getItems() as $_product):?>
                   <li class="item">
@@ -130,11 +130,12 @@
                 </ul>
             </div>
         </div>
-		</ul>
+	
 		
         <script type="text/javascript">
+			//<![CDATA[
             jQuery(function() {
-                jQuery("#itemslider-similar-main").flexslider({
+                jQuery("#itemslider-new-main").flexslider({
                     namespace: "",
                     animation: "slide",
                     easing: "easeInQuart",
@@ -143,15 +144,18 @@
                     animationSpeed: 400,
                     pauseOnHover: true,
                     controlNav: false,
-                    controlsContainer: "#nav-wrapper-similar-main",
+                    controlsContainer: "#nav-wrapper-new-main",
                     itemWidth: 258,
                     minItems: 1,
                     maxItems: 3,
                     move: 0
                 })
 				.data("showItems", 3 )
-				.data("breakpoints", [ [1200, 3], [1000, 3], [800, 3], [600, 2], [400, 2], [300, 1]] )
+				.data("breakpoints", [ [1200, 3], [1000, 3], [800, 3], [650, 2], [400, 2], [300, 1]] )
+
 					; //IMPORTANT: don't remove semicolon! 
             });
+			//]]>
         </script>    
-    <?php endif; ?>
+ 	</div>
+	<?php endif; ?>
