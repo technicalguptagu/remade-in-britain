@@ -539,7 +539,7 @@ margin-bottom: 2% !important;
   background: url("../images/spritestrip.png") repeat-x scroll 0 22px transparent;
   border: medium none;
 }
-.blog-index-list .postTitle a {
+.blog-index-list .postTitle a, .blog-post-view .postTitle h2 {
   color: #FFFFFF;
   font-family: oswaldlight;
   font-size: 22px;
@@ -570,6 +570,11 @@ margin-bottom: 2% !important;
 }
 .blog-index-list .col-left, .blog-post-view .col-left {
  width: 19% !important;
+}
+.blog-post-view .required {
+  color: #494956 !important;
+  font-family: oswaldlight !important;
+  font-size: 16px !important;
 }
   
 
