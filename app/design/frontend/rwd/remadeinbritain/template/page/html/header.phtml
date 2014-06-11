@@ -57,15 +57,17 @@
 				   <?php $_login = Mage::getSingleton("customer/session")->isLoggedIn(); ?>
 					<div id="login-head" class="login">
 						<div class="login-border">
-							<div class="logintext">
-								<ul class="links">
-								<?php if (! Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-								<li class="head-link login-logout"><a title="Login/Register"><?php echo $this->__('Login / Register') ?></a></li>
-								<?php else: ?>
-								<li class="head-link login-logout"><a title="My Account"><?php echo $this->__('My Account')
-								?></a></li>
-								<?php endif; ?>
-								</ul>
+							<div class="info-border">
+								<div class="logintext">
+									<ul class="links">
+									<?php if (! Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+									<li class="head-link login-logout"><a title="Login/Register"><?php echo $this->__('Login / Register') ?></a></li>
+									<?php else: ?>
+									<li class="head-link login-logout"><a title="My Account"><?php echo $this->__('My Account')
+									?></a></li>
+									<?php endif; ?>
+									</ul>
+								</div>
 							</div>
 						</div>
 						<div id="loginheader">
