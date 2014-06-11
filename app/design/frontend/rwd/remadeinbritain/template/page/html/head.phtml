@@ -26,6 +26,7 @@
 ?>
 <meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
 <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1, initial-scale=1"/>
+<!-- <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1, initial-scale=1"/> -->
 <title><?php echo $this->getTitle() ?></title>
 <meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
 <meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
@@ -45,3 +46,10 @@
 <?php echo $this->getChildHtml() ?>
 <?php echo $this->helper('core/js')->getTranslatorScript() ?>
 <?php echo $this->getIncludes() ?>
+<script type="text/javascript">
+//<![CDATA[
+	var oscpTheme = {};
+	oscpTheme.responsive = true;
+	oscpTheme.maxBreak = 1200;
+//]]>
+</script>
