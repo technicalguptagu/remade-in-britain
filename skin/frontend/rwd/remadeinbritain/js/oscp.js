@@ -12,7 +12,7 @@ jQuery(function($) {
 			}			
 		});
 		$('.collapsible .block-title').click(function() {
-			if ($(window).width() < 800) {			
+			if ($(window).width() < 801) {			
 				var parent = $(this).parent();
 				if (parent.hasClass('active'))
 				{

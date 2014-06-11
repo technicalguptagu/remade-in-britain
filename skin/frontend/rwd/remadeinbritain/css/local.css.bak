@@ -557,8 +557,8 @@ margin-bottom: 2% !important;
   background: url("../images/spritestrip.png") repeat-x scroll 0 26px transparent;
   border: medium none;
 }
-.blog-index-list .postTitle a {
-  color: #FFFFFF;
+.blog-index-list  .postwrapper .postTitle a {
+  color: #000000;
   font-family: oswald;
   font-size: 22px;
   font-weight: 300;
@@ -568,28 +568,7 @@ margin-bottom: 2% !important;
   background: url("../images/spritestrip.png") repeat-x scroll 0 16px transparent;
   margin:0 0 23px 0;
  }
-.blog-index-list .postContent img {
- float: left;
- }
- .blog-index-list .blog-desc{
-  color: #000000;
-  font-family: oswald;
-  font-size: 18px;
-  font-weight: 300;
-}
-.blog-index-list .postDetails,.comment,.posted-tag {
-  color: #494956;
-  font-family: oswald;
-  font-size: 13px;
-  font-weight: 300;
-}
-.blog-index-list .col-main {
-  width: 79%;
-}
-.blog-index-list .col-left {
- width: 18%;
-}
-  
+
 
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
@@ -1005,9 +984,5 @@ padding: 3% 2% 7% ;
 .about-us-image{
   width: 100%;
 }
-.blog-index-list .postContent img {
- float:none;
- }
 }
-
 
