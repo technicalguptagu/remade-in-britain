@@ -1,5 +1,5 @@
 /********** < Navigation */
-.nav-container {  margin: 0 auto; width: 1200px; }
+.nav-container {  margin: 0 auto; max-width: 1200px; }
 
 #nav { min-height: 46px;text-align:left; padding:0; z-index:4; }
 
@@ -61,7 +61,7 @@
 
 /********** Mobile Navigation > */
 .accordion.vertnav, #nav.mobile { display:none; }
-.accordion.vertnav.mobile.show { display:block; margin-bottom: 8px; max-height: 9999px; transition-duration: 500ms; transition-property: max-height; transition-timing-function: ease-in-out; background: #fff; }
+.accordion.vertnav.mobile.show { display:block; max-height: 9999px; transition-duration: 500ms; transition-property: max-height; transition-timing-function: ease-in-out; background: #fff; padding: 8px 0 10px; }
 .vertnav-top.mobile.show { }
 
 #mobnav.grid-full { margin: 2px 0; }
@@ -72,13 +72,13 @@
 #mobnav #mobnav-trigger.active.on, #mobnav #mobnav-trigger.on.active { transition: color 500ms ease-in-out 0s, background-color 450ms ease-in-out 0s; }
 .accordion > li { position: relative;  background: url("../images/footer-shadow-strip.png") repeat-x scroll 0 0% transparent; }
 .accordion > li:firat-child { background: none; }
-.accordion > li > a { color: #75757C; display: block; font-family: oswald; font-size: 14px; font-weight: 300; padding: 14px 0 11px 67px; text-align: left; text-decoration: none; text-transform: uppercase; }
+.accordion > li > a { color: #75757C; display: block; font-family: oswald; font-size: 14px; font-weight: 300; padding: 5px 0 5px 67px; text-align: left; text-decoration: none; text-transform: uppercase; }
 .accordion > li.fit-guide > a { background: url("../images/footer-shadow-strip.png") repeat-x scroll 0 100% transparent; padding-bottom: 23px }
 .accordion > li.active > a  { background: #000000; color: #ffffff; }
-.accordion > li .opener { background: url(../images/spritehome.png) no-repeat -342px -565px; cursor: pointer; height: 12px; left: 45px; position: absolute; top: 17px; width: 12px; }
+.accordion > li .opener { background: url(../images/spritehome.png) no-repeat -342px -565px; cursor: pointer; height: 12px; left: 45px; position: absolute; top: 9px; width: 12px; }
 .accordion > li.active .opener { background: url(../images/spritehome.png) no-repeat -342px -594px; top: 10px; }
-.accordion > li ul { padding-left: 67px; }
-.accordion > li li { float: none; width: 48%; margin: 0; padding: 0 0 11px; }
+.accordion > li ul { padding-left: 67px; padding-bottom: 2px; }
+.accordion > li li { float: none; width: 48%; margin: 0; padding: 6px 0; }
 .accordion > li li a { color: #000000; display: block; font-size: 11px;  margin: 0; text-align: left; text-decoration: none; text-transform: uppercase; }
 .accordion > li ul li.level1.parent { display: block; float: none; }
 
