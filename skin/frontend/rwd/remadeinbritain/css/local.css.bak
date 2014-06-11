@@ -568,10 +568,7 @@ margin-bottom: 2% !important;
   background: url("../images/spritestrip.png") repeat-x scroll 0 16px transparent;
   margin:0 0 23px 0;
  }
-.blog-index-list .postContent img {
- float: left;
- }
-  
+
 
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
