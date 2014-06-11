@@ -41,7 +41,7 @@
    margin:0 0 20px 0;
   }
 .checkout-onepage-index .col2-set .col-1, .checkout-onepage-index .col2-set .col-2,
-.customer-account-login .col2-set .col-1, .customer-account-login .col2-set ..col-2{
+.customer-account-login .col2-set .col-1, .customer-account-login .col2-set .col-2{
    padding:15px 30px;
    width: 49%;
    }
@@ -166,14 +166,16 @@ label.required:after, span.required:after {
 .data-table thead th, 
 .data-table tbody td {
    color: #FFFFFF;
-   font-family: Oswald;
+   font-family: oswaldlight;
    font-size: 13px;
-   font-weight: 300;
    border: 1px solid #FFFFFF !important;
    }
 .data-table tfoot tr {
    background:none;
   }
+.data-table tbody .status em {
+    font-style: normal;
+   }
 .checkout-onepage-index .opc #checkout-review-table-wrapper h3,
 .checkout-onepage-index .opc #onepage-checkout-shipping-method-additional-load .gift-messages h3 {
     background: none;
@@ -245,13 +247,12 @@ label.required:after, span.required:after {
   text-transform: capitalize;
   }
 .col2-left-layout .sidebar .block-account .block-content li {
-  font-family: Oswald,"Helvetica Neue",Verdana,Arial,sans-serif;
+  font-family: oswaldlight;
   padding:2px 0 2px 10px;
   background:#494956;
   margin: 7px 0;
   text-transform: capitalize;
   font-size: 18px;
-  font-weight: 300;
   }
 .col2-left-layout .block-account li a {
    color: #fff; 
@@ -263,7 +264,8 @@ label.required:after, span.required:after {
 .col2-left-layout .sidebar .block-account li strong,
 .col2-left-layout .sidebar .block-account li.active a {
    color: #494956;
-   font-weight: 400;
+   font-family: oswald;
+   font-weight: 500;
    }
 .dashboard .page-title {
 	float:left;
@@ -281,6 +283,7 @@ label.required:after, span.required:after {
   }
 .dashboard .welcome-msg {
    float:left;
+   padding: 0 0 10px;
    }
 .dashboard .welcome-msg p {
    color: #FFFFFF;
@@ -301,13 +304,12 @@ label.required:after, span.required:after {
    font-weight: 300;
    }
 .dashboard > p {
-	color: #fff;
-    font-family: oswald;
-    font-size: 16px;
-    font-weight: 300;
-    padding: 15px;
-	width: 80%;
-	}
+   color: #fff;
+   font-family: oswaldlight;
+   font-size: 16px;
+   padding: 15px 15px 2px;
+   width: 80%;
+   }
 .dashboard .box-head {
     background: none repeat scroll 0 0 #FFFFFF;
     border-bottom: none;
@@ -317,17 +319,17 @@ label.required:after, span.required:after {
 .dashboard .box-head h2,
 .my-account .addresses-list h2{
    display: inline-block;
-    font-family: Oswald;
-    font-size: 16px;
-    font-weight: 300;
-    margin-bottom: 0;
-    text-transform: capitalize;
-	padding: 0 5px 0 0;
+   font-family: oswaldlight;
+   font-size: 16px;
+   color: #494956;
+   font-weight: 300;
+   margin-bottom: 0;
+   text-transform: capitalize;
+   padding: 0 5px 0 0;
    }
-.dashboard .box-head a {
-    font-family: Oswald;
+.dashboard .box-recent .box-head a {
+    font-family: oswaldlight;
     font-size: 16px;
-    font-weight: 300;
     text-transform: capitalize;
 	color:#D36B53;
 	padding: 0 0 0 10px;
@@ -343,7 +345,7 @@ label.required:after, span.required:after {
    }
 .dashboard .box-recent .orders th , .dashboard .box-recent .orders td,
 .my-account .data-table.orders th, .my-account .data-table.orders td  {
-  border: 2px solid #FFFFFF;
+  border: 2px solid #FFFFFF !important;
    }
 #co-shipping-form .wide > label {
     padding: 0 0 0 5px !important;
@@ -359,9 +361,8 @@ label.required:after, span.required:after {
 .dashboard .col2-set .col-1 .box-title h3, .dashboard .col2-set .col-2 .box-title h3,
 .my-account .addresses-primary h3{
   color: #FFFFFF;
-  font-family: Oswald;
+  font-family:oswaldlight;
   font-size: 16px;
-  font-weight: 300;
   text-transform: capitalize;
   display:inline-block;
   }
@@ -375,11 +376,10 @@ label.required:after, span.required:after {
    }
 .dashboard .box-head a {
    color: #494956;
-   font-family: oswald;
+   font-family: oswaldlight;
    font-size: 16px;
-   font-weight: 300;
    text-transform: capitalize;
-   margin: 0 0 0 10px;
+   padding: 0 0 0 10px;
    background: url("../images/seperator1.png") no-repeat scroll 0 6px transparent;
    }
 .dashboard .box-title a {
@@ -393,7 +393,10 @@ label.required:after, span.required:after {
    background: url("../images/seperator2.png") no-repeat scroll 0 6px transparent;
    }
 .dashboard .box-account p, .dashboard .box-account address {
-  font-style:normal;
+  color: #FFFFFF;
+  font-family: oswaldlight;
+  font-size: 16px;
+  font-style: normal;
   }
 form .legend {
   font-family: Oswald;
@@ -558,11 +561,21 @@ body, label, button, input, select, table, textarea {
     padding: 0;
     width: 100%;
    }
+/*=======Login page========== */
+.customer-account-login .col2-set .col-2 {
+   border-left:none;
+   }
+.customer-account-login form .form-instructions {
+   color: #494956;
+   font-family: oswald,Times,"Times New Roman",serif;
+   font-size: 13px;
+   font-style: normal;
+  }
 
- /*=======User Registration========== */
+/*=======User Registration========== */
 
 .customer-account-login .col2-set .buttons-set button, .customer-account-login .col2-set .buttons-set .button {
-  min-width:0;
+  min-width:115px;
   }
 .customer-account-create .col-main .account-create {
    padding: 0 15px;
@@ -587,6 +600,7 @@ body, label, button, input, select, table, textarea {
 .account-create .create-account-detail .imformation-retailer a{
   text-decoration: underline;
   font-family: oswald;
+  font-weight: 500;
   }
 .account-create .create-account-detail .imformation-retailer {
   color: #494956;
@@ -606,33 +620,33 @@ body, label, button, input, select, table, textarea {
   }
 .account-create .scaffold-form .form-list li .input-box input{
   width:70%;
- }
+  }
 .customer-account-create .fieldset, .account-create .scaffold-form .buttons-set {
-    margin: 0 30px !important;
+  margin: 0 30px !important;
   }
 .account-create .scaffold-form .buttons-set {
-   max-width: none;
-   float: right;
+  max-width: none;
+  float: right;
   }
 .account-create .scaffold-form .buttons-set  .required {
   color: #FFFFFF;
-  font-family: oswald;
+  font-family: oswaldlight;
   font-size: 14px;
-  font-weight: 300;
   margin: 0 55px 5px 0;
   }
 .account-create .scaffold-form .buttons-set .button {
- text-transform: uppercase;
- font-size: 16px;
- padding: 9px 15px;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500 !important;
+  padding: 10px 20px
   }
 .customer-account-create .col-main {
-  margin:0 0 300px 0;
-  }
+   margin:0 0 300px 0;
+   }
 .account-create .scaffold-form .input-box .validation-advice {
    text-align: center;
    width: auto;
-  }
+   }
 
  @media only screen and (min-width:965px) and (max-width:1199px){
    
@@ -700,6 +714,7 @@ body, label, button, input, select, table, textarea {
 .checkout-onepage-index .col2-set .col-2 {
    float: left;
    width: 100%;
+   padding-right: 30px;
    }
 .opc .section .step {
    padding: 10px 30px;
