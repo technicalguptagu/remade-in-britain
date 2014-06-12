@@ -1,6 +1,5 @@
 .checkout-onepage-index .page-title h1,
-.account-login .page-title h1,
-.account-create .page-title h1 {
+.account-login .page-title h1  {
    border-bottom:none;
    text-transform: uppercase;
    font-size: 27px;
@@ -131,7 +130,8 @@ label.required:after, span.required:after {
     font-size: 13px;
     font-weight: normal;
    }
-.account-create .scaffold-form .form-list li label.required:after {
+.account-create .scaffold-form .form-list li label.required:after,
+.marketplace-seller-create #form-validate li label.required:after {
     color:#fff;
    }
 #checkout-step-login .col2-set .col-2 .buttons-set {
@@ -555,7 +555,7 @@ body, label, button, input, select, table, textarea {
     font-family: "Oswald",Arial,sans-serif;
     line-height: 1.5;
 	font-size: 14px !important;
-    font-weight: 300 !important;
+    font-weight: 300;
    }
  .col1-layout .col-main {
     padding: 0;
@@ -590,6 +590,7 @@ body, label, button, input, select, table, textarea {
   color: #FFFFFF;
   font-family: oswald;
   padding: 0 112px 30px 0;
+  font-weight: 500;
   }
 .account-create .create-account-detail .information-query {
   color: #494956;
@@ -616,6 +617,7 @@ body, label, button, input, select, table, textarea {
   float: left;
   font-family: oswald;
   font-size: 14px;
+  font-weight: 400;
   width: 30%;
   }
 .account-create .scaffold-form .form-list li .input-box input{
@@ -647,6 +649,82 @@ body, label, button, input, select, table, textarea {
    text-align: center;
    width: auto;
    }
+/*=======Retailer Registration========== */
+.marketplace-seller-create .col-main {
+   margin:0 0 160px;
+   }
+.account-create .page-title h1 {
+   border-bottom:none;
+   text-transform: uppercase;
+   font-size: 19px;
+   margin-bottom: 20px;
+   color: #FFFFFF;
+   font-family: oswald;
+   font-weight: 500;
+  }
+.marketplace-seller-create .account-create {
+   margin: 0 40px 0 10px;
+  }
+.retailer-registration-detail {
+  float: left;
+  width: 30%;
+  }
+.retailer-registration-detail .retailer-detail{
+  color: #FFFFFF;
+  font-family: oswald;
+  padding: 0 35px 30px 0;
+  font-weight: 500;
+  }
+.retailer-registration-detail .retailer-detail span {
+  color: #ffffff;
+  display: block;
+  font-family: oswaldlight;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 12px 0 0;
+  }
+.retailer-registration-detail .retailer-detail span a{
+  text-decoration:underline;
+  color:#fff;
+  }
+.retailer-registration-detail .retailer-to {
+  color: #494956;
+  font-family: oswaldlight;
+  padding:0 40px 30px 0;
+  font-size:16px;
+  }
+.retailer-registration-detail .retailer-account {
+  color: #494956;
+  font-family: oswaldlight;
+  padding: 0 44px 30px 0;
+  font-size:16px;
+  }
+.retailer-registration-detail .retailer-account a {
+  font-family: oswald;
+  font-weight: 500;
+  text-decoration: underline;
+  }
+.marketplace-seller-create #form-validate  {
+  float: right;
+  width: 70%;
+  }
+.marketplace-seller-create #form-validate .fieldset,
+.marketplace-seller-create #form-validate .buttons-set{
+  margin: 0 30px;
+  }
+.marketplace-seller-create #form-validate .fieldset .form-list li label {
+  color: #ffffff;
+  float: left;
+  font-family: oswald;
+  font-size: 14px;
+  width: 30%;
+  font-weight: 400;
+  }
+.marketplace-seller-create #form-validate .fieldset .form-list li .input-box input,
+.marketplace-seller-create #form-validate .fieldset .form-list li .input-box textarea {
+  width: 70%;
+  }
+.marketplace-seller-create #form-validate .fieldset .form-list li > div .input-box input{}
 
  @media only screen and (min-width:965px) and (max-width:1199px){
    
