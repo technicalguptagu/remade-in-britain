@@ -10180,18 +10180,18 @@ div.calendar table td.button {
 .logo { width: 100%; }
 .header-right { width: 100%; }
 .header-right .information-advice #info-head span { height: 25px; padding: 0; text-indent: -10000px; width: 42px; background: url(../images/spritedrpdwn.png) no-repeat 0 4px; }
-.header-right .information-advice #info-head.active span { background: url(../images/spritedrpdwn.png) no-repeat 0 -28px; margin: 0 auto; }
+.header-right .information-advice #info-head.active span { line-height: 26px; margin: 0; text-indent: 30px; width: 100%; }
 .header-right .dropdown .login .logintext { background: url(../images/spritedrpdwn.png) no-repeat 0 -61px; height: 25px; overflow: hidden; padding: 0; text-indent: -10000px; width: 42px; }
 .header-right .dropdown .login { width: 42px; margin: 0 42% 0 0; }
-.header-right .dropdown .login.active { margin: 0; position: absolute; right: -15px; width: 132px; }
+.header-right .dropdown .login.active { margin: 0; position: absolute; right: -53px; width: 162px; }
 .header-right .information-advice .Info { margin: 0 32% 0 0; }
 .header-right .information-advice #info-head { padding: 12px 0; width: 40px; }
-.header-right .information-advice #info-head.active { position: absolute; left: -62px; width: 168px; z-index: 12; }
+.header-right .information-advice #info-head.active { position: absolute; left: -62px; width: 162px; z-index: 12; }
 .login-border { padding: 12px 0; width: 42px; }
-.header-right .information-advice #info-head.active #informationhead { left: -1px; }
-.header-right .dropdown .login.active .login-border { width: 132px; }
-.header-right .dropdown .login.active .logintext { margin: 0 auto; background: url(../images/spritedrpdwn.png) no-repeat 0 -96px; }
-.header-right .dropdown #loginheader .block-login .before-login { right: -132px; }
+.header-right .information-advice #info-head.active #informationhead { left: -1px; top: 49px; width: 162px; }
+.header-right .dropdown .login.active .login-border { width: 162px; background: url(../images/mycartuparo.png) no-repeat 140px 23px #FFFFFF; }
+.header-right .dropdown .login.active .logintext { margin: 0; text-indent: 35px; width: 100%; }
+.header-right .dropdown #loginheader .block-login .before-login {  left: -1px; }
 .col1-layout .col-main { padding: 0 5px !important; float: left !important; }
 .about-remade .upcycling, .about-remade .blog-remade {width: 100%; }
 .about-remade .join-us {width: 100%; margin: 6% 0; }
@@ -10229,4 +10229,23 @@ div.calendar table td.button {
 .subscriber-title-content .block-title { width: 24%; }
 .subscriber-title-content .block-content .input-box input[type="email"] { display: none; }
 .subscriber-title-content .block-content .input-box input[type="email"]:focus { display: block; }
+.header-right .header-right-top { width: 40%; float: left; margin: 0 0 1%; }
+.header-right .header-right-btm { width: 57%; float: left; margin: 8px 0 0; }
+.mycart #cartHeader .block-cart .block-title .cart-contant { height: 25px; }
+.mycart #cartHeader .block-cart .block-title .cart-contant .cart-contant-item { display: none; }
+.mycart #cartHeader .block-cart .block-title.active .cart-contant .cart-contant-item { display: block; }
+.mycart #cartHeader .block-cart .block-title { padding: 12px 0; width: 40px; }
+#search_mini_form input[type="search"] { width: 92%; background: url(../images/spritehome.png) no-repeat 162px -84px #FFFFFF; }
+#search_mini_form input[type="search"]:focus { background: url(../images/spritehome.png) no-repeat 162px -111px #FFFFFF; }
+.header-right .information-advice #info-head.active { background: #fff url(../images/mycartuparo.png) no-repeat 140px 23px; left: -63px; }
+.header-right .information-advice #info-head.active .info-border { width: 142px; }
+.header-right .information-advice .Info { margin: 0 23% 0 0; }
+.header-right .dropdown .login { margin: 0 24% 0 0; }
+.header-right .dropdown .login.active .login-border .info-border { margin: 0 auto; width: 142px; }
+.mycart #cartHeader .block-cart .block-title.active .cart-border { margin: 0 auto; width: 135px; }
+.header-right .dropdown .login.active { right: -47px; }
+.mycart #cartHeader .block-cart .block-title.active { width: 162px; left: 5px; }
+.mycart #cartHeader .block-content { width: 162px;}
+.mycart #cartHeader .block-cart .block-title .cart-contant { background: url(../images/spritedrpdwn.png) no-repeat 0 bottom; height: 25px; padding: 0; width: 42px; }
+
 }
