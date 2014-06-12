@@ -720,11 +720,31 @@ body, label, button, input, select, table, textarea {
   width: 30%;
   font-weight: 400;
   }
+.marketplace-seller-create #form-validate .fieldset .form-list li label span {
+  font-family: oswaldlight;
+  font-size: 15px;
+  }
 .marketplace-seller-create #form-validate .fieldset .form-list li .input-box input,
 .marketplace-seller-create #form-validate .fieldset .form-list li .input-box textarea {
   width: 70%;
   }
+.marketplace-seller-create #form-validate .fieldset .form-list li .additional-information {
+  float: left;
+  width: 30%;
+  }
+.marketplace-seller-create #form-validate .fieldset .form-list li .additional-information label {
+  width: 100%;
+  }
+.marketplace-seller-create #form-validate .fieldset .form-list li .additional-information p {
+  color: #fff;
+  float: left;
+  font-family: oswaldlight;
+  font-size: 15px;
+  padding: 20px 36px 0 0;
+ }
+
 .marketplace-seller-create #form-validate .fieldset .form-list li > div .input-box input{}
+
 
  @media only screen and (min-width:965px) and (max-width:1199px){
    
