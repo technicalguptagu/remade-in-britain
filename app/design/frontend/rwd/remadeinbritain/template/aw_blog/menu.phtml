@@ -1,8 +1,7 @@
-<div class="block block-blog">
-    <div class="block-title">
-        <strong><span><?php echo Mage::getStoreConfig('blog/blog/title'); ?></span></strong>
-    </div>
-    <div class="block-content">
+<div class="links">
+    <div class="collapsible mobile-collapsible">
+	<div class="block-title account"><div class="menu-recent"><h5><?php echo Mage::helper('blog')->__('Recent Posts/Tags'); ?></h5></div></div>
+	<div class="block-content">
         <?php if ($posts = $this->getRecent()): ?>
             <div class="menu-recent">
                 <h5><?php echo Mage::helper('blog')->__('Recent Posts'); ?></h5>
@@ -26,7 +25,7 @@
                 </ul>
             </div>
         <?php endif; ?>
-
         <?php echo $this->getChildHtml('blog_tags'); ?>
     </div>
+</div>
 </div>
