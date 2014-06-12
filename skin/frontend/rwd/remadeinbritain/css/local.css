@@ -64,6 +64,7 @@ padding: 0 0 29px !important;
 }
 .contact-page .email {
   background: url("../images/contactsprite.png") no-repeat scroll 0 -40px rgba(0, 0, 0, 0);
+   margin: 13px 0;
  }
 
 .contact-page .page-title {
@@ -148,12 +149,22 @@ margin-bottom: 2% !important;
 }
 .contact-page .contact-details #contactForm {
   float: left;
- }
- 
+  padding-left: 0;
+  width: 68%;
+}
 .contact-page .contact-details {
   float: left;
   margin: 3% 0 0 1% !important;
+  width: 99%;
  }
+ .form-list > li {
+  float: left;
+  margin-bottom: 10px;
+  width: 100%;
+}
+#contactForm #comment {
+  width: 100%;
+}
 
 .contact-page .buttons-set {
   border: medium none;
@@ -164,7 +175,7 @@ margin-bottom: 2% !important;
 #contactForm .input-box {
   float: left;
   padding: 0 0 16px;
-  width: 70%;
+  width: 64%;
 }
 #contactForm label {
   color: #FFFFFF;
@@ -176,9 +187,6 @@ margin-bottom: 2% !important;
 }
 #contactForm .input-box input {
   width: 100%;
-}
-#contactForm  #comment {
-  width: 515px;
 }
 #contactForm .fieldset {
   float: left;
@@ -201,6 +209,7 @@ margin-bottom: 2% !important;
   font-size: 16.01px;
   font-family: oswald;
   font-weight: 400;
+  text-transform: uppercase;
 }
 #contactForm label.required:after {
   color: #FFFFFF !important;
@@ -208,7 +217,7 @@ margin-bottom: 2% !important;
 #contactForm .input-box1 {
   float: left;
   margin-bottom: 17px;
-  width: 50%;
+  width: 36%;
 }
 #contactForm select {
   border-radius: 7px;
@@ -220,9 +229,6 @@ margin-bottom: 2% !important;
   font-family: helvetica;
   font-size: 11px;
   font-weight: 400;
-}
-.contact-details  #contactForm {
- padding-left: 34px;
 }
 .contact-page .buttons-set button.button {
   float: right;
