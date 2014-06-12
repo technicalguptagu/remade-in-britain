@@ -576,8 +576,24 @@ margin-bottom: 2% !important;
   font-family: oswaldlight !important;
   font-size: 16px !important;
 }
-  
-
+.blog-post-view .required-entry {
+  width: 60% !important;
+}
+.blog-post-view .button-set {
+  text-align: right;
+  width: 60% !important;
+}
+.blog-post-view .postTitle h4 {
+  background: none repeat scroll 0 0 transparent !important;
+  color: #494956;
+  font-family: oswald;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+.blog-post-view .button:hover {
+  background: #D36B53;
+}
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
 .cms-terms-and-conditions .page-title h1, .cms-privacy-policy .page-title h1 {
@@ -1027,24 +1043,24 @@ padding: 3% 2% 7% ;
 .about-us-image{
   width: 100%;
 }
-.blog-index-list .postContent img {
+.blog-index-list .postContent img, .blog-post-view .postContent img {
  float:none;
  }
-.blog-index-list .blog-desc {
+.blog-index-list .blog-desc, .blog-post-view .blog-desc {
  font-size: 11px;
  padding: 13px 0 13px 7px;
 }
-.blog-index-list .postTitle a {
+.blog-index-list .postTitle a,.blog-post-view .postTitle a {
   padding: 0 0 0 10px;
 }
-.blog-index-list .col2-left-layout .col-main {
+.blog-index-list .col2-left-layout .col-main, .blog-post-view .col2-left-layout .col-main {
   padding: 0 1%;
   width: 98%;
 }
-.blog-index-list .blog-desc,.blog-index-list .aw-blog-read-more  {
+.blog-index-list .blog-desc,.blog-index-list .aw-blog-read-more, .blog-post-view .blog-desc,.blog-index-list .aw-blog-read-more  {
  font-size: 11px;
 }
-.blog-index-list .postDetails, .comment, .posted-tag {
+.blog-index-list .postDetails, .comment, .posted-tag, .blog-post-view .postDetails, .comment, .posted-tag  {
  font-size: 11px;
  padding: 0 0 0 7px; 
  }
