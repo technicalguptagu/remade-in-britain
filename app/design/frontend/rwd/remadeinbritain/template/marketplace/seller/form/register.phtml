@@ -11,8 +11,9 @@
  * @Modified By     Jenifer Ratchanya
  * @Modified Date   Mar 27 2014
  *
- * */
+ * */echo get_class($this);
 ?>
+
 <div class="account-create">
     <div class="page-title">
         <h1><?php echo $this->__('Retailer Registration') ?></h1>
@@ -152,46 +153,38 @@
 		<div class="fieldset">
 			<ul class="form-list">
 				<li class="fields">
-					<div>
-						<label><?php echo $this->__('Contact telephone number') ?></label>
-						<div class="input-box">
-                            <input type="text" name="telephone" id="telephone" title="<?php echo $this->__('Contact telephone number') ?>" class="input-text" />
-                        </div>
+					<label for="telephone"><?php echo $this->__('Contact telephone number') ?></label>
+					<div class="input-box">
+						<input type="text" name="telephone" id="telephone" value="<?php echo $this->escapeHtml($this->getFormData()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" />
 					</div>
 				</li>
 				<li class="fields">
-					<div>
-						<label><?php echo $this->__('Store/Trading Name (if applicable)') ?></label>
-						<div class="input-box">
-                            <input type="text" name="store"  title="<?php echo $this->__('Store/Trading Name') ?>" class="input-text" />
-                        </div>
+					<label for="seller_store"><?php echo $this->__('Store/Trading Name') ?> <span><?php echo $this->__('(if applicable)')?></span></label>
+					<div class="input-box">
+						<input type="text" name="seller_store"  id="seller_store" title="<?php echo $this->__('Store/Trading Name') ?>" class="input-text" />
 					</div>
 				</li>
 				<li class="fields">
-					<div>
-						<label><?php echo $this->__('Existing website (if applicable)') ?></label>
-						<div class="input-box">
-                            <input type="url" name="website"  title="<?php echo $this->__('Existing website') ?>" class="input-text" />
-                        </div>
-					</div>
+					<label for="seller_web"><?php echo $this->__('Existing website') ?> <span><?php echo $this->__('(if applicable)')?></span></label>
+					<div class="input-box">
+						<input type="url" name="seller_website"  id="seller_website" title="<?php echo $this->__('Existing website') ?>" class="input-text" />
+					</div>					
 				</li>
 				<li class="fields">
 					<div>
-						<label><?php echo $this->__('Upload example product images') ?></label>
+						<label for="example_img"><?php echo $this->__('Upload example product images') ?></label>
 						<div class="input-box">
-                            <input type="file" name="image"  title="<?php echo $this->__('Upload example product images') ?>" class="input-text" />
-                        </div>
-					</div>
+                            <input type="file" name="example_image"  id="example_img"  title="<?php echo $this->__('Upload example product images') ?>" class="input-text" />
+                        </div>					
+					</div>					
 				</li>
 				<li class="fields">
-					<div>
-						<div>
-							<label><?php echo $this->__('Additional information...') ?></label>
-							<p><?php echo $this->__('Please use this block to offer any additional info you feel is applicable') ?></p>
-						</div>
-						<div class="input-box">
-                            <textarea title="<?php echo $this->__('Additional information...') ?>" class="input-text"></textarea>
-                        </div>
+					<div class="additional-information">
+						<label for="additional_info"><?php echo $this->__('Additional information...') ?></label>
+						<p><?php echo $this->__('Please use this block to offer any additional info you feel is applicable') ?></p>
+					</div>
+					<div class="input-box">
+						<textarea title="<?php echo $this->__('Additional information...') ?>" class="input-text" name="additional_info" id="additional_info"></textarea>
 					</div>
 				</li>
 			</ul>
