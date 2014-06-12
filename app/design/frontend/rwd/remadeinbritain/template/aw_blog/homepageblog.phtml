@@ -20,10 +20,25 @@
                                         if ($_count > 680) {
                                             echo '...';
                                         }
-                                        ?><a class="aw-blog-read-more" href="<?php echo $this->getUrl('news') ?>">Read More</a></div>
+                                        ?><div class="read"><a class="expand" href="<?php echo $this->getUrl('news') ?>">Read more</a></div></div>
 
         <?php echo $this->getBookmarkHtml($post) ?>
         <div class="tags"><?php echo $this->getTagsHtml($post) ?></div>
     </div>
 	<?php $i++;?>
 <?php endforeach; ?>
+<script type="text/javascript">
+jQuery('.expand').click(function(){
+	if(jQuery(this).parent().hasClass("less")){
+	jQuery('.postContent').toggleClass('expanddiv');
+	jQuery('.expand').html("Read more");
+	jQuery(this).parent().toggleClass("less");
+	}
+	else{
+	jQuery('.postContent').toggleClass('expanddiv');
+	jQuery('.expand').html("Read less");
+	jQuery(this).parent().toggleClass("less");
+	}
+
+});
+</script>
