@@ -37,14 +37,38 @@ padding: 0 0 29px !important;
   padding: 35px 1% 7%;
   width: 97%;
 }
-
  /*  - - - -  Contact US Page - - - -*/
+.contact-page .contact-image {
+  background: url("../images/spritestrip.png") repeat-x scroll 0 -43px rgba(0, 0, 0, 0);
+  float: left;
+  padding: 3.8% 0 0 2%;
+  width: 100%;
+  margin-bottom: 5%;
+}
+.contact-page .remade-logo {
+  float: left;
+  width: 43%;
+}
+.contact-page .remade-logo img {
+  max-width: 100%;
+}
+.contact-page .tel-mail {
+  float: left;
+  margin-left: 10%;
+  width: 47%;
+  padding: 2% 0 0;
+}
+.contact-page .tel {
+  background: url("../images/contactsprite.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+  height: 40px;
+}
+.contact-page .email {
+  background: url("../images/contactsprite.png") no-repeat scroll 0 -40px rgba(0, 0, 0, 0);
+ }
+
 .contact-page .page-title {
   background: url("../images/spritestrip.png") repeat-x scroll 0 -10px  transparent;
   clear: both;
-  height: 18px;
-  max-width: 1200px;
-  width: 100%;
 }
 .contact-page .page-title > p {
   background: url("../images/green-cup-strip.png") repeat-x scroll 0 4px transparent;
@@ -58,19 +82,7 @@ padding: 0 0 29px !important;
   width: 264px;
   white-space: nowrap;
 }
-.contact-page .remade-logo {
-  float: left;
-  height: 159px;
-  width: 47% !important;
-   margin: 0 !important;
-}
-.contact-page .contact-image{
-  background: url("../images/spritestrip.png") repeat-x scroll 0 -43px  transparent;
-padding: 3.8% 0 0 2%;
-  max-width: 1200px;
-  float: left;
-  width: 100%;
-}
+
 .remade-contact {
   clear: both;
   height: 159px;
@@ -79,24 +91,16 @@ padding: 3.8% 0 0 2%;
 .contacts-index-index .breadcrumbs {
 margin-bottom: 2% !important;
   }
-.contact-page .tel {
-  background: url("../images/contactsprite.png") no-repeat scroll  transparent;
-  height: 40px;
- }
+
 
 .contact-page .tel span {
   color: #FFFFFF;
   font-family: oswald;
   font-size: 19px;
   font-weight: 400;
-  padding: 0 0 0 14%;
+  padding: 0 0 0 11%;
  }
-.contact-page .tel-mail .email {
-  background: url("../images/contactsprite.png") no-repeat scroll 0 -40px  transparent;
-  height: 39px;
-  margin: 2.4% 0 0;
-  width: 50px;
-}
+
 .contact-page .email > span {
  padding: 0 0 0 60px;
 }
@@ -108,9 +112,7 @@ margin-bottom: 2% !important;
 }
 .contact-page .connect-link ul li.blog  {
    background: url("../images/contactsprite.png") no-repeat scroll 0 -68px  transparent;
-   height: 50px;
-   width: 50px;
-}
+ }
 .contact-page .connect-link li {
   float: left;
   height: 50px;
@@ -119,7 +121,7 @@ margin-bottom: 2% !important;
 }
 .contact-page .connect-link ul li.facebook  {
   background: url("../images/contactsprite.png") no-repeat scroll 0 -112px transparent;
-  }
+ }
  .contact-page .connect-link ul li.twitter {
   background: url("../images/contactsprite.png") no-repeat scroll 0 -155px  transparent;
   }
@@ -147,10 +149,7 @@ margin-bottom: 2% !important;
 .contact-page .contact-details #contactForm {
   float: left;
  }
-.contact-page {
-  float: left;
-  width: 100%;
-}
+ 
 .contact-page .contact-details {
   float: left;
   margin: 3% 0 0 1% !important;
@@ -233,8 +232,9 @@ margin-bottom: 2% !important;
 #contactForm .form-list .field {
   margin-bottom: 0px !important;
 }
-.contact-page .remade-logo img {
-  max-width: 100%;
+
+.contacts-index-index .button:hover {
+  background: none repeat scroll 0 0 #D36B53 !important;
 }
  /*  - - - - Delivery Details Page - - - -*/
  .delivery-details-image {
