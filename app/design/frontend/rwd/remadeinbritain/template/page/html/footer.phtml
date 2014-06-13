@@ -34,9 +34,13 @@
 		<div class="footer-bottom">
 			<div class="footer-logo"><img src="<?php echo $this->getSkinUrl('images/logofooter2.png')?>" alt="" /></div>
 			<div class="copyright"><address><?php echo $this->getCopyright() ?></address></div>
-			<div class="ecommerce-logo"><img src="<?php echo $this->getSkinUrl('images/2j-logo.png')?>" alt="" /></div>
+			<div class="ecommerce-logo">
+				<div class="ecommerce-text"><?php echo $this->__('Ecommerce by')?></div>
+				<div class="ecommerce-logo">&nbsp;</div>
+			</div>
 			<div style="clear: both; height: 0;">&nbsp;</div>
 		</div>
+		<div class="copyright-moblie" style="display: none;"><address><?php echo $this->getCopyright() ?></address></div>
     </div>
 	  <a id="scroll-to-top" href="#top" style="display: inline;">To top</a>
 </div>
