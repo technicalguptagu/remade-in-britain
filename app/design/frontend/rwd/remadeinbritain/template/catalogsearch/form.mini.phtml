@@ -33,6 +33,7 @@ $catalogSearchHelper =  $this->helper('catalogsearch');
         <label for="search"><?php echo $this->__('Search:') ?></label>
         <input id="search" type="search" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>" class="input-text required-entry" maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" placeholder="<?php echo $this->__('Search') ?>" />
         <button type="submit" title="<?php echo $this->__('Search') ?>" class="button search-button"><span><span><?php echo $this->__('Search') ?></span></span></button>
+		<div class="read"><a class="searchexpand" href="javascript:void(0)"><?php echo $this->__('Search')?></a></div></span></span>
     </div>
 
     <div id="search_autocomplete" class="search-autocomplete"></div>
@@ -43,3 +44,17 @@ $catalogSearchHelper =  $this->helper('catalogsearch');
     //]]>
     </script>
 </form>
+<script type="text/javascript">
+jQuery('.searchexpand').click(function(){
+	if(jQuery(this).parent().hasClass("less")){
+	jQuery('.input-box').toggleClass('expanddiv');
+	jQuery('.expand').html("Sign up!");
+	jQuery(this).parent().toggleClass("less");
+	}
+	else{
+	jQuery('.subscribe-contant').toggleClass('expanddiv');
+	jQuery(this).parent().toggleClass("less");
+	}
+
+});
+</script>
