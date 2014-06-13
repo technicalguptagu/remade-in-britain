@@ -1,4 +1,4 @@
-/*jQuery(function($) {
+jQuery(function($) {
 	
 				$('.collapsible').each(function(index) {
 			$(this).prepend('<span class="opener">&nbsp;</span>');
@@ -28,4 +28,4 @@
 				}
 			}			
 		});
-	});*/
+	});

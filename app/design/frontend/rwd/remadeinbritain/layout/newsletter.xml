@@ -22,7 +22,7 @@
 			<action method="addItem">
 				<type>skin_css</type>
 				<name>fancybox/jquery.fancybox.css</name>
-			</action>
+			</action> 
 			<action method="addItem">
 				<type>skin_js</type>
 				<name>fancybox/jquery.fancybox.js</name>
