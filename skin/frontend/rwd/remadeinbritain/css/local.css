@@ -741,10 +741,6 @@ float: left;
   width: 100%;
   margin-left:0;
 }
-.contact-page .contact-image {
-  background: url("../images/spritestrip.png") repeat-x scroll 0 -34px  transparent;
-  padding: 8.8% 0 9% 2%;
-}
 .contact-page .connect-link {
   width: 100%;
 }
@@ -771,6 +767,7 @@ float: left;
 }
 .contact-page .contact-details #contactForm {
   width: 100%;
+  padding: 0;
 }
 #contactForm select {
   width: 151px;
