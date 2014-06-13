@@ -42,7 +42,9 @@
 					<div class="block-content">
 						<div class="input-box">
 						   <input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="email" id="newsletter" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text required-entry validate-email" placeholder="<?php echo $this->__('Enter your email address here') ?>" />
-						   <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+						   <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button"><span><span><?php echo $this->__('Subscribe') ?>
+						   </button>
+						   <div class="read"><a class="expand" href="javascript:void(0)">Sign up!</a></div></span></span>
 						</div>
 					</div>
 				</form>
@@ -114,5 +116,19 @@ jQuery(document).on('click', '#cancel-filters-btn', function(){
 </script>
 <?php endif; ?>
 <?php $_SESSION['news'] = null; ?>
+<script type="text/javascript">
+jQuery('.expand').click(function(){
+	if(jQuery(this).parent().hasClass("less")){
+	jQuery('.subscribe-contant').toggleClass('expanddiv');
+	jQuery('.expand').html("Sign up!");
+	jQuery(this).parent().toggleClass("less");
+	}
+	else{
+	jQuery('.subscribe-contant').toggleClass('expanddiv');
+	jQuery('.expand').html("Read less");
+	jQuery(this).parent().toggleClass("less");
+	}
 
+});
+</script>
 
