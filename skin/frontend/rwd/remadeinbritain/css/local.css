@@ -140,7 +140,7 @@ padding: 0 0 29px !important;
 .remade-ques {
   float: left;
   margin: 0 10% 0 0;
-  width: 25% !important;
+  width: 25% ;
 }
 .contact-page .contact-details #contactForm {
   float: left;
@@ -1076,6 +1076,9 @@ padding: 3% 2% 7% ;
 #contactForm .input-box1 {
  float:none;
   width: 64%;
+}
+.contact-page .tel-mail {
+  padding: 8% 0 0;
 }
 }
 
