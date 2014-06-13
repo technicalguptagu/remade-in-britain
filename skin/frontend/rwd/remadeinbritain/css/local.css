@@ -1,7 +1,6 @@
  /*  - - - -  Terms and condition Page - - - -*/
 
 .cms-terms-and-conditions .page-title h1, .cms-privacy-policy .page-title h1 { 
-  background: url("../images/spritestrip.png") repeat-x scroll 0 -24px  transparent !important;
   padding: 4% 0 0 1% !important;
   color: #FFFFFF;
   font-family: oswald;
@@ -139,8 +138,8 @@ padding: 0 0 29px !important;
 }
 .contact-details .remade-ques {
   float: left;
-  margin: 0 10% 0 0;
-  width: 25% ;
+  padding: 0 10% 0 0;
+  width: 35% ;
 }
 .contact-page .contact-details #contactForm {
   float: left;
@@ -169,7 +168,7 @@ padding: 0 0 29px !important;
 #contactForm .input-box {
   float: left;
   padding: 0 0 16px;
-  width: 64%;
+  width: 70%;
 }
 #contactForm label {
   color: #FFFFFF;
@@ -265,7 +264,6 @@ padding: 0 0 29px !important;
   /* - - - -  How-to-join-us  Page - - - -  */
 
 .join-page .join-us, .join-page .signup-page{
-  background: url("../images/spritestrip.png") repeat-x scroll 0 -34px  transparent;
   float: left;
   margin-bottom: 5%;
   padding: 0 1%;
@@ -342,7 +340,6 @@ padding: 0 0 29px !important;
  /* - - - -  Becoming a Remade retailer Page - - - -  */
 
 .become-remade-retailer, .can-sell , .why-join-rmib, .how-work{
-   background: url("../images/spritestrip.png") repeat-x scroll 0 -34px rgba(0, 0, 0, 0);
    margin: 0 0 50px;
    float:left;
    }
@@ -411,7 +408,6 @@ padding: 0 0 29px !important;
 }
 /* - - - -  whai-is-upcycling - - - -*/
 .what-is-upcycling, .what-can-be-upcycled, .the-modern-upcycler{
-  background: url("../images/spritestrip.png") repeat-x scroll 0 -34px  transparent;
   float: left;
   padding: 40px 6px 5px;
   margin-bottom: 50px;
@@ -478,13 +474,10 @@ padding: 0 0 29px !important;
 }
 
 /* - - - -  About -Us  - - - -*/
-.cms-content{
- background: url("../images/spritestrip.png") repeat-x scroll 0 -34px transparent;
-}
-   
-.cms-about-us .col2-left-layout .col-main {
+ .cms-page-view  .col2-left-layout .col-main {
   float: none;
   padding:0;
+  width:100%;
 }
 .cms-content p{
   color: #494956;
@@ -514,14 +507,20 @@ padding: 0 0 29px !important;
   font-family: oswald;
   font-size: 17px;
   font-weight: 400;
-  padding: 0 0 0 9px;
-}
-.block-blog .menu-recent UL LI a, .block-blog .menu-categories UL LI a, .block-blog .menu-tags UL LI a {
-  font-family: oswald;
+ }
+ .blog-post-view .collapsible .block-content li a, .blog-index-list .collapsible .block-content li a, .block-blog .menu-tags UL LI a {
+  font-family:oswald;
   font-size: 17px;
   font-weight: 400;
   color: #494956;
 }
+.block-title .menu-recent > h5{
+  font-family:oswald;
+  font-size: 17px;
+  font-weight: 400;
+  color: #494956;
+}
+
 .blog-index-list .menu-recent h3, .blog-post-view .menu-recent h3  {
   font-family: oswaldlight;
   font-size: 17px;
@@ -541,10 +540,6 @@ padding: 0 0 29px !important;
   font-size: 22px;
   text-transform: capitalize;
 }
-.blog-index-list .breadcrumbs, .blog-post-view .breadcrumbs {
-  background: url("../images/spritestrip.png") repeat-x scroll 0 16px transparent;
-  margin:0 0 23px 0;
- }
 .blog-index-list .postContent img, .blog-post-view .postContent img  {
  float: left;
  padding: 0 17px 0 0;
@@ -565,7 +560,7 @@ padding: 0 0 29px !important;
   width: 79%;
 }
 .blog-index-list .col-left, .blog-post-view .col-left {
- width: 19% !important;
+ width: 19% ;
 }
 .blog-post-view .required {
   color: #494956 !important;
@@ -604,6 +599,9 @@ padding: 0 0 29px !important;
 .blog-index-list  .menu-categories {
  padding-top: 31px;
 }
+.blog-post-view .posted-tag, .comment {
+  padding: 0;
+}
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
 .cms-terms-and-conditions .page-title h1, .cms-privacy-policy .page-title h1 {
@@ -641,12 +639,15 @@ padding: 0 0 29px !important;
 .contact-page .page-title > p {
   padding: 0;
   }
- .blog-index-list .postContent img, .blog-post-view .postContent img {
+.blog-index-list .postContent img, .blog-post-view .postContent img {
   float: none;
 }
- .blog-index-list .col2-left-layout .col-main, .blog-post-view .col2-left-layout .col-main {
+.blog-index-list .col2-left-layout .col-main, .blog-post-view .col2-left-layout .col-main {
   padding: 0 1%;
   width: 98%;
+}
+.blog-index-list .col-left, .blog-post-view .col-left {
+  width: 100%;
 }
 }
   
@@ -729,6 +730,9 @@ float: left;
 .blog-index-list .col2-left-layout .col-main, .blog-post-view  .col2-left-layout .col-main {
   padding: 0 1%;
   width: 98%;
+}
+.blog-index-list .col-left, .blog-post-view .col-left {
+  width: 100%;
 }
 }
 
@@ -952,6 +956,9 @@ padding: 3% 2% 7% ;
 .blog-post-view .required-entry {
   width: 87% !important;
 }
+.blog-index-list .col-left, .blog-post-view .col-left {
+  width: 100%;
+}
 
 }
 
@@ -1079,6 +1086,9 @@ padding: 3% 2% 7% ;
 }
 .contact-page .contact-details #contactForm {
  width: 100%;
+}
+.blog-index-list .col-left, .blog-post-view .col-left {
+  width: 100%;
 }
 }
 
