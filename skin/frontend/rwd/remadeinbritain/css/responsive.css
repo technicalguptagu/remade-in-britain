@@ -168,7 +168,7 @@ label.required:after, span.required:after {
    color: #FFFFFF;
    font-family: oswaldlight;
    font-size: 13px;
-   border: 1px solid #FFFFFF !important;
+   /*border: 1px solid #FFFFFF !important;*/
    }
 .data-table tfoot tr {
    background:none;
@@ -254,6 +254,10 @@ label.required:after, span.required:after {
   text-transform: capitalize;
   font-size: 18px;
   }
+.col2-left-layout .sidebar .block-account .collapsible .block-content li a{
+ font-family: oswaldlight;
+  font-size: 18px;
+}
 .col2-left-layout .block-account li a {
    color: #fff; 
    }
@@ -561,6 +565,58 @@ body, label, button, input, select, table, textarea {
     padding: 0;
     width: 100%;
    }
+/*=======Shopping Cart========== */
+.cart.display-single-price {
+   margin: 0 15px;
+   }
+.cart .page-title {
+   border-bottom:none;
+   margin-bottom: 0;
+   }
+ .cart .page-title h1 {
+   margin: 0;
+   font-family:Oswald;
+   font-size:27px;
+   color:#fff;
+   font-weight:400;
+   }
+.cart-table {
+   float: left;
+   width: 100%;
+   }
+.checkout-cart-index .cart-table.data-table thead th {
+   color: #494956;
+   font-family: oswald;
+   font-size: 12px;
+   font-weight: 400;
+   border: medium none !important;
+   }
+.checkout-cart-index .cart-table.data-table tbody {
+   border:1px solid #90987d;
+   background:#fff;
+  }
+.checkout-cart-index .cart-table.data-table tbody tr.odd {
+  border-bottom: 1px solid #000;
+  }
+.checkout-cart-index .cart-table.data-table tbody tr.last { 
+  border-bottom: none;
+  }
+.checkout-cart-index .cart-table.data-table tbody td {
+  border-left: 1px solid #000;
+  }
+.checkout-cart-index .cart-table.data-table tbody td.product-cart-image {
+  border-left:none;
+  }
+.cart-footer-actions .button2.btn-continue {
+  float:left;
+  }
+.cart-footer-actions .button2.btn-empty {
+  float: none;
+  }
+.cart-footer-actions .button2.btn-update {
+  float: right;
+  }
+
 /*=======Login page========== */
 .customer-account-login .col2-set .col-2 {
    border-left:none;
@@ -626,17 +682,20 @@ body, label, button, input, select, table, textarea {
 .customer-account-create .fieldset, .account-create .scaffold-form .buttons-set {
   margin: 0 30px !important;
   }
-.account-create .scaffold-form .buttons-set {
+.account-create .scaffold-form .buttons-set,
+.marketplace-seller-create .account-create #form-validate .buttons-set {
   max-width: none;
   float: right;
   }
-.account-create .scaffold-form .buttons-set  .required {
+.account-create .scaffold-form .buttons-set .required,
+.marketplace-seller-create .account-create #form-validate .buttons-set .required{
   color: #FFFFFF;
   font-family: oswaldlight;
   font-size: 14px;
   margin: 0 55px 5px 0;
   }
-.account-create .scaffold-form .buttons-set .button {
+.account-create .scaffold-form .buttons-set .button,
+.marketplace-seller-create .account-create #form-validate .buttons-set .button {
   text-transform: uppercase;
   font-size: 16px;
   font-weight: 500 !important;
@@ -645,7 +704,8 @@ body, label, button, input, select, table, textarea {
 .customer-account-create .col-main {
    margin:0 0 300px 0;
    }
-.account-create .scaffold-form .input-box .validation-advice {
+.account-create .scaffold-form .input-box .validation-advice,
+.marketplace-seller-create #form-validate .fieldset .input-box .validation-advice {
    text-align: center;
    width: auto;
    }
@@ -740,7 +800,7 @@ body, label, button, input, select, table, textarea {
   float: left;
   font-family: oswaldlight;
   font-size: 15px;
-  padding: 20px 36px 0 0;
+  padding: 10px 36px 0 0;
  }
 
 .marketplace-seller-create #form-validate .fieldset .form-list li > div .input-box input{}
@@ -784,17 +844,7 @@ body, label, button, input, select, table, textarea {
 
  @media only screen and (min-width:480px) and (max-width:767px){
 
-/*=======User Registration========== */
-.account-create .account-detail {
-   float: left;
-   font-size: 16px;
-   line-height: 28px;
-   width: 100%;
-   }
-.account-create .scaffold-form {
-   float: left;
-   width: 100%;
-   }
+
 .breadcrumbs {
    display: block;
    }
@@ -828,16 +878,27 @@ body, label, button, input, select, table, textarea {
  .sidebar .block .block-content {
    border: medium none !important;
   }
+.col2-left-layout .sidebar .collapsible.mobile-collapsible {
+  margin: 55px 0 0 25px;
+  }
+.col2-left-layout .sidebar .block-account .block-title {
+  margin: 0;
+  }
+.col2-left-layout .sidebar .block-title {
+  background: url("../images/spritehome.png") no-repeat scroll -337px -754px rgba(0, 0, 0, 0);
+  padding: 5px 0 16px 18px;
+  }
+.col2-left-layout .sidebar .collapsible.active .block-title {
+  background: url("../images/spritehome.png") no-repeat scroll -337px -794px rgba(0, 0, 0, 0);
+  }
 .sidebar .block:not(.block-layered-nav) .block-title > strong {
   background:none;
   border: medium none;
   }
 .sidebar .block:not(.block-layered-nav) .block-title > strong:after {
   border:none;
-   }
-.sidebar .block:not(.block-layered-nav) .block-title > strong {
-  padding: 0 0 0 10px;
   }
+
 .sidebar .block:not(.block-layered-nav) .block-content{
   border: none !important;
   padding:0;
@@ -850,10 +911,7 @@ body, label, button, input, select, table, textarea {
 .dashboard .welcome-msg {
    margin: 20px 0 0;
    }
-}
-@media only screen and (min-width:320px) and (max-width:479px){
-
-/*=======User Registration========== */
+ /*=======User Registration========== */
 .account-create .account-detail {
    float: left;
    font-size: 16px;
@@ -864,18 +922,27 @@ body, label, button, input, select, table, textarea {
    float: left;
    width: 100%;
    }
-.account-create .scaffold-form .form-list li label {
+/*=======Retailer Registration========== */
+.retailer-registration-detail {
+   float: left;
    width: 100%;
-  }
-.account-create .scaffold-form .form-list li .input-box input {
+   }
+.marketplace-seller-create #form-validate {
+   float: left;
    width: 100%;
+   }
+.marketplace-seller-create #form-validate .fieldset, 
+.marketplace-seller-create #form-validate .buttons-set {
+   margin: 0;
   }
-.customer-account-create .fieldset, .account-create .scaffold-form .buttons-set {
-  margin: 0 10px !important;
+.marketplace-seller-create #form-validate .fieldset .form-list li .additional-information p {
+  padding: 10px 10px 0 0;
   }
-.account-create .scaffold-form .buttons-set {
-  max-width: none;
-  }
+
+}
+@media only screen and (min-width:320px) and (max-width:479px){
+
+
 
  .breadcrumbs {
    display: block;
@@ -904,8 +971,21 @@ body, label, button, input, select, table, textarea {
   text-transform: lowercase;
   }
 #review-buttons-container .buttons-set {
-    width: 160px;
- }
+   width: 160px;
+   }
+.col2-left-layout .sidebar .collapsible.mobile-collapsible {
+   margin: 55px 0 0 25px;
+   }
+.col2-left-layout .sidebar .block-account .block-title {
+   margin: 0;
+   }
+.col2-left-layout .sidebar .block-title {
+   background: url("../images/spritehome.png") no-repeat scroll -337px -754px rgba(0, 0, 0, 0);
+   padding: 5px 0 16px 18px;
+   }
+.col2-left-layout .sidebar .collapsible.active .block-title {
+   background: url("../images/spritehome.png") no-repeat scroll -337px -794px rgba(0, 0, 0, 0);
+   }
 .sidebar .block:not(.block-layered-nav) .block-title > strong {
   background:none;
   border: medium none;
@@ -913,9 +993,6 @@ body, label, button, input, select, table, textarea {
 .sidebar .block:not(.block-layered-nav) .block-title > strong:after {
   border:none;
    }
-.sidebar .block:not(.block-layered-nav) .block-title > strong {
-  padding: 0 0 0 10px;
-  }
 .sidebar .block:not(.block-layered-nav) .block-content{
   border: none !important;
   padding:0;
@@ -925,9 +1002,16 @@ body, label, button, input, select, table, textarea {
    padding-left: 25px;
    width: 100%
    }
-.dashboard .welcome-msg {
-   margin: 20px 0 0;
+.dashboard .page-title {
+   float: left;
+   width: 100%;
    }
+
+.dashboard .welcome-msg {
+   margin: 5px 0 0;
+   width: 100%;
+   }
+   
 .addresses-list .item {
     float: left;
     padding-right: 30px;
@@ -936,6 +1020,77 @@ body, label, button, input, select, table, textarea {
 .data-table thead th, .data-table tbody td {
     border-bottom: medium none !important;
   }
+/*=======User Registration========== */
+.account-create .account-detail {
+   float: left;
+   font-size: 16px;
+   line-height: 28px;
+   width: 100%;
+   }
+.account-create .create-account-detail .account-information {
+   padding: 0 10px 30px 0;
+   }
+.account-create .create-account-detail .information-query {
+   padding: 0 10px 30px 0;
+   }
+.account-create .create-account-detail .imformation-retailer {
+   padding: 0 10px 30px 0;
+   }
+.account-create .scaffold-form {
+   float: left;
+   width: 100%;
+   }
+.account-create .scaffold-form .form-list li label {
+   width: 100%;
+   }
+.account-create .scaffold-form .form-list li .input-box input {
+   width: 100%;
+   }
+.customer-account-create .fieldset, .account-create .scaffold-form .buttons-set {
+   margin: 0 10px !important;
+   }
+.account-create .scaffold-form .buttons-set {
+   max-width: none;
+   }
+/*=======Retailer Registration========== */
+.retailer-registration-detail {
+  float: left;
+  width: 100%;
+  }
+.retailer-registration-detail .retailer-detail {
+  padding: 0 10px 30px 0;
+  }
+.retailer-registration-detail .retailer-detail span {
+  padding: 12px 0 0;
+  }
+.retailer-registration-detail .retailer-to {
+  padding: 0 10px 30px 0;
+  }
+.retailer-registration-detail .retailer-account {
+  padding: 0 10px 30px 0;
+  }
+.marketplace-seller-create #form-validate {
+  float: left;
+  width: 100%;
+  }
+.marketplace-seller-create #form-validate .fieldset .form-list li label {
+  width: 100%;
+  }
+.marketplace-seller-create #form-validate .fieldset .form-list li .input-box input, 
+.marketplace-seller-create #form-validate .fieldset .form-list li .input-box textarea {
+  width: 100%;
+  }
+.marketplace-seller-create #form-validate .fieldset .form-list li .additional-information {
+  width: 100%;
+  }
+.marketplace-seller-create #form-validate .fieldset, 
+.marketplace-seller-create #form-validate .buttons-set {
+  margin:0;
+  }
+.marketplace-seller-create #form-validate .fieldset .form-list li .additional-information p {
+  padding: 10px 0 0;
+  }
+
 }
 
 @media only screen and (min-width:240px) and (max-width:319px){
