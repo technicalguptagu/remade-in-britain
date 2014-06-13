@@ -9,18 +9,14 @@
         <strong><span><?php echo $this->__('Remade Blog'); ?></span></strong>
 		<h3><?php echo Mage::helper('blog')->__('Posted on'); ?> <?php echo $post->getCreatedTime(); ?><br/><?php echo $this->__('by')?> <?php echo $post->getUser(); ?></h3>
     </div>
-    <div class="postWrapper">
+    <div id="postWrapper" class="postWrapper">
         <div class="postTitle">
-            <h2><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h2>           
+            <h2><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h2>          
         </div>
-        <div class="postContent"><?php //echo $post->getPostContent(); ?><?php
-                                $_postName = $post->getPostContent();
-                                        $_count = strlen($_postName);
-                                        echo strip_tags(substr($_postName, 0, 680));
-                                        if ($_count > 680) {
-                                            echo '...';
-                                        }
-                                        ?><div class="read"><a class="expand" href="javascript:void(0)">Read more</a></div></div>
+        <div class="postContent">
+			<div class="innerpostContent"><?php echo strip_tags(substr($post->getPostContent(), 0)); ?></div>			
+		</div>
+		<div class="read"><span class="dots"><?php echo $this->__('...')?></span><a href="<?php //echo Mage::getBaseUrl('/news')?>">Read more</a></div>
 
         <?php echo $this->getBookmarkHtml($post) ?>
         <div class="tags"><?php echo $this->getTagsHtml($post) ?></div>
@@ -28,17 +24,22 @@
 	<?php $i++;?>
 <?php endforeach; ?>
 <script type="text/javascript">
-jQuery('.expand').click(function(){
-	if(jQuery(this).parent().hasClass("less")){
-	jQuery('.postContent').toggleClass('expanddiv');
-	jQuery('.expand').html("Read more");
-	jQuery(this).parent().toggleClass("less");
-	}
-	else{
-	jQuery('.postContent').toggleClass('expanddiv');
-	jQuery('.expand').html("Read less");
-	jQuery(this).parent().toggleClass("less");
-	}
-
+jQuery(document).ready(function(){
+	blogcontent ()
 });
+jQuery(window).resize(function(){
+	blogcontent ()
+});
+
+function blogcontent (){
+	var postWrapper = jQuery('.postWrapper').height();
+	var postContent = jQuery('.innerpostContent').height();
+	if(postContent > postWrapper ){
+		jQuery('#postWrapper').addClass('big-content');
+		jQuery('#postWrapper').removeClass('small-content');
+	}else{
+		jQuery('#postWrapper').addClass('small-content');
+		jQuery('#postWrapper').removeClass('big-content');
+	}
+}
 </script>
