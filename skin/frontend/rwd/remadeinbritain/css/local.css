@@ -117,19 +117,19 @@ padding: 0 0 29px !important;
 }
 .contact-page .connect-link ul li.facebook  {
   background: url("../images/contactsprite.png") no-repeat scroll 0 -112px transparent;
- }
- .contact-page .connect-link ul li.twitter {
+}
+.contact-page .connect-link ul li.twitter {
   background: url("../images/contactsprite.png") no-repeat scroll 0 -155px  transparent;
-  }
-  .contact-page .connect-link ul li.Pinterest {
+ }
+.contact-page .connect-link ul li.Pinterest {
   background: url("../images/contactsprite.png") no-repeat scroll 0 -198px  transparent;
-  }
+ }
  .contact-page .connect-link ul li.Instagram {
   background: url("../images/contactsprite.png") no-repeat scroll 0 -245px  transparent;
-  }
+ }
 .remade-question > p {
   padding: 0 0 16px 0;
- }
+}
 .remade-question  p{
   color: #494956;
   font-family: oswald;
@@ -137,14 +137,14 @@ padding: 0 0 29px !important;
   font-weight: 300;
   line-height: 1.8;
 }
-.remade-ques {
+.contact-details .remade-ques {
   float: left;
   margin: 0 10% 0 0;
   width: 25% ;
 }
 .contact-page .contact-details #contactForm {
   float: left;
-  padding-left: 0;
+  padding:0;
   width: 65%;
 }
 .contact-page .contact-details {
@@ -160,7 +160,6 @@ padding: 0 0 29px !important;
 #contactForm #comment {
   width: 100%;
 }
-
 .contact-page .buttons-set {
   border: medium none;
   float: right;
@@ -224,15 +223,12 @@ padding: 0 0 29px !important;
   font-size: 11px;
   font-weight: 400;
 }
-.contact-page .buttons-set button.button {
+.contact-page .buttons-set .button {
   float: right;
-  margin-left: 36px;
-  min-width: 140px;
 }
 #contactForm .form-list .field {
   margin-bottom: 0px !important;
 }
-
 .contacts-index-index .button:hover {
   background: none repeat scroll 0 0 #D36B53 !important;
 }
@@ -615,38 +611,11 @@ padding: 0 0 29px !important;
    height: 20px;
    padding: 4% 0 0 2%;
  }
-.contact-page .contact-image {
- padding: 5%;
-}
-.contact-page .remade-logo {
- width: 56% ;
-}
-.contact-page .tel-mail {
-  float: left;
-  padding: 2.4% 0 0 10% !important;
-  width: 42% !important;
-}
-.contact-page .tel span {
-  padding: 0 0 0 21%;
-  color: #FFFFFF !important;
-}
 }
 @media only screen and (min-width:768px) and (max-width:1023px){  
-.contact-page .remade-logo {
-  width: 100% ;
-  margin-bottom: 4% !important;
-}
-.contact-page .contact-image {
-  background: url("../images/spritestrip.png") repeat-x scroll 0 -26px transparent;
-  padding: 5% 5% 0;
- }
- .remade-ques {
-  width: 100% !important;
-}
-.contact-page .tel-mail {
-padding: 2.4% 0 0 10% !important;
-width: 53% !important;
-float:left;
+.contact-page {
+  width: 98%;
+  padding: 0 1% 0;
 }
 .contact-page .tel span {
   padding: 0 0 0 21%;
@@ -660,6 +629,9 @@ float:left;
  }
 .contact-details  #contactForm {
  padding: 3% 0 0 0;
+}
+#contactForm label {
+ min-width: 33%;
 }
 .cms-terms-and-conditions .page-title h1, .cms-privacy-policy .page-title h1 {
   background: url("../images/spritestrip.png") repeat-x scroll 0 -4px  transparent;
@@ -676,21 +648,37 @@ float:left;
   padding: 0 1%;
   width: 98%;
 }
-/* .what-is-upcycling, .what-can-be-upcycled, .the-modern-upcycler {
-  margin: 0 1% 0 0;
-  width: 98%;
-}
-.what-is-upcycling .upcycling-image, .what-can-be-upcycled .upcycled-img, .the-modern-upcycler .modern-image {
-  width: 100%;
-}*/
 }
   
 @media only screen and (min-width:480px) and (max-width:767px){
+.contact-page {
+  padding: 0 1%;
+  width: 98%;
+}
 .contact-page .remade-logo {
   margin: 0 0 10%;
-  }
-  .contact-page .tel span {
-  padding: 0 0 0 21%;
+  width: 100%;
+ }
+.contact-page .tel span {
+  padding: 0 0 0 14%;
+}
+.contact-details .remade-ques {
+  float: left;
+  width: 100%;
+}
+.contact-page .contact-details #contactForm {
+ width: 100%;
+}
+#contactForm label {
+  min-width: 35%;
+}
+.contact-page .tel-mail {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.contacts-index-index .buttons-set p.required {
+float: left;
 }
 .cms-terms-and-conditions .page-title h1, .cms-privacy-policy .page-title h1 {
   background: url("../images/spritestrip.png") repeat-x scroll 0 -34px rgba(0, 0, 0, 0);
@@ -750,6 +738,15 @@ float:left;
   height: 21px;
   padding: 11% 0 0 1% !important;
  }
+ .contact-page {
+  width: 98%;
+  padding: 0 1% 0;
+}
+.contact-page .tel-mail {
+  padding: 8% 0 0;
+  width: 100%;
+  margin-left:0;
+}
 .contact-page .contact-image {
   background: url("../images/spritestrip.png") repeat-x scroll 0 -34px  transparent;
   padding: 8.8% 0 9% 2%;
@@ -761,7 +758,6 @@ float:left;
   padding: 0 0 0 21%;
 }
 .contact-page .tel-mail {
- padding:0;
  float:left;
 }
 #contactForm label {
@@ -770,31 +766,27 @@ float:left;
 #contactForm .input-box {
  width: 50%;
 }
-#contactForm .input-box input {
-  width: 151px !important;
-}
 #contactForm #comment {
   width: 151px;
 }
 .contact-page .remade-logo {
-  width: 100% !important;
- }
+  width: 100%;
+}
  .contact-details .remade-ques {
-  width: 92% !important;
+  width: 100%;
 }
 .contact-page .contact-details #contactForm {
-  padding: 0;
+  width: 100%;
 }
 #contactForm select {
-width: 151px;
+  width: 151px;
 }
 .contact-page .buttons-set .required {
   display: block;
 }
 .contact-page .buttons-set .button {
   clear: both;
-  width: 20%;
- }
+}
 .contact-page .contact-details {
   float: left;
   margin: 5% 0 0 2% !important;
@@ -1061,7 +1053,7 @@ padding: 3% 2% 7% ;
  padding: 0 0 0 7px; 
  }
  .contact-page {
-  margin: 0 1%;
+ padding: 0 1%;
   width: 98%;
 }
 .contact-page .remade-logo, #contactForm .input-box {
@@ -1070,7 +1062,7 @@ padding: 3% 2% 7% ;
 .contact-page .tel span {
  padding-left: 19%;
 }
-.remade-ques {
+.contact-details .remade-ques {
  width: 100%;
 }
 #contactForm .input-box1 {
@@ -1079,6 +1071,11 @@ padding: 3% 2% 7% ;
 }
 .contact-page .tel-mail {
   padding: 8% 0 0;
+  width: 100%;
+  margin-left:0;
+}
+.contact-page .buttons-set .required {
+  display: block;
 }
 }
 
