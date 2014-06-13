@@ -478,22 +478,22 @@ padding: 0 0 29px !important;
 }
 
 /* - - - -  About -Us  - - - -*/
-.about-us,  .promotions-events, .materials-marketplace, .remade-courses,  .delivery-details {
-  background: url("../images/spritestrip.png") repeat-x scroll 0 -34px transparent;
-  }
+.cms-content{
+ background: url("../images/spritestrip.png") repeat-x scroll 0 -34px transparent;
+}
    
 .cms-about-us .col2-left-layout .col-main {
   float: none;
   padding:0;
 }
-.std .about-us p, .promotions-events p, .materials-marketplace p, .remade-courses  p, .delivery-details p{
+.cms-content p{
   color: #494956;
   font-family: oswald;
   font-size: 20px;
   font-weight: 300;
   margin: 10px;
 }
-.cms-about-us .about-us img, .cms-promotions-and-avents .promotions-events img, .cms-materials-marketplace .materials-marketplace img, .cms-remade-courses .remade-courses img, .cms-delivery-details .delivery-details-image img{
+.cms-content img{
   max-width: 100%;
 }
 .about-us-image {
@@ -1076,6 +1076,9 @@ padding: 3% 2% 7% ;
 }
 .contact-page .buttons-set .required {
   display: block;
+}
+.contact-page .contact-details #contactForm {
+ width: 100%;
 }
 }
 
