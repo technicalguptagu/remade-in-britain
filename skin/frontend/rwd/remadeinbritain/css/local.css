@@ -22,7 +22,7 @@
   font-size: 16px;
   font-weight: 300;
   line-height: 1.8;
-padding: 0 0 29px !important;
+  padding: 0 0 29px !important;
   border-bottom: medium none !important;
 }
 .cms-terms-and-conditions .std .sub-title {
@@ -30,7 +30,7 @@ padding: 0 0 29px !important;
   font-family: Oswald;
   font-size: 18px;
   font-weight: 400;
- padding: 0 0 7px;
+  padding: 0 0 7px;
 }
 .cms-terms-and-conditions .std, .cms-privacy-policy .std {
   padding: 35px 1% 7%;
@@ -118,13 +118,13 @@ padding: 0 0 29px !important;
 }
 .contact-page .connect-link ul li.twitter {
   background: url("../images/contactsprite.png") no-repeat scroll 0 -155px  transparent;
- }
+}
 .contact-page .connect-link ul li.Pinterest {
   background: url("../images/contactsprite.png") no-repeat scroll 0 -198px  transparent;
- }
+}
  .contact-page .connect-link ul li.Instagram {
   background: url("../images/contactsprite.png") no-repeat scroll 0 -245px  transparent;
- }
+}
 .remade-question > p {
   padding: 0 0 16px 0;
 }
@@ -318,7 +318,6 @@ padding: 0 0 29px !important;
   float: left;
   width: 47%;
   }
-
 .signup-page .sign-list a {
   color: #494956;
   font-family: oswaldlight;
@@ -636,7 +635,7 @@ padding: 0 0 29px !important;
 }
 .contact-page .page-title > p {
   padding: 0;
-  }
+ }
 .blog-index-list .postContent img, .blog-post-view .postContent img {
   float: none;
 }
@@ -694,7 +693,7 @@ float: left;
 .join-page .how-to-join {
   margin: 9% 1% 0 0;
   width: 98%;
-   text-align: left;
+  text-align: left;
 }
 .signup-page .signup-img {
   clear: both;
@@ -1080,18 +1079,12 @@ padding: 3% 2% 7% ;
 .blog-index-list .col-left, .blog-post-view .col-left {
   width: 100%;
 }
-.contactForm .buttons-set .button {
-  width: auto;
-}
-.contact-page .buttons-set .button {
-  float: none;
-}
 }
 
 @media only screen and (min-width:240px) and (max-width:768px){ 
 .blog-post-view .block-title.account, .blog-index-list .block-title.account {
   background: url("../images/spritehome.png") no-repeat scroll -337px -754px #FFFFFF;
-   padding: 6px 13px;
+  padding: 6px 13px;
 }
 .blog-index-list .collapsible.active .block-title, .blog-post-view  .collapsible.active .block-title {
   background: url("../images/spritehome.png") no-repeat scroll -337px -794px #FFFFFF;
