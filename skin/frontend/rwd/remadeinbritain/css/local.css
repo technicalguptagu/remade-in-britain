@@ -38,7 +38,6 @@ padding: 0 0 29px !important;
 }
  /*  - - - -  Contact US Page - - - -*/
 .contact-page .contact-image {
-  background: url("../images/spritestrip.png") repeat-x scroll 0 -43px rgba(0, 0, 0, 0);
   float: left;
   padding: 3.8% 0 0 2%;
   width: 100%;
@@ -610,11 +609,6 @@ padding: 0 0 29px !important;
 
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
-.cms-terms-and-conditions .page-title h1, .cms-privacy-policy .page-title h1 {
-   background: url("../images/spritestrip.png") repeat-x scroll 0 -3px  transparent;
-   height: 20px;
-   padding: 4% 0 0 2%;
- }
 }
 @media only screen and (min-width:768px) and (max-width:1023px){  
 .contact-page {
@@ -637,11 +631,9 @@ padding: 0 0 29px !important;
 #contactForm label {
  min-width: 33%;
 }
-.cms-terms-and-conditions .page-title h1, .cms-privacy-policy .page-title h1 {
-  background: url("../images/spritestrip.png") repeat-x scroll 0 -4px  transparent;
-  height: 20px;
- padding: 5% 0 0 6%;
-  }
+#contactForm .input-box {
+ width: 67%;
+}
 .contact-page .page-title > p {
   padding: 0;
   }
@@ -677,7 +669,10 @@ padding: 0 0 29px !important;
  width: 100%;
 }
 #contactForm label {
-  min-width: 35%;
+  min-width: 34%;
+}
+#contactForm .input-box {
+ width: 66%;
 }
 .contact-page .tel-mail {
   margin: 0;
@@ -686,11 +681,6 @@ padding: 0 0 29px !important;
 }
 .contacts-index-index .buttons-set p.required {
 float: left;
-}
-.cms-terms-and-conditions .page-title h1, .cms-privacy-policy .page-title h1 {
-  background: url("../images/spritestrip.png") repeat-x scroll 0 -34px rgba(0, 0, 0, 0);
-  height: 21px;
-  padding: 8% 0 0 1% !important;
 }
 .join-page, .join-page .join-us, .join-page .signup-page {
  width: 98%;
@@ -743,11 +733,6 @@ float: left;
 }
 
  @media only screen and (min-width:320px) and (max-width:479px){  
- .cms-terms-and-conditions .page-title h1, .cms-privacy-policy .page-title h1 {
-  background: url("../images/spritestrip.png") repeat-x scroll 0 -24px  transparent;
-  height: 21px;
-  padding: 11% 0 0 1% !important;
- }
  .contact-page {
   width: 98%;
   padding: 0 1% 0;
@@ -1094,6 +1079,12 @@ padding: 3% 2% 7% ;
 }
 .blog-index-list .col-left, .blog-post-view .col-left {
   width: 100%;
+}
+.contactForm .buttons-set .button {
+  width: auto;
+}
+.contact-page .buttons-set .button {
+  float: none;
 }
 }
 
