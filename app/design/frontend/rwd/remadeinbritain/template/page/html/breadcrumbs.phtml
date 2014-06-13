@@ -39,7 +39,7 @@
         <div class="breadcrumbs">
             <ul>
                 <li class="789home"><a title="<?php echo $this->__('Go to Home Page') ?>" href="<?php echo $this->getUrl() ?>"><?php echo $this->__('Home') ?></a>
-                    <span class="sep">&nbsp; </span></li>
+                    <span class="sep">&frasl;</span></li>
                 <li class=" last <?php echo strtolower($_controllerName) ?>"><strong><?php echo $this->__($_controllerName) ?></strong></li>
             </ul>
         </div>
@@ -68,13 +68,11 @@
     <?php endif; ?>
 </div>
 <div class="back-button">
-<div class="back-button">
     <button onclick="history.back();" class="button" title="<?php echo $this->__('Back') ?>" type="button">
         <span>
             <span><?php echo $this->__('Back') ?></span>
         </span>
     </button>
-</div>
 </div>
 <?php
 //EOF developer-19 4/11/2013     ?>
