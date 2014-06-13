@@ -64,9 +64,8 @@ padding: 0 0 29px !important;
 }
 .contact-page .email {
   background: url("../images/contactsprite.png") no-repeat scroll 0 -40px rgba(0, 0, 0, 0);
-   margin: 13px 0;
+  margin: 13px 0;
  }
-
 .contact-page .page-title {
   background: url("../images/spritestrip.png") repeat-x scroll 0 -10px  transparent;
   clear: both;
@@ -83,25 +82,21 @@ padding: 0 0 29px !important;
   width: 264px;
   white-space: nowrap;
 }
-
 .remade-contact {
   clear: both;
   height: 159px;
   width: 100%;
 }
 .contacts-index-index .breadcrumbs {
-margin-bottom: 2% !important;
-  }
-
-
+  margin-bottom: 2% !important;
+}
 .contact-page .tel span {
   color: #FFFFFF;
   font-family: oswald;
   font-size: 19px;
   font-weight: 400;
   padding: 0 0 0 11%;
- }
-
+}
 .contact-page .email > span {
  padding: 0 0 0 60px;
 }
@@ -144,13 +139,13 @@ margin-bottom: 2% !important;
 }
 .remade-ques {
   float: left;
-  margin: 0 8% 0 0;
-  width: 24% !important;
+  margin: 0 10% 0 0;
+  width: 25% !important;
 }
 .contact-page .contact-details #contactForm {
   float: left;
   padding-left: 0;
-  width: 68%;
+  width: 65%;
 }
 .contact-page .contact-details {
   float: left;
@@ -183,7 +178,7 @@ margin-bottom: 2% !important;
   font-family: oswald;
   font-size: 14px;
   font-weight: 400;
-  min-width: 30%;
+  min-width: 28%;
 }
 #contactForm .input-box input {
   width: 100%;
@@ -221,7 +216,6 @@ margin-bottom: 2% !important;
 }
 #contactForm select {
   border-radius: 7px;
-  padding: 1px 0 !important;
   width: 100%;
 }
 #contactForm .input-text {
@@ -966,30 +960,9 @@ padding: 3% 2% 7% ;
 .blog-post-view .required-entry {
   width: 87% !important;
 }
+
 }
 
-/*@media only screen and (min-width:640px){
-
-.contact-page .remade-logo {
-   width: 100%;
-}
-.contact-page .contact-image {
-  background: url("../images/spritestrip.png") repeat-x scroll 0 -34px transparent;
-  padding: 5.8% 0 5% 3%;
-}
-
- .contact-page .tel span {
-  padding: 0 0 0 20%;
-  }
-  .contact-page .contact-details .remade-ques {
-   width: 100%;
-}
-.contact-page .tel-mail {
-  float: left;
-  padding: 2% 0 0 4%;
-  width: 52%;
-}
-}*/
 
 @media only screen and (min-width:200px) and (max-width:319px){  
 .join-page , .join-page .join-us {
@@ -1087,6 +1060,23 @@ padding: 3% 2% 7% ;
  font-size: 11px;
  padding: 0 0 0 7px; 
  }
+ .contact-page {
+  margin: 0 1%;
+  width: 98%;
+}
+.contact-page .remade-logo, #contactForm .input-box {
+  float:none;
+}
+.contact-page .tel span {
+ padding-left: 19%;
+}
+.remade-ques {
+ width: 100%;
+}
+#contactForm .input-box1 {
+ float:none;
+  width: 64%;
+}
 }
 
 
