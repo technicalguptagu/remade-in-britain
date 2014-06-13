@@ -193,6 +193,7 @@ padding: 0 0 29px !important;
   font-family: oswald;
   font-size: 14px;
   font-weight: 300;
+  padding-right: 40px;
 }
 .contact-page button {
   background-color:#E87E62;
@@ -602,6 +603,11 @@ padding: 0 0 29px !important;
 .blog-post-view .posted-tag, .comment {
   padding: 0;
 }
+ .blog-index-list .block-title, .blog-post-view .block-title 
+ {
+  border-top:none;
+ }
+
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
 .cms-terms-and-conditions .page-title h1, .cms-privacy-policy .page-title h1 {
@@ -959,7 +965,6 @@ padding: 3% 2% 7% ;
 .blog-index-list .col-left, .blog-post-view .col-left {
   width: 100%;
 }
-
 }
 
 
@@ -1092,4 +1097,13 @@ padding: 3% 2% 7% ;
 }
 }
 
-
+@media only screen and (min-width:240px) and (max-width:768px){ 
+.blog-post-view .block-title.account, .blog-index-list .block-title.account {
+  background: url("../images/spritehome.png") no-repeat scroll -337px -754px #FFFFFF;
+   padding: 6px 13px;
+}
+.blog-index-list .collapsible.active .block-title, .blog-post-view  .collapsible.active .block-title {
+  background: url("../images/spritehome.png") no-repeat scroll -337px -794px #FFFFFF;
+  padding: 6px 13px;
+}
+}
