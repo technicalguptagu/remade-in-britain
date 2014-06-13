@@ -1160,9 +1160,7 @@ a.button:hover {
  * Breadcrumbs
  */
 .breadcrumbs {
-  overflow: hidden;
-  margin: -15px 0 15px;
-}
+ }
 
 .breadcrumbs li {
   float: left;
@@ -1172,8 +1170,11 @@ a.button:hover {
 }
 
 .breadcrumbs a {
+  color: #FFFFFF;
   float: left;
-  color: #636363;
+  font-family: oswald;
+  font-size: 12px;
+  font-weight: 300;
 }
 
 .breadcrumbs a:hover {
@@ -1181,8 +1182,11 @@ a.button:hover {
 }
 
 .breadcrumbs strong {
-  color: #636363;
-  font-weight: normal;
+  color: #FFFFFF;
+  float: left;
+  font-family: oswald;
+  font-size: 12px;
+  font-weight: 300;
 }
 
 .breadcrumbs span {
@@ -6334,7 +6338,7 @@ p.product-name a:hover {
   padding-left: 15px;
 }
 .cart-table tr {
-  border-bottom: 1px solid silver;
+  /*border-bottom: 1px solid silver;*/
 }
 .cart-table tfoot tr {
   background: none;
@@ -9913,7 +9917,7 @@ div.calendar table td.button {
 .footer-block .collapsible .block-title #nav ul { display: none; }
 .footer-bottom .footer-logo { float: left; width: 225px; margin: 0 20px 0 0; }
 .footer-bottom .copyright { float: left; margin: 14px 0 0; }
-.footer-bottom .ecommerce-logo { float: right; }
+.footer-bottom .ecommerce-logo { float: right; width: 110px; }
 .footer .links li.level0.nav-1.first.parent { display: none; }
 .tel-mail .email {  margin-top: -3px; }
 .latest-products .itemslider-wrapper { margin: 0 -1%; width: 102%;}
@@ -10040,6 +10044,19 @@ div.calendar table td.button {
 .footer-block .links #nav { min-height: 205px; margin: 0 0 22px; }
 .footer-block .links .block-content ul { margin: 0 0 22px; }
 .subscriber-title-content .subscriber-title-content1 .subscriber-img { display: none; }
+.ecommerce-logo .ecommerce-text { color: #B3B3BA; font-family: arial; font-size: 10px; font-weight: 400; float: left; margin: 13px 0 0; }
+.ecommerce-logo .ecommerce-logo { background: url(../images/spritehome.png) no-repeat -211px -586px; width: 35px; height: 38px; }
+/***********Category Listing Page**********/
+
+.catalog-category-view .back-button { display: none; }
+.breadcrumb-links { height: 45px; line-height: 45px; background:url(../images/whitestrip.png) repeat-x 0px 43px; }
+.col-left .left-retailer .retailer-title h2 { Font-family: Oswald; font-weight: 400; font-size: 17px; Color: #FFFFFF; margin: 0 0 12px; }
+.catalog-category-view .col-left { width: 20.8%; padding: 0; float: left; }
+.col-left .left-retailer { padding: 8% 0 12% 12%; border-bottom: 2px solid #fff; margin: 0 0 16%; }
+.retailer-view h3 { margin: 0 0 2px; }
+.retailer-view h3 a { Font-family: Oswald; font-weight: 300; font-size: 17px; Color: #494956; text-transform: capitalize; }
+
+/***********Category Listing Page**********/
 
  @media only screen and (min-width: 570px) and (max-width:959px){
 .header-right .information-advice #info-head span { height: 25px; padding: 0; text-indent: -10000px; width: 42px; background: url(../images/spritedrpdwn.png) no-repeat 0 4px; }
@@ -10168,6 +10185,8 @@ div.calendar table td.button {
 .header-right .header-right-top { margin: 0 0 3.3%; }
 .page-header-container { padding: 0 5px 15px; }
 .footer-newsletter .block-subscribe .subscribe-contant { padding: 28px 5px 25px; }
+.ecommerce-logo .ecommerce-text { display: none; }
+.footer-bottom .ecommerce-logo { width: 35px; }
 }
 
 
@@ -10246,6 +10265,15 @@ div.calendar table td.button {
 .header-right .dropdown .login.active { right: -47px; }
 .mycart #cartHeader .block-cart .block-title.active { width: 162px; left: 5px; }
 .mycart #cartHeader .block-content { width: 162px;}
-.mycart #cartHeader .block-cart .block-title .cart-contant { background: url(../images/spritedrpdwn.png) no-repeat 0 bottom; height: 25px; padding: 0; width: 42px; }
-
+.mycart #cartHeader .block-cart .block-title.active .cart-contant .cart-contant-item {
+    background: url("../images/spritehome.png") no-repeat 92px -13px;
+}
+.mycart #cartHeader .block-cart .block-title.active .cart-contant { width: 100%; } 
+.footer-bottom .copyright { display: none; }
+.footer .footer-bottom { margin-left: 10px; margin-right: 10px; }
+.ecommerce-logo .ecommerce-text { display: none }
+.footer .copyright-moblie { display: block !important; margin: 2px 10px; }
+.footer .copyright-moblie address { text-align: left }
+.subscribe-contant.expanddiv .Sub-img-title { display: none; }
+.subscribe-contant.expanddiv .subscriber-title-content .block-content .input-box input { display: block; }
 }
