@@ -105,17 +105,19 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
     </td>
 <!-- OSCDEV #42  'Display seller's name on cart' 2014/06/14 -->
 	<td>
-		<?php 
-		/* Get all the items in the cart */
-		$cartItems = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
-		/* Iterate through the items */
-		foreach ($cartItems as $item) {
-		/* Load the product and get the custom attribute */
-		$sellerId = Mage::getModel('catalog/product')->load($item->getProduct()->getId())->getSellerId();
-		$sellerIds = Mage::getModel('marketplace/sellerprofile')->load($sellerId)->getStoreTitle();
+	 <?php
+		$sellerId = Mage::getModel('catalog/product')->load($this->getProduct()->getId())->getSellerId();
+		$sellerIds = Mage::getModel('marketplace/sellerprofile')->getCollection();
+		$d= $sellerIds->getData($sellerId);
+		foreach($d as $a=>$val1){
+			foreach($val1 as $b=>$val){
+				 if($b=='store_title'){
+					$var = $val;
+				}
+			}
 		}
-	?>	
-		<a href='<?php echo $get_requestPath; ?>' class="link_seller"><?php  echo $sellerIds; ?></a>
+		?>	
+		<a href='#' class="link_seller"><?php  echo $var ?></a>
 	</td>
 <!-- EOF OSCDEV #42 2014/06/14 -->
 	<td>
