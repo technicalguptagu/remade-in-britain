@@ -59,7 +59,8 @@
 	</div>
 </div>
 <a class="fancy-terms" href="#termscondi" onclick="return false;" id="news"></a>
-<?php if($_SESSION['news'] == 'true'):?>
+<?php $session = Mage::helper('advancednewsletter')->getSessionData();?>
+<?php if($session->getSetnewsdate() == 'true'): ?>
 <div style="display: none;">
      <div id="termscondi">
 	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('news')->toHtml(); ?>
@@ -91,7 +92,7 @@ jQuery(document).on('click', '#cancel-filters-btn', function(){
 });
 
 </script>
-<?php elseif($_SESSION['news'] == 'false'):?>
+<?php elseif($session->getSetnewsdate() == 'false'):?>
 <div style="display: none;">
      <div id="termscondi">
 	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('error')->toHtml(); ?>
@@ -115,7 +116,7 @@ jQuery(document).on('click', '#cancel-filters-btn', function(){
 });
 </script>
 <?php endif; ?>
-<?php $_SESSION['news'] = null; ?>
+<?php $session->unsSetnewsdate();?>
 <script type="text/javascript">
 jQuery('.newsletterexpand').click(function(){
 	if(jQuery(this).parent().hasClass("less")){

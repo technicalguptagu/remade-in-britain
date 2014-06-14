@@ -57,34 +57,53 @@
                 <div class="product-name">
                     <span class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
                 </div>
-
+				
                 <div class="price-info">
-                    <?php echo $this->getPriceHtml($_product); ?>
+                    <?php echo $this->getPriceHtml($_product, true, '-clone'); ?>
+					<?php echo $this->__('Retailer Name Link')?>
                     <?php echo $this->getChildHtml('bundle_prices') ?>
-                    <?php echo $this->getTierPriceHtml() ?>
                 </div>
-
-                <div class="extra-info">
-                    <?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>
-                    <?php echo $this->getChildHtml('product_type_availability'); ?>
-                </div>
-
-                <?php echo $this->getChildHtml('alert_urls') ?>
-
-                <?php if ($_product->getShortDescription()):?>
+				<?php if ($_product->getShortDescription()):?>
                     <div class="short-description">
                         <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
                     </div>
                 <?php endif;?>
+				<div class="product-option">
+				<div class="combine">
+                        <div class="availability-options">
+                            <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+                            <?php endif; ?> 
+                            <?php // echo $this->getTierPriceHtml() ?>	
+                            <?php if (!$this->hasOptions()): ?>                        
+                                <div class="add-to-box">
+                                    <?php if ($_product->isSaleable()): ?>
+                                        <?php echo $this->getChildHtml('addtocart') ?>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+				</div>
+
+
+                <div class="extra-info">
+                    <?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>
+                    <?php echo $this->getChildHtml('product_type_availability'); ?>
+					<?php echo $this->getTierPriceHtml() ?>
+                </div>
+
+                <?php echo $this->getChildHtml('alert_urls') ?>
+
+                
 
 
 
 
-                <?php echo $this->getChildHtml('other');?>
+                <?php //echo $this->getChildHtml('other');?>
 
-                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-                <?php endif;?>
+                
 
             </div>
 
@@ -92,7 +111,7 @@
                 <?php echo $this->getChildHtml('product_type_data') ?>
                 <?php echo $this->getChildHtml('extrahint') ?>
 
-                <?php if (!$this->hasOptions()):?>
+                <?php if ($this->hasOptions()):?>
                     <div class="add-to-box">
                         <?php if($_product->isSaleable()): ?>
                             <?php echo $this->getChildHtml('addtocart') ?>
@@ -115,9 +134,7 @@
             <?php echo $this->getChildHtml('related_products') ?>
 
             <div class="clearer"></div>
-            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
-            <?php endif;?>
+            
         </form>
         <script type="text/javascript">
         //<![CDATA[
