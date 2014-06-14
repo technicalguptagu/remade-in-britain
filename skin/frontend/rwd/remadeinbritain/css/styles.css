@@ -904,8 +904,6 @@ body:not(.customer-account) .block:first-child .block-title {
  * Buttons
  * ============================================ */
 /* Secondary Buttons */
-.cart .buttons-set .button,
-.cart-table .button,
 .sidebar .actions .button,
 .button.button-secondary {
   background: #dddddd;
@@ -1795,6 +1793,7 @@ a.button:hover {
 .price {
   white-space: nowrap;
   font-family: Oswald;
+  color: #333333;
 }
 
 .price-box .price-label {
