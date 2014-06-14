@@ -65,9 +65,11 @@
 </div>
 
 <?php if (count($this->getGalleryImages()) > 0): ?>
-<div class="more-views">
-    <h2><?php echo $this->__('More Views') ?></h2>
-    <ul class="product-image-thumbs">
+<div class="thumbnil-slider">
+        <div class="more-images itemslider itemslider-thumbnails gen-slider-arrows3  count-multi">
+		<h2><?php echo $this->__('CLICK ABOVE TO VIEW MORE IMAGES') ?></h2>
+
+    <ul class="product-image-thumbs slides">
     <?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
         <?php
         if (($filterClass = $this->getGalleryFilterHelper()) && ($filterMethod = $this->getGalleryFilterMethod()) && !Mage::helper($filterClass)->$filterMethod($_product, $_image)):
@@ -82,7 +84,30 @@
         </li>
     <?php $i++; endforeach; ?>
     </ul>
+
+</div>
 </div>
 <?php endif; ?>
 
 <?php echo $this->getChildHtml('after'); ?>
+<script type="text/javascript">
+//<![CDATA[
+    jQuery(function($) {
+        $('.itemslider-thumbnails').flexslider({
+            namespace: "",
+            animation: "slide",
+			direction: "vertical",
+            easing: "easeInQuart",
+            animationSpeed: 300,
+            animationLoop: false,
+            slideshow: false,
+            pauseOnHover: true,
+            controlNav: false,
+            itemWidth: 116,
+			minItems: 1,
+            maxItems: 3,
+            move: 0
+        });
+    });
+//]]>
+</script>

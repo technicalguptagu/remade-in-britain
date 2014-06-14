@@ -57,12 +57,20 @@ class Oscp_Categorynav_Helper_Data extends Mage_Core_Helper_Abstract {
      { 
          return Mage::getModel('catalog/category')->load($_category->getId())->getThumbnailUrl(); 
      }
+
+	  public function getCurrentCategory() 
+     { 
+        $_layer = Mage::getSingleton('catalog/layer');
+        $_category = $_layer->getCurrentCategory();
+   
+	    return $_category;
+     }
 	  
 	 /********* deve(3) *****************/
      // BOF function by developer7
       public function showCategoryBlock($_category) 
      { 
-        
+         
          $category =  Mage::getModel('catalog/category')->load($_category->getId()); 			 
 		 $prodCollection = $category->getProductCollection();
 		 $product_count= $prodCollection->count();          
