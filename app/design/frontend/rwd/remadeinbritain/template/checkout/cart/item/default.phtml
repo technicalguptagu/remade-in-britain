@@ -103,12 +103,21 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <?php endif;?>
 
     </td>
-<!--  -->
+<!-- OSCDEV #42  'Display seller's name on cart' 2014/06/14 -->
 	<td>
-	
-		<a href='<?php echo $get_requestPath; ?>' class="link_seller"><?php  echo $seller_data ?></a>
+		<?php 
+		/* Get all the items in the cart */
+		$cartItems = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
+		/* Iterate through the items */
+		foreach ($cartItems as $item) {
+		/* Load the product and get the custom attribute */
+		$sellerId = Mage::getModel('catalog/product')->load($item->getProduct()->getId())->getSellerId();
+		$sellerIds = Mage::getModel('marketplace/sellerprofile')->load($sellerId)->getStoreTitle();
+		}
+	?>	
+		<a href='<?php echo $get_requestPath; ?>' class="link_seller"><?php  echo $sellerIds; ?></a>
 	</td>
-<!--  -->
+<!-- EOF OSCDEV #42 2014/06/14 -->
 	<td>
 		<ul>
 		<?php if ($isVisibleProduct): ?>
