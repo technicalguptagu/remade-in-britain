@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Oscp_AddCustomerAttribute>
+      <version>0.1.0</version>
+    </Oscp_AddCustomerAttribute>
+  </modules>
+  <global>
+  <blocks>
+		<!-- <accountoverride>
+			<class>Oscp_AccountOverride_Block</class>
+		</accountoverride> -->
+		<adminhtml>
+			<rewrite>
+				<customer_edit_tab_account>Oscp_AddCustomerAttribute_Block_Adminhtml_Customer_Edit_Tab_Account</customer_edit_tab_account>
+			</rewrite>
+		</adminhtml>
+	</blocks>
+	<events>
+		<customer_register_success>
+			<observers>
+				<customer_register_success_addcustomerattribute_observer>
+					<class>addcustomerattribute/observer</class>
+					<method>customerRegistered</method>
+				</customer_register_success_addcustomerattribute_observer>
+			</observers>
+		</customer_register_success>
+		<!-- <customer_save_before>
+			<observers>
+				<addcustomerattribute_save_before>
+					<class>addcustomerattribute/observer</class>
+					<method>customerBeforeSave</method>
+				</addcustomerattribute_save_before>
+			</observers>
+		</customer_save_before> -->
+	</events>
+    <helpers>
+      <addcustomerattribute>
+        <class>Oscp_AddCustomerAttribute_Helper</class>
+      </addcustomerattribute>
+    </helpers>
+	<models>
+	  <addcustomerattribute>
+		<class>Oscp_AddCustomerAttribute_Model</class>
+		<resourceModel>addcustomerattribute_mysql4</resourceModel>
+	  </addcustomerattribute>
+	</models>
+	<resources>
+	  <customerattribute_setup>
+		<setup>
+		  <module>Oscp_AddCustomerAttribute</module>
+		  <class>Mage_Customer_Model_Entity_Setup</class>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </customerattribute_setup>
+	  <customerattribute_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </customerattribute_write>
+	  <customerattribute_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </customerattribute_read>
+	</resources>
+  </global>
+</config> 

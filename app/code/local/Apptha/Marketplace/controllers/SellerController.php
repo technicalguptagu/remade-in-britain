@@ -194,7 +194,7 @@ class Apptha_Marketplace_SellerController extends Mage_Core_Controller_Front_Act
                     if ($customerErrors !== true) {
                         $errors = array_merge($customerErrors, $errors);
                     } else {
-                        $customerForm->compactData($customerData);
+						$customerForm->compactData($customerData);
                         $customer->setPassword($this->getRequest()->getPost('password'));
                         $customer->setConfirmation($this->getRequest()->getPost('confirmation'));
                         $customerErrors = $customer->validate();
