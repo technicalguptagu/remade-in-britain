@@ -26,12 +26,14 @@
 ?>
 <?php /** @var $this Mage_Checkout_Block_Cart_Shipping */ ?>
 <div class="shipping">
+    <h2><?php echo $this->__('Shipping') ?></h2>
     <div class="shipping-form">
         <script type="text/javascript">
         //<![CDATA[
             new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>);
         //]]>
         </script>
+
         <?php if (($_shippingRateGroups = $this->getEstimateRates())): ?>
         <form id="co-shipping-method-form" action="<?php echo $this->getUrl('checkout/cart/estimateUpdatePost') ?>">
             <dl class="sp-methods">
