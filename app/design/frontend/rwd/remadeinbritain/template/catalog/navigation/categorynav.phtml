@@ -35,7 +35,7 @@ if (($_imgUrl = $_currentCategory->getImageUrl()) || ($_description = $_currentC
 <?php $_currentChild = $this->getCurrentChildCategories() ?>
 <?php $_count = is_array($_currentChild) ? count($_currentChild) : $_currentChild->count(); ?>
 <div class="alphabetical-order">
-<h4><?php echo $this->__('REMADE')?> <?php echo $_helper->categoryAttribute($_currentCategory, $_currentCategory->getName(), 'name') ?></h4>(<?php echo $this->__('in alphabetical order')?>)</div>
+<h4><?php echo $this->__('REMADE')?> <?php echo $_helper->categoryAttribute($_currentCategory, $_currentCategory->getName(), 'name') ?><span>( <?php echo $this->__('in alphabetical order')?> )</span></h4></div>
 <?php if ($_count): ?>
     <div class="subs_category">			
         <?php $_childimageUrl = Mage::helper('categorynav')->getCateImageUrl($_currentChild); ?>		    
@@ -55,13 +55,14 @@ if (($_imgUrl = $_currentCategory->getImageUrl()) || ($_description = $_currentC
                 ?>
                 <?php if ($_category->getIsActive()): ?>				
                     <li class="item<?php if (($j - 1) % $_columnCount == 0): ?> first<?php elseif ($j % $_columnCount == 0): ?> last<?php endif; ?>">	
-                        <a href="<?php echo $this->getCategoryUrl($_category) ?>" class="category-image" <?php /* if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; */ ?>>
-                            <img src="<?php echo $this->htmlEscape($category_image) ?>" width="243" height="202" alt="<?php echo $this->htmlEscape($_category->getName()) ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>" />
+                      <div class="category-bg"><a href="<?php echo $this->getCategoryUrl($_category) ?>" class="category-image" <?php /* if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; */ ?>>
+                            <img src="<?php echo $this->htmlEscape($category_image) ?>" alt="<?php echo $this->htmlEscape($_category->getName()) ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>" />
                         </a>
                         <div class="catagory-view">
-                            <h3 class="category-name"><a href="<?php echo $this->getCategoryUrl($_category) ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>"><?php echo $this->htmlEscape($_category->getName()) ?></a></h3>
-                            <a class="view" href="<?php echo $this->getCategoryUrl($_category) ?>"<?php if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; ?>><?php echo $this->__('View')?></a>
-                        </div>
+                            <div class="category-name"><a href="<?php echo $this->getCategoryUrl($_category) ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>"><?php echo $this->htmlEscape($_category->getName()) ?></a></div>
+                            <a class="view" href="<?php echo $this->getCategoryUrl($_category) ?>"<?php if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; ?>><?php echo $this->__('View &raquo;')?></a>
+                         </div>
+                       </div>
                     </li>
                 <?php endif; ?>
                 <?php $i++; ?>	
