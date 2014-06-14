@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <!--shippicker_index_index>
+        <reference name="content">
+            <block type="shippicker/shippicker" name="shippicker" template="shippicker/shippicker.phtml" />
+        </reference>
+    </shippicker_index_index-->
+	<checkout_cart_index>
+        <reference name="content">
+            <block type="shippicker/shippicker" name="shippicker" template="shippicker/shippicker.phtml" />
+        </reference>
+    </checkout_cart_index>
+</layout> 
