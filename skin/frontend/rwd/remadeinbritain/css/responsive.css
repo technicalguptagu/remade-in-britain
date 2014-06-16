@@ -730,7 +730,8 @@ body, label, button, input, select, table, textarea {
    border:1px solid #90987d;
    background:#fff;
   }
-.checkout-cart-index .cart-table.data-table tbody tr.odd {
+.checkout-cart-index .cart-table.data-table tbody tr.odd,
+.checkout-cart-index .cart-table.data-table tbody tr.even{
   border-bottom: 1px solid #000;
   }
 .checkout-cart-index .cart-table.data-table tbody tr.last { 
@@ -738,19 +739,63 @@ body, label, button, input, select, table, textarea {
   }
 .checkout-cart-index .cart-table.data-table tbody td {
   border-left: 1px solid #000;
+  padding: 5px 20px 5px 15px;
   }
+.checkout-cart-index .cart-table.data-table .product-cart-info {
+    width: 450px;
+}
 .checkout-cart-index .cart-table.data-table tbody td.product-cart-image {
   border-left:none;
   }
+.product-image, .no-touch .product-img-box .product-image:hover:not(.zoom-available) {
+   text-align:center;
+  }
+.cart-table .product-cart-image .product-image img {
+ width: auto;
+}
+.cart-footer-actions .button2,
+.discount-form .button-wrapper .button2{
+  color: #ffffff;
+  display: inline-block;
+  font-family: osawald;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 19px;
+  padding: 3px 10px;
+  text-align: center;
+  text-transform: capitalize;
+  vertical-align: middle;
+  white-space: nowrap;
+  }
+#shopping-cart-table tfoot td.cart-footer-actions {
+   padding:10px 0
+  }
 .cart-footer-actions .button2.btn-continue {
   float:left;
+  background: none repeat scroll 0 0 #E87E62;
+  border: 1px solid #d16235;
   }
 .cart-footer-actions .button2.btn-empty {
   float: none;
+  background: none repeat scroll 0 0 #75757C;
+  border: 1px solid #000;
+  margin:0 5px 0 0;
   }
 .cart-footer-actions .button2.btn-update {
   float: right;
+  background: none repeat scroll 0 0 #75757C;
+  border: 1px solid #000;
+  margin:0 0 0 5px;
   }
+ .checkout-cart-index .button2 span,  .checkout-cart-index .button2 span span {
+  font-family: oswald;
+  font-size:13px;
+  height: 25px;
+  line-height: 25px;
+  color: #fff;
+  text-decoration: none;
+  text-transform: capitalize;
+ }
 #shopping-cart-table td.a-center a {
   color: #d36b53;
   font-family: Arial;
@@ -769,20 +814,65 @@ body, label, button, input, select, table, textarea {
   width: 65%;
   }
 #discount-coupon-form, .cart .giftcard {
-    float: left;
-    width: 50%;
+  float: left;
+  padding-right: 2%;
+  width: 48%;
+  }
+#discount-coupon-form label,
+ .shipping h2,
+ .cart-totals-wrapper h2{
+  color: #fff;
+  font-family: Oswald;
+  font-size: 20px !important;
+  font-weight: 400;
+  padding: 0 0 15px;
+  width: 100%;
+  text-transform: capitalize;
+  margin: 0;
+  padding: 0 0 15px;
+ }
+#discount-coupon-form label,
+.shipping h2 {
+  background: url("../images/whitestrip.png") repeat-x scroll 0 38px transparent;
+  }
+.discount-form p {
+  color: #494956;
+  font-family: oswald;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 8px 0 4px;
+  }
+#discount-coupon-form .input-text, 
+.cart .giftcard .input-text {
+   border-radius: 0;
+   height: 30px;
+   margin: 4px 10px 0 0;
+   width: 100%;
+   }
+#discount-coupon-form .button-wrapper, 
+.cart .giftcard .button-wrapper {
+   display: inline-block;
+   float: right;
+   margin: 10px 0;
+   vertical-align: bottom;
+   background: none repeat scroll 0 0 #75757c;
+   border: 1px solid #000;
   }
 .cart-forms .shipping,
-.cart-forms .discount{
-    background-color: none;
-    border: none;
-    padding: 10px;
+.cart-forms .discount {
+   background:none;
+   border: none;
+   padding: 0;
+   }
+.shipping-form .sp-methods dd li label {
+   background: none  !important;
+   border: medium none !important;
   }
 .cart-forms .shipping {
-    float: right;
-    padding: 10px;
-    width: 50%;
-	}
+   float: right;
+    padding: 0 10px 0 0;
+   width: 50%;
+   }
 .cart-totals-wrapper {
   float: left;
   padding-left: 20px;
@@ -1083,6 +1173,24 @@ body, label, button, input, select, table, textarea {
 .dashboard .welcome-msg {
    margin: 20px 0 0;
    }
+/*=======Shopping Cart========== */
+.checkout-cart-index .cart-table.data-table tbody td {
+  border-left:none;
+  }
+.data-table thead th, 
+.data-table tbody td {
+    color: #ffffff;
+    display: block;
+    font-family: oswaldlight;
+    font-size: 13px;
+    width: 100% !important;
+}
+ .cell-label {
+    color: #000;
+    display: block !important;
+    float: left;
+    width: 46px;
+    }
  /*=======User Registration========== */
 .account-create .account-detail {
    float: left;
