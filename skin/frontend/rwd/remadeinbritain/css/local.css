@@ -694,7 +694,35 @@ width:18%;
 .catalog-category-view .category-description.std > p {
   margin: 2% 0 0;
 }
-
+.catalog-category-view .products-grid .actions ul li.add-wishlist a {
+  background: url("../images/spritehome.png") no-repeat scroll -53px -174px rgba(0, 0, 0, 0);
+  display: block;
+  height: 34px;
+  text-decoration: none;
+  width: 32px;
+}
+.catalog-category-view .products-grid .actions ul li.add-compare a {
+  background: url("../images/spritehome.png") no-repeat scroll -89px -173px rgba(0, 0, 0, 0);
+  display: block;
+  height: 34px;
+  text-decoration: none;
+  width: 32px;
+}
+.catalog-category-view .products-grid .actions ul li.view-products a {
+  background: url("../images/spritehome.png") no-repeat scroll -129px -174px rgba(0, 0, 0, 0);
+  display: block;
+  height: 34px;
+  text-decoration: none;
+  width: 32px;
+}
+.catalog-category-view .products-grid .actions ul li.add-cart a {
+  background: url("../images/spritehome.png") no-repeat scroll -182px -174px rgba(0, 0, 0, 0);
+  display: block;
+  float: right;
+  height: 42px;
+  text-decoration: none;
+  width: 52px;
+}
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
 }
