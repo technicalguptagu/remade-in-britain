@@ -61,7 +61,7 @@
 
 /********** Mobile Navigation > */
 .accordion.vertnav, #nav.mobile { display:none; }
-.accordion.vertnav.mobile.show { display:block; max-height: 9999px; transition-duration: 500ms; transition-property: max-height; transition-timing-function: ease-in-out; background: #fff; padding: 8px 0 10px; }
+.accordion.vertnav.mobile.show { display:block; max-height: 9999px; transition-duration: 500ms; transition-property: max-height; transition-timing-function: ease-in-out; background: #fff; padding: 8px 0 10px; border-bottom: 2px solid #696769; box-shadow: 0 5px 10px -5px #CACACA inset; }
 .vertnav-top.mobile.show { }
 
 #mobnav.grid-full { margin: 2px 0; }
