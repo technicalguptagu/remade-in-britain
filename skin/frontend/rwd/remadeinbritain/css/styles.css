@@ -640,7 +640,7 @@ h6, .h6 {
 }
 
 .availability .label {
-  display: none;
+  /*display: none;*/
 }
 
 .availability.in-stock {
@@ -3681,7 +3681,7 @@ a.skip-link {
 }
 
 #search_mini_form input[type="search"] {
-   background: url(../images/spritehome.png) no-repeat 402% -84px #FFFFFF;
+   background: #FFFFFF;
    color: #B3B3BA;
    float: right;
    font-family: oswald;
@@ -3691,21 +3691,27 @@ a.skip-link {
    padding-right: 40px;
    width: 79%; 
 }
-#search_mini_form input[type="search"]:focus {
-	background: url(../images/spritehome.png) no-repeat 402% -111px #FFFFFF;
-	color: #494956; 
+#search_mini_form input[type="search"]:focus  {
+		color: #494956; 
 }
 
 #search_mini_form .search-button {
-   background: none;
-   border: 0 none;
-   height: 30px;
-   padding: 4px 8px;
-   position: absolute;
-   right: 0;
-   text-indent: -9999px;
-   top: 1px;
-   width: 40px;
+   background-color: #FFFFFF;
+    background-image: url("../images/spritehome.png");
+    background-position: -3% -84px;
+    background-repeat: no-repeat;
+    border: 0 none;
+    height: 30px;
+    padding: 4px 8px;
+    position: absolute;
+    right: 0;
+    text-indent: -9999px;
+    top: 1px;
+    width: 40px;
+}
+
+#search_mini_form input[type="search"]:focus + .search-button {
+	background-position: -3% -111px;
 }
 
 #search_mini_form .search-button:before {
@@ -3981,7 +3987,6 @@ a.skip-link {
 .footer {
   clear: both;
   width: 100%;
-  border-top: 1px solid #cccccc;
   padding-top: 20px;
   /* -------------------------------------------- *
    * Social icons
@@ -3998,7 +4003,7 @@ a.skip-link {
   float: left;
   border-top: none;
   padding: 0 15px 0 0;
-  width: 21%;
+  width: 22%;
 }
 .footer .collapsible .block-title strong {
   font-weight: normal;
@@ -4011,11 +4016,11 @@ a.skip-link {
 }
 .footer .links {
    float: left;
-   width: 75%;
+   width: 76%;
 }
 .footer .footer-connect { 
 	float: left; 
-	width: 25%; 
+	width: 24%; 
 }
 .footer .links li {
   word-break: break-all;
@@ -4151,11 +4156,11 @@ a.skip-link {
   Color: #B3B3BA;
  }
 @media only screen and (max-width: 1199px) {
-  .footer .links {
+  /*.footer .links {
     width: 22.65625%;
     padding-right: 0;
     margin-right: 3.125%;
-  }
+  }*/
   .footer .links:nth-child(4) {
     margin-right: 0;
   }
@@ -9784,7 +9789,7 @@ div.calendar table td.button {
 .about-remade { width: 100%; padding: 0 0 1.7%; }
 .about-remade .upcycling, .about-remade .blog-remade { float: left; width: 32.2%; }
 .about-remade .join-us {float: left; margin: 0 1.6%; width: 32.2%; }
-.main-container { background: url(../images/green_cup.png) repeat 0 0; }
+.main-container { background: url(../images/green_cup.png) repeat 0 0; box-shadow: 0 5px 14px -5px #858585 inset; }
 .footer-container { background: url("../images/fabric_of_squares_gray.png") repeat 0 0; padding: 0 0 20px; }
 .header-right { float: right; width: 50%; }
 .header-right .information-advice { position: relative; float: right; }
@@ -9864,13 +9869,13 @@ div.calendar table td.button {
 .nav-primary li.active > a { color: #F79B5C; }
 #simple-slide.lof-container .std ul li { margin: 0; }
 
-.content-heading { background: url(../images/spritestrip.png) repeat-x 1px -12px; margin: 25px 0; width: 100%; }
+.content-heading { background: url(../images/spritestrip.png) repeat-x 1px -12px; margin: 25px 0 22px; width: 100%; }
 
 .content-heading h1 { background: url(../images/green-cup-strip.png) repeat-x 0 6px; color: #FFFFFF; font-family: oswald; font-size: 17px; font-weight: 400; margin: 0 auto; padding: 0 22px; width: 175px; text-align: center; }
 
 .this-month-featured-retailer .content-heading h1 { width: 265px; }
 
-.latest-products .content-heading { position: relative; margin-bottom: 12px; }
+.latest-products .content-heading { position: relative; margin-bottom: 4px; }
 
 .latest-products .content-heading .latest-Pleft { position: absolute; left: 15px; top: 0; background: url(../images/bannerleftaro.png) no-repeat 0 0; width: 10px; height: 23px; }
 
@@ -9932,7 +9937,7 @@ div.calendar table td.button {
 .latest-products .itemslider-similar-main { width: 100%; }
 .latest-products .itemslider-similar-main .products-grid > li { /*margin: 0 22px 0 0;*/ }
 
-.latest-products .itemslider-similar-main .products-grid > li .productbg { background: #fff; border: 1px solid #8B9475; padding: 10px;   margin: 0 3%; }
+.latest-products .itemslider-similar-main .products-grid > li .productbg { background: #fff; border: 1px solid #8B9475; padding: 10px;   margin: 0 3%; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; }
 .products-grid .ratings, .products-list .ratings { /*display: none;*/ }
 .latest-products .itemslider-similar-main .products-grid .price-box .price { font-size: 15px; font-weight: 400; }
 .price-Or-retailername { padding: 0 5px; }
@@ -9940,15 +9945,16 @@ div.calendar table td.button {
 .price-Or-retailername .retailer-name { float: right; }
 .price-Or-retailername .retailer-name a { font-family: Oswald; font-weight: 300; font-size: 13px; Color: #B3B3BA; }
 .blog-socialLinks {  }
-.blog-socialLinks .homepage-blog { background: #FFFFFF; border: 1px solid #8B9475; float: left; padding: 8px 22px 8px 20px; width: 83%; margin: 0 19px 0 0; }
-.blog-socialLinks .social-links { float: left; width: 15.4%; background: #FFFFFF; border: 1px solid #8B9475; padding: 15px 18px 19px 19px; }
+.blog-socialLinks .homepage-blog { background: #FFFFFF; border: 1px solid #8B9475; float: left; padding: 4px 22px 5px 20px; width: 82.7%; margin: 0 22px 0 0; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; }
+.blog-socialLinks .social-links { float: left; width: 15.4%; background: #FFFFFF; border: 1px solid #8B9475; padding: 15px 18px 19px 19px; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; }
 .blog-socialLinks .homepage-blog .block-title { border: none; float: left; margin: 0; padding: 0 15px 0 0; width: 13%; }
 .blog-socialLinks .homepage-blog .postWrapper { clear: none; float: left; padding: 0; width: 85%; position: relative; }
 .blog-socialLinks .homepage-blog .block-title strong span { color: #D36B53; display: block; font-family: Oswald; font-size: 21px; font-weight: 300; margin: 0 0 18px; text-transform: capitalize; }
 .blog-socialLinks .homepage-blog .block-title h3 { font-family: Oswald; font-weight: 400; font-size: 11px; Color: #494956; text-transform: inherit; }
 .blog-socialLinks .homepage-blog .postWrapper h2 { text-transform: inherit; margin: 0 0 6px; }
 .blog-socialLinks .homepage-blog .postWrapper h2 a { font-family: Oswald; font-weight: 300; font-size: 19px; Color: #494956; }
-.blog-socialLinks .homepage-blog .postWrapper.small-content .postContent { font-family: Oswald; font-weight: 300; font-size: 12px; Color: #75757C; line-height: 21px; padding: 0; height: 65px; overflow: hidden;  }
+.blog-socialLinks .homepage-blog .postWrapper .postContent { font-family: Oswald; font-weight: 300; font-size: 12px; Color: #75757C; line-height: 21px; padding: 0; }
+.blog-socialLinks .homepage-blog .postWrapper.small-content .postContent { height: 65px; overflow: hidden;  }
 .blog-socialLinks .homepage-blog .postWrapper .postContent a { font-family: Oswald; font-weight: 300; font-size: 12px; Color: #D36B53; text-transform: lowercase; margin: 0 0 0 4px; }
  .blog-socialLinks .social-links h1 { color: #494956; font-family: Oswald; font-size: 19px; font-weight: 300; text-transform: capitalize; margin: 0 0 20px; }
  .blog-socialLinks .social-links ul { margin: 0; }
@@ -9964,7 +9970,7 @@ div.calendar table td.button {
  .header-right .dropdown .after-login .login.active .logintext { background: none; }
  .header-right .dropdown .after-login .login .logintext { padding: 0; }
  #simple-slide.lof-container .viewport li .banner {  }
- .this-month-featured-retailer .featured-retailer { background: #FFFFFF; border: 1px solid #8B9475; padding: 10px; }
+ .this-month-featured-retailer .featured-retailer { background: #FFFFFF; border: 1px solid #8B9475; padding: 10px; margin: 0 0 50px; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; }
  .this-month-featured-retailer .featured-retailer .retailer-block { width: 31.5%; float: left; position: relative; }
  .this-month-featured-retailer .featured-retailer .feature-product { width: 68.5%; float: left; }
  .this-month-featured-retailer .featured-retailer .retailer-block .retailer-title { color: #FFFFFF; font-family: Oswald; font-size: 30px; font-weight: 300; left: 20px; position: absolute; text-transform: capitalize; top: 10px; }
@@ -9979,13 +9985,13 @@ div.calendar table td.button {
 .sale-price .now .price { color: #F48F6B; font-size: 15px; font-weight: 400; }
 .sale-price .was label { font-family: Oswald; font-weight: 300; font-size: 13px; Color: #D36B53;}
 .sale-price .was .price { font-family: Oswald; font-weight: 300; font-size: 13px; Color: #D36B53; text-decoration: line-through;}
-.footer-newsletter .block-subscribe { background: url(../images/green_cup.png) repeat 0 0; margin: 0; }
+.footer-newsletter .block-subscribe { background: url(../images/green_cup.png) repeat 0 0; margin: 0; box-shadow: 2px -5px 14px -6px #858585 inset; }
 .footer-newsletter .block-subscribe .subscribe-contant {  margin: 0 auto; max-width: 1200px; padding: 30px 0 25px; }
 .footer-newsletter .block-subscribe .subscribe-contant .subscriber-img { float: left; width: 11%; }
 .footer-newsletter .block-subscribe .subscribe-contant .subscriber-title-content { float: left; margin: 0 0 0 1%; width: 88%; background: url(../images/whitestrip.png) repeat-x 0 0; }
-.subscriber-title-content .block-title .subscriber-heading { font-family: Oswald; font-weight: 400; font-size: 19px; Color: #fff; text-transform: capitalize; margin: 0 10px 0 0; }
+.subscriber-title-content .block-title .subscriber-heading { font-family: Oswald; font-weight: 400; font-size: 19px; Color: #fff; text-transform: capitalize; margin: 0 10px 0 0; white-space: nowrap; }
 .subscriber-title-content .block-title .subscriber-label label { font-family: Oswald; font-weight: 400; font-size: 14px; Color: #fff; }
-.subscriber-title-content .block-title { float: left; width: 60%; margin: 0; }
+.subscriber-title-content .block-title { float: left; width: 59%; margin: 0; }
 .subscriber-title-content .block-content { float: left; width: 39%; margin: 0; }
 .subscriber-title-content .subscriber-title-content1 { float: left; padding: 16px 13px; width: 100%; background: url(../images/whitestrip.png) repeat-x 0 64px; }
 .subscriber-title-content .block-content .input-box { padding: 0; }
@@ -9995,17 +10001,17 @@ div.calendar table td.button {
 .subscriber-title-content .block-content .input-box .button { padding: 6px 27px; margin: -2px 0 0; }
 .subscriber-title-content .block-content .input-box .button:hover { background: #D36B53; }
 
-.home-banner {  background: #FFFFFF; border: 1px solid #8B9475; max-width: 1200px; padding: 15px 0; position: relative; margin: 22px 0 0; }
-.latest-products { position: relative; }
+.home-banner {  background: #FFFFFF; border: 1px solid #8B9475; max-width: 1200px; padding: 15px 0; position: relative; margin: 22px 0 45px; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; }
+.latest-products { position: relative; margin: 0 0 32px; }
 .latest-products .itemslider-wrapper .direction-nav, .home-banner .direction-nav { list-style: none; margin: 0; }
 
-.latest-products .itemslider-wrapper .direction-nav li a.prev { background: url(../images/spritearrow.png) no-repeat 1px -43px; display: block; height: 34px; right: 14px; position: absolute; text-indent: -10000px; top: -38px; width: 34px; }
+.latest-products .itemslider-wrapper .direction-nav li a.prev { background: url(../images/spritearrow.png) no-repeat 1px -43px; display: block; height: 34px; right: 14px; position: absolute; text-indent: -10000px; top: -31px; width: 34px; }
 .latest-products:hover .itemslider-wrapper .direction-nav li a.prev { background: url(../images/spritearrow.png) no-repeat 1px -189px; }
 
 
 
 
-.latest-products .itemslider-wrapper .direction-nav li a.next { background: url(../images/spritearrow.png) no-repeat -47px -43px; display: block; height: 34px; left: 10px; position: absolute; text-indent: -10000px; top: -38px; width: 34px; }
+.latest-products .itemslider-wrapper .direction-nav li a.next { background: url(../images/spritearrow.png) no-repeat -47px -44px; display: block; height: 34px; left: 10px; position: absolute; text-indent: -10000px; top: -29px; width: 34px; }
 .latest-products:hover .itemslider-wrapper .direction-nav li a.next { background: url(../images/spritearrow.png) no-repeat -47px -188px; }
 .header-right .information-advice #info-head.active .info-border { background: url(../images/spritestrip.png) repeat-x 0 32px; margin: 0 auto; padding: 0 0 12px; width: 143px; }
 .about-remade .upcycling a, .about-remade .join-us a, .about-remade .blog-remade a { box-shadow: 0 0 5px #797979; display: block; }
@@ -10033,7 +10039,9 @@ div.calendar table td.button {
 .footer-block #nav li.level-top a { color: #75757C; font-family: Oswald; font-size: 13px; font-weight: 300; text-transform: uppercase; text-align: left; line-height: 1.4; }
 .product-rating .no-rating { margin: 11px 0; text-indent: -10000px; }
 .this-month-featured-retailer .featured-retailer .feature-product .Featured-contant .products-grid > li .productbg .product-image { box-shadow: 0 0 5px #F3F2F3; }
-.latest-products .products-grid .product-image:hover .actions { bottom: 5px; left: 0; padding: 0 3px; }
+.latest-products .products-grid .product-image:hover .actions { bottom: 6px; left: 0; padding: 0 3px; }
+.latest-products .products-grid .product-image:hover .actions .rating-or-links { width: 96%; margin: 0 auto; }
+.latest-products .products-grid .product-image:hover .actions .product-rating { display: inline-block; width: 110px; }
 .products-grid .product-image:hover .actions { left: 0; }
 .feature-product .products-grid .actions .product-links { float: none; }
 .feature-product .products-grid .product-image:hover .actions { bottom: 7px; left: 9px; width: 96%; }
@@ -10045,7 +10053,7 @@ div.calendar table td.button {
 .header-right .dropdown #loginheader .block-login .after-login .block-content { margin: 0; }
 .header-right .information-advice #informationhead li a:hover { color: #DB8773; text-decoration: none; }
 .page-header { background: url(../images/fabric_of_squares_gray.png) repeat 0 0; }
-#header-nav { display: block; border-bottom: 1px solid #ededed; clear: left; background: url("../images/spritestrip.png") repeat-x 0 -43px; }
+#header-nav { display: block; clear: left; background: url("../images/spritestrip.png") repeat-x 0 -43px; }
 .feature-product .Featured-contant .products-grid li { float: left; }
 .collapsible .block-content li a { color: #75757C; font-family: Oswald; font-size: 13px; font-weight: 300; text-transform: capitalize; }
 .footer-block #nav li.level-top ul { display: none; }
@@ -10067,10 +10075,30 @@ div.calendar table td.button {
 .col-left .left-retailer { padding: 8% 0 12% 12%; border-bottom: 2px solid #fff; margin: 0 0 16%; }
 .retailer-view h3 { margin: 0 0 2px; }
 .retailer-view h3 a { Font-family: Oswald; font-weight: 300; font-size: 17px; Color: #494956; text-transform: capitalize; }
+.footer .collapsible .opener { display: none; }
 
 /***********Category Listing Page**********/
-
- @media only screen and (min-width: 570px) and (max-width:959px){
+ @media only screen and (min-width: 965px) and (max-width: 967px) {
+ .nav-container #nav li.level-top { padding: 0 1.7% !important; }
+ .header-right .header-right-top { margin: 0 0 2.5%; }
+ .footer-newsletter .block-subscribe .subscribe-contant .subscriber-title-content { width: 87%; }
+ .subscriber-title-content .subscriber-title-content1 { padding: 16px 5px; }
+ .subscriber-title-content .block-title .subscriber-heading { font-size: 14px; }
+ .subscriber-title-content .block-title .subscriber-label label { font-size: 12px !important; }
+ .subscriber-title-content .block-content .input-box input[type="email"] { width: 194px !important; }
+ .blog-socialLinks .homepage-blog { width: 79%; }
+ .blog-socialLinks .social-links { width: 19%; }
+ .blog-socialLinks .homepage-blog .postWrapper.big-content .postContent { height: 65px; overflow: hidden; }
+ .blog-socialLinks .homepage-blog .postWrapper.big-content .read { background: #FFFFFF; bottom: 2px; position: absolute; right: 0; }
+ .blog-socialLinks .homepage-blog .block-title { width: 16%; }
+ .blog-socialLinks .homepage-blog .postWrapper { width: 82%; }
+ .footer .footer-block { margin: 0 10px; }
+ .footer .links { width: 72%; }
+ .footer .footer-connect { width: 28%; }
+}
+ @media only screen and (min-width: 601px) and (max-width:959px){
+ .feature-product .products-grid .product-image:hover .actions { bottom: 7px; left: auto; width: 100%; }
+ .this-month-featured-retailer .featured-retailer .feature-product .Featured-contant .products-grid .actions ul li { margin: 0; }
 .header-right .information-advice #info-head span { height: 25px; padding: 0; text-indent: -10000px; width: 42px; background: url(../images/spritedrpdwn.png) no-repeat 0 4px; }
 .header-right .information-advice #info-head.active span { background: url(../images/spritedrpdwn.png) no-repeat 0 -28px; margin: 0 auto; }
 .header-right .dropdown .login .logintext { background: url(../images/spritedrpdwn.png) no-repeat 0 -61px; height: 25px; overflow: hidden; padding: 0; text-indent: -10000px; width: 42px; }
@@ -10087,12 +10115,12 @@ div.calendar table td.button {
 .header-right .dropdown .login.active .login-border { width: 132px; }
 .header-right .dropdown .login.active .logintext { margin: 0 auto; background: url(../images/spritedrpdwn.png) no-repeat 0 -96px; }
 .header-right .dropdown #loginheader .block-login .before-login { right: -132px; }
-#search_mini_form input[type="search"] { width: 98%; background: url(../images/spritehome.png) no-repeat 244px -84px #FFFFFF; float: none; }
-#search_mini_form input[type="search"]:focus { background: url(../images/spritehome.png) no-repeat 244px -111px #FFFFFF; }
+/* #search_mini_form input[type="search"] { width: 98%; background: url(../images/spritehome.png) no-repeat 244px -84px #FFFFFF; float: none; }
+#search_mini_form input[type="search"]:focus { background: url(../images/spritehome.png) no-repeat 244px -111px #FFFFFF; } */
 #header-nav { display: block; }
 #search_mini_form .search-button { right: 7px; }
 .products-grid .product-name, .products-list .product-name { max-height: 38px; min-height: 38px; overflow: hidden; }
-.col1-layout .col-main { padding: 0 5px !important; }
+.col1-layout .col-main { /*padding: 0 5px !important;*/ }
   
 .products-grid .actions ul li { margin: 0 3px 0 0; }
 
@@ -10100,21 +10128,21 @@ div.calendar table td.button {
 .this-month-featured-retailer .featured-retailer .feature-product .Featured-contant .products-grid > li + li + li { display: none; }
 .this-month-featured-retailer .featured-retailer .retailer-block { width: 39%; }
 .this-month-featured-retailer .featured-retailer .feature-product { width: 61%; }
-.blog-socialLinks .homepage-blog { width: 74%; }
-.blog-socialLinks .social-links { width: 23.4%; }
+.blog-socialLinks .homepage-blog { width: 72%; padding: 4px 22px 4px 20px; }
+.blog-socialLinks .social-links { width: 25%; }
 .subscriber-title-content .block-title .subscriber-label { display: none; }
 .subscriber-title-content .block-title { width: 38%; }
 .subscriber-title-content .block-content { width: 62%; }
 .footer-newsletter .block-subscribe .subscribe-contant { padding: 30px 5px 25px; }
 .footer-newsletter .block-subscribe .subscribe-contant .subscriber-img { height: 68px; width: 132px; }
-.footer-newsletter .block-subscribe .subscribe-contant .subscriber-title-content { width: 82%; }
-.subscriber-title-content .block-content .input-box input[type="email"] { width: 254px; }
+.footer-newsletter .block-subscribe .subscribe-contant .subscriber-title-content { width: 81%; }
+.subscriber-title-content .block-content .input-box input[type="email"] { width: 65%; }
 .subscriber-title-content .subscriber-title-content1 { padding: 17px 10px; }
 .this-month-featured-retailer .featured-retailer .retailer-block .retailer-title { top: 5px; }
 .this-month-featured-retailer .featured-retailer .retailer-block .retailer-description { max-height: 190px;		min-height: 190px; padding: 15px 15px 30px; position: absolute; top: 65px; width: 51%; }
 .this-month-featured-retailer .featured-retailer .retailer-block a { bottom: 18px; }
-.blog-socialLinks .homepage-blog .block-title { width: 21%; }
-.blog-socialLinks .homepage-blog .postWrapper { width: 79%; }
+.blog-socialLinks .homepage-blog .block-title { width: 24%; }
+.blog-socialLinks .homepage-blog .postWrapper { width: 76%; }
 .products-grid .product-name a, .products-list .product-name a { font-size: 13px; }
 .latest-products .itemslider-similar-main .products-grid .price-box .price { font-size: 12px; }
 .price-box .price { font-size: 12px; }
@@ -10125,7 +10153,7 @@ div.calendar table td.button {
 .footer .footer-block { margin: 0 10px; }
 .footer .collapsible { float: none; width: 100%; padding: 0; background: url(../images/spritestrip.png) repeat-x 0 45px; }
 .footer .links { width: 60%; margin: 0; }
-.footer .footer-connect { width: 35%; margin: 0 0 0 5%; }
+.footer .footer-connect { width: 36%; margin: 0 0 0 4%; }
 .footer .collapsible .opener { display: none; }
 .footer .collapsible .block-title {  background: url(../images/spritehome.png) no-repeat -337px -754px; padding: 5px 0 16px 18px; }
 .footer .collapsible .block-title strong span { margin: 3px 0 0; }
@@ -10137,9 +10165,11 @@ div.calendar table td.button {
 .header-right .dropdown .login.active .login-border .info-border { margin: 0 auto; width: 120px; }
 .footer .footer-bottom { margin: 31px 10px 0; }
 .subscriber-title-content .subscriber-title-content1 .subscriber-img { display: none; }
+.products-grid .actions ul li.product-rating { width: 100%;  }
+.blog-socialLinks .homepage-blog .postWrapper.big-content .postContent { color: #75757C; font-family: Oswald; font-size: 12px; font-weight: 300; height: 65px; line-height: 21px; overflow: hidden; padding: 0; }
+.blog-socialLinks .homepage-blog .postWrapper.big-content .read { background: #FFFFFF; bottom: 2px; position: absolute; right: 0; }
+.home-banner, .about-remade, .latest-products, .this-month-featured-retailer, .connect { padding: 0 5px; }
 }
-
-
 
 
 
@@ -10199,13 +10229,17 @@ div.calendar table td.button {
 .footer-newsletter .block-subscribe .subscribe-contant { padding: 28px 5px 25px; }
 .ecommerce-logo .ecommerce-text { display: none; }
 .footer-bottom .ecommerce-logo { width: 35px; }
+.this-month-featured-retailer .featured-retailer .feature-product .Featured-contant .products-grid .actions ul li { margin: 0 0px 0 0; }
+.home-banner, .about-remade, .latest-products, .this-month-featured-retailer, .connect { padding: 0 5px; }
+
 }
 
 
 @media only screen and (max-width: 768px) {
-
+/*
  #search_mini_form input[type="search"] { background: url(../images/spritehome.png) no-repeat 257px -84px #FFFFFF; }
  #search_mini_form input[type="search"]:focus { background: url(../images/spritehome.png) no-repeat 257px -111px #FFFFFF; }
+ */
 }
 @media only screen and (min-width: 300px) and (max-width:599px) {
 .logo { width: 100%; }
@@ -10266,8 +10300,8 @@ div.calendar table td.button {
 .mycart #cartHeader .block-cart .block-title .cart-contant .cart-contant-item { display: none; }
 .mycart #cartHeader .block-cart .block-title.active .cart-contant .cart-contant-item { display: block; }
 .mycart #cartHeader .block-cart .block-title { padding: 12px 0; width: 40px; }
-#search_mini_form input[type="search"] { width: 92%; background: url(../images/spritehome.png) no-repeat 162px -84px #FFFFFF; }
-#search_mini_form input[type="search"]:focus { background: url(../images/spritehome.png) no-repeat 162px -111px #FFFFFF; }
+/* #search_mini_form input[type="search"] { width: 92%; background: url(../images/spritehome.png) no-repeat 162px -84px #FFFFFF; }
+#search_mini_form input[type="search"]:focus { background: url(../images/spritehome.png) no-repeat 162px -111px #FFFFFF; } */
 .header-right .information-advice #info-head.active { background: #fff url(../images/mycartuparo.png) no-repeat 140px 23px; left: -63px; }
 .header-right .information-advice #info-head.active .info-border { width: 142px; }
 .header-right .information-advice .Info { margin: 0 23% 0 0; }
@@ -10300,3 +10334,21 @@ div.calendar table td.button {
 .subscribe-contant.expanddiv .subscriber-title-content .block-content .input-box .sign-up.less { display: inline-block; } 
 .subscribe-contant.expanddiv .subscriber-title-content .block-content .input-box input: focus { color: #494956; }
 }
+
+/*@media only screen and (min-width: 768px) {
+.subscriber-title-content .block-content .input-box input[type="email"] { width: 238px; }
+.blog-socialLinks .homepage-blog .block-title { width: 23%; }
+.blog-socialLinks .homepage-blog .postWrapper { width: 77%; }
+.blog-socialLinks .homepage-blog { width: 79%; }
+.blog-socialLinks .social-links { width: 19%; }
+.blog-socialLinks .homepage-blog .postWrapper.big-content .postContent { height: 65px; overflow: hidden; }
+.blog-socialLinks .homepage-blog .postWrapper.big-content .read { background: #FFFFFF; bottom: 2px; position: absolute; right: 0; }
+}*/
+
+/***   develop   ***/
+.header-right .cart-sude-bar { max-width: 138px; }
+.header-right .dropdown { max-width: 154px; }
+.header-right .information-advice { max-width: 160px; }
+
+
+
