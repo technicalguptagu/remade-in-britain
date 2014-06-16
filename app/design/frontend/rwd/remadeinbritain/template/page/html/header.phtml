@@ -98,26 +98,21 @@
     
 	
     <?php //echo $this->getChildHtml('topMenu') ?>
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 	//<![CDATA[
+		
 		jQuery(document).ready(function(){
-                     jQuery("#loginheader").hide();
-                     jQuery('.login').hover(function() {   
-                     jQuery('#loginheader').stop().show();
-                     jQuery('#login-head').addClass('active');                                
-                     }, function(){  
-                     jQuery('#loginheader').stop().hide();
-                     jQuery('#login-head').removeClass('active'); 
-               });   
-  });
-	//]]>
-	</script>
-
-	<script type="text/javascript">
-	//<![CDATA[
-		jQuery(document).ready(function(){
+            jQuery("#loginheader").hide();
+            jQuery('.login').hover(function() {   
+            jQuery('#loginheader').stop().show();
+            jQuery('#login-head').addClass('active');                                
+            }, function(){  
+            jQuery('#loginheader').stop().hide();
+            jQuery('#login-head').removeClass('active'); 
+        });
+		
+	    
 			jQuery("#cartHeader .block-content").hide();
-
 			jQuery('.mycart').hover(function() {			
 				jQuery('#cartHeader .block-content').stop().show();
 				jQuery('#cartHeader').find('.block-title').addClass('active');
@@ -125,10 +120,23 @@
 				jQuery('#cartHeader .block-content').stop().hide();
 				jQuery('#cartHeader').find('.block-title').removeClass('active');
 			});			
-		});
-	//]]>
-	</script>
+	
+	
+        
+		jQuery("#informationhead").hide();
 
+		jQuery('.information-advice').hover(function() {			
+			jQuery('#informationhead').stop().show();
+                        jQuery('#info-head').addClass('active');
+		}, function(){		
+			jQuery('#informationhead').stop().hide();
+            jQuery('#info-head').removeClass('active'); 
+	    });			
+	    });
+		
+// ]]></script>  -->
+	
+	
 	<?php echo $this->getChildHtml('topContainer'); ?>
 
 <div id="header-nav">
