@@ -24,6 +24,7 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php //developer 09 6/16/2014?>
 <?php
 /**
  * Category view template
@@ -42,7 +43,9 @@
     }
 ?>
 <div class="category-title-description">
-<div class="page-title category-title">
+<?php //BOF developer 09 For adding div?>
+<div>
+    <div class="page-title category-title">
     <?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
         <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
     <?php endif; ?>
@@ -60,10 +63,14 @@
         <?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
     </div>
     <?php endif; ?>
-	<?php if($_imgUrl): ?>
+</div>
+<?php //EOF developer 09?>
+<?php if($_imgUrl): ?>
     <?php echo $_imgHtml ?>
 <?php endif; ?>
+	
    </div>
+   
 <?php if($this->isContentMode()): ?>
     <?php echo $this->getCmsBlockHtml() ?>
 
