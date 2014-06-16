@@ -42,6 +42,7 @@
     }
 ?>
 <div class="category-title-description">
+<div class="page-title-description">
 <div class="page-title category-title">
     <?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
         <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
@@ -68,6 +69,7 @@
 	<?php if($_imgUrl): ?>
     <?php echo $_imgHtml ?>
 <?php endif; ?>
+   </div>
    </div>
 <?php if($this->isContentMode()): ?>
     <?php echo $this->getCmsBlockHtml() ?>
