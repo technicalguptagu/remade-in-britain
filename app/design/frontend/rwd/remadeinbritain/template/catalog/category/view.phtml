@@ -48,25 +48,26 @@
     <?php endif; ?>
     <?php if ($_currentCategoryId==4):?>
 	<div class="category">
-	<h1><?php echo $this->__('REMADE')?> <?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
-						  </div>
+	<h1><?php echo $this->__('REMADE')?> <?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>						  
     <?php else:?>
     <h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
 	<?php endif; ?>
 	</div>
 
 
+
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
-<?php if($_imgUrl): ?>
-    <?php echo $_imgHtml ?>
-<?php endif; ?>
+
 
 <?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
     <div class="category-description std">
         <?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
     </div>
     <?php endif; ?>
+	<?php if($_imgUrl): ?>
+    <?php echo $_imgHtml ?>
+<?php endif; ?>
    </div>
 <?php if($this->isContentMode()): ?>
     <?php echo $this->getCmsBlockHtml() ?>
