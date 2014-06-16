@@ -30,23 +30,44 @@ jQuery(function($) {
 		});
 	});
 
+/*BOF developer.21*/
+			
 jQuery(document).ready(function()
  {
   jQuery('#cartHeader .block-content').hide();
-        jQuery('#loginheader').hide();
-       
-  
-  
+  jQuery('#loginheader').hide();
+  jQuery("#informationhead").hide();
   jQuery('#cartHeader .block-title').click(function(){
  jQuery('#cartHeader .block-content').toggle();
  jQuery('#cartHeader').find('.block-title').toggleClass('active');
  jQuery('#login-head').removeClass('active');
  jQuery('#loginheader').hide();
- });	
+  jQuery('#info-head').removeClass('active');
+  jQuery('#informationhead').hide();
+ }); 
  jQuery('#login-head').click(function(){
   jQuery('#loginheader').toggle();
   jQuery('#login-head').toggleClass('active');
   jQuery('#cartHeader').find('.block-title').removeClass('active');
   jQuery('#cartHeader .block-content').hide();
+  jQuery('#info-head').removeClass('active');
+  jQuery('#informationhead').hide();
+  
   });
+ jQuery('#info-head').click(function(){
+  jQuery('#informationhead').toggle();
+  jQuery('#info-head').toggleClass('active');
+  jQuery('#cartHeader').find('.block-title').removeClass('active');
+  jQuery('#cartHeader .block-content').hide();
+  jQuery('#login-head').removeClass('active');
+  jQuery('#loginheader').hide();
   });
+  jQuery('#search').click(function(){
+  jQuery('#search').toggleClass('active');
+});
+  });
+
+/*EOF developer.21*/
+
+					
+			
