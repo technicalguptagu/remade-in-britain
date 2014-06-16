@@ -565,8 +565,9 @@ body, label, button, input, select, table, textarea {
     padding: 0;
     width: 100%;
   }
-/*=======Shopping Cart========== */  
+/*=======Category page========== */  
 .social-media {
+   background:#fff;
    float: left;
    margin: 15px 0;
    padding: 20px;
@@ -586,29 +587,29 @@ body, label, button, input, select, table, textarea {
    height: 26px;
    text-decoration: none;
    width: 26px;
-  }
+   }
 .social-media .media li.twitter a {
    background:url("../images/spritehome.png") no-repeat scroll -85px -102px transparent;
-  }
+   }
 .social-media .media li.facebook a {
-  background:url("../images/spritehome.png") no-repeat scroll -114px -102px transparent;
-  }
+   background:url("../images/spritehome.png") no-repeat scroll -114px -102px transparent;
+   }
 .social-media .media li.pinterest a {
-  background:url("../images/spritehome.png") no-repeat scroll -145px -102px transparent;
-  }
+   background:url("../images/spritehome.png") no-repeat scroll -145px -102px transparent;
+   }
 .social-media .media li.instagram a {
    background: url("../images/spritehome.png") no-repeat scroll -175px -102px transparent;
-  }
+   }
 .col2-left-layout .col-main {
-  float: left;
-  margin-left: 3.2%;
-  width: 76%;
-  }
+   float: left;
+   margin-left: 3.2%;
+   width: 76%;
+   }
 .category-title-description {
    background: url("../images/categorybg.png") repeat scroll 0 0 transparent;
    height:226px;
    margin: 5px 0 0;
-  }
+   }
 .category-title-description .category-title .category h1 {
   color: #d36b53;
   font-family: oswaldlight;
@@ -680,8 +681,7 @@ body, label, button, input, select, table, textarea {
   margin: 10px 0 10px 5px;
   width: 215px;
  }
-
-  .subs_category .view {
+.subs_category .catagory-grid .category-bg .view {
     color: #f48f6b;
     font-family: oswaldlight;
 	text-transform: uppercase;
@@ -689,15 +689,15 @@ body, label, button, input, select, table, textarea {
     position: absolute;
     right: 10px;
     top: 10px;
-}
-.subs_category .catagory-view {
+   }
+.subs_category .catagory-grid .category-bg .catagory-view {
 	position: relative;
 	height: 50px;
-}
-.subs_category .category-name > a {
+    }
+.subs_category .catagory-grid .category-bg .category-name > a {
     display: block;
     line-height: 23px;
-}
+   }
 
 
 /*=======Shopping Cart========== */
@@ -739,7 +739,7 @@ body, label, button, input, select, table, textarea {
 .checkout-cart-index .cart-table.data-table tbody td {
   border-left: 1px solid #000;
   }
-.checkout-cart-index .cart-table.data-table tbody tr + td {
+.checkout-cart-index .cart-table.data-table tbody td.product-cart-image {
   border-left:none;
   }
 .cart-footer-actions .button2.btn-continue {
@@ -762,8 +762,33 @@ body, label, button, input, select, table, textarea {
   white-space: nowrap;
   font-family: Oswald;
   color: #333333;
-}
-
+  }
+.cart-forms {
+  float: left;
+  padding-left: 0;
+  width: 65%;
+  }
+#discount-coupon-form, .cart .giftcard {
+    float: left;
+    width: 50%;
+  }
+.cart-forms .shipping,
+.cart-forms .discount{
+    background-color: none;
+    border: none;
+    padding: 10px;
+  }
+.cart-forms .shipping {
+    float: right;
+    padding: 10px;
+    width: 50%;
+	}
+.cart-totals-wrapper {
+  float: left;
+  padding-left: 20px;
+  width: 35%;
+  }
+  
 /*=======Login page========== */
 .customer-account-login .col2-set .col-2 {
    border-left:none;

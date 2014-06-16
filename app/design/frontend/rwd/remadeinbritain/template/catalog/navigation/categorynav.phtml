@@ -15,25 +15,10 @@
 
 <?php //BOF developer-19 12/02/2013 ?>
 <?php
-$_currentCategory = $this->getCurrentCategory();
-//print_r($_currentCategory);
-if (($_imgUrl = $_currentCategory->getImageUrl()) || ($_description = $_currentCategory->getDescription())):
-    ?>
-    <div id="img-title-des">
-        <div class="category-imgage-descri">
-            <div class="category-img-des1">
-                <?php if ($_imgUrl): ?>			
-                    <div class="sub-category-image">
-                        <img src="<?php echo $_imgUrl; ?>" width="228" height="153" alt="<?php echo $this->htmlEscape($_currentCategory->getName()) ?>" title="<?php echo $this->htmlEscape($_currentCategory->getName()) ?>" />
-                    </div>				
-                <?php endif; ?>							
-                <div class="clearer"></div>
-            </div>
-        </div>
-    </div>
-<?php endif; ?>	
+$_currentCategory = $this->getCurrentCategory();?>   
 <?php $_currentChild = $this->getCurrentChildCategories() ?>
 <?php $_count = is_array($_currentChild) ? count($_currentChild) : $_currentChild->count(); ?>
+<div class="category-content">
 <div class="alphabetical-order">
 <h4><?php echo $this->__('REMADE')?> <?php echo $_helper->categoryAttribute($_currentCategory, $_currentCategory->getName(), 'name') ?><span>( <?php echo $this->__('in alphabetical order')?> )</span></h4></div>
 <?php if ($_count): ?>
@@ -61,7 +46,7 @@ if (($_imgUrl = $_currentCategory->getImageUrl()) || ($_description = $_currentC
                         <div class="catagory-view">
                             <div class="category-name"><a href="<?php echo $this->getCategoryUrl($_category) ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>"><?php echo $this->htmlEscape($_category->getName()) ?></a></div>
                             <a class="view" href="<?php echo $this->getCategoryUrl($_category) ?>"<?php if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; ?>><?php echo $this->__('View &raquo;')?></a>
-                         </div>
+                       </div>
                        </div>
                     </li>
                 <?php endif; ?>
@@ -70,8 +55,8 @@ if (($_imgUrl = $_currentCategory->getImageUrl()) || ($_description = $_currentC
                 </ul>
             <?php endif ?>								
         <?php endforeach; ?>
-
-    </div>
+</div>
 <?php endif ?>
+</div>
 <?php
 //EOF developer-19 12/02/2013 ?>
