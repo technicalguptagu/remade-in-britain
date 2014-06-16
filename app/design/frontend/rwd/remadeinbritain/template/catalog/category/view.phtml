@@ -56,9 +56,9 @@
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
 <?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
-    
+    <div class="category-description std">
         <?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
-
+    </div>
     <?php endif; ?>
 	<?php if($_imgUrl): ?>
     <?php echo $_imgHtml ?>
