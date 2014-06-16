@@ -42,7 +42,6 @@
     }
 ?>
 <div class="category-title-description">
-<div class="page-title-description">
 <div class="page-title category-title">
     <?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
         <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
@@ -54,22 +53,16 @@
     <h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
 	<?php endif; ?>
 	</div>
-
-
-
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
-
-
 <?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
-    <div class="category-description std">
+    
         <?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
-    </div>
+
     <?php endif; ?>
 	<?php if($_imgUrl): ?>
     <?php echo $_imgHtml ?>
 <?php endif; ?>
-   </div>
    </div>
 <?php if($this->isContentMode()): ?>
     <?php echo $this->getCmsBlockHtml() ?>
