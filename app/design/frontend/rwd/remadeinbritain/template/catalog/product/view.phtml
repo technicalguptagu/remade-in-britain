@@ -32,7 +32,10 @@
  */
 ?>
 <?php $_helper = $this->helper('catalog/output'); ?>
-<?php $_product = $this->getProduct(); ?>
+<?php $_product = $this->getProduct();
+$_product = $this->getProduct(); ?>
+ <?php $_coreHelper = $this->helper('core');
+       $_taxHelper = $this->helper('tax');?>
 <script type="text/javascript">
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
@@ -45,21 +48,84 @@
                 <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
                 <input type="hidden" name="related_product" id="related-products-field" value="" />
             </div>
-
-            <div class="product-img-box">
-                <div class="product-name">
-                    <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
-                </div>
+			<div class="product-image-add-to">
                 <?php echo $this->getChildHtml('media') ?>
+				<div class="add-to-whislist">
+				 <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                                <span class="or"><?php echo $this->__('OR') ?></span>
+                            <?php endif; ?>
+                        
+                        <?php //echo $this->getChildHtml('addto') ?>
+						 
+                        <?php //echo $this->getChildHtml('sharing') ?>
+                    
+                    <?php echo $this->getChildHtml('extra_buttons') ?>
+                <?php //elseif (!$_product->isSaleable()): ?>
+                    <div class="add-to-box">
+                        <?php echo $this->getChildHtml('addto') ?>
+						<div class="wish-friend-soc">
+					            <div class="add-to-any">
+								    <div class="share"><?php echo $this->__('SHARE'); ?></div>
+						            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">					  
+									    <a class="a2a_button_facebook"></a>
+										<a class="a2a_button_twitter"></a>
+									    <a class="a2a_button_email"></a>
+									    <a class="a2a_button_google_plus"></a>
+										<a class="a2a_dd" href="http://www.addtoany.com/share_save"></a>
+
+							        </div>
+									<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-529720077da28e22"></script>
+
+                                        <script type="text/javascript" src="//static.addtoany.com/menu/page.js">
+										</script>
+					            </div>
+				            </div>
+						<?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>                    
+                    </div>
+					</div>
             </div>
 
-            <div class="product-shop">
+            <div class="product-detail-box">
+               <div class="product-shop">
+			   <?php if ($_product->getNews_from_date()): ?>
+                            <?php if ($_product->getNews_to_date()): ?>
+                                <span class="new-lable">
+                                    <img src="<?php echo $this->getskinUrl('images/new.png') ?>" width="82" height="72" alt=""/>
+                                </span>
+                            <?php endif; ?>
+                        <?php endif; ?>
+						<?php if ($_product->getSpecialPrice()): ?>
+                                <span class="sale">
+                                    <img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
+                                </span>
+						<?php endif; ?>
                 <div class="product-name">
                     <span class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
                 </div>
 				
                 <div class="price-info">
-                    <?php echo $this->getPriceHtml($_product, true, '-clone'); ?>
+				<?php if ($_product->getSpecialPrice()): ?>
+                              <div class="sale-price">
+                                    <div class="now">
+                                        <span class="price"><?php                                           
+                                            $_price = $_taxHelper->getPrice($_product, $_product->getFinalPrice());
+                                            echo $_coreHelper->currency($_price, true, false);
+                                            ?>
+                                        </span>
+                                    </div>
+									<div class="was">
+                                        <label><?php echo $this->__('was'); ?></label>
+                                        <span class="price"><?php                                            
+                                            $_realPrice = $_taxHelper->getPrice($_product, $_product->getPrice());
+                                            echo $_coreHelper->currency($_realPrice, true, false);
+                                            ?>
+                                        </span>
+                                    </div>
+                                </div>                                
+								<?php else:?>
+								<?php echo $this->getPriceHtml($_product, true, '-clone') ?>				          
+								<?php endif ?>
+                    <?php //echo $this->getPriceHtml($_product, true, '-clone'); ?>
 					<?php echo $this->__('Retailer Name Link')?>
                     <?php echo $this->getChildHtml('bundle_prices') ?>
                 </div>
@@ -68,31 +134,23 @@
                         <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
                     </div>
                 <?php endif;?>
+				<div class="tier-price">
+				<?php echo $this->getTierPriceHtml() ?>
+				</div>
 				<div class="product-option">
 				<div class="combine">
                         <div class="availability-options">
                             <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
                                 <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
                             <?php endif; ?> 
-                            <?php // echo $this->getTierPriceHtml() ?>	
-                            <?php if (!$this->hasOptions()): ?>                        
-                                <div class="add-to-box">
-                                    <?php if ($_product->isSaleable()): ?>
-                                        <?php echo $this->getChildHtml('addtocart') ?>
-                                    <?php endif; ?>
-                                </div>
-                            <?php endif; ?>
+    
                         </div>
                     </div>
 
 				</div>
 
 
-                <div class="extra-info">
-                    <?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>
-                    <?php echo $this->getChildHtml('product_type_availability'); ?>
-					<?php echo $this->getTierPriceHtml() ?>
-                </div>
+                
 
                 <?php echo $this->getChildHtml('alert_urls') ?>
 
@@ -111,24 +169,12 @@
                 <?php echo $this->getChildHtml('product_type_data') ?>
                 <?php echo $this->getChildHtml('extrahint') ?>
 
-                <?php if ($this->hasOptions()):?>
+                <?php //if ($this->hasOptions()):?>
                     <div class="add-to-box">
-                        <?php if($_product->isSaleable()): ?>
+                        <?php //if($_product->isSaleable()): ?>
                             <?php echo $this->getChildHtml('addtocart') ?>
-                            <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
-                                <span class="or"><?php echo $this->__('OR') ?></span>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                        <?php echo $this->getChildHtml('addto') ?>
-                        <?php echo $this->getChildHtml('sharing') ?>
-                    </div>
-                    <?php echo $this->getChildHtml('extra_buttons') ?>
-                <?php elseif (!$_product->isSaleable()): ?>
-                    <div class="add-to-box">
-                        <?php echo $this->getChildHtml('addto') ?>
-                        <?php echo $this->getChildHtml('sharing') ?>
-                    </div>
-                <?php endif; ?>
+                      </div>     
+                <?php //endif; ?>
             </div>
 
             <?php echo $this->getChildHtml('related_products') ?>

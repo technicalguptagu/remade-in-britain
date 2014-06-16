@@ -27,11 +27,11 @@
 <?php
 $_helper = $this->helper('catalog/output');
 $_product = $this->getProduct();
-?>
+$_product = $this->getProduct(); ?>
 <?php $buttonTitle = $this->__('Add to Cart'); ?>
 <?php if ($_product->isSaleable()): ?>
 
-    <div class="add-to-cart">
+    <div class="quantity">
         <div class="qty-box">
             <?php if (!$_product->isGrouped()): ?>
                 <label for="qty"><?php echo $this->__('Quantity') ?></label>
@@ -59,6 +59,23 @@ $_product = $this->getProduct();
                        ?>
                    <?php endif; ?>
         </div>
+		<div class="tier-price">
+		    <?php if ($this->displayProductStockStatus()): ?>
+               <?php if ($_product->isAvailable()): ?>
+                   <p class="availability in-stock">
+                   <span><?php echo $this->helper('catalog')->__('Availability:') ?></span>
+                   <span class="value"><?php echo $this->helper('catalog')->__('In stock') ?></span>
+                   </p>
+               <?php else: ?>
+                   <p class="availability out-of-stock">
+                   <span><?php echo $this->helper('catalog')->__('Availability:') ?></span>
+                   <span class="value"><?php echo $this->helper('catalog')->__('Out of stock') ?></span>
+                   </p>
+               <?php endif; ?>
+          <?php endif; ?>
+       </div>
+	   </div>
+	   <div class="add-to-cart">
         <div class="update-total">
             <div class="lable-total">
                 <?php echo $this->__('Total') ?>
@@ -74,6 +91,12 @@ $_product = $this->getProduct();
         <?php //echo $this->getChildHtml('', true, true) ?>
 
         <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+		<div class="payment">
+		<div class="paypal">&nbsp;</div>
+		<div class="visa">&nbsp;</div>
+		<div class="master">&nbsp;</div>
+		<div class="maestro">&nbsp;</div>
+		</div>
     </div>
 <?php endif; ?>
 

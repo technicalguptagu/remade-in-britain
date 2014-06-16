@@ -526,7 +526,7 @@
   color: #494956;
 }
 .blog-index-list .postWrapper .postTitle {
-  background: url("../images/spritestrip.png") repeat-x scroll 0 28px transparent;
+  background: url("../images/spritestrip.png") repeat-x scroll 0 27px transparent;
   border: medium none;
 }
 .blog-post-view .postWrapper .postTitle {
@@ -556,7 +556,7 @@
   line-height: 1.8;
 }
 .blog-index-list .col2-left-layout .col-main, .blog-post-view .col2-left-layout .col-main {
-  width: 79%;
+  width: 76%;
 }
 .blog-index-list .col-left, .blog-post-view .col-left {
  width: 19% ;
@@ -605,6 +605,95 @@
  {
   border-top:none;
  }
+/* - - - - product listing page - - -*/
+ .category-products .sort-by label, .category-products .pager .limiter label, .category-products .pager-list li  {
+  color: #FFFFFF;
+  font-family: oswald;
+  font-size: 14px !important;
+  font-weight: 400;
+  float:left;
+  padding: 6px;
+}
+.category-products .toolbar {
+  margin-bottom: 15px;
+  margin-top: 10px;
+  padding: 5px 10px 0;
+  background:none;
+  border:none;
+  background: url("../images/whitestrip.png") repeat-x scroll 0 39px rgba(0, 0, 0, 0);
+ }
+.category-products .sort-list {
+  float: left;
+}
+.sort-list li, .pager-list li {
+ float: left;
+ padding: 2px 6px !important;
+}
+.sort-list .sorter_name{
+  color: #494956;
+  font-family: oswald;
+  font-size: 14px;
+  font-weight: 300;
+}
+.category-products .pager {
+  float: left;
+  margin-left: 50px;
+  clear: none;
+}
+.category-products .pager .pager-list {
+  float: left;
+}
+.latest-products .itemslider-similar-main .products-grid > li {
+  float: left;
+  width: 33.33%;
+}
+.amount-pages {
+  float: left;
+}
+.catalog-category-view .col-main {
+  width: 79% !important;
+  margin:0 !important;
+}
+.catalog-category-view .col-left{
+width:18%;
+}
+.latest-products .products-grid li.item .productbg span.new{
+ right: 41px;
+ top:9px;
+}
+.category-title-description .page-title h1 {
+  color: #494956;
+  font-family: oswald;
+  font-size: 28px;
+  font-weight: 300;
+  padding: 1% 0 0 3%;
+  text-transform: capitalize;
+}
+.catalog-category-view .category-title-description {
+  height: 375px;
+  margin: 2% 0 0;
+  background-color:#FFFFFF;
+}
+.category-title-description .category-image {
+ float: left;
+  width: 30.5%;
+  margin: 0;
+  padding: 0;
+}
+.category-title-description .category-image img {
+  max-width: 100%;
+}
+.category-title-description .category-description.std {
+  color: #494956;
+  font-family: oswaldlight;
+  font-size: 16px;
+  padding: 0 30px;
+  width: 68%;
+  float: left;
+}
+.catalog-category-view .category-description.std > p {
+  margin: 2% 0 0;
+}
 
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
@@ -1017,7 +1106,7 @@ padding: 3% 2% 7% ;
  }
  .what-is-upcycling .upcycling, .what-can-be-upcycled .almost-anything, .the-modern-upcycler .remade-modern {
   margin: 3% 0 0 10%;
- }
+}
 .what-can-be-upcycled .upcycled-objects {
  margin: 5% 0 0;
 }
