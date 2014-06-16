@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Oscp_Leftcategory>
+            <version>0.1.0</version>
+     </Oscp_Leftcategory>
+    </modules>   
+    <global> 
+	    <helpers>
+            <leftcategory>
+                <class>Oscp_Leftcategory_Helper</class>
+            </leftcategory>      
+        </helpers>	
+  </global>
+</config>

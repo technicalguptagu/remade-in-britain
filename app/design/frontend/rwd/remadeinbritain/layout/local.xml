@@ -51,7 +51,8 @@
             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
         </reference>
 		<reference name="left">
-		<block type="cms/block"  name="Left Retailer" >
+		    <block type="core/template" name="left_category" before="-" template="leftcategory/leftcategory.phtml"/>
+		    <block type="cms/block"  name="Left Retailer" >
 				<action method="setBlockId">
 					<block_id>left-retailer</block_id>
 					</action>
@@ -86,6 +87,7 @@
             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
         </reference>
 		<reference name="left">
+		    <block type="core/template" name="left_category" before="-" template="leftcategory/leftcategory.phtml"/>
 			<block type="cms/block"  name="Social Media" after="catalog.leftnav" >
 				<action method="setBlockId">
 					<block_id>social-media</block_id>

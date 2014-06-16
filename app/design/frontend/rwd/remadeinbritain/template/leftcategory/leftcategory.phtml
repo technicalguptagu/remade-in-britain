@@ -1,0 +1,55 @@
+<?php 
+/*
+ * @category Oscp
+ * @package Oscp_Leftcategory
+ */
+?>
+<?php // BOF developer 16 6/14/2014?>
+<?php 
+    $_layer = Mage::getSingleton('catalog/layer');
+    $_category = $_layer->getCurrentCategory();
+
+	$_categoryIdpath = $_category->getParentCategory()->getPath();
+
+	$_ids = explode('/', $_categoryIdpath);
+    if (isset($_ids[2])) {
+        $_topParent = Mage::getModel('catalog/category')->setStoreId(Mage::app()->getStore()->getId())->load($_ids[2]);
+    } else {
+        $_topParent = $_category;
+    }
+
+    $currentCategoryId = $_topParent->getId();
+?>
+
+<h2><?php echo $_topParent->getName();?><h2>
+
+<?php 
+    $_categoryId = Mage::helper('leftcategory')->getCategoryId($currentCategoryId);
+    $_subCategories = $_categoryId->getChildren();
+?>
+
+<?php foreach(explode(',',$_subCategories) as $subCategoryId):?>
+    <?php $_category = Mage::helper('leftcategory')->getCategoryId($subCategoryId);?>
+  
+    <?php if($_category->getIsActive()):?>
+        <ul>
+            <a href="<?php echo $_category->getURL()?>" title="<?php echo $_category->getName()?>" >
+                <?php echo $_category->getName()?>
+            </a>
+            <?php $_subCategory = Mage::helper('leftcategory')->getCategoryId($_category->getId());
+                $_childSubCategories = $_subCategory->getChildren();?>
+            <?php foreach(explode(',',$_childSubCategories) as $_childSubCategory):?>
+                <?php $_childSubCategoryId = Mage::helper('leftcategory')->getCategoryId($_childSubCategory);?>
+                <?php if($_childSubCategoryId->getIsActive()) :?>
+                    <li class="subCategory">
+					    <a href="<?php echo $_childSubCategoryId->getURL()?>" title="<?php echo $_childSubCategoryId->getName()?>"><?php echo $_childSubCategoryId->getName()?>
+					    </a>
+					</li>
+                <?php endif;?>
+            <?php endforeach;?>
+        </ul>
+    <?php endif;?>
+<?php endforeach;?>
+
+
+ 
