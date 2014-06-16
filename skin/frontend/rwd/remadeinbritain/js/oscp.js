@@ -29,3 +29,24 @@ jQuery(function($) {
 			}			
 		});
 	});
+
+jQuery(document).ready(function()
+ {
+  jQuery('#cartHeader .block-content').hide();
+        jQuery('#loginheader').hide();
+       
+  
+  
+  jQuery('#cartHeader .block-title').click(function(){
+ jQuery('#cartHeader .block-content').toggle();
+ jQuery('#cartHeader').find('.block-title').toggleClass('active');
+ jQuery('#login-head').removeClass('active');
+ jQuery('#loginheader').hide();
+ });	
+ jQuery('#login-head').click(function(){
+  jQuery('#loginheader').toggle();
+  jQuery('#login-head').toggleClass('active');
+  jQuery('#cartHeader').find('.block-title').removeClass('active');
+  jQuery('#cartHeader .block-content').hide();
+  });
+  });
