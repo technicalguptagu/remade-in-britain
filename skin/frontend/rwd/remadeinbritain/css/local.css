@@ -650,14 +650,12 @@
 .amount-pages {
   float: left;
 }
-.catalog-category-view .col-main {
-  width: 81% !important;
-}
 .catalog-category-view .col-left{
 width:19%;
 }
 .latest-products .products-grid li.item .productbg span.new{
- right: 41px;
+ right: 32px;
+ top: 9px;
 }
 
 
