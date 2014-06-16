@@ -118,12 +118,16 @@
 
     <?php $_collectionSize = $_productCollection->count() ?>
     <?php $_columnCount = $this->getColumnCount(); ?>
-    <ul class="products-grid products-grid--max-<?php echo $_columnCount; ?>-col">
-        <?php $i=0; foreach ($_productCollection as $_product): ?>
+    <div class="latest-products products-grid products-grid--max-<?php echo $_columnCount; ?>-col">
+        <div class="itemslider-wrapper">
+		<div class="nav-wrapper-similar-main nav-wrapper gen-slider-arrows1 gen-slider-arrows1-pos-top-right" id="nav-wrapper-new-main">&nbsp;</div>    
+            <div class="itemslider-similar-main itemslider itemslider-horizontal itemslider-responsive" id="itemslider-new-main">
+			<ul class=" slides products-grid">
+		<?php $i=0; foreach ($_productCollection as $_product): ?>
             <?php /*if ($i++%$_columnCount==0): ?>
             <?php endif*/ ?>
             <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
-			<div class="product-detail">
+			<div class="productbg">
 						<?php if ($_product->getNews_from_date()): ?>
 						<?php if ($_product->getNews_to_date()): ?>
 							<span class="new">
@@ -136,14 +140,43 @@
                                     <img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
                                 </span>
 					   <?php endif ?>
-                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                <div href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+
                     <?php $_imgSize = 210; ?>
                     <img id="product-collection-image-<?php echo $_product->getId(); ?>"
                          src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
                          alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
-                </a>
-                <div class="product-info">
-                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+						 <span class="transparent-img">&nbsp;</span>
+						  <div class="actions">
+							<div class="product-links">
+								<ul class="add-to-links">
+									<li class="product-rating">
+										<?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+									</li>
+									<?php if ($this->helper('wishlist')->isAllow()) : ?>
+									<li class="add-wishlist"><a href="<?php echo $this->getAddToWishlistUrl($_product) ?>" class="link-wishlist">&nbsp;</a></li>
+									<?php endif; ?>
+									<?php if ($_compareUrl = $this->getAddToCompareUrl($_product)): ?>
+									<li class="add-compare"><a href="<?php echo $_compareUrl ?>" class="link-compare">&nbsp;</a></li>
+									<?php endif; ?>
+									<li class="view-products">
+										<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->__('View Product') ?>" class="view-prod">&nbsp;</a>
+									</li>
+									<?php if ($_product->isSaleable()): ?>
+									<li class="add-cart">
+										<a href="<?php echo $this->getAddToCartUrl($_product) ?>" title="<?php echo $this->__('Add to Cart') ?>">&nbsp;</a>
+									</li>
+                                    <?php else: ?>
+                                    <li class="out-of-stock"><?php echo $this->__('Out of stock') ?></li>
+                                    <?php endif; ?>
+								 </ul>
+							</div>
+						</div>
+                    
+                </div>
+				
+                <!--<div class="product-info">-->
+                    <h3 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
 					<?php
                                 $_productName = $this->escapeHtml($_product->getName());
                                         $_count = strlen($_productName);
@@ -192,54 +225,14 @@
 							<div class="retailer-name"><a href="#"><?php echo $this->__('Retailer Name Link') ?></a></div>
 							<div style="clear: both; height: 0;">&nbsp;</div>
 					   </div>
-					   <div class="actions">
-							<div class="product-links">
-								<ul class="add-to-links">
-									<li class="product-rating">
-										<?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
-									</li>
-									<?php if ($this->helper('wishlist')->isAllow()) : ?>
-									<li class="add-wishlist"><a href="<?php echo $this->getAddToWishlistUrl($_product) ?>" class="link-wishlist">&nbsp;</a></li>
-									<?php endif; ?>
-									<?php if ($_compareUrl = $this->getAddToCompareUrl($_product)): ?>
-									<li class="add-compare"><a href="<?php echo $_compareUrl ?>" class="link-compare">&nbsp;</a></li>
-									<?php endif; ?>
-									<li class="view-products">
-										<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->__('View Product') ?>" class="view-prod">&nbsp;</a>
-									</li>
-									<?php if ($_product->isSaleable()): ?>
-									<li class="add-cart">
-										<a href="<?php echo $this->getAddToCartUrl($_product) ?>" title="<?php echo $this->__('Add to Cart') ?>">&nbsp;</a>
-									</li>
-                                    <?php else: ?>
-                                    <li class="out-of-stock"><?php echo $this->__('Out of stock') ?></li>
-                                    <?php endif; ?>
-								 </ul>
-							</div>
-						</div>
-                    <!-- <div class="actions">
-                        <?php if($_product->isSaleable() && !$_product->canConfigure()): ?>
-                            <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
-                        <?php elseif($_product->isSaleable()): ?>
-                            <a title="<?php echo $this->__('View Details') ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
-                        <?php else: ?>
-                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-                        <?php endif; ?>
-                        <ul class="add-to-links">
-                            <?php if ($this->helper('wishlist')->isAllow()) : ?>
-                                <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
-                            <?php endif; ?>
-                            <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
-                                <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
-                            <?php endif; ?>
-                        </ul>
-                    </div> -->
-                </div>
+					  
+                <!--</div>-->
             </li>
             <?php /*if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
             <?php endif*/ ?>
         <?php endforeach ?>
     </ul>
+
     <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
     <?php endif; ?>
 
@@ -247,6 +240,7 @@
         <?php echo $this->getToolbarHtml() ?>
     </div>
 </div>
+
 <?php endif; ?>
 
 <?php
@@ -258,3 +252,6 @@
     ?>
     <?php echo $_afterChild->toHtml(); ?>
 <?php endforeach; ?>
+</div>
+</div>
+</div>
