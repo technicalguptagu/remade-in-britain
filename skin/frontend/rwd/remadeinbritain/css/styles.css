@@ -2286,7 +2286,7 @@ a.button:hover {
   margin-left: -2px;*/
 }
 .pages .next:hover:before {
-  content: '';
+  /*content: '';
   position: absolute;
   width: 0;
   height: 0;
@@ -2294,7 +2294,7 @@ a.button:hover {
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
   border-left: 4px solid #246b8f;
-  border-right: none;
+  border-right: none;*/
 }
 
 .pages .previous:before {
@@ -5171,6 +5171,7 @@ p.product-name a:hover {
   -webkit-box-shadow: 0 0 5px #838383;
   background: #fff; 
   float: left;
+  width: 100%; 
 }
 .product-img-box .product-image img {
   max-width: 100%;
@@ -5222,13 +5223,18 @@ p.product-name a:hover {
 
 .product-image-thumbs li {
   display: inline-block;
+  float: none !important;
+  height: 115px !important;
+  margin: 0 6px 14px;
+  width: 118px !important;
 }
 .product-image-thumbs li:first-child {
-  margin-left: -1px;
 }
 .product-image-thumbs a {
   display: inline-block;
   border: 1px solid transparent;
+  width: 115px !important; 
+  height: 117px !important; 
 }
 
 .no-touch .product-image-thumbs a:hover {
@@ -10098,12 +10104,12 @@ div.calendar table td.button {
 .product-view .add-to-cart .payment { background: url(../images/spritehome.png) no-repeat 6px -824px; float: left; height: 36px; padding: 0 7px 10px; width: 100%; }
 .product-view .add-to-cart .total-addto { background: url(../images/spritestrip.png) repeat-x 0 60px; float: left; margin: 0 0 24px; padding: 0 7px 11px; width: 100%; }
 .product-view .add-to-cart .update-total .update-price .price-box { margin: 0; }
-.product-img-box .product-image .product-image-gallery { width: 60%; float: left; }
-.product-img-box .product-image .thumbnil-slider { width: 20%; float: right; margin: 0 10%; }
-.product-img-box .product-image .image-gallery-or-thumbnil { padding: 5px; float: left; }
+.product-img-box .product-image .product-image-gallery { width: 71%; float: left; }
+.product-img-box .product-image .thumbnil-slider { float: right; margin: 0 6%; width: 17%; }
+.product-img-box .product-image .image-gallery-or-thumbnil { padding: 5px; float: left; width: 100%; }
 .product-img-box .product-image .image-gallery-or-thumbnil span.new-lable,
 .product-img-box .product-image .image-gallery-or-thumbnil span.sale { position: absolute; right: 0; top: 0; }
-.product-img-box .product-image .thumbnil-slider h2 { font-family: Oswald; font-weight: 400; font-size: 16.01px; color: #fff; }
+.product-img-box .product-image .thumbnil-slider h2 { font-family: Oswald; font-weight: 300; font-size: 13px; color: #ABB795; text-transform: uppercase; }
 
 
 
