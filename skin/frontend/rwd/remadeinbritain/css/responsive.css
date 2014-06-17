@@ -732,27 +732,29 @@ body, label, button, input, select, table, textarea {
   }
 .checkout-cart-index .cart-table.data-table tbody tr.odd,
 .checkout-cart-index .cart-table.data-table tbody tr.even{
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #eeeeee;
   }
 .checkout-cart-index .cart-table.data-table tbody tr.last { 
   border-bottom: none;
   }
 .checkout-cart-index .cart-table.data-table tbody td {
-  border-left: 1px solid #000;
-  padding: 5px 20px 5px 15px;
+  border-left: 1px solid #eeeeee;
+  padding: 10px 20px 5px 15px;
   }
 .checkout-cart-index .cart-table.data-table .product-cart-info {
-    width: 450px;
-}
+  width: 450px;
+  }
 .checkout-cart-index .cart-table.data-table tbody td.product-cart-image {
   border-left:none;
   }
 .product-image, .no-touch .product-img-box .product-image:hover:not(.zoom-available) {
-   text-align:center;
+  text-align:center;
   }
 .cart-table .product-cart-image .product-image img {
- width: auto;
-}
+  padding: 5px;
+  text-align: center;
+  width: auto;
+  }
 .cart-footer-actions .button2,
 .discount-form .button-wrapper .button2{
   color: #ffffff;
@@ -807,6 +809,11 @@ body, label, button, input, select, table, textarea {
   white-space: nowrap;
   font-family: Oswald;
   color: #333333;
+  }
+.btn-remove2 {
+  background: url("../images/spritehome.png") no-repeat scroll 10px -304px transparent;
+  border: medium none;
+  vertical-align: bottom;
   }
 .cart-forms {
   float: left;
@@ -878,7 +885,43 @@ body, label, button, input, select, table, textarea {
   padding-left: 20px;
   width: 35%;
   }
-  
+.cart-totals-wrapper .cart-totals #shopping-cart-totals-table tr td {
+  color: #333333;
+  font-family: oswald;
+  text-transform: capitalize;
+  text-align:left;
+  float: left;
+   }
+.cart-totals-wrapper .cart-totals #shopping-cart-totals-table tbody tr > td {
+    font-size: 16px !important;
+    font-weight: 500;  
+  }
+.cart-totals-wrapper .cart-totals #shopping-cart-totals-table tfoot tr > td {
+   font-weight: 700;
+   font-size:22px;
+  }
+.cart-totals-wrapper .cart-totals #shopping-cart-totals-table tbody tr > td.first-col:after,
+.cart-totals-wrapper .cart-totals #shopping-cart-totals-table tfoot tr > td.first-col:after {
+    content: ":";
+ }
+.cart .cart-totals table tfoot { 
+  border:none;
+ }
+.cart .cart-totals table td:first-child {
+  min-width: 0;
+  padding:0;
+ }
+.cart .cart-totals table td {
+   padding:3px;
+  }
+.cart-totals .checkout-types .btn-checkout {
+  font-family: oswald;
+  font-size: 19px !important;
+  font-weight: 500;
+  margin-bottom: 0;
+  padding: 12px 45px;
+  text-transform: uppercase;
+}
 /*=======Login page========== */
 .customer-account-login .col2-set .col-2 {
    border-left:none;
@@ -1189,8 +1232,11 @@ body, label, button, input, select, table, textarea {
     color: #000;
     display: block !important;
     float: left;
-    width: 46px;
+    width: 80px;
     }
+#discount-coupon-form label, .shipping h2 {
+    background: none;
+}
  /*=======User Registration========== */
 .account-create .account-detail {
    float: left;
@@ -1222,7 +1268,30 @@ body, label, button, input, select, table, textarea {
 }
 @media only screen and (min-width:320px) and (max-width:479px){
 
-
+/*=======Shopping Cart========== */
+.checkout-cart-index .cart-table.data-table tbody td {
+  border-left:none;
+  }
+.data-table thead th, 
+.data-table tbody td {
+   color: #ffffff;
+   display: block;
+   font-family: oswaldlight;
+   font-size: 13px;
+   width: 100% !important;
+   }
+ .cell-label {
+    color: #000;
+    display: block !important;
+    float: left;
+    width: 80px;
+    }
+#discount-coupon-form label, .shipping h2 {
+    background: none;
+  }
+.cart-totals-wrapper {
+    clear: both;
+  }
 
  .breadcrumbs {
    display: block;
