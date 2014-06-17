@@ -76,28 +76,20 @@ $_product = $this->getProduct(); ?>
        </div>
 	   </div>
 	   <div class="add-to-cart">
-        <div class="update-total">
-            <div class="lable-total">
-                <?php echo $this->__('Total') ?>
-            </div>
-            <div class="price-update-box">
-                <span class="update-price">
-                    <?php echo $this->getPriceHtml($_product) ?></span>
-
-            </div>
-        </div>
-
-        <?php //echo $this->getChildHtml('', true, true) ?>
-        <?php //echo $this->getChildHtml('', true, true) ?>
-
-        <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
-		<div class="payment">
-		<div class="paypal">&nbsp;</div>
-		<div class="visa">&nbsp;</div>
-		<div class="master">&nbsp;</div>
-		<div class="maestro">&nbsp;</div>
+		   <div class="total-addto">
+				<div class="update-total">
+					<div class="lable-total">
+						<?php echo $this->__('Total') ?>
+					</div>
+					<div class="price-update-box">
+						<span class="update-price">
+						<?php echo $this->getPriceHtml($_product) ?></span>
+					</div>
+				</div>
+				<button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $this->__('Add to my bag') ?></span></span></button>
+			</div>
+			<div class="payment">&nbsp;</div>
 		</div>
-    </div>
 <?php endif; ?>
 
 <input type="hidden" id="productOriginalPrice" value="" />

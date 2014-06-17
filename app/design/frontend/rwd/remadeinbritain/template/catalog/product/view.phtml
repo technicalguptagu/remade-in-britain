@@ -51,14 +51,14 @@ $_product = $this->getProduct(); ?>
 			<div class="product-img-box">
                 <?php echo $this->getChildHtml('media') ?>
             
-			 <div class="add-to-whislist">
+			 <div class="add-to-links">
 				 <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
                  <?php endif; ?>                    
                     <?php echo $this->getChildHtml('extra_buttons') ?>
                 <?php //elseif (!$_product->isSaleable()): ?>
                     <div class="add-to-box">
                         <?php echo $this->getChildHtml('addto') ?>
-						<div class="wish-friend-soc">
+						<div class="info-social-links">
 					            <div class="add-to-any">
 								    <div class="share"><?php echo $this->__('SHARE'); ?></div>
 						            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">					  
