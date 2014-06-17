@@ -64,10 +64,10 @@
     <div class="pages">
         <!-- <strong><?php //echo $this->__('Page:') ?></strong> -->
         <ol>
-        <?php if ($this->isFirstPage()): ?>
+        
 		<li class="first-page">
-                        <a class="first" href="<?php echo $this->getFirstPageUrl() ?>" title="<?php echo $this->__('First') ?>"><?php echo $this->__('First') ?></a>
-                    </li>
+             <a class="first" href="<?php echo $this->getFirstPageUrl() ?>" title="<?php echo $this->__('First') ?>"><?php echo $this->__('First') ?></a>
+         </li>
             <li>
                 <a class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo $this->__('Previous') ?>">
                     <?php if(!$this->getAnchorTextForPrevious()): ?>
@@ -77,7 +77,7 @@
                     <?php endif;?>
                 </a>
             </li>
-        <?php endif;?>
+        
 
         <?php if ($this->canShowFirst()): ?>
             <li><a class="first" href="<?php echo $this->getFirstPageUrl() ?>">1</a></li>
@@ -104,20 +104,20 @@
           <li><a class="last" href="<?php echo $this->getLastPageUrl() ?>"><?php echo $this->getLastPageNum() ?></a></li>
         <?php endif;?>
 
-        <?php if (!$this->isLastPage()): ?>
-                         <li class="next">
-                            <a class="next<?php if (!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo $this->__('Next') ?>">
-                                <?php if (!$this->getAnchorTextForNext()): ?>
-								<span><?php echo $this->__('Next') ?></span>
-                                <?php else: ?>
-                                    <?php echo $this->getAnchorTextForNext() ?>
-                                <?php endif; ?>
-                            </a>
-                        </li> 
-					<li class="last-page">
-                        <a class="last" href="<?php echo $this->getLastPageUrl() ?>" title="<?php echo $this->__('Last') ?>"><?php echo $this->__('Last') ?></a>
-                    </li>
-                    <?php endif; ?>
+        
+          <li class="next">
+               <a class="next<?php if (!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo $this->__('Next') ?>">
+               <?php if (!$this->getAnchorTextForNext()): ?>
+			        <span><?php echo $this->__('Next') ?></span>
+               <?php else: ?>
+                    <?php echo $this->getAnchorTextForNext() ?>
+               <?php endif; ?>
+               </a>
+           </li> 
+		<li class="last-page">
+              <a class="last" href="<?php echo $this->getLastPageUrl() ?>" title="<?php echo $this->__('Last') ?>"><?php echo $this->__('Last') ?></a>
+        </li>
+                    
         </ol>
 
     </div>
