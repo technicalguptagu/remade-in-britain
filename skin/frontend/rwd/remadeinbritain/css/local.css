@@ -676,9 +676,10 @@ width:21%;
 
 }
 .catalog-category-view .category-title-description {
-  height: 375px;
+  background-color: #FFFFFF;
+  height: auto;
   margin: 2% 0 0;
-  background-color:#FFFFFF;
+  float: left;
 }
 .category-title-description .category-image {
   float: left;
@@ -686,8 +687,7 @@ width:21%;
   padding: 1% 0 ;
   width: 30%;
   border: none;
-  height:auto;
-}
+  }
 .category-title-description .category-image img {
   max-width: 100%;
 }
@@ -758,6 +758,22 @@ width:21%;
   height: 20px;
   margin: 10px 0 0 10px;
 }
+.products-grid .product-name a {
+  color: #494956;
+  font-family: oswaldlight;
+  font-size: 17px;
+}
+.products-grid .price-box .price {
+  color: #F48F6B;
+  font-family: oswald;
+  font-size: 15px;
+  font-weight: 400;
+}
+/*.products-grid .price-Or-retailername .retailer-name a {
+  color: #B3B3BA;
+  font-family: Oswaldlight;
+  font-size: 10.13px;
+ }*/
 
  
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
