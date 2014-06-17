@@ -38,6 +38,18 @@
 ?>
 <div class="product-image product-image-zoom">
     <div class="product-image-gallery">
+		 <?php if ($_product->getNews_from_date()): ?>
+			<?php if ($_product->getNews_to_date()): ?>
+				<span class="new-lable">
+					<img src="<?php echo $this->getskinUrl('images/new.png') ?>" width="82" height="72" alt=""/>
+				</span>
+			<?php endif; ?>
+		<?php endif; ?>
+		<?php if ($_product->getSpecialPrice()): ?>
+			<span class="sale">
+				<img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
+			</span>
+		<?php endif; ?>
         <img id="image-main"
              class="gallery-image visible"
              src="<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>"
