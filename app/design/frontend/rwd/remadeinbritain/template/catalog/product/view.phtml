@@ -48,17 +48,12 @@ $_product = $this->getProduct(); ?>
                 <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
                 <input type="hidden" name="related_product" id="related-products-field" value="" />
             </div>
-			<div class="product-image-add-to">
+			<div class="product-img-box">
                 <?php echo $this->getChildHtml('media') ?>
-				<div class="add-to-whislist">
+            
+			 <div class="add-to-whislist">
 				 <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
-                                <span class="or"><?php echo $this->__('OR') ?></span>
-                            <?php endif; ?>
-                        
-                        <?php //echo $this->getChildHtml('addto') ?>
-						 
-                        <?php //echo $this->getChildHtml('sharing') ?>
-                    
+                 <?php endif; ?>                    
                     <?php echo $this->getChildHtml('extra_buttons') ?>
                 <?php //elseif (!$_product->isSaleable()): ?>
                     <div class="add-to-box">
@@ -82,8 +77,9 @@ $_product = $this->getProduct(); ?>
 				            </div>
 						<?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>                    
                     </div>
-					</div>
-            </div>
+			   </div>
+			   </div>
+           
 
             <div class="product-detail-box">
                <div class="product-shop">
