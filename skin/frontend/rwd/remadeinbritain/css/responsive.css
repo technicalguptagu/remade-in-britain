@@ -605,35 +605,35 @@ body, label, button, input, select, table, textarea {
    margin-left: 3.2%;
    width: 76%;
    }
-.category-title-description {
+.category-content {
    background: url("../images/categorybg.png") repeat scroll 0 0 transparent;
    height:226px;
    margin: 5px 0 0;
    }
-.category-title-description .category-title .category h1 {
+.category-content .title-description h1 {
   color: #d36b53;
   font-family: oswaldlight;
   font-size: 28px;
   padding: 20px 25px;
   }
-.category-description.std {
+.title-description .std {
   color: #494956;
   font-family: oswaldlight;
   font-size: 16px;
   padding: 0 30px;
   }
-.category-description.std > span {
+.title-description .std > span {
   display: block;
   padding: 20px 0;
   }
-.category-description.std > span a {
+.title-description .std > span a {
   color: #5DC1C0;
   margin: 0 0 0 5px;
   text-decoration: underline;
   }
 .alphabetical-order {
   background: url("../images/spritestrip.png") repeat-x scroll 1px -12px transparent;
-  margin: 25px 0;
+  margin: 20px 0;
   width: 100%;
   }
 .alphabetical-order h4 {
@@ -652,36 +652,36 @@ body, label, button, input, select, table, textarea {
   margin: 0 0 0 6px;
   text-transform: lowercase;
   }
-.subs_category .catagory-grid li {
+.subs-category-list .catagory-grid li {
   float: left;
   margin: 0 2% 2% 0;
   width: 32%;
   }
-.subs_category .catagory-grid li.last {
+.subs-category-list .catagory-grid li.last {
   margin-right:0; 
   }
-.subs_category .catagory-grid .category-image {
+.subs-category-list .catagory-grid .category-image {
   border: none;
   padding: 0;
   margin:0;
   }
-.subs_category .catagory-grid .category-image img {
+.subs-category-list .catagory-grid .category-image img {
   max-width: auto;
   width: auto;
   }
-.subs_category .catagory-grid .category-bg{
+.subs-category-list .catagory-grid .category-bg{
   background: none repeat scroll 0 0 #fff;
   border: 1px solid #8b9475;
   padding: 2%;
   }
-.subs_category .catagory-grid .category-bg .catagory-view .category-name {
+.subs-category-list .catagory-grid .category-bg .catagory-view .category-name {
   color: #494956;
   font-family: oswaldlight;
   font-size: 17px;
   margin: 10px 0 10px 5px;
   width: 215px;
  }
-.subs_category .catagory-grid .category-bg .view {
+.subs-category-list .catagory-grid .category-bg .view {
     color: #f48f6b;
     font-family: oswaldlight;
 	text-transform: uppercase;
@@ -690,11 +690,11 @@ body, label, button, input, select, table, textarea {
     right: 10px;
     top: 10px;
    }
-.subs_category .catagory-grid .category-bg .catagory-view {
+.subs-category-list .catagory-grid .category-bg .catagory-view {
 	position: relative;
 	height: 50px;
     }
-.subs_category .catagory-grid .category-bg .category-name > a {
+.subs-category-list .catagory-grid .category-bg .category-name > a {
     display: block;
     line-height: 23px;
    }
