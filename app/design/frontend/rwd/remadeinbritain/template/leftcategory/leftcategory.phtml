@@ -20,9 +20,10 @@
 
     $currentCategoryId = $_topParent->getId();
 ?>
-
-<h2><?php echo $_topParent->getName();?></h2>
-
+<div class="block-content">
+ <div class="block-title">
+   <h2><?php echo $_topParent->getName();?></h2>
+  </div>
 <?php 
     $_categoryId = Mage::helper('leftcategory')->getCategoryId($currentCategoryId);
     $_subCategories = $_categoryId->getChildren();
@@ -50,8 +51,7 @@
         </ul>
     <?php endif;?>
 <?php endforeach;?>
-
-
+</div>
 
 
 
