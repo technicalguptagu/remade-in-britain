@@ -81,7 +81,7 @@
 		<div class="thumbnil-slider">
 			 <div class="more-images itemslider itemslider-thumbnails gen-slider-arrows3  count-multi">
 				<ul class="product-image-thumbs slides">
-				<?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
+				<?php foreach ($this->getGalleryImages() as $_image): ?>
 					<?php
 					if (($filterClass = $this->getGalleryFilterHelper()) && ($filterMethod = $this->getGalleryFilterMethod()) && !Mage::helper($filterClass)->$filterMethod($_product, $_image)):
 						continue;
@@ -93,7 +93,7 @@
 								 width="115" height="115" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" />
 						</a>
 					</li>
-				<?php $i++; endforeach; ?>
+				<?php endforeach; ?>
 				</ul>
 			</div>
 			<h2><?php echo $this->__('CLICK ABOVE TO VIEW MORE IMAGES') ?></h2>
