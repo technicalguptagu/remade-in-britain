@@ -5045,16 +5045,7 @@ p.product-name a:hover {
   display: table;
   clear: both;
 }
-.product-view .product-shop .product-name .h1,
-.product-view .product-img-box .product-name h1 {
-  color: #3399cc;
-  margin-bottom: 10px;
-  border: 0;
-}
-.product-view .product-shop {
-  width: 50%;
-  float: right;
-}
+
 .product-view .product-shop .product-name {
   display: none;
   float: left;
@@ -5069,17 +5060,18 @@ p.product-name a:hover {
   clear: left;
 }
 .product-view .product-shop .price-info {
-  float: right;
-  padding-left: 15px;
-  text-align: right;
+  border-bottom: 2px solid #FFFFFF;
+  float: left;
+  padding: 0 0 26px;
+  width: 100%; 
+  margin: 0 0 25px;
 }
 .product-view .product-shop .extra-info,
 .product-view .product-shop .price-info {
-  max-width: 50%;
-  margin-bottom: 10px;
+  
 }
 .product-view .product-shop .short-description {
-  margin-bottom: 10px;
+  margin-bottom: 28px;
   clear: both;
 }
 .product-view .product-shop .ratings {
@@ -5126,8 +5118,6 @@ p.product-name a:hover {
 }
 .product-view .add-to-cart-wrapper,
 .product-view .block-related {
-  width: 50%;
-  float: right;
   clear: right;
 }
 
@@ -5682,9 +5672,6 @@ p.product-name a:hover {
  */
 .product-options {
   width: 100%;
-  margin: 10px 0 0;
-  padding: 10px 15px 15px;
-  border: 1px solid #cccccc;
   clear: both;
   position: relative;
 }
@@ -10079,6 +10066,28 @@ div.calendar table td.button {
 .footer .collapsible .opener { display: none; }
 
 /***********Category Listing Page**********/
+
+/***********Product Info Page**********/
+
+.product-view .product-essential { width: 100%; }
+.product-view .product-essential .product-image-add-to  { width: 66%; float: left; border: 1px solid green; }
+.product-view .product-essential .product-detail-box  { width: 34%; float: right; border: 1px solid red; }
+.product-view .product-shop {}
+.product-view .product-shop .product-name .h1,
+.product-view .product-img-box .product-name h1 { border: 0 none; color: #FFFFFF; font-family: oswald; font-size: 27px; font-weight: 400; margin-bottom: 10px; }
+.product-view .product-shop .price-info .price-box { float: left; margin: 0 0 0 8px; }
+.product-view .product-shop .price-info .price-box .price { font-family: Oswald; font-weight: 400; font-size: 20px; color: #FFFFFF; }
+.product-view .product-shop .price-info .retailer-name { float: right; }
+.product-view .product-shop .price-info .retailer-name a { font-family: Oswald; font-weight: 300; font-size: 15px; color: #FFFFFF; text-decoration: underline; }
+.product-view .product-shop .short-description .std { font-family: Oswald; font-weight: 300; font-size: 16px; color: #494956; margin: 0 0 0 8px; }
+.product-options dt label { color: #fff; font-family: Oswald; font-size: 14px; font-weight: 400; }
+.add-to-cart-wrapper .add-to-box .quantity .qty-box label { color: #FFFFFF; font-family: Oswald; font-size: 14px; font-weight: 400; }
+.add-to-cart-wrapper .add-to-box .quantity .qty-box input { }
+.add-to-cart-wrapper .add-to-box .quantity .tier-price .availability span { color: #FFFFFF; font-family: Oswald; font-size: 14px; font-weight: 400; text-transform: capitalize; width: 62px; display: block; }
+
+
+/***********Product Info Page**********/
+
  @media only screen and (min-width: 965px) and (max-width: 967px) {
  .nav-container #nav li.level-top { padding: 0 1.7% !important; }
  .header-right .header-right-top { margin: 0 0 2.5%; }
