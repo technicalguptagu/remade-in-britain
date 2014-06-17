@@ -20,6 +20,17 @@ $_currentCategory = $this->getCurrentCategory();?>
 <?php $_count = is_array($_currentChild) ? count($_currentChild) : $_currentChild->count(); ?>
 <div class="category-content">
 <div class="alphabetical-order">
+<div class="category-imgage-descri">
+            <div class="category-img-des1">		
+                <?php if ($_description = $_currentCategory->getDescription()): ?>
+                    <div class="category-description alllevel">
+                        <h1><?php echo $this->__('REMADE')?> <?php echo $_helper->categoryAttribute($_category, $_currentCategory->getName(), 'name') ?></h1>
+                        <?php echo $_helper->categoryAttribute($_currentCategory, $_description, 'description') ?>
+                    </div>
+                <?php endif; ?>			
+                <div class="clearer"></div>
+            </div>
+        </div>
 <h4><?php echo $this->__('REMADE')?> <?php echo $_helper->categoryAttribute($_currentCategory, $_currentCategory->getName(), 'name') ?><span>( <?php echo $this->__('in alphabetical order')?> )</span></h4></div>
 <?php if ($_count): ?>
     <div class="subs_category">			
