@@ -52,11 +52,11 @@
         </reference>
 		<reference name="left">
 		    <block type="core/template" name="left_category" before="-" template="leftcategory/leftcategory.phtml"/>
-		    <block type="cms/block"  name="Left Retailer" >
+		    <!-- <block type="cms/block"  name="Left Retailer" >
 				<action method="setBlockId">
 					<block_id>left-retailer</block_id>
 					</action>
-             </block>
+             </block> -->
 		<block type="cms/block"  name="What Is Upcycling" >
 				<action method="setBlockId">
 					<block_id>what-is-upcycling</block_id>
