@@ -83,22 +83,9 @@ $_product = $this->getProduct(); ?>
 
             <div class="product-detail-box">
                <div class="product-shop">
-			   <?php if ($_product->getNews_from_date()): ?>
-                            <?php if ($_product->getNews_to_date()): ?>
-                                <span class="new-lable">
-                                    <img src="<?php echo $this->getskinUrl('images/new.png') ?>" width="82" height="72" alt=""/>
-                                </span>
-                            <?php endif; ?>
-                        <?php endif; ?>
-						<?php if ($_product->getSpecialPrice()): ?>
-                                <span class="sale">
-                                    <img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
-                                </span>
-						<?php endif; ?>
                 <div class="product-name">
                     <span class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
                 </div>
-				
                 <div class="price-info">
 				<?php if ($_product->getSpecialPrice()): ?>
                               <div class="sale-price">
@@ -122,8 +109,10 @@ $_product = $this->getProduct(); ?>
 								<?php echo $this->getPriceHtml($_product, true, '-clone') ?>				          
 								<?php endif ?>
                     <?php //echo $this->getPriceHtml($_product, true, '-clone'); ?>
-					<?php echo $this->__('Retailer Name Link')?>
                     <?php echo $this->getChildHtml('bundle_prices') ?>
+					<div class="retailer-name">
+						<a href="#"><?php echo $this->__('Retailer Name Link')?></a>
+					</div>
                 </div>
 				<?php if ($_product->getShortDescription()):?>
                     <div class="short-description">
