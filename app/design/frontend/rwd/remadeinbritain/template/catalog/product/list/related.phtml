@@ -39,11 +39,6 @@
          <ul class=" slides products-grid"> 
         <?php foreach($this->getItems() as $_item): ?>
             <li class="item">
-                <!-- <?php if(!$_item->isComposite() && $_item->isSaleable()): ?>
-                    <?php if (!$_item->getRequiredOptions()): ?>
-                        <input type="checkbox" class="checkbox related-checkbox" id="related-checkbox<?php echo $_item->getId() ?>" name="related_products[]" value="<?php echo $_item->getId() ?>" />
-                    <?php endif; ?>
-                <?php endif; ?> -->
 				<div class="productbg">
 						<?php if ($_item->getNews_from_date()): ?>
 						<?php if ($_item->getNews_to_date()): ?>
@@ -52,12 +47,11 @@
 							</span>
 						<?php endif; ?>
 					<?php endif; ?>
-					<?php if ($_item->getSpecialPrice()): ?>
-                                
+					<?php if ($_item->getSpecialPrice()): ?>                              
                                 <span class="sale">
                                     <img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
                                 </span>
-						<?php endif ?>
+					<?php endif ?>
                 <div class="product">
                     <a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_item->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(75) ?>" width="75" height="75" alt="<?php echo $this->escapeHtml($_item->getName()) ?>" /></a>
                     <div class="product-details">                        
@@ -125,12 +119,13 @@
 							<div class="retailer-name"><a href="#"><?php echo $this->__('Retailer Name Link') ?></a></div>
 							<div style="clear: both; height: 0;">&nbsp;</div>
 					   </div>
-                </div>
+                    </div>
+				</div>
             </li>
         <?php endforeach ?>
         </ul>
         <script type="text/javascript">decorateList('block-related', 'none-recursive')</script>
-    </div>
+    
 	 </div>
 	 <script type="text/javascript">
 			//<![CDATA[
@@ -151,13 +146,14 @@
                     move: 0
                 })
 				.data("showItems", 1 )
-				.data("breakpoints", [ [1200, 3], [1000, 3], [800, 3], [600, 2], [400, 1], [300, 1]] )
+				.data("breakpoints", [ [1200, 1], [1000, 1], [800, 1], [600, 1], [400, 1], [300, 1]] )
 
 					; //IMPORTANT: don't remove semicolon! 
             });
 			//]]>
         </script>   
-</div>
-	 </div>
+      </div>
+   </div>
         
 <?php endif ?>
+</div>
