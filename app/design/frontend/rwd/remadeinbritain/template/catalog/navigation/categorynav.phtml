@@ -28,7 +28,9 @@ $_currentCategory = $this->getCurrentCategory();?>
                 <?php endif; ?>			     
         </div>
   </div>
-<div class="alphabetical-order"><h4><?php echo $this->__('REMADE')?> <?php echo $_helper->categoryAttribute($_currentCategory, $_currentCategory->getName(), 'name') ?><span>( <?php echo $this->__('in alphabetical order')?> )</span></h4></div>
+<div class="alphabetical-order"><h4><?php echo $this->__('REMADE')?> 
+   <?php echo $_helper->categoryAttribute($_currentCategory, $_currentCategory->getName(), 'name') ?><span>( <?php echo $this->__('in alphabetical order')?> )</span></h4>
+</div>
 
 <?php if ($_count): ?>
     <div class="subs-category-list">			
