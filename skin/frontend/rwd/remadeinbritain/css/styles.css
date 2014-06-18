@@ -5357,7 +5357,7 @@ p.product-name a:hover {
 .product-view .add-to-links {
   clear: both;
   margin-top: 0px;
-  margin-right: 15px;
+  width: 100%; 
   float: left;
 }
 .product-view .add-to-links:after {
@@ -5368,10 +5368,19 @@ p.product-name a:hover {
 .product-view .add-to-links li {
   float: left;
 }
-.product-view .add-to-links a {
-  padding: 2px 7px 2px 0px;
-  margin-left: 7px;
-  border-right: 1px solid #cccccc;
+.product-view .add-to-links a.link-wishlist {
+	color: #DE7785;
+    font-family: Oswald;
+    font-size: 13px;
+    font-weight: 400;
+	text-transform: uppercase;
+}
+.product-view .add-to-links a.link-compare {
+	color: #A0C644;
+    font-family: Oswald;
+    font-size: 13px;
+    font-weight: 400;
+	text-transform: uppercase;
 }
 .product-view .add-to-links li:first-child a {
   margin-left: 0px;
@@ -5634,6 +5643,7 @@ p.product-name a:hover {
   clear: left;
   float: left;
   margin-top: 0;
+  display: block;
 }
 
 #product-attribute-specs-table {
@@ -10110,8 +10120,18 @@ div.calendar table td.button {
 .product-img-box .product-image .image-gallery-or-thumbnil span.new-lable,
 .product-img-box .product-image .image-gallery-or-thumbnil span.sale { position: absolute; right: 0; top: 0; }
 .product-img-box .product-image .thumbnil-slider h2 { font-family: Oswald; font-weight: 300; font-size: 13px; color: #ABB795; text-transform: uppercase; }
-
-
+.product-view .add-to-links .add-to-box .add-to-wishlist { width: 140px; height: 40px; float: left; border: 1px solid #8A9374; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; margin: 0 10px 0 0; background: #fff url(../images/spritehome.png) no-repeat 107px -624px ; padding: 10px 35px 10px 10px; }
+.product-view .add-to-links .add-to-box .add-to-compare { width: 142px; height: 40px; float: left; border: 1px solid #8A9374; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; margin: 0 10px 0 0; background: #fff url(../images/spritehome.png) no-repeat 100px -686px ; padding: 10px 35px 10px 10px; } 
+.product-view .add-to-links .add-to-box .info-social-links { width: 190px; height: 40px; float: left; background: #fff; border: 1px solid #8A9374; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; margin: 0 10px 0 0; }
+.product-view .add-to-links .add-to-box .ratings { float: left; width: 270px; }
+.product-view .add-to-links .add-to-box .ratings .rating-box { float: left; }
+.product-view .add-to-links .add-to-box .ratings .rating-links { float: left; }
+.product-view .add-to-links .add-to-box .ratings .rating-links a, .product-view .add-to-links .add-to-box .ratings .rating-links span { color: #fff; font-family: Oswald; font-size: 12px; font-weight: 300; text-transform: uppercase;  }
+.product-view .add-to-links .add-to-box .ratings .rating-links a.add_reviews { text-decoration: underline; text-transform: uppercase; } 
+.product-view .add-to-links .add-to-box .info-social-links .add-to-any .share { color: #D36B53;
+    font-family: Oswald;
+    font-size: 13px;
+    font-weight: 400; text-transform: uppercase; }
 
 
 

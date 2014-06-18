@@ -676,9 +676,10 @@ width:21%;
 
 }
 .catalog-category-view .category-title-description {
-  height: 375px;
+  background-color: #FFFFFF;
+  height: auto;
   margin: 2% 0 0;
-  background-color:#FFFFFF;
+  float: left;
 }
 .category-title-description .category-image {
   float: left;
@@ -686,8 +687,7 @@ width:21%;
   padding: 1% 0 ;
   width: 30%;
   border: none;
-  height:auto;
-}
+  }
 .category-title-description .category-image img {
   max-width: 100%;
 }
@@ -706,28 +706,28 @@ width:21%;
   margin: 2% 0 0;
 }
 .catalog-category-view .products-grid .actions ul li.add-wishlist a {
-  background: url("../images/spritehome.png") no-repeat scroll -53px -174px rgba(0, 0, 0, 0);
+  background: url("../images/spritehome.png") no-repeat scroll -52px -174px rgba(0, 0, 0, 0);
   display: block;
   height: 34px;
   text-decoration: none;
   width: 32px;
 }
 .catalog-category-view .products-grid .actions ul li.add-compare a {
-  background: url("../images/spritehome.png") no-repeat scroll -89px -173px rgba(0, 0, 0, 0);
+  background: url("../images/spritehome.png") no-repeat scroll -92px -174px rgba(0, 0, 0, 0);
   display: block;
   height: 34px;
   text-decoration: none;
   width: 32px;
 }
 .catalog-category-view .products-grid .actions ul li.view-products a {
-  background: url("../images/spritehome.png") no-repeat scroll -129px -174px rgba(0, 0, 0, 0);
+  background: url("../images/spritehome.png") no-repeat scroll -131px -174px rgba(0, 0, 0, 0);
   display: block;
   height: 34px;
   text-decoration: none;
   width: 32px;
 }
 .catalog-category-view .products-grid .actions ul li.add-cart a {
-  background: url("../images/spritehome.png") no-repeat scroll -182px -174px rgba(0, 0, 0, 0);
+  background: url("../images/spritehome.png") no-repeat scroll -177px -174px rgba(0, 0, 0, 0);
   display: block;
   float: right;
   height: 42px;
@@ -758,8 +758,25 @@ width:21%;
   height: 20px;
   margin: 10px 0 0 10px;
 }
-
- 
+.products-grid .product-name a {
+  color: #494956;
+  font-family: oswaldlight;
+  font-size: 17px;
+}
+.products-grid .price-box .price {
+  color: #F48F6B;
+  font-family: oswald;
+  font-size: 15px;
+  font-weight: 400;
+}
+/*.products-grid .price-Or-retailername .retailer-name a {
+  color: #B3B3BA;
+  font-family: Oswaldlight;
+  font-size: 10.13px;
+ }*/
+.sort-list li{
+ background: url("../images/listing-sep.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+ }
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
 }
