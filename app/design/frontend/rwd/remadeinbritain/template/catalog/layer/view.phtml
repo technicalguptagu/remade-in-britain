@@ -44,8 +44,13 @@
                 <?php $_filters = $this->getFilters() ?>
                 <?php foreach ($_filters as $_filter): ?>
                 <?php if($_filter->getItemsCount()): ?>
-                    <dt><?php echo $this->__($_filter->getName()) ?></dt>
-                    <dd><?php echo $_filter->getHtml() ?></dd>
+				<?php $_filterName=$_filter->getName();?>
+                   <?php if ($_filterName=="Category"):?>
+				     <?php else:?>
+                       <dt><?php echo $this->__($_filter->getName()) ?></dt>
+					   <dd><?php echo $_filter->getHtml() ?></dd>
+				    <?php endif; ?>
+                    
                 <?php endif; ?>
                 <?php endforeach; ?>
             </dl>
