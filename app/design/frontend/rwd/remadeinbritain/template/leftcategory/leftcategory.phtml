@@ -34,6 +34,7 @@
   
     <?php if($_category->getIsActive()):?>
         <ul>
+		    <li class="Category">
             <a href="<?php echo $_category->getURL()?>" title="<?php echo $_category->getName()?>" >
                 <?php echo $_category->getName()?>
             </a>
@@ -48,6 +49,7 @@
 					</li>
                 <?php endif;?>
             <?php endforeach;?>
+		  </li>
         </ul>
     <?php endif;?>
 <?php endforeach;?>

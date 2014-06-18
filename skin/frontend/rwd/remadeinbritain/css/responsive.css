@@ -558,7 +558,7 @@ body, label, button, input, select, table, textarea {
     color: #636363;
     font-family: "Oswald",Arial,sans-serif;
     line-height: 1.5;
-	font-size: 14px !important;
+	font-size: 14px;
     font-weight: 300;
    }
 .col1-layout .col-main {
@@ -567,47 +567,60 @@ body, label, button, input, select, table, textarea {
   }
 /*=======Category page========== */  
 .catalog-category-view .col-left.sidebar .block-content {
-   border-bottom: 1px solid #fff;
+   border-bottom:2px solid #e8eae4;;
    margin: 0 0 30px;
    padding: 0 0 15px 35px;
    }
 .catalog-category-view .col-left.sidebar .block-content .block-title {
    border-top: medium none;
-   margin-bottom: 10px;
-   padding: 10px 0 0;
+   margin-bottom: 5px;
+   padding: 20px 0 0;
    }
-.social-media {
+.catalog-category-view .col-left.sidebar .block-content .block-title h2 {
+   color: #fff;
+   font-family: oswald;
+   font-size: 17px;
+   font-weight: 500;
+   }
+.catalog-category-view .col-left.sidebar .block-content li a {
+   color: #494956;
+   display: block;
+   font-family: oswaldlight;
+   font-size: 17px;
+   padding: 2px 0;
+   }
+.col-left.sidebar .social-media {
    background:#fff;
    float: left;
    margin: 15px 0;
    padding: 20px;
    width: 100%;
    }
-.social-media h1 {
+.col-left.sidebar .social-media h1 {
    color: #494956;
    font-size: 23px;
    text-transform: capitalize;
    }
-.social-media .media li  {
+.col-left.sidebar .social-media .media li  {
    float:left;
    margin:0 6px 0 0;
    }
-.social-media .media li a {
+.col-left.sidebar .social-media .media li a {
    display: block;
    height: 26px;
    text-decoration: none;
    width: 26px;
    }
-.social-media .media li.twitter a {
+.col-left.sidebar .social-media .media li.twitter a {
    background:url("../images/spritehome.png") no-repeat scroll -85px -102px transparent;
    }
-.social-media .media li.facebook a {
+.col-left.sidebar .social-media .media li.facebook a {
    background:url("../images/spritehome.png") no-repeat scroll -114px -102px transparent;
    }
-.social-media .media li.pinterest a {
+.col-left.sidebar .social-media .media li.pinterest a {
    background:url("../images/spritehome.png") no-repeat scroll -145px -102px transparent;
    }
-.social-media .media li.instagram a {
+.col-left.sidebar .social-media .media li.instagram a {
    background: url("../images/spritehome.png") no-repeat scroll -175px -102px transparent;
    }
 .col2-left-layout .col-main {
@@ -619,12 +632,14 @@ body, label, button, input, select, table, textarea {
    background: url("../images/categorybg.png") repeat scroll 0 0 transparent;
    height:226px;
    margin: 5px 0 0;
+   width: 100%;
    }
 .category-content .title-description h1 {
   color: #d36b53;
   font-family: oswaldlight;
   font-size: 28px;
-  padding: 20px 25px;
+  margin: 0;
+  padding: 3%;
   }
 .title-description .std {
   color: #494956;
@@ -634,7 +649,7 @@ body, label, button, input, select, table, textarea {
   }
 .title-description .std > span {
   display: block;
-  padding: 20px 0;
+  padding: 3% 0;
   }
 .title-description .std > span a {
   color: #5DC1C0;
@@ -642,7 +657,7 @@ body, label, button, input, select, table, textarea {
   text-decoration: underline;
   }
 .alphabetical-order {
-  background: url("../images/spritestrip.png") repeat-x scroll 1px -12px transparent;
+  background: url("../images/categorywhitestrip.png") repeat-x scroll left 7px transparent;
   margin: 20px 0;
   width: 100%;
   }
@@ -655,12 +670,14 @@ body, label, button, input, select, table, textarea {
   margin: 0 auto;
   padding: 0 10px;
   text-align: center;
-  width: 300px;;
+  width: 328px;
+  line-height: 17px;
   }
-.alphabetical-order h4 span {
+.alphabetical-order h4 .in-order  {
   font-family: oswaldlight;
   margin: 0 0 0 6px;
   text-transform: lowercase;
+  font-weight: 300;
   }
 .subs-category-list .catagory-grid li {
   float: left;
@@ -1225,6 +1242,53 @@ body, label, button, input, select, table, textarea {
 .dashboard .welcome-msg {
    margin: 20px 0 0;
    }
+/*=======Category-Page========== */
+
+ .breadcrumb-links {
+    display: none;
+    }
+.catalog-category-view .back-button {
+    display: block;
+    }
+.col-left.sidebar {
+   display: none;
+   }
+.category-content .title-description h1 {
+   padding: 6%;
+   } 
+.title-description .std {
+   color: #494956;
+   font-family: oswaldlight;
+   font-size: 13px;
+   padding: 0 15px 0 18px;
+   }
+.alphabetical-order h4 {
+   font-size: 14px;
+   line-height: 16px;
+   padding: 0 10px;
+   width: 160px;
+   }
+.alphabetical-order h4 .in-order {
+   display: block;
+   font-size: 14px;
+   margin: 8px 0 6px;
+   }
+.subs-category-list {
+   margin: 0 auto;
+   width: 100%;
+   }
+.subs-category-list .catagory-grid li {
+   margin: 0 8% 8% 0;
+   padding: 0 3%;
+   width: 100%;
+   }
+.subs-category-list .catagory-grid .category-bg {
+   width: 100%;
+   }
+.subs-category-list .catagory-grid .category-image img {
+   width: 100% !important;
+   }
+
 /*=======Shopping Cart========== */
 .checkout-cart-index .cart-table.data-table tbody td {
   border-left:none;
@@ -1277,6 +1341,83 @@ body, label, button, input, select, table, textarea {
 }
 @media only screen and (min-width:320px) and (max-width:479px){
 
+/*=======Category-Page========== */
+
+.catalog-category-view .col2-left-layout .col-main {
+    float: left;
+    padding-left: 0;
+    width: 100% !important;
+    }
+ .breadcrumb-links {
+    display: none;
+    }
+.back-button {
+    display: block;
+    padding: 15px 0 0;
+    }
+.back-button button {
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 6px 18px;
+    }
+.back-button button span {
+   background: url("../images/gobackaro.png") no-repeat scroll 0 0 transparent;
+   font-family: oswald;
+   display: block;
+   font-size: 12px;
+   font-weight: 500;
+   height: 11px;
+   line-height: 11px;
+   text-transform: uppercase;
+   width: 85px;
+   }
+ .back-button .button:hover {
+   background:none;
+   }
+.col-left.sidebar {
+   display: none;
+   }
+.category-content .title-description h1 {
+   padding: 6%;
+   } 
+.category-content .title-description h1{
+   font-size: 24px;
+   }
+.title-description .std {
+   color: #494956;
+   font-family: oswaldlight;
+   font-size: 12px;
+   padding: 0 35px 0 20px;
+   }
+.title-description .std > span a {
+   display: block;
+   }
+.alphabetical-order h4 {
+   font-size: 14px;
+   width: 158px;
+   }
+.alphabetical-order h4 .in-order {
+   display: block;
+   font-size: 13px;
+   margin:8px 0 0;
+   }
+.subs-category-list {
+   margin: 0 auto;
+   width: 100%;
+   }
+.subs-category-list .catagory-grid li {
+   margin: 0 8% 8% 0;
+   padding: 0 3%;
+   width: 100%;
+   }
+.subs-category-list .catagory-grid .category-bg {
+   width: 100%;
+   }
+.subs-category-list .catagory-grid .category-image img {
+   width: 100% !important;
+   }
 /*=======Shopping Cart========== */
 .checkout-cart-index .cart-table.data-table tbody td {
   border-left:none;
@@ -1297,6 +1438,15 @@ body, label, button, input, select, table, textarea {
     }
 #discount-coupon-form label, .shipping h2 {
     background: none;
+   }
+#discount-coupon-form, .cart .giftcard {
+   float: left;
+   padding-right: 2%;
+   width: 98%;
+   }
+.cart-forms .shipping {
+   float: left;
+   width: 100%;
   }
 .cart-totals-wrapper {
     clear: both;
@@ -1304,6 +1454,11 @@ body, label, button, input, select, table, textarea {
 
  .breadcrumbs {
    display: block;
+   }
+.checkout-onepage-index .col2-set .col-1, .checkout-onepage-index .col2-set .col-2, 
+.customer-account-login .col2-set .col-1, .customer-account-login .col2-set .col-2 {
+    padding: 15px 30px;
+    width: 100%;
    }
 .checkout-onepage-index .col2-set .col-1 {
    float: right;
