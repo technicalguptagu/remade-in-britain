@@ -13,7 +13,8 @@
 
 	$_ids = explode('/', $_categoryIdpath);
     if (isset($_ids[2])) {
-        $_topParent = Mage::getModel('catalog/category')->setStoreId(Mage::app()->getStore()->getId())->load($_ids[2]);
+        $_topParent = Mage::helper('leftcategory')->getTopCategoryId($_ids[2]);
+		//Mage::getModel('catalog/category')->setStoreId(Mage::app()->getStore()->getId())->load($_ids[2]);
     } else {
         $_topParent = $_category;
     }
@@ -27,30 +28,60 @@
     $_categoryId = Mage::helper('leftcategory')->getCategoryId($currentCategoryId);
     $_subCategories = $_categoryId->getChildren();
 ?>
-
+<ul id="nav">
 <?php foreach(explode(',',$_subCategories) as $subCategoryId):?>
     <?php $_category = Mage::helper('leftcategory')->getCategoryId($subCategoryId);?>
-  
+	<?php $_subCategory = Mage::helper('leftcategory')->getCategoryId($_category->getId());
+            $_childSubCategories = $_subCategory->getChildren(); ?>
     <?php if($_category->getIsActive()):?>
-        <ul>
+        <li class="Category<?php if($_childSubCategories ): ?> parent<?php endif;?>">
             <a href="<?php echo $_category->getURL()?>" title="<?php echo $_category->getName()?>" >
-                <?php echo $_category->getName()?>
-            </a>
-            <?php $_subCategory = Mage::helper('leftcategory')->getCategoryId($_category->getId());
-                $_childSubCategories = $_subCategory->getChildren();?>
-            <?php foreach(explode(',',$_childSubCategories) as $_childSubCategory):?>
-                <?php $_childSubCategoryId = Mage::helper('leftcategory')->getCategoryId($_childSubCategory);?>
-                <?php if($_childSubCategoryId->getIsActive()) :?>
-                    <li class="subCategory">
-					    <a href="<?php echo $_childSubCategoryId->getURL()?>" title="<?php echo $_childSubCategoryId->getName()?>"><?php echo $_childSubCategoryId->getName()?>
-					    </a>
-					</li>
-                <?php endif;?>
-            <?php endforeach;?>
-        </ul>
+                <span><?php echo $_category->getName()?></span>
+            </a>			
+			<?php if($_childSubCategories ): ?>
+			<ul class="subCat">
+				<?php foreach(explode(',',$_childSubCategories) as $_childSubCategory):?>
+					<?php $_childSubCategoryId = Mage::helper('leftcategory')->getCategoryId($_childSubCategory);?>
+					<?php if($_childSubCategoryId->getIsActive()) :?>
+						<li class="subCategory">
+							<a href="<?php echo $_childSubCategoryId->getURL()?>" title="<?php echo $_childSubCategoryId->getName()?>">
+							<span><?php echo $_childSubCategoryId->getName()?></span>
+							</a>
+						</li>
+					<?php endif;?>               
+				<?php endforeach;?>
+			</ul>
+			<?php endif;?>
+        </li>
     <?php endif;?>
 <?php endforeach;?>
+</ul>
+<script type="text/javascript">
+ jQuery(document).ready(function(){
+  //jQuery('#nav').find('ul').hide(); 
+  jQuery('#nav').find('ul li.parent > a ').after('<span class="opener"></span>');
+  jQuery('#nav').find('li.active.parent').addClass('open');
+  jQuery('#nav li.active.parent').find(' > ul').show();
+  jQuery('.opener').click(function(){  
+   jQuery('#nav').find('a').removeClass('clicked');
+   jQuery('#nav').find('a').addClass('unclicked');
+   jQuery(this).parent().find('> a').removeClass('unclicked');
+   jQuery(this).parent().find('> a').addClass('clicked');
 
+   if(jQuery(this).parent().hasClass('active')){
+    jQuery(this).parent().removeClass('active');
+    jQuery(this).parent().find('ul').hide();
+   }else{
+    jQuery(this).parent().parent().find('li.parent').removeClass('active');
+    jQuery(this).parent().parent().find('ul').hide();
+    jQuery(this).parent().addClass('active');
+    jQuery(this).parent().find(' > ul').show();
+   };
+  });
+   
+
+ });
+</script>
 
 
 
