@@ -118,11 +118,9 @@
 
     <?php $_collectionSize = $_productCollection->count() ?>
     <?php $_columnCount = $this->getColumnCount(); ?>
-	<?php //BOF developer 09 For adding div?>
-    <div class="latest-products products-grid products-grid--max-<?php echo $_columnCount; ?>-col">
-        <div class="itemslider-wrapper">
-		<div class="nav-wrapper-similar-main nav-wrapper gen-slider-arrows1 gen-slider-arrows1-pos-top-right" id="nav-wrapper-new-main">&nbsp;</div>    
-            <div class="itemslider-similar-main itemslider itemslider-horizontal itemslider-responsive" id="itemslider-new-main">
+	
+    <div class="latest-products product-listing products-grid products-grid--max-<?php echo $_columnCount; ?>-col">
+  <div class="itemslider-similar-main">
 			<ul class=" slides products-grid">
 		<?php $i=0; foreach ($_productCollection as $_product): ?>
             <?php /*if ($i++%$_columnCount==0): ?>
@@ -149,12 +147,9 @@
                          alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
 						 <span class="transparent-img">&nbsp;</span>
 						  <div class="actions">
-						  <div class="rating-or-links">
-								<div class="product-rating">
-									<?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
-								</div>
 							<div class="product-links">
 								<ul class="add-to-links">
+									<li class="product-rating"><?php echo $this->getReviewsSummaryHtml($_product, 'short') ?></li>
 									<?php if ($this->helper('wishlist')->isAllow()) : ?>
 									<li class="add-wishlist"><a href="<?php echo $this->getAddToWishlistUrl($_product) ?>" class="link-wishlist">&nbsp;</a></li>
 									<?php endif; ?>
@@ -173,7 +168,6 @@
                                     <?php endif; ?>
 								 </ul>
 							</div>
-						</div>
                     </div>
                 </div>
 				
@@ -256,5 +250,4 @@
 <?php endforeach; ?>
 </div>
 </div>
-</div>
-<?php //BOF developer 09 For adding div?>
+
