@@ -801,7 +801,8 @@ width:21%;
  color: #494956;
  font-family: oswaldlight;
  font-size: 14px;
- background: url("../images/chk-mark-sprite.png") no-repeat scroll 0 10px rgba(0, 0, 0, 0);
+ background: url("../images/chk-mark-sprite.png") no-repeat scroll 0 3px rgba(0, 0, 0, 0);
+ padding: 0 0 0 26px;
 }
 #narrow-by-list li a.checked{
  background: url("../images/chk-mark-sprite.png") no-repeat scroll 0 -18px rgba(0, 0, 0, 0);
@@ -833,7 +834,7 @@ width: 80px;
 }
 .product-listing .products-grid .product-image:hover .actions .product-rating {
   display: inline-block;
-  width: 88px;
+  width: 84px;
 }
 .toolbar-bottom .sorter {
   display: none;
@@ -841,7 +842,9 @@ width: 80px;
 .toolbar-bottom .pager .count-container {
   display: none;
 }
-
+.catalog-category-view .col-left.sidebar .block-content {
+ padding: 0 !important;
+}
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
 }
