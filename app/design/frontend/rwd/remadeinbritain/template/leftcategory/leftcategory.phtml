@@ -13,7 +13,8 @@
 
 	$_ids = explode('/', $_categoryIdpath);
     if (isset($_ids[2])) {
-        $_topParent = Mage::getModel('catalog/category')->setStoreId(Mage::app()->getStore()->getId())->load($_ids[2]);
+        $_topParent = Mage::helper('leftcategory')->getTopCategoryId($_ids[2]);
+		//Mage::getModel('catalog/category')->setStoreId(Mage::app()->getStore()->getId())->load($_ids[2]);
     } else {
         $_topParent = $_category;
     }
@@ -28,10 +29,11 @@
     $_categoryId = Mage::helper('leftcategory')->getCategoryId($currentCategoryId);
     $_subCategories = $_categoryId->getChildren();
 ?>
-
+<ul id="nav">
 <?php foreach(explode(',',$_subCategories) as $subCategoryId):?>
     <?php $_category = Mage::helper('leftcategory')->getCategoryId($subCategoryId);?>
-  
+	<?php $_subCategory = Mage::helper('leftcategory')->getCategoryId($_category->getId());
+            $_childSubCategories = $_subCategory->getChildren(); ?>
     <?php if($_category->getIsActive()):?>
         <ul>
 		    <li class="Category">

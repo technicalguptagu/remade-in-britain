@@ -1993,7 +1993,7 @@ a.button:hover {
  * Add to links
  */
 .add-to-links {
-  margin: 7px 0;
+  /*margin: 7px 0;*/
 }
 .add-to-links a {
 }
@@ -2021,22 +2021,23 @@ a.button:hover {
 }
 .ratings .rating-box,
 .ratings .rating-links {
-  margin: 5px 0;
+  margin: 0;
 }
 .ratings .rating-box {
   width: 106px;
-  height: 13px;
-  background: url(../images/spritestar.png) repeat-x 0 1px;
+  height: 18px;
+  background: url(../images/review-star.png) repeat-x -1px -88px;
   overflow: hidden;
+  margin: 0 18px 0 0;
 }
 .Featured-contant .ratings .rating-box, .latest-products .ratings .rating-box { 
 	background: url(../images/review-star.png) repeat-x scroll -2px bottom;
     height: 18px; 
 }
 .ratings .rating-box .rating {
-  background: url(../images/spritestar.png) repeat-x 0 1px;
+  background: url(../images/review-star.png) repeat-x 0 0;
   float: left;
-  height: 15px;
+  height: 18px;
 }
 .Featured-contant .ratings .rating-box .rating, .latest-products .ratings .rating-box .rating { 
 	background: url(../images/review-star.png) repeat-x -2px 0; 
@@ -5165,7 +5166,7 @@ p.product-name a:hover {
   border: 0;
 }
 .product-img-box .product-image {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border: 1px solid #8A9374;
   box-shadow: 0 0 5px #838383;
   -webkit-box-shadow: 0 0 5px #838383;
@@ -5450,9 +5451,7 @@ p.product-name a:hover {
     display: block;
     width: 100%;
     position: relative;
-    border: 1px solid #cccccc;
-    background-color: #f4f4f4;
-  }
+}
   .product-collateral .toggle-tabs li {
     float: left;
     border-right: 1px solid transparent;
@@ -5475,15 +5474,14 @@ p.product-name a:hover {
     bottom: -1px;
   }
   .product-collateral .toggle-tabs li.current {
-    border-right: 1px solid #cccccc;
-    border-left: 1px solid #cccccc;
+    
   }
   .product-collateral .toggle-tabs li.current > span {
-    background-color: #FFFFFF;
+    
   }
   .product-collateral .toggle-tabs li.current span,
   .product-collateral .toggle-tabs li:hover span {
-    color: #3399cc;
+    
   }
   .product-collateral .toggle-tabs li:first-child {
     border-left: none;
@@ -5503,7 +5501,7 @@ p.product-name a:hover {
     width: 100%;
     display: none;
     padding: 15px;
-    border: 1px solid #cccccc;
+    /*border: 1px solid #cccccc;*/
     border-top: 0;
   }
   .product-collateral > dl > dd.current {
@@ -5640,7 +5638,7 @@ p.product-name a:hover {
   }
 }
 .product-view .ratings .rating-links {
-  clear: left;
+  /*clear: left;*/
   float: left;
   margin-top: 0;
   display: block;
@@ -10122,17 +10120,14 @@ div.calendar table td.button {
 .product-img-box .product-image .thumbnil-slider h2 { font-family: Oswald; font-weight: 300; font-size: 13px; color: #ABB795; text-transform: uppercase; }
 .product-view .add-to-links .add-to-box .add-to-wishlist { width: 140px; height: 40px; float: left; border: 1px solid #8A9374; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; margin: 0 10px 0 0; background: #fff url(../images/spritehome.png) no-repeat 107px -624px ; padding: 10px 35px 10px 10px; }
 .product-view .add-to-links .add-to-box .add-to-compare { width: 142px; height: 40px; float: left; border: 1px solid #8A9374; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; margin: 0 10px 0 0; background: #fff url(../images/spritehome.png) no-repeat 100px -686px ; padding: 10px 35px 10px 10px; } 
-.product-view .add-to-links .add-to-box .info-social-links { width: 190px; height: 40px; float: left; background: #fff; border: 1px solid #8A9374; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; margin: 0 10px 0 0; }
+.product-view .add-to-links .add-to-box .info-social-links { width: 190px; height: 40px; float: left; background: #fff; border: 1px solid #8A9374; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; margin: 0 22px 0 0; }
 .product-view .add-to-links .add-to-box .ratings { float: left; width: 270px; }
 .product-view .add-to-links .add-to-box .ratings .rating-box { float: left; }
 .product-view .add-to-links .add-to-box .ratings .rating-links { float: left; }
 .product-view .add-to-links .add-to-box .ratings .rating-links a, .product-view .add-to-links .add-to-box .ratings .rating-links span { color: #fff; font-family: Oswald; font-size: 12px; font-weight: 300; text-transform: uppercase;  }
 .product-view .add-to-links .add-to-box .ratings .rating-links a.add_reviews { text-decoration: underline; text-transform: uppercase; } 
-.product-view .add-to-links .add-to-box .info-social-links .add-to-any .share { color: #D36B53;
-    font-family: Oswald;
-    font-size: 13px;
-    font-weight: 400; text-transform: uppercase; }
-
+.product-view .add-to-links .add-to-box .info-social-links .add-to-any .share { color: #D36B53; font-family: Oswald; font-size: 13px; font-weight: 400; text-transform: uppercase; }
+.product-view .product-collateral { width: 66%; background: none; }
 
 
 /***********Product Info Page**********/

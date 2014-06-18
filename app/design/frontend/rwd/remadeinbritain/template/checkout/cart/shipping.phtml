@@ -38,7 +38,7 @@
         <form id="co-shipping-method-form" action="<?php echo $this->getUrl('checkout/cart/estimateUpdatePost') ?>">
             <dl class="sp-methods">
                 <?php foreach ($_shippingRateGroups as $code => $_rates): ?>
-                    <dt><?php echo $this->escapeHtml($this->getCarrierName($code)) ?></dt>
+                    
                     <dd>
                         <ul>
                         <?php foreach ($_rates as $_rate): ?>
@@ -47,6 +47,7 @@
                                     <?php echo $this->escapeHtml($_rate->getErrorMessage()) ?>
                                <?php else: ?>
                                     <input name="estimate_method" type="radio" value="<?php echo $this->escapeHtml($_rate->getCode()) ?>" id="s_method_<?php echo $_rate->getCode() ?>"<?php if($_rate->getCode()===$this->getAddressShippingMethod()) echo ' checked="checked"' ?> class="radio" />
+									<?php echo $this->escapeHtml($this->getCarrierName($code)) ?>
                                     <label for="s_method_<?php echo $_rate->getCode() ?>"><?php echo $this->escapeHtml($_rate->getMethodTitle()) ?>
                                     <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
                                     -

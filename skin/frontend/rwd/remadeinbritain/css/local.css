@@ -619,7 +619,7 @@
   font-family: oswaldlight;
   font-size: 14px;
   float:left;
-  padding: 6px;
+ padding: 2px 10px 0 13px !important;
 }
 .category-products .toolbar {
   margin-bottom: 15px;
@@ -634,10 +634,12 @@
 }
 .sort-list li, .pager-list li {
  float: left;
- padding: 2px 6px !important;
+ padding: 2px 0 0 13px !important;
+ background: url("../images/listing-sep.png") no-repeat scroll 0 9px rgba(0, 0, 0, 0);
+
 }
-.sort-list .sorter_name, .pager .amount-pages, .first-page .first, .last-page .last {
-  color: #494956;
+.sort-list .sorter_name, .pager .amount-pages, .first-page .first, .last-page .last, .per-page{
+  color: #494956 !important;
   font-family: oswaldlight;
   font-size: 14px;
   
@@ -740,7 +742,7 @@ width:21%;
   font-weight: 400;
   font-size: 14px;
 }
-.pages .current, .pages .current:hover {
+.pages li.current {
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
   border: medium none;
   color: #FFFFFF;
@@ -754,7 +756,7 @@ width:21%;
   margin: 10px 0 0 10px;
 }
 .next.i-next {
-  background: url("../images/pagination-arrow.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+  background: url("../images/pagination-right-arrow.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
   height: 20px;
   margin: 10px 0 0 10px;
 }
@@ -762,6 +764,9 @@ width:21%;
   color: #494956;
   font-family: oswaldlight;
   font-size: 17px;
+  float: left;
+  height: 50px;
+  overflow: hidden;
 }
 .products-grid .price-box .price {
   color: #F48F6B;
@@ -769,14 +774,49 @@ width:21%;
   font-size: 15px;
   font-weight: 400;
 }
-/*.products-grid .price-Or-retailername .retailer-name a {
-  color: #B3B3BA;
-  font-family: Oswaldlight;
-  font-size: 10.13px;
- }*/
-.sort-list li{
- background: url("../images/listing-sep.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
- }
+ .sort-list li:first-child, .pager-list li:first-child {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.category-products {
+  float: left;
+}
+.catalog-category-view .col-left.sidebar h2, #narrow-by-list dt {
+  color: #FFFFFF;
+  font-family: oswald;
+  font-size: 17px;
+  font-weight: 400;
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+  border: medium none;
+}
+.block-layered-nav .block-content > dl > dd {
+  border-color:none !important;
+  border-style:none !important;
+}
+.col-left.sidebar > ul a {
+  color: #494956;
+  font-family: oswaldlight;
+  font-size: 17px;
+}
+#narrow-by-list li a{
+ color: #494956;
+ font-family: oswaldlight;
+ font-size: 14px;
+ background: url("../images/chk-mark-sprite.png") no-repeat scroll 0 10px rgba(0, 0, 0, 0);
+}
+#narrow-by-list li a.checked{
+ background: url("../images/chk-mark-sprite.png") no-repeat scroll 0 -18px rgba(0, 0, 0, 0);
+ color: #FFFFFF;
+ font-family: oswaldlight;
+ font-size: 14px;
+}
+.sort-list li.selected a span, .pager-list li.active {
+  color: #FFFFFF !important;
+  font-family: oswald;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
 }

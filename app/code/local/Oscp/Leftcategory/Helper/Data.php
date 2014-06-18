@@ -12,4 +12,9 @@ class Oscp_Leftcategory_Helper_Data extends Mage_Core_Helper_Abstract {
         return $catagory;
     }
 
+	public function getTopCategoryId($categoryID) {
+        $catagory = Mage::getModel('catalog/category')->setStoreId(Mage::app()->getStore()->getId())->load($categoryID);
+        return $catagory;
+    }
+
 }
