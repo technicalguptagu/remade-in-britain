@@ -37,9 +37,9 @@
     $_helper = $this->helper('catalog/output');
 ?>
 <div class="product-image product-image-zoom">
-	<div class="image-gallery-or-thumbnil">
-		<div class="product-image-gallery">
-			 <?php if ($_product->getNews_from_date()): ?>
+<div class="image-gallery-or-thumbnil">
+    <div class="product-image-gallery">
+	         <?php if ($_product->getNews_from_date()): ?>
 				<?php if ($_product->getNews_to_date()): ?>
 					<span class="new-lable">
 						<img src="<?php echo $this->getskinUrl('images/new.png') ?>" width="82" height="72" alt=""/>
@@ -51,61 +51,54 @@
 					<img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
 				</span>
 			<?php endif; ?>
-			<img id="image-main"
-				 class="gallery-image visible"
-				 src="<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>"
-				 alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>"
-				 title="<?php echo $this->escapeHtml($this->getImageLabel()); ?>" />
+        <img id="image-main"
+             class="gallery-image visible"
+             src="<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>"
+             alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>"
+             title="<?php echo $this->escapeHtml($this->getImageLabel()); ?>" />
 
-			<?php
-				$i=0;
-				foreach ($this->getGalleryImages() as $_image):
-					$_imageUrl = $this->helper('catalog/image')
-									  ->init($_product, 'image', $_image->getFile())
-									  ->keepFrame(false)
-									  ->constrainOnly(true)
-									  ->resize(1200);
-			?>
-				<img id="image-<?php echo $i; ?>"
-					 class="gallery-image"
-					 src="<?php echo $_imageUrl; ?>"
-					 data-zoom-image="<?php echo  $_imageUrl; ?>" />
-			<?php
-				$i++;
-				endforeach;
-			?>
-		</div>
-		<?php //BOF developer-13 17/06/2013 ?>
+        <?php
+            $i=0;
+            foreach ($this->getGalleryImages() as $_image):
+                $_imageUrl = $this->helper('catalog/image')
+                                  ->init($_product, 'image', $_image->getFile())
+                                  ->keepFrame(false)
+                                  ->constrainOnly(true)
+                                  ->resize(1200);
+        ?>
+            <img id="image-<?php echo $i; ?>"
+                 class="gallery-image"
+                 src="<?php echo $_imageUrl; ?>"
+                 data-zoom-image="<?php echo  $_imageUrl; ?>" />
+        <?php
+            $i++;
+            endforeach;
+        ?>
+    </div>
 
-		<?php if (count($this->getGalleryImages()) > 0): ?>
-		<div class="thumbnil-slider">
+
+<?php if (count($this->getGalleryImages()) > 0): ?>
+		<div class="thumbnil-slider" style="float:left;">
 			 <div class="more-images itemslider itemslider-thumbnails gen-slider-arrows3  count-multi">
 				<ul class="product-image-thumbs slides">
-				<?php foreach ($this->getGalleryImages() as $_image): ?>
-					<?php
-					if (($filterClass = $this->getGalleryFilterHelper()) && ($filterMethod = $this->getGalleryFilterMethod()) && !Mage::helper($filterClass)->$filterMethod($_product, $_image)):
-						continue;
-					endif;
-					?>
-					<li>
-						<a class="thumb-link" href="#" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>" data-image-index="<?php echo $i; ?>">
+				<?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
+        <?php
+        if (($filterClass = $this->getGalleryFilterHelper()) && ($filterMethod = $this->getGalleryFilterMethod()) && !Mage::helper($filterClass)->$filterMethod($_product, $_image)):
+            continue;
+        endif;
+        ?>
+        <li>
+            <a class="thumb-link" href="#" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>" data-image-index="<?php echo $i; ?>">
 							<img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(115); ?>"
-								 width="115" height="115" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" />
+								alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" />
 						</a>
-					</li>
-				<?php endforeach; ?>
+        </li>
+    <?php $i++; endforeach; ?>
 				</ul>
 			</div>
 			<h2><?php echo $this->__('CLICK ABOVE TO VIEW MORE IMAGES') ?></h2>
 		</div>
-		<?php endif; ?>
-		<div class="clearer">&nbsp;</div>
-		<?php //BOF developer-13 17/06/2013 ?>
-	</div>
-</div>
-
-<?php echo $this->getChildHtml('after'); ?>
-<script type="text/javascript">
+		<script type="text/javascript">
 //<![CDATA[
     jQuery(function($) {
         $('.itemslider-thumbnails').flexslider({
@@ -126,3 +119,9 @@
     });
 //]]>
 </script>
+		<?php endif; ?>
+		
+</div>
+</div>
+<?php echo $this->getChildHtml('after'); ?>
+
