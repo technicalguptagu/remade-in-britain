@@ -1,4 +1,4 @@
-<?php
+	<?php
 /**
  * Magento
  *
@@ -78,19 +78,7 @@ $_product = $this->getProduct(); ?>
 						<?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>                    
                     </div>
 			   </div>
-			   <?php //BOF developer-13 18/06/2014 ?>
-				<div class="product-collateral toggle-content tabs">
-					<?php if ($detailedInfoGroup = $this->getChildGroup('detailed_info', 'getChildHtml')):?>
-						<dl id="collateral-tabs" class="collateral-tabs">
-						<?php foreach ($detailedInfoGroup as $alias => $html):?>
-							<dt class="tab"><span><?php echo $this->escapeHtml($this->getChildData($alias, 'title')) ?></span></dt>
-							<dd class="tab-container">
-							<div class="tab-content"><?php echo $html ?></div>
-							</dd>
-						<?php endforeach;?>
-						</dl>
-					<?php endif; ?>
-				</div>
+			   </div>
 			   <?php echo $this->getChildHtml('upsell_products') ?>
 			   <?php //EOF developer-13 18/06/2014 ?>
 			</div>
@@ -122,8 +110,9 @@ $_product = $this->getProduct(); ?>
 								<?php echo $this->getPriceHtml($_product, true, '-clone') ?>				          
 								<?php endif ?>
                     <?php //echo $this->getPriceHtml($_product, true, '-clone'); ?>
-                    <?php echo $this->getChildHtml('bundle_prices') ?>
+                    <?php //echo $this->getChildHtml('bundle_prices') ?>
 					<div class="retailer-name">
+					<?php echo $this->getChildHtml('extrahint') ?>
 						<a href="#"><?php echo $this->__('Retailer Name Link')?></a>
 					</div>
                 </div>
@@ -164,8 +153,8 @@ $_product = $this->getProduct(); ?>
             </div>
 
             <div class="add-to-cart-wrapper">
-                <?php // echo $this->getChildHtml('product_type_data') ?>
-                <?php // echo $this->getChildHtml('extrahint') ?>
+                <?php echo $this->getChildHtml('product_type_data') ?>
+                
 
                 <?php //if ($this->hasOptions()):?>
                     <div class="add-to-box">
@@ -175,10 +164,7 @@ $_product = $this->getProduct(); ?>
                 <?php //endif; ?>
             </div>
 
-            <?php echo $this->getChildHtml('related_products') ?>
-
-            <div class="clearer"></div>
-            
+            <?php echo $this->getChildHtml('related_products') ?>           
         </form>
         <script type="text/javascript">
         //<![CDATA[
@@ -232,6 +218,20 @@ $_product = $this->getProduct(); ?>
         //]]>
         </script>
     </div>
-    <?php echo $this->getChildHtml('product_additional_data') ?>
 
+    <div class="product-collateral toggle-content tabs">
+        <?php if ($detailedInfoGroup = $this->getChildGroup('detailed_info', 'getChildHtml')):?>
+            <dl id="collateral-tabs" class="collateral-tabs">
+                <?php foreach ($detailedInfoGroup as $alias => $html):?>
+                    <dt class="tab"><span><?php echo $this->escapeHtml($this->getChildData($alias, 'title')) ?></span></dt>
+                    <dd class="tab-container">
+                        <div class="tab-content"><?php echo $html ?></div>
+                    </dd>
+                <?php endforeach;?>
+            </dl>
+        <?php endif; ?>
+    </div>
 </div>
+    <?php echo $this->getChildHtml('upsell_products') ?>
+>>>>>>> Stashed changes
+    <?php echo $this->getChildHtml('product_additional_data') ?>
