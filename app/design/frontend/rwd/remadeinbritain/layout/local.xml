@@ -88,7 +88,7 @@
         </reference>
 		<reference name="left">
 		    <block type="core/template" name="left_category" before="-" template="leftcategory/leftcategory.phtml"/>
-			<block type="cms/block"  name="Social Media" after="left_category" >
+			<block type="cms/block"  name="Social Media" after="catalog.leftnav" >
 				<action method="setBlockId">
 					<block_id>social-media</block_id>
 					</action>
