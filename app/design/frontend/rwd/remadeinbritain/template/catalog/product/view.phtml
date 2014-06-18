@@ -78,7 +78,19 @@ $_product = $this->getProduct(); ?>
 						<?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>                    
                     </div>
 			   </div>
-			   </div>
+			   <?php //BOF developer-13 18/06/2014 ?>
+				<div class="product-collateral toggle-content tabs">
+					<?php if ($detailedInfoGroup = $this->getChildGroup('detailed_info', 'getChildHtml')):?>
+						<dl id="collateral-tabs" class="collateral-tabs">
+						<?php foreach ($detailedInfoGroup as $alias => $html):?>
+							<dt class="tab"><span><?php echo $this->escapeHtml($this->getChildData($alias, 'title')) ?></span></dt>
+							<dd class="tab-container">
+							<div class="tab-content"><?php echo $html ?></div>
+							</dd>
+						<?php endforeach;?>
+						</dl>
+					<?php endif; ?>
+				</div>
 			   <?php echo $this->getChildHtml('upsell_products') ?>
 			   <?php //EOF developer-13 18/06/2014 ?>
 			</div>
@@ -153,8 +165,13 @@ $_product = $this->getProduct(); ?>
             </div>
 
             <div class="add-to-cart-wrapper">
+<<<<<<< Updated upstream
+                <?php // echo $this->getChildHtml('product_type_data') ?>
+                <?php // echo $this->getChildHtml('extrahint') ?>
+=======
                 <?php echo $this->getChildHtml('product_type_data') ?>
                 
+>>>>>>> Stashed changes
 
                 <?php //if ($this->hasOptions()):?>
                     <div class="add-to-box">
@@ -233,5 +250,4 @@ $_product = $this->getProduct(); ?>
     </div>
 </div>
     <?php echo $this->getChildHtml('upsell_products') ?>
->>>>>>> Stashed changes
     <?php echo $this->getChildHtml('product_additional_data') ?>

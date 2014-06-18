@@ -21,10 +21,9 @@
 
     $currentCategoryId = $_topParent->getId();
 ?>
-<div class="block-content">
- <div class="block-title">
-   <h2><?php echo $_topParent->getName();?></h2>
-  </div>
+
+<h2><?php echo $_topParent->getName();?></h2>
+
 <?php 
     $_categoryId = Mage::helper('leftcategory')->getCategoryId($currentCategoryId);
     $_subCategories = $_categoryId->getChildren();
@@ -35,27 +34,27 @@
 	<?php $_subCategory = Mage::helper('leftcategory')->getCategoryId($_category->getId());
             $_childSubCategories = $_subCategory->getChildren(); ?>
     <?php if($_category->getIsActive()):?>
-        <ul>
-		    <li class="Category">
+        <li class="Category<?php if($_childSubCategories ): ?> parent<?php endif;?>">
             <a href="<?php echo $_category->getURL()?>" title="<?php echo $_category->getName()?>" >
-                <?php echo $_category->getName()?>
-            </a>
+                <span><?php echo $_category->getName()?></span>
+            </a>			
 			<?php if($_childSubCategories ): ?>
 			<ul class="subCat">
-            <?php foreach(explode(',',$_childSubCategories) as $_childSubCategory):?>
-                <?php $_childSubCategoryId = Mage::helper('leftcategory')->getCategoryId($_childSubCategory);?>
-                <?php if($_childSubCategoryId->getIsActive()) :?>
-                    <li class="subCategory">
-					    <a href="<?php echo $_childSubCategoryId->getURL()?>" title="<?php echo $_childSubCategoryId->getName()?>"><?php echo $_childSubCategoryId->getName()?>
-					    </a>
-					</li>
-                <?php endif;?>
-            <?php endforeach;?>
-		  </li>
-        </ul>
+				<?php foreach(explode(',',$_childSubCategories) as $_childSubCategory):?>
+					<?php $_childSubCategoryId = Mage::helper('leftcategory')->getCategoryId($_childSubCategory);?>
+					<?php if($_childSubCategoryId->getIsActive()) :?>
+						<li class="subCategory">
+							<a href="<?php echo $_childSubCategoryId->getURL()?>" title="<?php echo $_childSubCategoryId->getName()?>">
+							<span><?php echo $_childSubCategoryId->getName()?></span>
+							</a>
+						</li>
+					<?php endif;?>               
+				<?php endforeach;?>
+			</ul>
+			<?php endif;?>
+        </li>
     <?php endif;?>
 <?php endforeach;?>
-</div>
 </ul>
 
 <script type="text/javascript">
@@ -84,5 +83,7 @@
 
  });
 </script>
+
+
 
 
