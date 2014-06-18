@@ -706,28 +706,28 @@ width:21%;
   margin: 2% 0 0;
 }
 .catalog-category-view .products-grid .actions ul li.add-wishlist a {
-  background: url("../images/spritehome.png") no-repeat scroll -53px -174px rgba(0, 0, 0, 0);
+  background: url("../images/spritehome.png") no-repeat scroll -52px -174px rgba(0, 0, 0, 0);
   display: block;
   height: 34px;
   text-decoration: none;
   width: 32px;
 }
 .catalog-category-view .products-grid .actions ul li.add-compare a {
-  background: url("../images/spritehome.png") no-repeat scroll -89px -173px rgba(0, 0, 0, 0);
+  background: url("../images/spritehome.png") no-repeat scroll -92px -174px rgba(0, 0, 0, 0);
   display: block;
   height: 34px;
   text-decoration: none;
   width: 32px;
 }
 .catalog-category-view .products-grid .actions ul li.view-products a {
-  background: url("../images/spritehome.png") no-repeat scroll -129px -174px rgba(0, 0, 0, 0);
+  background: url("../images/spritehome.png") no-repeat scroll -131px -174px rgba(0, 0, 0, 0);
   display: block;
   height: 34px;
   text-decoration: none;
   width: 32px;
 }
 .catalog-category-view .products-grid .actions ul li.add-cart a {
-  background: url("../images/spritehome.png") no-repeat scroll -182px -174px rgba(0, 0, 0, 0);
+  background: url("../images/spritehome.png") no-repeat scroll -177px -174px rgba(0, 0, 0, 0);
   display: block;
   float: right;
   height: 42px;
@@ -774,8 +774,9 @@ width:21%;
   font-family: Oswaldlight;
   font-size: 10.13px;
  }*/
-
- 
+.sort-list li{
+ background: url("../images/listing-sep.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+ }
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
 }

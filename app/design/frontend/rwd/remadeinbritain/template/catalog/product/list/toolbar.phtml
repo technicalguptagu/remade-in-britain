@@ -62,13 +62,13 @@
                         <a onclick="setLocation('<?php echo $this->getOrderUrl($_key, 'desc') ?>')" title="<?php echo $this->__('sort by highest price') ?>">
                             <span class="sorter_name"><?php echo $this->__('HIGHEST') ?> <?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?></span>
                         </a>
-						<span class="sorter_line"><?php echo $this->__('&nbsp;&nbsp;| ') ?></span>
+						<span class="sorter_line"><?php echo $this->__('&nbsp;&nbsp; ') ?></span>
                     </li>
                     <li class="<?php echo $_key; ?> asc-desc <?php if($this->getCurrentOrder() == 'price'): if($this->getCurrentDirection() == 'asc'): ?> selected<?php endif; endif;?>">
                         <a onclick="setLocation('<?php echo $this->getOrderUrl($_key, 'desc') ?>')" title="<?php echo $this->__('Sort by lowest price')?>">
                             <span class="sorter_name"><?php echo $this->__('LOWEST') ?> <?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?></span>
                         </a>
-						<span class="sorter_line"><?php echo $this->__('&nbsp;&nbsp;| ') ?></span>
+						<span class="sorter_line"><?php echo $this->__('&nbsp;&nbsp; ') ?></span>
 				    </li>                    
 				<?php endif; ?>
 				<?php if($_key=='name'):?>
@@ -76,7 +76,7 @@
                         <a onclick="setLocation('<?php echo $this->getOrderUrl($_key, 'desc') ?>')" title="<?php echo $this->__('A-Z'); ?>">
                             <span class="sorter_name"><?php echo $this->__('A-Z'); ?></span>
                         </a>
-						<span class="sorter_line"><?php echo $this->__('&nbsp;&nbsp;|') ?></span>
+						<span class="sorter_line"><?php echo $this->__('&nbsp;&nbsp;') ?></span>
 				    </li>                    
 				<?php endif; ?>
 				<?php if($_key=='position'): ?>
@@ -86,7 +86,7 @@
 					    <a onclick="setLocation('<?php echo $this->getOrderUrl($_key, 'desc') ?>')" title="<?php echo $this->__('Set Ascending Direction') ?>">
                             <span class="sorter_name"><?php echo $this->__('RATING') ?></span>
                         </a>
-						<span class="sorter_line"><?php echo $this->__('&nbsp;&nbsp;| ') ?></span>
+						<span class="sorter_line"><?php echo $this->__('&nbsp;&nbsp;') ?></span>
                     </li>
 				<?php endif; ?>
 			<?php endforeach; ?>
@@ -105,7 +105,7 @@
 			    <li onclick="setLocation('<?php echo $this->getLimitUrl($_key) ?>')" <?php if($this->isLimitCurrent($_key)): ?> class="active"<?php endif ?>>
 				    <?php echo $_limit ?>
 				</li>
-				<li class="sorter_line"><span><?php echo $this->__('|') ?></span></li> 
+				<li class="sorter_line"><span><?php echo $this->__('&nbsp;') ?></span></li> 
             <?php endforeach; ?>
 			</ul>
 			<label><?php echo $this->__('PER PAGE') ?></label>
