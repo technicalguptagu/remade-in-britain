@@ -36,7 +36,7 @@
     $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
 ?>
 <?php if($_compareUrl) : ?>
-    <div class="add-to-compare"><span class="separator">|</span><a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></div>
+    <div class="add-to-compare"><a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></div>
 <?php endif; ?>
 
 <?php //EOF developer-13 17/06/2013 ?>
