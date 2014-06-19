@@ -1,0 +1,96 @@
+<?php
+/**
+ *
+ * @category   Oscp
+ * @package    Oscp_ProductEnquiry
+ */
+/* BOF developer18 05/10/13 */ ?>
+<?php
+	/* to collect the current product data*/ 
+	$_productId = $this->helper('productenquiry')->getCurentProductId();
+	$_productName = $this->helper('productenquiry')->getCurrentProductName();
+	//$_productUrl =$this->helper('productenquiry')->getCurrentProductUrl();
+	$_productSku =$this->helper('productenquiry')->getCurrentProductSku();
+	$_retailerEmailId =$this->helper('productenquiry')->getRetailerEmailId();
+
+?>
+<div class="enquiry-form-page">
+	<h3><?php echo $this->__('ASK THIS RETAILER A QUESTION')?></h3>
+	<div class="ask-retailer-about">
+		<p><?php echo $this->__('If you would like to ask this retailer a question about the product above please fillout the form below.') ?></p>
+		<p><?php echo $this->__('Any response to your question will be in the form of a private message.') ?></p>
+	</div>
+    <div class="productenquiry">
+        <form action="<?php echo $this->getUrl('productenquiry/index/post/'); ?>" id="modelForm" name="modelForm" method="post"enctype="multipart/form-data">
+            <div class="product-enquiry">				
+                <div class="enquiry-contact">
+                    <ul class="form-list">
+                        <li>
+                            <div class="field">
+                                <label for="fname" class="required"><?php echo Mage::helper('productenquiry')->__("First Name") ?><em>*</em></label>
+                                <div class="input-box">
+                                    <input name="fname" id="fname" title="<?php echo Mage::helper('productenquiry')->__("First Name") ?>" class="input-text required-entry" type="text" />
+                                </div>
+                            </div>
+                        </li>						
+                        <li>
+                            <div class="field">
+                                <label for="lname" class="required"><?php echo Mage::helper('productenquiry')->__("Last Name") ?><em>*</em></label>
+                                <div class="input-box">
+                                    <input name="lname" id="lname" title="<?php echo Mage::helper('productenquiry')->__("Last Name") ?>"
+									class="input-text required-entry" type="text" />
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="field">
+                                <label for="email" class="required"><?php echo Mage::helper('productenquiry')->__("Email Address") ?><em>*</em></label>
+                                <div class="input-box">
+                                    <input name="email" id="email" title="<?php echo Mage::helper('productenquiry')->__("Email Address") ?>" class="input-text required-entry validate-email" type="text" />
+                                </div>
+                            </div>
+                        </li>
+						<li>
+                            <div class="field">
+                                <label for="subject" class="required"><?php echo Mage::helper('productenquiry')->__("Subject Heading") ?><em>*</em></label>
+                                <div class="input-box">
+                                    <input name="subject" id="subject" title="<?php echo Mage::helper('productenquiry')->__("Subject Heading") ?>"
+									class="input-text required-entry" type="text" />
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="field">
+								<div class="question-label">
+									<label for="question" class="required"><?php echo Mage::helper('productenquiry')->__("Please enter your question here") ?><em>*</em></label>
+									<p class="required"><?php echo $this->__('* All fields are required') ?></p>
+								</div>
+                                <div class="input-box">
+                                    <textarea id="question" cols="10" rows="3" name="question" class="input-text required-entry"  title="<?php echo Mage::helper('productenquiry')->__("Please enter your question here") ?>"></textarea>
+                                </div>
+								<input name="productname"  value="<?php echo $_productName; ?>" type="hidden"  />
+								<input name="productsku"  value="<?php echo $_productSku; ?>" type="hidden"  />
+								<input name="retaileremailid"  value="<?php echo $_retailerEmailId; ?>" type="hidden"  />
+                            </div>
+                        </li>
+                    </ul>
+                </div>        
+				<div class="enquiry-buttons">
+				    <div class="required-field"for="requiredfield" ><?php echo Mage::helper('productenquiry')->__('*Required fields') ?>
+					</div>
+					<button type="submit" title="<?php echo Mage::helper('productenquiry')->__('Send Your Question ') ?>" class="button enquiry-submit"><span><span><?php echo Mage::helper('productenquiry')->__('Send Your Question ') ?></span></span></button>
+				</div>
+            </div>
+		</form>
+	</div>		
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    var modelForm = new VarienForm('modelForm', true);
+    //]]>
+</script>
+
+
+
+
+
