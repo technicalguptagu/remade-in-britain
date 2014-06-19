@@ -263,12 +263,13 @@
 
   /* - - - -  How-to-join-us  Page - - - -  */
 
-.join-page .join-us, .join-page .signup-page{
+.join-page .signup-page{
+   background: url("../images/spritestrip.png") repeat-x scroll 0 -34px  transparent;
   float: left;
   margin-bottom: 5%;
   padding: 0 1%;
 }
-.join-page .join-account p, .join-page .sign-desc p {
+.join-page .sign-desc p {
   color: #494956;
   font-family: oswaldlight;
   font-size: 20px;
@@ -337,8 +338,8 @@
 }
 
  /* - - - -  Becoming a Remade retailer Page - - - -  */
-
-.become-remade-retailer, .can-sell , .why-join-rmib, .how-work{
+.can-sell , .why-join-rmib, .how-work{
+    background: url("../images/spritestrip.png") repeat-x scroll 0 -34px rgba(0, 0, 0, 0);
    margin: 0 0 50px;
    float:left;
    }
@@ -406,7 +407,8 @@
   display: none;
 }
 /* - - - -  whai-is-upcycling - - - -*/
-.what-is-upcycling, .what-can-be-upcycled, .the-modern-upcycler{
+.what-can-be-upcycled, .the-modern-upcycler{
+ background: url("../images/spritestrip.png") repeat-x scroll 0 -34px  transparent;
   float: left;
   padding: 40px 6px 5px;
   margin-bottom: 50px;
