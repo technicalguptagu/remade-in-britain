@@ -235,7 +235,20 @@ $_product = $this->getProduct(); ?>
         //]]>
         </script>
     </div>
+    <div>
+	<?php $attributes =  $this->getProduct();
+	/*foreach($attributes as $p){		
+	echo '<pre>';
+	print_r($p);echo '</pre>';
+	}*/
+	//echo '<pre>';
+	//print_r($attributes);echo '</pre>';
+	?>
+    </div>
 
+  <!-- Developer 06  2014/06/16 -->
+		<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('productenquiry/productenquiry.phtml')->toHtml(); ?>
+  <!-- EOF Developer 06  2014/06/16 -->
     <div class="product-collateral toggle-content tabs">
         <?php if ($detailedInfoGroup = $this->getChildGroup('detailed_info', 'getChildHtml')):?>
             <dl id="collateral-tabs" class="collateral-tabs">

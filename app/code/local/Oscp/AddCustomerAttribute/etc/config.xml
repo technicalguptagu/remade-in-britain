@@ -17,7 +17,7 @@
 		</adminhtml>
 	</blocks>
 	<events>
-		<customer_register_success>
+	     <customer_register_success>
 			<observers>
 				<customer_register_success_addcustomerattribute_observer>
 					<class>addcustomerattribute/observer</class>
