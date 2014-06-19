@@ -44,12 +44,12 @@
                     <block>catalog/product_view_description</block>
                     <template>easytabs/description.phtml</template>
                 </action>
-                <action method="addTab" translate="title" module="catalog" ifconfig="easy_tabs/general/additionaltabbed">
+                <!-- <action method="addTab" translate="title" module="catalog" ifconfig="easy_tabs/general/additionaltabbed">
                     <alias>additional_tabbed</alias>
                     <title>Specifications</title>
                     <block>catalog/product_view_attributes</block>
                     <template>easytabs/attributes.phtml</template>
-                </action>
+                </action> -->
                 <action method="addTab" translate="title" module="catalog" ifconfig="easy_tabs/general/upsellproductstabbed">
                     <alias>upsell_products_tabbed</alias>
                     <title>We Also Recommend</title>
@@ -68,21 +68,27 @@
                     <block>tag/product_list</block>
                     <template>easytabs/catalogproducttags.phtml</template>
                 </action>
-				<action method="addTab" translate="title" module="catalog" ifconfig="easy_tabs/customcms/tabcms1">
-                    <alias>cms1</alias>
-                    <title>CMS tab</title>
-                    <block>core/template</block>
-                    <template>easytabs/catalogproductcms1.phtml</template>
-                </action>
                 <action method="addTab" translate="title" module="catalog" ifconfig="easy_tabs/customcms/tabcms2">
                     <alias>cms2</alias>
                     <title>CMS tab</title>
                     <block>core/template</block>
                     <template>easytabs/catalogproductcms2.phtml</template>
                 </action>
+				<action method="addTab" translate="title" module="catalog" ifconfig="easy_tabs/customcms/tabcms">
+                    <alias>cms</alias>
+                    <title>CMS tab</title>
+                    <block>core/template</block>
+                    <template>easytabs/catalogproductcms.phtml</template>
+                </action>
+				<action method="addTab" translate="title" module="catalog" ifconfig="easy_tabs/customcms/tabcms1">
+                    <alias>cms1</alias>
+                    <title>CMS tab</title>
+                    <block>core/template</block>
+                    <template>easytabs/catalogproductcms1.phtml</template>
+                </action>	
                 <action method="addTab" translate="title" module="review" ifconfig="easy_tabs/general/reviewtabbed">
                     <alias>review_tabbed</alias>
-                    <title>Reviews</title>
+                    <title>REVIEWS</title>
                     <block>review/product_view_list</block>
                     <template>easytabs/catalogproductreview.phtml</template>
                 </action>
@@ -115,12 +121,6 @@
                     <title>Custom tab</title>
                     <block>catalog/product_view</block>
                     <template>easytabs/catalogproductcustom4.phtml</template>
-                </action>
-                <action method="addTab" translate="title" module="catalog" ifconfig="easy_tabs/customcms/tabcms">
-                    <alias>cms</alias>
-                    <title>CMS tab</title>
-                    <block>core/template</block>
-                    <template>easytabs/catalogproductcms.phtml</template>
                 </action>
                 <action method="addTab" translate="title" module="catalog" ifconfig="easy_tabs/customcms/tabcms3">
                     <alias>cms3</alias>
