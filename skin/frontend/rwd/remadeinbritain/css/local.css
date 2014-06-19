@@ -105,7 +105,7 @@
   font-family: oswald;
 }
 .contact-page .connect-link ul li.blog  {
-   background: url("../images/contactsprite.png") no-repeat scroll 0 -68px  transparent;
+   background: url("../images/contactsprite.png") no-repeat scroll 0 -69px  transparent;
  }
 .contact-page .connect-link li {
   float: left;
@@ -120,7 +120,7 @@
   background: url("../images/contactsprite.png") no-repeat scroll 0 -155px  transparent;
 }
 .contact-page .connect-link ul li.Pinterest {
-  background: url("../images/contactsprite.png") no-repeat scroll 0 -198px  transparent;
+  background: url("../images/contactsprite.png") no-repeat scroll 0 -199px  transparent;
 }
  .contact-page .connect-link ul li.Instagram {
   background: url("../images/contactsprite.png") no-repeat scroll 0 -245px  transparent;
@@ -658,12 +658,13 @@
 .amount-pages {
   float: left;
 }
-.catalog-category-view .col-main {
-  width: 79% !important;
-  margin:0 !important;
+.col2-left-layout .col-main {
+  float: left;
+  margin-left: 2% !important;
+  width: 78% !important;
 }
 .catalog-category-view .col-left{
-width:21%;
+width:20%;
 }
 .category-products .products-grid li.item .productbg span.new {
   right: 42px;
@@ -681,11 +682,12 @@ width:21%;
   height: auto;
   margin: 2% 0 0;
   float: left;
+  padding: 5px 9px 5px 20px;
 }
 .category-title-description .category-image {
   float: left;
   margin: 0;
-  padding: 1% 0 ;
+  padding: 0;
   width: 30%;
   border: none;
   }
@@ -700,8 +702,9 @@ width:21%;
  }
 .category-title-description .title-description {
   float: left;
-  width: 69%;
-  padding: 2% 2% 0;
+  width: 68%;
+  margin: 0 2% 0 0;
+  
 }
 .catalog-category-view .category-description.std > p {
   margin: 2% 0 0;
@@ -868,6 +871,11 @@ width: 80px;
   margin: 0 !important;
   padding: 10px 0 10px 30px;
 }
+.product-listing .products-grid .actions ul li {
+  float: left;
+  list-style: none outside none;
+  margin: 0 4px 0 0;
+}
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
 }
@@ -920,7 +928,7 @@ width: 80px;
   width: 100%;
  }
 .contact-page .tel span {
-  padding: 0 0 0 14%;
+  padding: 0 0 0 13%;
 }
 .contact-details .remade-ques {
   float: left;
@@ -1007,7 +1015,7 @@ float: left;
   width: 100%;
 }
 .contact-page .tel span {
-  padding: 0 0 0 21%;
+  padding: 0 0 0 20%;
 }
 .contact-page .tel-mail {
  float:left;
