@@ -61,26 +61,24 @@
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li style="position: relative;">
                             <div class="field">
-								<div class="question-label">
-									<label for="question" class="required"><?php echo Mage::helper('productenquiry')->__("Please enter your question here") ?><em>*</em></label>
-									<p class="required"><?php echo $this->__('* All fields are required') ?></p>
-								</div>
+								<label for="question" class="required"><?php echo Mage::helper('productenquiry')->__("Please enter your question here") ?><em>*</em></label>
                                 <div class="input-box">
                                     <textarea id="question" cols="10" rows="3" name="question" class="input-text required-entry"  title="<?php echo Mage::helper('productenquiry')->__("Please enter your question here") ?>"></textarea>
                                 </div>
 								<input name="productname"  value="<?php echo $_productName; ?>" type="hidden"  />
 								<input name="productsku"  value="<?php echo $_productSku; ?>" type="hidden"  />
 								<input name="retaileremailid"  value="<?php echo $_retailerEmailId; ?>" type="hidden"  />
+								<p class="required"><?php echo $this->__('* All fields are required') ?></p>
                             </div>
                         </li>
                     </ul>
                 </div>        
 				<div class="enquiry-buttons">
-				    <div class="required-field"for="requiredfield" ><?php echo Mage::helper('productenquiry')->__('*Required fields') ?>
-					</div>
-					<button type="submit" title="<?php echo Mage::helper('productenquiry')->__('Send Your Question ') ?>" class="button enquiry-submit"><span><span><?php echo Mage::helper('productenquiry')->__('Send Your Question ') ?></span></span></button>
+				    <!-- <div class="required-field"for="requiredfield" ><?php // echo Mage::helper('productenquiry')->__('*Required fields') ?>
+					</div> -->
+					<button type="submit" title="<?php echo Mage::helper('productenquiry')->__('Send Your Question ') ?>" class="button enquiry-submit"><span><span><?php echo Mage::helper('productenquiry')->__('submit form') ?></span></span></button>
 				</div>
             </div>
 		</form>
