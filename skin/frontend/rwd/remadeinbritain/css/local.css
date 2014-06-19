@@ -120,8 +120,8 @@
   background: url("../images/contactsprite.png") no-repeat scroll 0 -155px  transparent;
 }
 .contact-page .connect-link ul li.Pinterest {
-  background: url("../images/contactsprite.png") no-repeat scroll 0 -199px  transparent;
-}
+  background: url("../images/contactsprite.png") no-repeat scroll 0 -199px rgba(0, 0, 0, 0);
+ }
  .contact-page .connect-link ul li.Instagram {
   background: url("../images/contactsprite.png") no-repeat scroll 0 -245px  transparent;
 }
@@ -1215,6 +1215,11 @@ padding: 3% 2% 7% ;
 }
 .blog-index-list .col-left, .blog-post-view .col-left {
   width: 100%;
+}
+.contact-page .connect-link ul li.Pinterest {
+  background: url("../images/contactsprite.png") no-repeat scroll 0 -209px rgba(0, 0, 0, 0);
+  height: 40px;
+  margin: 11px 0 0;
 }
 }
 
