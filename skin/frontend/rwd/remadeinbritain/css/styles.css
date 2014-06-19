@@ -973,9 +973,9 @@ body:not(.customer-account) .block:first-child .block-title {
 .cart-table .product-cart-actions .button:focus,
 #co-shipping-method-form .buttons-set .button:focus,
 .footer .button:focus {
-  background-color: #297aa3;
+  /*background-color: #297aa3;
   outline: none;
-  color: #FFFFFF;
+  color: #FFFFFF;*/
 }
 
 a.button {
@@ -10058,11 +10058,24 @@ div.calendar table td.button {
 .product-view .product-collateral .padder .std, .product-view .product-collateral .padder .product-specs { color: #494956; font-family: oswald; font-size: 16px; font-weight: 300; }
 .product-view .product-collateral .easytabs .tabs li:nth-child(4n) { background: none; padding-right: 0; }
 .product-view .product-collateral .padder .product-specs .field label,
-.product-view .product-collateral .padder .product-specs .field .question-label { display: inline-block; width: 190px; }
-.product-view .product-collateral .padder .product-specs .field .input-box { background: #ffffff; border: 1px solid #8a9374; box-shadow: 0 0 5px #838383; display: inline-block; margin: 0 0 15px; width: 270px; padding: 0; }
-
-
-
+.product-view .product-collateral .padder .product-specs .field .question-label,
+.product-detail-review-form label,
+.product-detail-review-area label
+{ display: inline-block; width: 208px; color: #fff; font-family: Oswald; font-size: 14px; font-weight: 400; padding: 0 18px 0 0; }
+.product-view .product-collateral .padder .product-specs .field .input-box,
+.product-detail-review-form .input-box,
+.product-detail-review-area .input-box
+{ background: #ffffff; border: 1px solid #939A82; display: inline-block; margin: 0 0 17px; width: 270px; padding: 0; }
+.product-view .product-collateral .padder .product-specs li,
+.product-view .product-collateral .padder .product-specs .field { margin: 0; }
+.product-view .product-collateral .padder .product-specs .field p.required { bottom: 16px; color: #fff; display: inline-block; font-family: Oswald; font-size: 12px; font-weight: 300; left: 0; position: absolute; width: 190px; }
+.productenquiry { margin: 32px 0 0; position: relative; height: 300px; }
+.productenquiry .enquiry-contact { }
+.productenquiry .enquiry-buttons button { padding: 12px 42px; position: absolute; right: 52px; top: 48%; }
+.productenquiry .enquiry-buttons button span {}
+.productenquiry .enquiry-buttons button span span { font-family: oswald; font-size: 17px; font-weight: 300; text-transform: uppercase; }
+.product-detail-review-form li, .product-detail-review-area li { margin: 0 !important; }
+#product-review-table { width: 48%; }
 
 
 /***********Product Info Page**********/
