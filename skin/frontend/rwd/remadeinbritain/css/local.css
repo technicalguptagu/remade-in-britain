@@ -57,11 +57,11 @@
   padding: 2% 0 0;
 }
 .contact-page .tel {
-  background: url("../images/contactsprite.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+  background: url("../images/contactsprite.png") no-repeat scroll 0 0  transparent;
   height: 40px;
 }
 .contact-page .email {
-  background: url("../images/contactsprite.png") no-repeat scroll 0 -40px rgba(0, 0, 0, 0);
+  background: url("../images/contactsprite.png") no-repeat scroll 0 -40px  transparent;
   margin: 13px 0;
  }
 .contact-page .page-title {
@@ -627,7 +627,7 @@
   padding: 5px 10px 0;
   background:none;
   border:none;
-  background: url("../images/whitestrip.png") repeat-x scroll 0 39px rgba(0, 0, 0, 0);
+  background: url("../images/whitestrip.png") repeat-x scroll 0 39px  transparent;
  }
 .category-products .sort-list {
   float: left;
@@ -635,7 +635,7 @@
 .sort-list li, .pager-list li {
  float: left;
  padding: 2px 0 0 13px !important;
- background: url("../images/listing-sep.png") no-repeat scroll 0 9px rgba(0, 0, 0, 0);
+ background: url("../images/listing-sep.png") no-repeat scroll 0 9px transparent;
 
 }
 .sort-list .sorter_name, .pager .amount-pages, .first-page .first, .last-page .last, .per-page{
@@ -645,7 +645,6 @@
   
 }
 .category-products .pager {
-  float: left;
   margin-left: 50px;
   clear: none;
 }
@@ -667,7 +666,7 @@
 width:21%;
 }
 .category-products .products-grid li.item .productbg span.new {
-  right: 41px;
+  right: 42px;
   top: 9px;
 }
 .title-description .page-title h1 {
@@ -708,28 +707,28 @@ width:21%;
   margin: 2% 0 0;
 }
 .catalog-category-view .products-grid .actions ul li.add-wishlist a {
-  background: url("../images/spritehome.png") no-repeat scroll -52px -174px rgba(0, 0, 0, 0);
+  background: url("../images/spritehome.png") no-repeat scroll -52px -174px  transparent;
   display: block;
   height: 34px;
   text-decoration: none;
   width: 32px;
 }
 .catalog-category-view .products-grid .actions ul li.add-compare a {
-  background: url("../images/spritehome.png") no-repeat scroll -92px -174px rgba(0, 0, 0, 0);
+  background: url("../images/spritehome.png") no-repeat scroll -92px -174px  transparent;
   display: block;
   height: 34px;
   text-decoration: none;
   width: 32px;
 }
 .catalog-category-view .products-grid .actions ul li.view-products a {
-  background: url("../images/spritehome.png") no-repeat scroll -131px -174px rgba(0, 0, 0, 0);
+  background: url("../images/spritehome.png") no-repeat scroll -131px -174px  transparent;
   display: block;
   height: 34px;
   text-decoration: none;
   width: 32px;
 }
 .catalog-category-view .products-grid .actions ul li.add-cart a {
-  background: url("../images/spritehome.png") no-repeat scroll -177px -174px rgba(0, 0, 0, 0);
+  background: url("../images/spritehome.png") no-repeat scroll -177px -174px  transparent;
   display: block;
   float: right;
   height: 42px;
@@ -743,7 +742,7 @@ width:21%;
   font-size: 14px;
 }
 .pages li.current {
-  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+  background: none repeat scroll 0 0  transparent;
   border: medium none;
   color: #FFFFFF;
   font-family: oswald;
@@ -751,12 +750,12 @@ width:21%;
   font-weight: bold;
 }
 .previous.i-previous {
-  background: url("../images/pagination-left-arrow.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+  background: url("../images/pagination-left-arrow.png") no-repeat scroll 0 0  transparent;
   height: 20px;
   margin: 10px 0 0 10px;
 }
 .next.i-next {
-  background: url("../images/pagination-right-arrow.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+  background: url("../images/pagination-right-arrow.png") no-repeat scroll 0 0  transparent;
   height: 20px;
   margin: 10px 0 0 10px;
 }
@@ -787,6 +786,7 @@ width:21%;
   font-weight: 400;
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
   border: medium none;
+
 }
 .block-layered-nav .block-content > dl > dd {
   border-color:none !important;
@@ -796,16 +796,23 @@ width:21%;
   color: #494956;
   font-family: oswaldlight;
   font-size: 17px;
+  padding: 0 0 0 30px;
 }
 #narrow-by-list li a{
  color: #494956;
  font-family: oswaldlight;
  font-size: 14px;
- background: url("../images/chk-mark-sprite.png") no-repeat scroll 0 3px rgba(0, 0, 0, 0);
- padding: 0 0 0 26px;
+ background: url("../images/chk-mark-sprite.png") no-repeat scroll 0 5px  transparent;
+ padding: 0 0 7px 26px;
+}
+#nav .subCat .subCategory span{
+ color: #494956;
+ font-family: oswaldlight;
+ font-size: 14px;
+  padding: 0 0 0 10px;
 }
 #narrow-by-list li a.checked{
- background: url("../images/chk-mark-sprite.png") no-repeat scroll 0 -23px rgba(0, 0, 0, 0);
+ background: url("../images/chk-mark-sprite.png") no-repeat scroll 0 -23px transparent;
  color: #FFFFFF;
  font-family: oswaldlight;
  font-size: 14px;
@@ -821,15 +828,15 @@ width:21%;
   border-top: 2px solid #FFFFFF !important;
 }
 #narrow-by-list li span .close {
-  background: url("../images/close.png") no-repeat scroll right 0 rgba(0, 0, 0, 0);
+  background: url("../images/close.png") no-repeat scroll right 1px  transparent;
   display: block;
-  
+  padding: 0;
 }
 .product-listing  .ratings .rating-box .rating{
-background: url("../images/sprite-small-stars.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0) !important;
+background: url("../images/sprite-small-stars.png") repeat-x scroll 0 0  transparent !important;
 }
 .product-listing .ratings .rating-box {
-background: url("../images/sprite-small-stars.png") repeat-x scroll 0 -29px rgba(0, 0, 0, 0) !important;
+background: url("../images/sprite-small-stars.png") repeat-x scroll 0 -29px transparent !important;
 width: 80px;
 }
 .product-listing .products-grid .product-image:hover .actions .product-rating {
@@ -844,10 +851,22 @@ width: 80px;
 }
 .catalog-category-view .col-left.sidebar .block-content {
  padding: 0 !important;
+ border: medium none !important;
 }
-.block .block-content .actions a {
+.block .block-content .actions {
+  background: url("../images/close.png") no-repeat scroll 121px 16px  transparent;
+  border-bottom: 2px solid #FFFFFF;
   border-top: 2px solid #FFFFFF;
-  background: url("../images/close.png") no-repeat scroll right 0 rgba(0, 0, 0, 0);
+  padding: 10px 0 6px 23px;
+}
+ #narrow-by-list dt {
+  margin: 14px 0 0 !important;
+  padding: 10px 0 0 34px !important;
+}
+.catalog-category-view .col-left.sidebar h2{
+  display: block;
+  margin: 0 !important;
+  padding: 10px 0 10px 30px;
 }
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
