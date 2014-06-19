@@ -19,7 +19,7 @@
     <li <?php if ($_item->getMShowSelected()): ?>class="m-selected-ln-item"<?php endif; ?>>
         <?php // MANA BEGIN ?>
         <?php if ($_item->getMSelected()): ?>
-		<a class="checked" href="<?php echo $this->urlEscape($_item->getUrl()) ?>"><?php echo $_item->getLabel() ?></span></a><span><a href="<?php echo $this->urlEscape($_item->getRemoveUrl()) ?>">clear</a></span>
+		<a class="checked" href="<?php echo $this->urlEscape($_item->getUrl()) ?>"><?php echo $_item->getLabel() ?></span></a><span><a class="close" href="<?php echo $this->urlEscape($_item->getRemoveUrl()) ?>"> &nbsp; </a></span>
         	<!-- <span class="m-selected-filter-item"><?php echo $this->escapeHtml($_item->getLabel()) ?></span> -->
         <?php else : ?>
 	        <?php if (!$this->getFilterOptions()->getDisableNoResultOptions() || $_item->getCount() > 0 || $_item->getMSelected()): ?>
