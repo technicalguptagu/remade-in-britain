@@ -110,13 +110,14 @@
 					<?php endforeach; ?>
 					</ol>
 				<script type="text/javascript">decorateList('cart-sidebar', 'none-recursive')</script>
-			<?php else: ?>
-				<p class="empty"><?php //echo $this->__('Your shopping Bag is empty.') ?></p>
-			<?php endif ?>
 				<div class="basket-checkout-link">
 					<a class="cart-view-basket" title="<?php echo $this->__('View Bag') ?>" onclick="setLocation('<?php echo $this->getUrl('checkout/cart') ?>')"><span><?php echo $this->__('View Bag') ?></span></a>
 					<a class="cart-view-checkout" title="<?php echo $this->__('Checkout') ?>" onclick="setLocation('<?php echo $this->getCheckoutUrl() ?>')"><span><?php echo $this->__('Checkout') ?></span></a>
 				</div>
+			<?php else: ?>
+				<p class="empty"><?php echo $this->__('No items in your bag') ?></p>
+			<?php endif ?>
+				
 			</div>		
 		</div> 
 	
