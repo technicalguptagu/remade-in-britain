@@ -24,6 +24,8 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php $_breakPoints = 0; $_showItems = 3;
+$_count = count($this->getItemCollection());?>
 <?php if(count($this->getItemCollection()->getItems())): ?>
 <?php $_columnCount = $this->getColumnCount(); ?>
 <?php
@@ -36,7 +38,9 @@
 		<a href="#"><?php echo $this->__('View all &raquo;') ?></a>
 		<div class="clearer">&nbsp;</div>
 	</div>
-    <ul class="products-grid products-grid--max-<?php echo $_columnCount; ?>-col" id="upsell-product-table">
+   <div class="itemslider-wrapper<?php if($_count > 5):?> three<?php endif;?>">
+		<div class="itemslider-related-main itemslider-horizontal itemslider-responsive" id="itemslider-related-main">                
+                <ul class="slides products-grid">
     <?php // $this->setColumnCount(5); // uncomment this line if you want to have another number of columns. also can be changed in layout ?>
     <?php $this->resetItemsIterator() ?>
     <?php foreach ($this->getItemCollection()->getItems() as $_link): ?>
@@ -147,9 +151,30 @@
         <?php endfor; ?>
     <?php endfor; */?>
     <?php endforeach; ?>
-    </ul>
-    <?php /*
-    <script type="text/javascript">decorateGeneric($$('#upsell-product-table'), ['odd','even','first','last'])</script>
-    */ ?>
+    </ul>			 
+        </div>
+		<div class="nav-wrapper-related-main gen-slider-arrows1 gen-slider-arrows1-pos-top-right" id="nav-wrapper-related-main">&nbsp;</div>
+		<script type="text/javascript">
+            jQuery(function() {
+                jQuery("#itemslider-related-main").flexslider({
+                    namespace: "",
+                    animation: "slide",
+                    easing: "easeInQuart",
+                    slideshow: false,
+                    animationLoop: false,
+                    animationSpeed: 400,
+                    pauseOnHover: true,
+                    controlNav: false,
+                    controlsContainer: "#nav-wrapper-related-main",
+                    itemWidth: 200,
+                    minItems: 1,
+                    maxItems: 5,
+                    move: 0
+                })
+               
+                .data("breakpoints", [ [1680, 3], [1440, 3], [1360, 3], [1280, 3], [960, 3], [768, 2], [640, 2], [480, 1], [320, 1],[240, 1] ] ); //IMPORTANT: don't remove semicolon!		
+            });
+        </script>
+     </div>
 </div>
 <?php endif ?>
