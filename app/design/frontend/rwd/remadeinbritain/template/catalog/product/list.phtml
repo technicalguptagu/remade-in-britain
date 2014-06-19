@@ -72,14 +72,7 @@
                         <?php echo $this->getReviewsSummaryHtml($_product) ?>
                         <?php endif; ?>
 
-                        <?php
-                            $_nameAfterChildren = $this->getChild('name.after')->getSortedChildren();
-                            foreach($_nameAfterChildren as $_nameAfterChildName):
-                                $_nameAfterChild = $this->getChild('name.after')->getChild($_nameAfterChildName);
-                                $_nameAfterChild->setProduct($_product);
-                        ?>
-                            <?php echo $_nameAfterChild->toHtml(); ?>
-                        <?php endforeach; ?>
+                        
                     </div>
                     <div class="product-secondary">
                         <?php echo $this->getPriceHtml($_product, true) ?>
@@ -182,14 +175,7 @@
                                         }
                                         ?></a></h2>
 
-                    <?php
-                        $_nameAfterChildren = $this->getChild('name.after')->getSortedChildren();
-                        foreach($_nameAfterChildren as $_nameAfterChildName):
-                            $_nameAfterChild = $this->getChild('name.after')->getChild($_nameAfterChildName);
-                            $_nameAfterChild->setProduct($_product);
-                    ?>
-                        <?php echo $_nameAfterChild->toHtml(); ?>
-                    <?php endforeach; ?>
+                   
 
                     <?php //echo $this->getPriceHtml($_product, true) ?>
                     
@@ -238,16 +224,6 @@
 </div>
 
 <?php endif; ?>
-
-<?php
-    //set product collection on after blocks
-    $_afterChildren = $this->getChild('after')->getSortedChildren();
-    foreach($_afterChildren as $_afterChildName):
-        $_afterChild = $this->getChild('after')->getChild($_afterChildName);
-        $_afterChild->setProductCollection($_productCollection);
-    ?>
-    <?php echo $_afterChild->toHtml(); ?>
-<?php endforeach; ?>
 </div>
 </div>
 
