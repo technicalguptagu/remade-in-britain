@@ -10052,7 +10052,7 @@ div.calendar table td.button {
 .product-img-box .product-image .thumbnil-slider .direction-nav li a.next { position: absolute; bottom: 38px; background: url(../images/spritearoproduct.png) no-repeat 0 -40px;  text-indent: -10000px; width: 19px; height: 10px; display: block; left: 88px; }
 .product-view .product-collateral .easytabs .tabs { background: url(../images/whitestrip.png) repeat-x 0 bottom; height: 52px; margin: 0; padding: 0 5px; }
 .product-view .product-collateral .easytabs .tabs li { background: url(../images/seperatorproduct.png) no-repeat right center; float: left; padding: 0 15px 0 10px; }
-.product-view .product-collateral .easytabs .tabs li a { color: #494956; font-family: oswald; font-size: 17px; font-weight: 300; line-height: 50px; }
+.product-view .product-collateral .easytabs .tabs li a { color: #494956; font-family: oswald; font-size: 17px; font-weight: 300; line-height: 50px; text-transform: uppercase; }
 .product-view .product-collateral .easytabs .tabs li.active a { color: #fff; font-weight: 400; }
 .product-view .product-collateral .padder { padding: 28px 15px 15px; }
 .product-view .product-collateral .padder .std, .product-view .product-collateral .padder .product-specs { color: #494956; font-family: oswald; font-size: 16px; font-weight: 300; }
