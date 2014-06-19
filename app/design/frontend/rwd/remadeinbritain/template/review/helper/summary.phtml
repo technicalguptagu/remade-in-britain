@@ -23,11 +23,11 @@
         <p class="rating-links">
             <a href="#customer-reviews"><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></a>
             <span class="separator">|</span>
-            <a href="#review-form" class="add_reviews"><?php echo $this->__('Write a review') ?></a>
+            <a href="#scroll" class="add_reviews"><?php echo $this->__('Write a review') ?></a>
         </p>
     </div>
 <?php elseif ($this->getDisplayIfEmpty()): ?>
-    <p class="no-rating"><a href="#review-form" title="Write a review"><?php echo $this->__('Write a review') ?></a></p>
+    <p class="no-rating"><a href="#scroll" title="Write a review"><?php echo $this->__('Write a review') ?></a></p>
             <?php endif; ?>
 <script type="text/javascript">
        $$('.rating-links a,.no-rating a').each(function(element) {
