@@ -40,7 +40,7 @@
                 </action>
                 <action method="addTab" translate="title" module="catalog" ifconfig="easy_tabs/general/descriptiontabbed">
                     <alias>description_tabbed</alias>
-                    <title>Product Description</title>
+                    <title>FULL DESCRIPTION</title>
                     <block>catalog/product_view_description</block>
                     <template>easytabs/description.phtml</template>
                 </action>
