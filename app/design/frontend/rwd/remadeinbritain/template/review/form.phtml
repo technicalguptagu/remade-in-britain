@@ -24,24 +24,18 @@
             <?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
                 <h5><?php echo $this->__('How do you rate this product?') ?> <em class="required">*</em></h5>
                 <span id="input-message-box"></span>
-                <table class="data-table" id="product-review-table">
-                    <col />
-                    <col width="1" />
-                    <col width="1" />
-                    <col width="1" />
-                    <col width="1" />
-                    <col width="1" />
-                    <tbody>
+                <div class="data-table" id="product-review-table">
                     <?php foreach ($this->getRatings() as $_rating): ?>
-                        <tr>
-                            <th><?php echo $this->escapeHtml($_rating->getRatingCode()) ?></th>
-                        <?php foreach ($_rating->getOptions() as $_option): ?>
-                            <td class="value"><input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio" /></td>
-                        <?php endforeach; ?>
-                        </tr>
+                        <div>
+                            <div class="label"><?php echo $this->escapeHtml($_rating->getRatingCode()) ?></div>
+							<div class="rating-value">
+								<?php foreach ($_rating->getOptions() as $_option): ?>
+									<span class="value"><input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio" /></span>
+								<?php endforeach; ?>
+							</div>
+                        </div>
                     <?php endforeach; ?>
-                    </tbody>
-                </table>
+                </div>
                 <input type="hidden" name="validate_rating" class="validate-rating" value="" />
                 <script type="text/javascript">decorateTable('product-review-table')</script>
             <?php endif; ?>
