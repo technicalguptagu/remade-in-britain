@@ -813,6 +813,17 @@ body, label, button, input, select, table, textarea {
 .checkout-cart-index .cart-table.data-table .product-cart-info {
   width: 450px;
   }
+.cart-table h2 {
+  color: #494956;
+  font-family: oswald;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 0;
+  text-transform: capitalize;
+  }
+.cart-table h2.product-name a {
+   color: #494956;
+  }
 .checkout-cart-index .cart-table.data-table tbody td.product-cart-image {
   border-left:none;
   }
@@ -847,6 +858,9 @@ body, label, button, input, select, table, textarea {
   font-size: 12px;
   }
 .cart-table .product-cart-actions .qty { 
+  color: #333333;
+  font-family: Arial;
+  font-size: 12px;
   text-align: left;
   width: 4em;
   }
@@ -864,6 +878,7 @@ body, label, button, input, select, table, textarea {
   vertical-align: middle;
   white-space: nowrap;
   }
+
 #shopping-cart-table tfoot td.cart-footer-actions {
    padding:10px 0
   }
@@ -884,7 +899,10 @@ body, label, button, input, select, table, textarea {
   border: 1px solid #000;
   margin:0 0 0 5px;
   }
- .checkout-cart-index .button2 span,  .checkout-cart-index .button2 span span {
+.cart-footer-actions .button2.btn-continue:hover {
+   background: #d36b53;
+  }
+.checkout-cart-index .button2 span,  .checkout-cart-index .button2 span span {
   font-family: oswald;
   font-size:13px;
   height: 25px;
@@ -892,7 +910,7 @@ body, label, button, input, select, table, textarea {
   color: #fff;
   text-decoration: none;
   text-transform: capitalize;
- }
+  }
 #shopping-cart-table td.a-center a {
   color: #d36b53;
   font-family: Arial;
@@ -964,7 +982,12 @@ body, label, button, input, select, table, textarea {
 .cart-forms .discount {
    background:none;
    border: none;
-   padding: 0;
+   padding: 0 0 0 5px;
+   }
+#discount-coupon-form .field-wrapper, 
+.cart .giftcard .field-wrapper {
+    display: inline-block;
+    width: 90%;
    }
 .shipping-form .sp-methods dd li label {
    background: none  !important;
@@ -982,7 +1005,7 @@ body, label, button, input, select, table, textarea {
   font-size: 12px;
   font-weight: 500;
   margin: 0;
-  padding: 10px 0;
+  padding: 5px 0;
  }
 .checkout-cart-index .shipping .sp-methods dd li label {
   font-family: oswald;
@@ -991,6 +1014,9 @@ body, label, button, input, select, table, textarea {
   color: #494956 !important;
   font-style:normal;
   padding: 0 5px !important;
+ }
+.shipping .sp-methods dd {
+    margin-bottom: 0;
  }
 .cart .cart-totals table tfoot strong span, 
 .cart .cart-totals table tfoot span.price {
