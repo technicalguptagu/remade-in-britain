@@ -20,7 +20,7 @@
         <?php echo $this->getBlockHtml('formkey'); ?>
         <fieldset>
             <?php echo $this->getChildHtml('form_fields_before')?>
-            <h3><?php echo $this->__("You're reviewing:"); ?> <span><?php echo $this->escapeHtml($this->getProductInfo()->getName()) ?></span></h3>
+            <h3><?php echo $this->__("You are reviewing:"); ?> <span><?php echo $this->escapeHtml($this->getProductInfo()->getName()) ?></span></h3>
             <?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
                 <h5><?php echo $this->__('How do you rate this product?') ?> <em class="required">*</em></h5>
                 <span id="input-message-box"></span>
@@ -31,16 +31,6 @@
                     <col width="1" />
                     <col width="1" />
                     <col width="1" />
-                    <thead>
-                        <tr>
-                            <th>&nbsp;</th>
-                            <th><span class="nobr"><?php echo $this->__('*') ?></span></th>
-                            <th><span class="nobr"><?php echo $this->__('**') ?></span></th>
-                            <th><span class="nobr"><?php echo $this->__('***') ?></span></th>
-                            <th><span class="nobr"><?php echo $this->__('****') ?></span></th>
-                            <th><span class="nobr"><?php echo $this->__('*****') ?></span></th>
-                        </tr>
-                    </thead>
                     <tbody>
                     <?php foreach ($this->getRatings() as $_rating): ?>
                         <tr>
@@ -79,6 +69,7 @@
                 </ul>
             </fieldset>
             <div class="buttons-set">
+			<p class="required"><?php echo $this->__('*All fields are required') ?></p>
                 <button type="submit" title="<?php echo $this->__('Submit Review') ?>" class="button"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
             </div>
     </form>
