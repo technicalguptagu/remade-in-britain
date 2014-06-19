@@ -40,7 +40,7 @@
                 </action>
                 <action method="addTab" translate="title" module="catalog" ifconfig="easy_tabs/general/descriptiontabbed">
                     <alias>description_tabbed</alias>
-                    <title>FULL DESCRIPTION</title>
+                    <title>full description</title>
                     <block>catalog/product_view_description</block>
                     <template>easytabs/description.phtml</template>
                 </action>
@@ -88,7 +88,7 @@
                 </action>	
                 <action method="addTab" translate="title" module="review" ifconfig="easy_tabs/general/reviewtabbed">
                     <alias>review_tabbed</alias>
-                    <title>REVIEWS</title>
+                    <title>reviews</title>
                     <block>review/product_view_list</block>
                     <template>easytabs/catalogproductreview.phtml</template>
                 </action>
