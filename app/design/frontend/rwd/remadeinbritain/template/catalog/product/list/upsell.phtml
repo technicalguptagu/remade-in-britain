@@ -38,7 +38,9 @@ $_count = count($this->getItemCollection());?>
 		<a href="#"><?php echo $this->__('View all &raquo;') ?></a>
 		<div class="clearer">&nbsp;</div>
 	</div>
-	<ul class="products-grid">
+   <div class="itemslider-wrapper<?php if($_count > 5):?> three<?php endif;?>">
+		<div class="itemslider-related-main itemslider-horizontal itemslider-responsive" id="itemslider-related-main">                
+                <ul class="slides products-grid">
     <?php // $this->setColumnCount(5); // uncomment this line if you want to have another number of columns. also can be changed in layout ?>
     <?php $this->resetItemsIterator() ?>
     <?php foreach ($this->getItemCollection()->getItems() as $_link): ?>
@@ -149,7 +151,8 @@ $_count = count($this->getItemCollection());?>
         <?php endfor; ?>
     <?php endfor; */?>
     <?php endforeach; ?>
-    </ul>
+    </ul>			 
+        </div>
 		<div class="nav-wrapper-related-main gen-slider-arrows1 gen-slider-arrows1-pos-top-right" id="nav-wrapper-related-main">&nbsp;</div>
 		<script type="text/javascript">
             jQuery(function() {
@@ -172,5 +175,6 @@ $_count = count($this->getItemCollection());?>
                 .data("breakpoints", [ [1680, 3], [1440, 3], [1360, 3], [1280, 3], [960, 3], [768, 2], [640, 2], [480, 1], [320, 1],[240, 1] ] ); //IMPORTANT: don't remove semicolon!		
             });
         </script>
-	</div>
+     </div>
+</div>
 <?php endif ?>
