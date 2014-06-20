@@ -489,8 +489,23 @@ $j(document).ready(function () {
             this.toggleElements.toggleSingle({destruct: true});
         }
     });
+	enquire.register('(max-width: ' + bp.medium + 'px)', {
+            match: function () {
+				$j('#desc-wrap').prepend($j('.category-title-description'));
+				$j('#tool-wrap').prepend($j('.top-toolbar'));
+				$j('.left-category').hide();
+				$j('.social-media').hide();
+            },
+            unmatch: function () {
+                $j('#description-wrapper').prepend($j('.category-title-description'));                
+                $j('#toolbar-wrapper').prepend($j('.top-toolbar'));
+				$j('.left-category').show();
+				$j('.social-media').show();                                
+            }
+        });
 
 
+	test
     // ==============================================
     // OPC - Progress Block
     // ==============================================
@@ -588,6 +603,8 @@ $j(document).ready(function () {
         }, 250);
     });
 });
+
+
 
 // ==============================================
 // PDP - image zoom - needs to be available outside document.ready scope
