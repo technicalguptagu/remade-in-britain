@@ -610,6 +610,12 @@
  .commentWrapper .commentDetails h4 {
   text-transform: lowercase;
 }
+.blog-index-list .postWrapper .postTitle {
+  margin: 29px 0 0;
+}
+.blog-index-list .block-content, .blog-post-view .block-content  {
+  margin: 0 0 0 15px;
+}
 /* - - - - product listing page - - -*/
  .category-products .sort-by label, .category-products .pager .limiter label{
   color: #FFFFFF;
@@ -893,12 +899,11 @@ width: 80px;
 	font-family: oswaldlight;
 }
 #left-nav li.parent .opener {
-    border: 1px solid red;
-    height: 20px;
+   
     left: 0;
     position: absolute;
     top: 0;
-    width: 20px;
+   
 }
 #narrow-by-list .m-selected-ln-item {
   position: relative;
@@ -1353,6 +1358,7 @@ padding: 3% 2% 7% ;
 }
 .blog-index-list .blog-desc,.blog-index-list .aw-blog-read-more, .blog-post-view .blog-desc,.blog-index-list .aw-blog-read-more  {
  font-size: 11px;
+
 }
 .blog-index-list .postDetails, .comment, .posted-tag, .blog-post-view .postDetails, .comment, .posted-tag  {
  font-size: 11px;
@@ -1440,8 +1446,8 @@ float:none;
 
 @media only screen and (min-width:240px) and (max-width:768px){ 
 .blog-post-view .block-title.account, .blog-index-list .block-title.account {
-  background: url("../images/spritehome.png") no-repeat scroll -337px -754px #FFFFFF;
-  padding: 6px 13px;
+ background: url("../images/spritehome.png") no-repeat scroll -330px -756px #ffffff;
+    padding: 7px 30px;
 }
 .blog-index-list .collapsible.active .block-title, .blog-post-view  .collapsible.active .block-title {
   background: url("../images/spritehome.png") no-repeat scroll -337px -794px #FFFFFF;
