@@ -527,18 +527,18 @@
   font-size: 17px;
   color: #494956;
 }
-.blog-index-list .postWrapper .postTitle {
-  background: url("../images/spritestrip.png") repeat-x scroll 0 27px transparent;
-  border: medium none;
-}
+
 .blog-post-view .postWrapper .postTitle {
   background: url("../images/spritestrip.png") repeat-x scroll 0 22px transparent;
   border: medium none;
 }
 .blog-index-list .postTitle a, .blog-post-view .postTitle h2 {
-  color: #FFFFFF;
+  background: url("../images/spritestrip.png") repeat-x scroll 0 42px transparent;
+  color: #ffffff;
+  display: block;
   font-family: oswaldlight;
   font-size: 22px;
+  height: 50px;
   text-transform: capitalize;
 }
 .blog-index-list .postContent img, .blog-post-view .postContent img  {
@@ -607,6 +607,9 @@
  {
   border-top:none;
  }
+ .commentWrapper .commentDetails h4 {
+  text-transform: lowercase;
+}
 /* - - - - product listing page - - -*/
  .category-products .sort-by label, .category-products .pager .limiter label{
   color: #FFFFFF;
@@ -810,6 +813,7 @@ width:20%;
  background: url("../images/chk-mark-sprite.png") no-repeat scroll 0 5px  transparent;
  padding: 0 0 7px 26px;
 }
+
 #nav .subCat .subCategory span{
  color: #494956;
  font-family: oswaldlight;
@@ -821,7 +825,7 @@ width:20%;
  color: #FFFFFF;
  font-family: oswaldlight;
  font-size: 14px;
- float: left;
+
 }
 .sort-list li.selected a span, .pager-list li.active {
   color: #FFFFFF !important;
@@ -877,6 +881,28 @@ width: 80px;
   float: left;
   list-style: none outside none;
   margin: 0 4px 0 0;
+}
+#left-nav li.parent {
+    position: relative;
+	background: url("../images/spritehome.png") no-repeat scroll -335px -763px transparent;
+}
+#left-nav li.parent .opener {
+    border: 1px solid red;
+    height: 20px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+	background: url("../images/spritehome.png") no-repeat scroll -335px -763px transparent;
+}
+#narrow-by-list .m-selected-ln-item {
+  position: relative;
+}
+#narrow-by-list .m-selected-ln-item > span {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
 }
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
@@ -1223,6 +1249,7 @@ padding: 3% 2% 7% ;
   height: 40px;
   margin: 11px 0 0;
 }
+
 }
 
 
