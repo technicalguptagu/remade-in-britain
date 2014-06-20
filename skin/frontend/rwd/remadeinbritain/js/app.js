@@ -504,8 +504,6 @@ $j(document).ready(function () {
             }
         });
 
-
-	test
     // ==============================================
     // OPC - Progress Block
     // ==============================================
@@ -603,8 +601,6 @@ $j(document).ready(function () {
         }, 250);
     });
 });
-
-
 
 // ==============================================
 // PDP - image zoom - needs to be available outside document.ready scope
