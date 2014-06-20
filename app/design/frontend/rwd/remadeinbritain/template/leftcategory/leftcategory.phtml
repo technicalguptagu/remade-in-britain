@@ -8,7 +8,7 @@
 <?php 
     $_layer = Mage::getSingleton('catalog/layer');
     $_category = $_layer->getCurrentCategory();
-
+	$currentCategory = Mage::registry('current_category');
 	$_categoryIdpath = $_category->getParentCategory()->getPath();
 
 	$_ids = explode('/', $_categoryIdpath);
@@ -28,13 +28,13 @@
     $_categoryId = Mage::helper('leftcategory')->getCategoryId($currentCategoryId);
     $_subCategories = $_categoryId->getChildren();
 ?>
-<ul id="nav">
+<ul id="left-nav">
 <?php foreach(explode(',',$_subCategories) as $subCategoryId):?>
     <?php $_category = Mage::helper('leftcategory')->getCategoryId($subCategoryId);?>
 	<?php $_subCategory = Mage::helper('leftcategory')->getCategoryId($_category->getId());
             $_childSubCategories = $_subCategory->getChildren(); ?>
     <?php if($_category->getIsActive()):?>
-        <li class="Category<?php if($_childSubCategories ): ?> parent<?php endif;?>">
+        <li class="Category<?php if($_childSubCategories ): ?> parent<?php endif;?><?php if ($currentCategory->getId() == in_array($_category->getId(),$_ids) ||($_category->getId() == $currentCategory->getId())): ?> active<?php endif; ?>">		
             <a href="<?php echo $_category->getURL()?>" title="<?php echo $_category->getName()?>" >
                 <span><?php echo $_category->getName()?></span>
             </a>			
@@ -43,7 +43,7 @@
 				<?php foreach(explode(',',$_childSubCategories) as $_childSubCategory):?>
 					<?php $_childSubCategoryId = Mage::helper('leftcategory')->getCategoryId($_childSubCategory);?>
 					<?php if($_childSubCategoryId->getIsActive()) :?>
-						<li class="subCategory">
+						<li class="subCategory<?php if ($currentCategory->getId() == in_array($_childSubCategoryId->getId(),$_ids) ||($_childSubCategoryId->getId() == $currentCategory->getId())): ?> active<?php endif; ?>">
 							<a href="<?php echo $_childSubCategoryId->getURL()?>" title="<?php echo $_childSubCategoryId->getName()?>">
 							<span><?php echo $_childSubCategoryId->getName()?></span>
 							</a>
@@ -60,12 +60,12 @@
 <script type="text/javascript">
  jQuery(document).ready(function(){
   //jQuery('#nav').find('ul').hide(); 
-  jQuery('#nav').find('ul li.parent > a ').after('<span class="opener"></span>');
-  jQuery('#nav').find('li.active.parent').addClass('open');
-  jQuery('#nav li.active.parent').find(' > ul').show();
+  jQuery('#left-nav').find('ul li.parent > a ').after('<span class="opener"></span>');
+  jQuery('#left-nav').find('li.active.parent').addClass('open');
+  jQuery('#left-nav li.active.parent').find(' > ul').show();
   jQuery('.opener').click(function(){  
-   jQuery('#nav').find('a').removeClass('clicked');
-   jQuery('#nav').find('a').addClass('unclicked');
+   jQuery('#left-nav').find('a').removeClass('clicked');
+   jQuery('#left-nav').find('a').addClass('unclicked');
    jQuery(this).parent().find('> a').removeClass('unclicked');
    jQuery(this).parent().find('> a').addClass('clicked');
 
