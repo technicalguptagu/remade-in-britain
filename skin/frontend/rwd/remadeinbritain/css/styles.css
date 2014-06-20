@@ -2249,14 +2249,6 @@ a.button:hover {
   font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 
-.pages .current,
-.pages .current:hover {
-  color: #636363;
-  border: 1px solid #cccccc;
-  width: 30px;
-  background-color: #FFFFFF;
-  cursor: default;
-}
 
 .pages .next,
 .pages .previous {
@@ -10071,11 +10063,39 @@ div.calendar table td.button {
 .product-view .product-collateral .padder .product-specs .field p.required { bottom: 16px; color: #fff; display: inline-block; font-family: Oswald; font-size: 12px; font-weight: 300; left: 0; position: absolute; width: 190px; }
 .productenquiry { margin: 32px 0 0; position: relative; height: 300px; }
 .productenquiry .enquiry-contact { }
-.productenquiry .enquiry-buttons button { padding: 12px 42px; position: absolute; right: 52px; top: 48%; }
+.productenquiry .enquiry-buttons button { padding: 12px 30px; position: absolute; right: 52px; top: 48%; }
 .productenquiry .enquiry-buttons button span {}
-.productenquiry .enquiry-buttons button span span { font-family: oswald; font-size: 17px; font-weight: 300; text-transform: uppercase; }
+.productenquiry .enquiry-buttons button span span { font-family: oswald; font-size: 16.01px; font-weight: 400; text-transform: uppercase; }
 .product-detail-review-form li, .product-detail-review-area li { margin: 0 !important; }
-#product-review-table { width: 48%; }
+#product-review-table { width: 25%; margin: 18px 0 48px; }
+#product_tabs_review_tabbed_contents .home_pdt_name { margin: 0 0 22px 0; }
+#product_tabs_review_tabbed_contents .home_pdt_name span { font-family: Oswald; font-weight: 400; font-size: 27px; color: #FFFFFF; }
+#review-form h3, #review-form h5 { font-family: Oswald; font-weight: 300; font-size: 16px; color: #494956; text-transform: none; margin: 0; }
+#review-form h3 span { font-family: Oswald; font-weight: 400; font-size: 16px; color: #494956; }
+#product-review-table div.label { font-family: Oswald; font-weight: 300; font-size: 16px; color: #494956; display: inline-block; width: 60px; }
+#product-review-table div.rating-value { display: inline-block; }
+.product-detail-review-area  li { position: relative; }
+.product-detail-review-area  li p.required { position: absolute; bottom: 16px; color: #fff; display: inline-block; font-family: Oswald; font-size: 12px; font-weight: 300; left: 0; position: absolute; width: 190px; }
+#review-form .buttons-set {display: inline-block; left: 72%; margin: 0; padding: 0; position: absolute; top: 51%; }
+#review-form .buttons-set button { padding: 12px 25px; margin: 0; }
+#review-form .buttons-set button span span { font-family: oswald; font-size: 16.01px; font-weight: 400; text-transform: uppercase; }
+#review-form { position: relative; }
+#product-review-table input[type="radio"] { opacity: 0; filter: alpha(opacity=0);  }
+#product-review-table .upper-redio { background: url(../images/sprite-small-stars.png) repeat-x 0 -29px; display: inline-block; width: 16px; }
+#product-review-table .upper-redio.active { background: url(../images/sprite-small-stars.png) repeat-x 0 0; }
+.review-title, .label-or-rating, #customer-reviews .review { width: 100%; float: left; }
+.review-title .title { float: left; min-width: 210px; padding: 0 12px 0 0; }
+.review-title .title strong { font-family: Oswald; font-weight: 300; font-size: 17px; color: #fff; }
+.review-title .cust-name { font-family: Oswald; font-weight: 300; font-size: 14px; color: #fff; float: left; }
+.review-title .cust-name span { font-family: Oswald; font-weight: 400; font-size: 14px; color: #fff; }
+.label-or-rating .ratings { margin: 24px 0 48px; }
+.label-or-rating .ratings .label { color: #494956; display: inline-block; font-family: Oswald; font-size: 16px; font-weight: 300; width: 60px; }
+.label-or-rating .ratings .rating-box { display: inline-block; margin: 0; width: 80px; background: url(../images/sprite-small-stars.png) repeat-x 0 -29px; }
+.label-or-rating .ratings .rating-box .rating { background: url(../images/sprite-small-stars.png) repeat-x 0 0; }
+#customer-reviews .review { margin: 0 0 25px 0; }
+#customer-reviews li { background: url(../images/whitestrip.png) repeat-x 0 bottom; margin: 0 0 35px 0; }
+#customer-reviews .date { padding: 0 0 40px 0; }
+#product-review-table td { padding: 0; }
 
 
 /***********Product Info Page**********/
