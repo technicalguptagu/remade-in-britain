@@ -1404,15 +1404,16 @@ body, label, button, input, select, table, textarea {
    }
 /*=======Category-Page========== */
 
- .breadcrumb-links {
+
+ /*.breadcrumb-links {
     display: none;
-    }
+    } */
 .catalog-category-view .back-button {
     display: block;
     }
-.col-left.sidebar {
+/* .col-left.sidebar {
    display: none;
-   }
+   } */
 .category-content .title-description h1 {
    padding: 6%;
    } 
@@ -1508,9 +1509,12 @@ body, label, button, input, select, table, textarea {
     padding-left: 0;
     width: 100% !important;
     }
- .breadcrumb-links {
+  .breadcrumbs {
     display: none;
-    }
+    } 
+ /* .breadcrumb-links {
+    display: none;
+    } */
 .back-button {
     display: block !important;
     padding: 15px 0 0;

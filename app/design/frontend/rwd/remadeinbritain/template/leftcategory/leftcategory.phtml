@@ -5,84 +5,79 @@
  */
 ?>
 <?php // BOF developer 16 6/14/2014?>
-<?php 
-    $_layer = Mage::getSingleton('catalog/layer');
-    $_category = $_layer->getCurrentCategory();
-	$currentCategory = Mage::registry('current_category');
-	$_categoryIdpath = $_category->getParentCategory()->getPath();
+<div class="left-category">
+	<?php $_layer = Mage::getSingleton('catalog/layer');
+		$_category = $_layer->getCurrentCategory();
+		$currentCategory = Mage::registry('current_category');
+		$_categoryIdpath = $_category->getParentCategory()->getPath();
+		$_ids = explode('/', $_categoryIdpath);
+		if (isset($_ids[2])) {
+			$_topParent = Mage::helper('leftcategory')->getTopCategoryId($_ids[2]);
+			//Mage::getModel('catalog/category')->setStoreId(Mage::app()->getStore()->getId())->load($_ids[2]);
+		} else {
+			$_topParent = $_category;
+		}
+		$currentCategoryId = $_topParent->getId(); ?>
 
-	$_ids = explode('/', $_categoryIdpath);
-    if (isset($_ids[2])) {
-        $_topParent = Mage::helper('leftcategory')->getTopCategoryId($_ids[2]);
-		//Mage::getModel('catalog/category')->setStoreId(Mage::app()->getStore()->getId())->load($_ids[2]);
-    } else {
-        $_topParent = $_category;
-    }
+	<h2><?php echo $_topParent->getName();?></h2>
 
-    $currentCategoryId = $_topParent->getId();
-?>
+	<?php $_categoryId = Mage::helper('leftcategory')->getCategoryId($currentCategoryId);
+		$_subCategories = $_categoryId->getChildren(); ?>
+	<ul id="left-nav">
+	<?php foreach(explode(',',$_subCategories) as $subCategoryId):?>
+		<?php $_category = Mage::helper('leftcategory')->getCategoryId($subCategoryId);?>
+		<?php $_subCategory = Mage::helper('leftcategory')->getCategoryId($_category->getId());
+				$_childSubCategories = $_subCategory->getChildren(); ?>
+		<?php if($_category->getIsActive()):?>
+			<li class="Category<?php if($_childSubCategories ): ?> parent<?php endif;?><?php if ($currentCategory->getId() == in_array($_category->getId(),$_ids) ||($_category->getId() == $currentCategory->getId())): ?> active<?php endif; ?>">		
+				<a href="<?php echo $_category->getURL()?>" title="<?php echo $_category->getName()?>" >
+					<span><?php echo $_category->getName()?></span>
+				</a>			
+				<?php if($_childSubCategories ): ?>
+				<ul class="subCat" style="display:none;">
+					<?php foreach(explode(',',$_childSubCategories) as $_childSubCategory):?>
+						<?php $_childSubCategoryId = Mage::helper('leftcategory')->getCategoryId($_childSubCategory);?>
+						<?php if($_childSubCategoryId->getIsActive()) :?>
+							<li class="subCategory<?php if ($currentCategory->getId() == in_array($_childSubCategoryId->getId(),$_ids) ||($_childSubCategoryId->getId() == $currentCategory->getId())): ?> active<?php endif; ?>">
+								<a href="<?php echo $_childSubCategoryId->getURL()?>" title="<?php echo $_childSubCategoryId->getName()?>">
+								<span><?php echo $_childSubCategoryId->getName()?></span>
+								</a>
+							</li>
+						<?php endif;?>               
+					<?php endforeach;?>
+				</ul>
+				<?php endif;?>
+			</li>
+		<?php endif;?>
+	<?php endforeach;?>
+	</ul>
+	<script type="text/javascript">
+	 jQuery(document).ready(function(){
+	  //jQuery('#nav').find('ul').hide(); 
+	  jQuery('#left-nav').find('li.parent > a ').after('<span class="opener"></span>');
+	  jQuery('#left-nav').find('li.active.parent').addClass('open');
+	  jQuery('#left-nav li.active.parent').find(' > ul').show();
+	  jQuery('.opener').click(function(){  
+	   jQuery('#left-nav').find('a').removeClass('clicked');
+	   jQuery('#left-nav').find('a').addClass('unclicked');
+	   jQuery(this).parent().find('> a').removeClass('unclicked');
+	   jQuery(this).parent().find('> a').addClass('clicked');
 
-<h2><?php echo $_topParent->getName();?></h2>
+	   if(jQuery(this).parent().hasClass('active')){
+		jQuery(this).parent().removeClass('active');
+		jQuery(this).parent().find('ul').hide();
+	   }else{
+		jQuery(this).parent().parent().find('li.parent').removeClass('active');
+		jQuery(this).parent().parent().find('ul').hide();
+		jQuery(this).parent().addClass('active');
+		jQuery(this).parent().find(' > ul').show();
+	   };
+	  });
+	   
 
-<?php 
-    $_categoryId = Mage::helper('leftcategory')->getCategoryId($currentCategoryId);
-    $_subCategories = $_categoryId->getChildren();
-?>
-<ul id="left-nav">
-<?php foreach(explode(',',$_subCategories) as $subCategoryId):?>
-    <?php $_category = Mage::helper('leftcategory')->getCategoryId($subCategoryId);?>
-	<?php $_subCategory = Mage::helper('leftcategory')->getCategoryId($_category->getId());
-            $_childSubCategories = $_subCategory->getChildren(); ?>
-    <?php if($_category->getIsActive()):?>
-        <li class="Category<?php if($_childSubCategories ): ?> parent<?php endif;?><?php if ($currentCategory->getId() == in_array($_category->getId(),$_ids) ||($_category->getId() == $currentCategory->getId())): ?> active<?php endif; ?>">		
-            <a href="<?php echo $_category->getURL()?>" title="<?php echo $_category->getName()?>" >
-                <span><?php echo $_category->getName()?></span>
-            </a>			
-			<?php if($_childSubCategories ): ?>
-			<ul class="subCat" style="display:none;">
-				<?php foreach(explode(',',$_childSubCategories) as $_childSubCategory):?>
-					<?php $_childSubCategoryId = Mage::helper('leftcategory')->getCategoryId($_childSubCategory);?>
-					<?php if($_childSubCategoryId->getIsActive()) :?>
-						<li class="subCategory<?php if ($currentCategory->getId() == in_array($_childSubCategoryId->getId(),$_ids) ||($_childSubCategoryId->getId() == $currentCategory->getId())): ?> active<?php endif; ?>">
-							<a href="<?php echo $_childSubCategoryId->getURL()?>" title="<?php echo $_childSubCategoryId->getName()?>">
-							<span><?php echo $_childSubCategoryId->getName()?></span>
-							</a>
-						</li>
-					<?php endif;?>               
-				<?php endforeach;?>
-			</ul>
-			<?php endif;?>
-        </li>
-    <?php endif;?>
-<?php endforeach;?>
-</ul>
-
-<script type="text/javascript">
- jQuery(document).ready(function(){
-  //jQuery('#nav').find('ul').hide(); 
-  jQuery('#left-nav').find('li.parent > a ').after('<span class="opener"></span>');
-  jQuery('#left-nav').find('li.active.parent').addClass('open');
-  jQuery('#left-nav li.active.parent').find(' > ul').show();
-  jQuery('.opener').click(function(){  
-   jQuery('#left-nav').find('a').removeClass('clicked');
-   jQuery('#left-nav').find('a').addClass('unclicked');
-   jQuery(this).parent().find('> a').removeClass('unclicked');
-   jQuery(this).parent().find('> a').addClass('clicked');
-
-   if(jQuery(this).parent().hasClass('active')){
-    jQuery(this).parent().removeClass('active');
-    jQuery(this).parent().find('ul').hide();
-   }else{
-    jQuery(this).parent().parent().find('li.parent').removeClass('active');
-    jQuery(this).parent().parent().find('ul').hide();
-    jQuery(this).parent().addClass('active');
-    jQuery(this).parent().find(' > ul').show();
-   };
-  });
-   
-
- });
-</script>
+	 });
+	</script>
+</div>
 
 
 

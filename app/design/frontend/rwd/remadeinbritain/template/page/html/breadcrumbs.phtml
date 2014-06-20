@@ -66,13 +66,16 @@
             </ul>
         </div>
     <?php endif; ?>
+	<div class="back-button">
+		<button onclick="history.back();" class="button" title="<?php echo $this->__('Go Back') ?>" type="button">
+			<span>
+				<span><?php echo $this->__('Go Back') ?></span>
+			</span>
+		</button>
+	</div>
+	<div id="desc-wrap"></div>
+	<div id="tool-wrap"></div>
 </div>
-<div class="back-button">
-    <button onclick="history.back();" class="button" title="<?php echo $this->__('Go Back') ?>" type="button">
-        <span>
-            <span><?php echo $this->__('Go Back') ?></span>
-        </span>
-    </button>
-</div>
+
 <?php
 //EOF developer-19 4/11/2013     ?>

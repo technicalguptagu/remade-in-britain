@@ -489,7 +489,24 @@ $j(document).ready(function () {
             this.toggleElements.toggleSingle({destruct: true});
         }
     });
-
+	enquire.register('(max-width: ' + bp.medium + 'px)', {
+            match: function () {
+				$j('#desc-wrap').prepend($j('.category-title-description'));
+				$j('#tool-wrap').prepend($j('.top-toolbar'));
+				$j('.left column .left-category').hide();
+				$j('.left column .social-media').hide();
+				$j('#mobie-img').prepend($j('.product-img-box'));
+				$j('#mobile-tab').prepend($j('.product-collateral'));
+            },
+            unmatch: function () {
+                $j('#description-wrapper').prepend($j('.category-title-description'));                
+                $j('#toolbar-wrapper').prepend($j('.top-toolbar'));
+				$j('.left column .left-category').show();
+				$j('.left column .social-media').show();                                
+				$j('#main-imgs').prepend($j('.product-img-box'));                               
+				$j('#main-tab').prepend($j('.product-collateral'));                               
+            }
+        });
 
     // ==============================================
     // OPC - Progress Block

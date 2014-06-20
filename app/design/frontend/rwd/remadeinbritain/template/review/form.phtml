@@ -24,18 +24,22 @@
             <?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
                 <h5><?php echo $this->__('How do you rate this product?') ?> <em class="required">*</em></h5>
                 <span id="input-message-box"></span>
-                <div class="data-table" id="product-review-table">
+                <table class="data-table" id="product-review-table">
+                    <tbody>
                     <?php foreach ($this->getRatings() as $_rating): ?>
-                        <div>
-                            <div class="label"><?php echo $this->escapeHtml($_rating->getRatingCode()) ?></div>
-							<div class="rating-value">
-								<?php foreach ($_rating->getOptions() as $_option): ?>
-									<span class="value"><input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio" /></span>
+                        <tr>                           
+							 <td class="value">
+								<div class="label"><?php echo $this->escapeHtml($_rating->getRatingCode()) ?></div>
+								 <?php foreach ($_rating->getOptions() as $_option): ?>
+									<div id="radio_upper_<?php echo $_option->getValue() ?>" class="upper-redio requuired-entry">
+										<input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio" />
+									</div>
 								<?php endforeach; ?>
-							</div>
-                        </div>
+							</td>
+                        </tr>
                     <?php endforeach; ?>
-                </div>
+                    </tbody>
+                </table>
                 <input type="hidden" name="validate_rating" class="validate-rating" value="" />
                 <script type="text/javascript">decorateTable('product-review-table')</script>
             <?php endif; ?>
@@ -59,11 +63,11 @@
                         <div class="input-box">
                             <textarea name="detail" id="review_field" cols="5" rows="3" class="required-entry"><?php echo $this->escapeHtml($data->getDetail()) ?></textarea>
                         </div>
+						<p class="required"><?php echo $this->__('*All fields are required') ?></p>
                     </li>
                 </ul>
             </fieldset>
             <div class="buttons-set">
-			<p class="required"><?php echo $this->__('*All fields are required') ?></p>
                 <button type="submit" title="<?php echo $this->__('Submit Review') ?>" class="button"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
             </div>
     </form>
@@ -101,7 +105,44 @@
         );
     //]]>
     </script>
-    <?php else: ?>
+	<script type="text/javascript">
+	
+		jQuery(document).ready(function(){
+			
+			jQuery('#radio_upper_1').click(function(){
+				jQuery('#product-review-table .value > div').removeClass('active');
+				jQuery('#radio_upper_1').addClass('active');
+			});
+
+			jQuery('#radio_upper_2').click(function(){
+				 jQuery('#product-review-table .value > div').removeClass('active');
+				 jQuery('#radio_upper_1').addClass('active');
+				 jQuery('#radio_upper_2').addClass('active');
+			});
+			jQuery('#radio_upper_3').click(function(){
+				jQuery('#product-review-table .value > div').removeClass('active');
+				jQuery('#radio_upper_1').addClass('active');
+				jQuery('#radio_upper_2').addClass('active');
+				jQuery('#radio_upper_3').addClass('active');
+			});
+
+			jQuery('#radio_upper_4').click(function(){
+				 jQuery('#product-review-table .value > div').removeClass('active');
+				 jQuery('#radio_upper_1').addClass('active');
+				 jQuery('#radio_upper_2').addClass('active');
+				 jQuery('#radio_upper_3').addClass('active');
+				 jQuery('#radio_upper_4').addClass('active');
+			});
+
+			jQuery('#radio_upper_5').click(function(){
+				 jQuery('#radio_upper_1').addClass('active');
+				 jQuery('#radio_upper_2').addClass('active');
+				 jQuery('#radio_upper_3').addClass('active');
+				 jQuery('#radio_upper_4').addClass('active');
+				 jQuery('#radio_upper_5').addClass('active');
+			});
+		});
+        </script>      <?php else: ?>
     <p class="review-nologged" id="review-form">
         <?php echo $this->__('Only registered users can write reviews. Please, <a href="%s">log in</a> or <a href="%s">register</a>', $this->getLoginLink(), Mage::helper('customer')->getRegisterUrl()) ?>
     </p>

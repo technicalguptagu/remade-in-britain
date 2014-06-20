@@ -32,33 +32,36 @@
  */
 ?>
 <?php if($this->canShowBlock()): ?>
+
 <div class="block block-layered-nav<?php if (!$this->getLayer()->getState()->getFilters()): ?> block-layered-nav--no-filters<?php endif; ?>">
-    <!-- <div class="block-title">
-        <strong><span><?php echo $this->__('Shop By') ?></span></strong>
-    </div> -->
-    <div class="block-content toggle-content">
-        <?php //echo $this->getStateHtml() ?>
-        <?php if($this->canShowOptions()): ?>
-            <p class="block-subtitle block-subtitle--filter"><?php echo $this->__('Filter') ?></p>
-            <dl id="narrow-by-list">
-                <?php $_filters = $this->getFilters() ?>
-                <?php foreach ($_filters as $_filter): ?>
-                <?php if($_filter->getItemsCount()): ?>
-				<?php $_filterName=$_filter->getName();?>
-                   <?php if ($_filterName=="Category"):?>
-				     <?php else:?>
-                       <dt><?php echo $this->__($_filter->getName()) ?></dt>
-					   <dd><?php echo $_filter->getHtml() ?></dd>
-				    <?php endif; ?>
-                    
-                <?php endif; ?>
-                <?php endforeach; ?>
-            </dl>
-            <script type="text/javascript">decorateDataList('narrow-by-list')</script>
-        <?php endif; ?>
-		<?php if ($this->getLayer()->getState()->getFilters()): ?>
-            <div class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear all selections') ?></a></div>
-        <?php endif; ?>
-    </div>
+	<div class="collapsible mobile-collapsible">
+		<div class="block-title">
+			<strong><span><?php echo $this->__('FILTER BY')?></span></strong>  
+		</div>	
+		<div class="block-content toggle-content">
+			<?php //echo $this->getStateHtml() ?>
+			<?php if($this->canShowOptions()): ?>
+				<p class="block-subtitle block-subtitle--filter"><?php echo $this->__('Filter') ?></p>
+				<dl id="narrow-by-list">
+					<?php $_filters = $this->getFilters() ?>
+					<?php foreach ($_filters as $_filter): ?>
+					<?php if($_filter->getItemsCount()): ?>
+					<?php $_filterName=$_filter->getName();?>
+					   <?php if ($_filterName=="Category"):?>
+						 <?php else:?>
+						   <dt><?php echo $this->__($_filter->getName()) ?></dt>
+						   <dd><?php echo $_filter->getHtml() ?></dd>
+						<?php endif; ?>
+						
+					<?php endif; ?>
+					<?php endforeach; ?>
+				</dl>
+				<script type="text/javascript">decorateDataList('narrow-by-list')</script>
+			<?php endif; ?>
+			<?php if ($this->getLayer()->getState()->getFilters()): ?>
+				<div class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear all selections') ?></a></div>
+			<?php endif; ?>
+		</div>
+	</div>
 </div>
 <?php endif; ?>
