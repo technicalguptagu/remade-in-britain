@@ -39,7 +39,7 @@
                 <span><?php echo $_category->getName()?></span>
             </a>			
 			<?php if($_childSubCategories ): ?>
-			<ul class="subCat">
+			<ul class="subCat" style="display:none;">
 				<?php foreach(explode(',',$_childSubCategories) as $_childSubCategory):?>
 					<?php $_childSubCategoryId = Mage::helper('leftcategory')->getCategoryId($_childSubCategory);?>
 					<?php if($_childSubCategoryId->getIsActive()) :?>
@@ -60,7 +60,7 @@
 <script type="text/javascript">
  jQuery(document).ready(function(){
   //jQuery('#nav').find('ul').hide(); 
-  jQuery('#left-nav').find('ul li.parent > a ').after('<span class="opener"></span>');
+  jQuery('#left-nav').find('li.parent > a ').after('<span class="opener"></span>');
   jQuery('#left-nav').find('li.active.parent').addClass('open');
   jQuery('#left-nav li.active.parent').find(' > ul').show();
   jQuery('.opener').click(function(){  
