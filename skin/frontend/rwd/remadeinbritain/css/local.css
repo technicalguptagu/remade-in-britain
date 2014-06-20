@@ -672,7 +672,7 @@
 width:20%;
 }
 .category-products .products-grid li.item .productbg span.new {
-  right: 42px;
+  right: 38px;
   top: 9px;
 }
 .title-description .page-title h1 {
@@ -759,7 +759,6 @@ width:20%;
 }
 .previous.i-previous {
   background: url("../images/pagination-left-arrow.png") no-repeat scroll 0 0  transparent;
-  height: 20px;
   margin: 10px 0 0 10px;
 }
 .next.i-next {
@@ -888,7 +887,10 @@ width: 80px;
 }
 #left-nav li.parent.active {
     position: relative;
-	background: url("../images/listing-plus-minus-sprite.png") no-repeat scroll 10px 10px transparent;
+	background: url("../images/listing-plus-minus-sprite.png") no-repeat scroll 10px -57px transparent;
+	color:#FFFFFF;
+	font-size:14px;
+	font-family: oswaldlight;
 }
 #left-nav li.parent .opener {
     border: 1px solid red;
@@ -897,7 +899,6 @@ width: 80px;
     position: absolute;
     top: 0;
     width: 20px;
-	
 }
 #narrow-by-list .m-selected-ln-item {
   position: relative;
@@ -907,6 +908,10 @@ width: 80px;
   right: 0;
   top: 0;
   width: 100%;
+}
+.category-products .pager .pages {
+  margin-left: 52px;
+ 
 }
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
@@ -1383,6 +1388,53 @@ padding: 3% 2% 7% ;
 }
 .blog-index-list .col-left, .blog-post-view .col-left {
   width: 100%;
+}
+.col2-left-layout .col-main {
+  float: none;
+  margin: 0 !important;
+  padding: 0 1%;
+  width: 98% !important;
+}
+.catalog-category-view .category-title-description {
+  padding: 0 1%;
+}
+.catalog-category-view .col-left {
+ float:none !important;
+}
+.category-products .toolbar {
+ padding: 0;
+ background:none;
+}
+.category-products .toolbar .sorter .sorter {
+float:none;
+}
+.sorter > .sort-by {
+  float:none;
+ }
+ .category-products .sort-list {
+   float:none;
+}
+.sort-list li, .pager-list li {
+ padding: 2px 0 0 6px !important;
+}
+.limiter label {
+  display:block;
+}
+.category-products .pager {
+  margin: 0;
+}
+.category-products .pager-list li {
+  padding: 2px 10px 0 3px !important;
+}
+.latest-products .itemslider-similar-main .products-grid > li {
+  float:none;
+  width:100%;
+}
+.latest-products .itemslider-similar-main .products-grid > li .productbg {
+ margin-top:13%;
+}
+.product-listing .products-grid .actions ul li {
+   margin: 0 3px 0 0;
 }
 }
 
