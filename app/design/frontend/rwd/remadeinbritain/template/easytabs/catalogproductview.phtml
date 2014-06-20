@@ -41,51 +41,13 @@ $_product = $this->getProduct(); ?>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 <div class="product-view">
     <div class="product-essential">
-        <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <div class="product-detail-box">
+			<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
             <?php echo $this->getBlockHtml('formkey') ?>
             <div class="no-display">
                 <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
                 <input type="hidden" name="related_product" id="related-products-field" value="" />
             </div>
-			<div class="product-img-box">
-                <?php echo $this->getChildHtml('media') ?>
-            
-			 <div class="add-to-links">
-				 <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
-                 <?php endif; ?>                    
-                    <?php echo $this->getChildHtml('extra_buttons') ?>
-                <?php //elseif (!$_product->isSaleable()): ?>
-                    <div class="add-to-box">
-                        <?php echo $this->getChildHtml('addto') ?>
-						<div class="info-social-links">
-					            <div class="add-to-any">
-								    <div class="share"><?php echo $this->__('SHARE'); ?></div>
-						            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">					  
-									    <a class="a2a_button_facebook"></a>
-										<a class="a2a_button_twitter"></a>
-									    <a class="a2a_button_email"></a>
-									    <a class="a2a_button_google_plus"></a>
-										<a class="a2a_dd" href="http://www.addtoany.com/share_save"></a>
-
-							        </div>
-									<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-529720077da28e22"></script>
-
-                                        <script type="text/javascript" src="//static.addtoany.com/menu/page.js">
-										</script>
-					            </div>
-				            </div>
-						<?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>                    
-                    </div>
-			   </div>
-			   <?php //BOF developer-13 18/06/2014 ?>
-				<div class="product-collateral toggle-content tabs">
-				        <?php echo $this->getChildHtml('product_additional_data') ?>
-					    <?php echo $this->getChildHtml('upsell_products') ?>
-				</div>
-			   
-			   <?php //EOF developer-13 18/06/2014 ?>
-			</div>
-            <div class="product-detail-box">
                <div class="product-shop">
                 <div class="product-name">
                     <span class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
@@ -136,28 +98,10 @@ $_product = $this->getProduct(); ?>
     
                         </div>
                     </div>
-
 				</div>
-                
-
                 <?php echo $this->getChildHtml('alert_urls') ?>                
-
-
-
-
-                <?php //echo $this->getChildHtml('other');?>
-
-                
-
             </div>
-
-            <div class="add-to-cart-wrapper">
-
-                <?php // echo $this->getChildHtml('product_type_data') ?>
-                <?php // echo $this->getChildHtml('extrahint') ?>
-
-                <?php //echo $this->getChildHtml('product_type_data') ?>
-                
+            <div class="add-to-cart-wrapper">             
 
                 <?php //if ($this->hasOptions()):?>
                     <div class="add-to-box">
@@ -221,5 +165,44 @@ $_product = $this->getProduct(); ?>
         //]]>
         </script>
     </div>
+	<div class="product-img-box">
+                <?php echo $this->getChildHtml('media') ?>
+            
+			 <div class="add-to-links">
+				 <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                 <?php endif; ?>                    
+                    <?php echo $this->getChildHtml('extra_buttons') ?>
+                <?php //elseif (!$_product->isSaleable()): ?>
+                    <div class="add-to-box">
+                        <?php echo $this->getChildHtml('addto') ?>
+						<div class="info-social-links">
+					            <div class="add-to-any">
+								    <div class="share"><?php echo $this->__('SHARE'); ?></div>
+						            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">					  
+									    <a class="a2a_button_facebook"></a>
+										<a class="a2a_button_twitter"></a>
+									    <a class="a2a_button_email"></a>
+									    <a class="a2a_button_google_plus"></a>
+										<a class="a2a_dd" href="http://www.addtoany.com/share_save"></a>
+
+							        </div>
+									<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-529720077da28e22"></script>
+
+                                        <script type="text/javascript" src="//static.addtoany.com/menu/page.js">
+										</script>
+					            </div>
+				            </div>
+						<?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>                    
+                    </div>
+			   </div>
+			   <?php //BOF developer-13 18/06/2014 ?>
+				<div class="product-collateral toggle-content tabs">
+				        <?php echo $this->getChildHtml('product_additional_data') ?>
+					    <?php echo $this->getChildHtml('upsell_products') ?>
+				</div>
+			   
+			   <?php //EOF developer-13 18/06/2014 ?>
+			</div>
+</div>
 </div>
 
