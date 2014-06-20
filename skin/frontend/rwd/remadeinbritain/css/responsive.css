@@ -19,6 +19,7 @@
    background: url("../images/spritestrip.png") repeat-x scroll 0 -43px transparent;
    border-top: none;
    position: static;
+   padding: 2px 0;
    }
 .opc .section .step-title .number{
   background-color: #494956 !important;
@@ -64,8 +65,8 @@
    font-size: 14px;
    font-style: normal;
    font-weight: 300;
-   height: 45px;
-   line-height: 45px;
+   height: 38px;
+   line-height: 38px;
    margin:2px 4px 0 0;;
    }
 .checkout-onepage-index .opc h3,
@@ -164,7 +165,7 @@
   margin: 0 0 0 140px;
   }
 #opc-review.section {
-  background: url("../images/spritestrip.png") repeat-x scroll 0 45px transparent;
+  background: url("../images/spritestrip.png") repeat-x scroll 0 41px transparent;
    }
 #opc-review.section.allow.active {
    background: none !important;
@@ -269,16 +270,27 @@
 .opc-block-progress dt a, .opc-block-progress dt .separator {
    color: #494956;
   }
+#allow-gift-message-container .inner-box .product-img-box .product-image {
+  background: none repeat scroll 0 0 #fff;
+  border: 1px solid #8a9374;
+  box-shadow: 0 0 5px #838383;
+  float: left;
+  margin-bottom: 15px;
+  width: 100%;
+  }
+#checkout-review-table-wrapper .data-table tbody td .item-options dd{
+  color: #333333;
+  }
 .customer-account-index .col-left {
-    clear: left;
-    float: left;
-    padding-left: 15px;
-    width: 30%;
+   clear: left;
+   float: left;
+   padding-left: 15px;
+   width: 30%;
    }
 .customer-account-index .col2-left-layout .col-main {
-    float: right;
-    padding-right: 25px;
-	width:65%;
+   float: right;
+   padding-right: 25px;
+   width: 65% !important;
    }
 .customer-account-index .col2-left-layout .sidebar .block-account .block-title {
   margin: 55px 0 15px;
@@ -323,11 +335,12 @@
 .dashboard .page-title h1, 
 .my-account .page-title h1, 
 .marketplace-seller-customerreview .my-account h2{
-   color: #FFFFFF;
-   font-family: Oswald;
-   font-size: 19px;
-   font-weight: 400;
-   text-transform: capitalize;
+  color: #FFFFFF;
+  font-family: Oswald;
+  font-size: 19px;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin: 0 0 0 10px;
   }
 .dashboard .welcome-msg {
    float:left;
@@ -667,7 +680,7 @@ body, label, button, input, select, table, textarea {
 .col-left.sidebar .social-media .media li.instagram a {
    background: url("../images/spritehome.png") no-repeat scroll -175px -102px transparent;
    }
-.col2-left-layout .col-main {
+ .customer-account-edit .col2-left-layout .col-main {
    float: left;
    margin-left: 3.2%;
    width: 71%;
@@ -837,8 +850,10 @@ body, label, button, input, select, table, textarea {
 .checkout-cart-index .cart-table.data-table tbody td.product-cart-image {
   border-left:none;
   }
-.product-image, .no-touch .product-img-box .product-image:hover:not(.zoom-available) {
+.product-cart-image .product-image, 
+.no-touch .product-img-box .product-image:hover:not(.zoom-available) {
   text-align:center;
+  border: 0 none;
   }
 .cart-table .product-cart-image .product-image img {
   padding: 5px;
