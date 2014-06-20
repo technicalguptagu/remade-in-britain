@@ -34,25 +34,18 @@
                 <div class="review-title">
 				    <div class="title"><strong><?php echo $this->htmlEscape($_review->getTitle()) ?></strong></div>
 					<div class="cust-name"><?php echo $this->__('Review by')?>
-					<?php echo $this->__('%s,', $this->htmlEscape($_review->getNickname())) ?>
+					<span><?php echo $this->__('%s', $this->htmlEscape($_review->getNickname())) ?></span></div>
 				</div>
+				<div class="label-or-rating">
 					<div class="ratings">
-						<table class="ratings-list" cellspacing="0">
-							<tbody>
-								<?php foreach ($_review->getRatingVotes() as $_vote): ?>
-								<tr>
-									<td>
-										<div class="rating-box"><span><?php echo $this->__('Overall')?></span>
-											<div class="rating" style="width: <?php echo $_vote->getPercent() ?>%;"></div>
-										</div>
-									</td>
-								</tr>
-								<?php endforeach; ?>
-							</tbody>
-						</table>
+						<div class="label"><?php echo $this->__('Overall')?></div>
+						<?php foreach ($_review->getRatingVotes() as $_vote): ?>
+							<div class="rating-box">
+								<div class="rating" style="width: <?php echo $_vote->getPercent() ?>%;"></div>
+							</div>
+						<?php endforeach; ?>
 					</div>
-				</div>				
-				
+				</div>
 				<?php 
 				@list($y, $d,$M) = explode('-',$_review->getCreatedAt());
 			    $_date = date("d M Y",mktime(0,0,0,$d,$M,$y));
