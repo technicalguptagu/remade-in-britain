@@ -884,7 +884,11 @@ width: 80px;
 }
 #left-nav li.parent {
     position: relative;
-	background: url("../images/spritehome.png") no-repeat scroll -335px -763px transparent;
+	background: url("../images/listing-plus-minus-sprite.png") no-repeat scroll 10px 10px transparent;
+}
+#left-nav li.parent.active {
+    position: relative;
+	background: url("../images/listing-plus-minus-sprite.png") no-repeat scroll 10px 10px transparent;
 }
 #left-nav li.parent .opener {
     border: 1px solid red;
@@ -893,7 +897,7 @@ width: 80px;
     position: absolute;
     top: 0;
     width: 20px;
-	background: url("../images/spritehome.png") no-repeat scroll -335px -763px transparent;
+	
 }
 #narrow-by-list .m-selected-ln-item {
   position: relative;
