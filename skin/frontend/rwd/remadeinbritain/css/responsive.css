@@ -6,48 +6,50 @@
    margin-bottom: 20px;
    color: #FFFFFF;
    font-family: oswald;
-   font-weight: 300;
-  }
+   font-weight: 400;
+   }
 .opc.opc-firststep-login {
    padding: 0 0 30px;
    }
 .opc .section.active .step-title {
    border: 1px solid #727A5E !important;
    background:#fff;
-  }
+   }
 .opc .section .step-title {
    background: url("../images/spritestrip.png") repeat-x scroll 0 -43px transparent;
    border-top: none;
    position: static;
-  }
+   }
 .opc .section .step-title .number{
   background-color: #494956 !important;
   display: block;
   float: left;
-  width:28px !important;
-  margin: 10px 12px !important;
-  position:static !important;
-  height: 28px !important;
-  line-height: 28px !important;
+  font-family: oswald;
+  font-weight: 400;
+  height: 26px !important;
+  line-height: 26px !important;
+  margin: 6px 12px !important;
+  position: static !important;
+  width: 26px !important;
   }
 .opc.opc-firststep-login #opc-login.section .step-title h2 {
-   float: left;
-   height: 45px;
-   line-height: 45px;
-   font-family: oswald;
-   }
+  float: left;
+  height: 38px;
+  line-height: 38px;
+  font-family: oswald;
+  }
 .checkout-onepage-index #checkoutSteps {
-   margin:0 0 20px 0;
+  margin:0 0 20px 0;
   }
 .checkout-onepage-index .col2-set .col-1, .checkout-onepage-index .col2-set .col-2,
 .customer-account-login .col2-set .col-1, .customer-account-login .col2-set .col-2{
-   padding:15px 30px;
-   width: 49%;
-   }
+  padding:15px 30px;
+  width: 49%;
+  }
 .checkout-onepage-index .col2-set .col-1 {
-   float: right;
-   padding-left: 0;
-   }
+  float: right;
+  padding-left: 0;
+  }
 .checkout-onepage-index  .col2-set .col-2 {
    float: left;
    padding-right: 0;
@@ -77,6 +79,10 @@
    padding: 5px 0 20px;
    background:url("../images/spritestrip.png") repeat-x scroll 0 43px transparent;
    }
+ .checkout-onepage-index .opc #checkout-step-login h3 {
+   text-transform:none;
+  }
+
 .checkout-onepage-index #checkout-step-login .fieldset {
     width: 290px;
   }
@@ -91,7 +97,7 @@
   }
 .checkout-onepage-index .password-reguired {
   float: left;
-   width: 40%;
+  width: 36%;
   }
 .password-reguired p.required {
    color: #6C6E6E;
@@ -107,12 +113,12 @@
   clear:none;
    margin: 5px 0 0;
   }
-
 .fieldset p.description {
   color: #494956 !important;
   font-family: Oswald !important;
-  font-size: 13px;
-  font-style: normal !important; 
+  font-size: 13px !important;
+  font-style: normal !important;
+  font-weight: 400;
   margin-bottom: 12px;
   }
 .checkout-onepage-index .form-list .required {
@@ -219,32 +225,36 @@
    }
 #checkout-progress-wrapper .block-progress {
   padding-left: 20px;
-  margin: 70px 0 0;
+  margin: 48px 0 0;
   border:none;
   }
 #checkout-progress-wrapper .block-progress .block-title strong {
-  color: #FFF;
+  background: url("../images/spritestrip.png") repeat-x scroll 0 40px transparent;
+  color: #fff;
   font-family: Oswald;
   font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 0 0 15px;
   text-transform: capitalize;
-  background:url("../images/spritestrip.png") repeat-x scroll 0 35px transparent;
-  padding: 0 0 10px;
-  font-weight: 300;
+  }
+#checkout-progress-wrapper .block-progress .block-title strong span {
+  margin:0 0 5px 0;
   }
 #checkout-progress-wrapper .block-progress dt {
-   color: #fff;
-   font-family: Oswald;
-   font-size: 13px;
-   font-style: normal;
-   font-weight: normal;
-   line-height: 1.4;
-   margin: 0 0 6px;
-   padding: 6px 0 0 30px;
-   text-transform: capitalize;
-   background: url("../images/checkout-right-img.png") no-repeat scroll 0 bottom transparent;
-   }
+  color: #fff;
+  font-family: Oswald;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.4;
+  margin: 0 0 6px;
+  padding: 8px 0 0 30px;
+  text-transform: capitalize;
+  background: url("../images/checkout-right-img.png") no-repeat scroll 0 bottom transparent;
+  }
 #checkout-progress-wrapper .block-progress .block-content {
-   margin: 15px;
+  margin: 25px 0;
   }
 .opc .section.allow .step-title h2 {
   color: #494956;
@@ -872,7 +882,7 @@ body, label, button, input, select, table, textarea {
   font-size: 13px;
   font-weight: 400;
   line-height: 19px;
-  padding: 3px 10px;
+  padding: 3px 20px;
   text-align: center;
   text-transform: capitalize;
   vertical-align: middle;
@@ -880,7 +890,7 @@ body, label, button, input, select, table, textarea {
   }
 
 #shopping-cart-table tfoot td.cart-footer-actions {
-   padding:10px 0
+  padding: 14px 0 10px;
   }
 .cart-footer-actions .button2.btn-continue {
   float:left;
@@ -973,7 +983,7 @@ body, label, button, input, select, table, textarea {
 .cart .giftcard .button-wrapper {
    display: inline-block;
    float: right;
-   margin: 10px 0;
+   margin: 12px 0;
    vertical-align: bottom;
    background: none repeat scroll 0 0 #75757c;
    border: 1px solid #000;
