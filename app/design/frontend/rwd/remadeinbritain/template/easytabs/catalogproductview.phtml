@@ -198,15 +198,15 @@ $_product = $this->getProduct(); ?>
 							<?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>                    
 						</div>
 				   </div>
+					<?php //BOF developer-13 18/06/2014 ?>
+						<div id="main-tab">
+							<div class="product-collateral toggle-content tabs">
+								<?php echo $this->getChildHtml('product_additional_data') ?>						
+							</div>
+						</div>	
+						<?php echo $this->getChildHtml('upsell_products') ?>
+				   <?php //EOF developer-13 18/06/2014 ?>
 				</div>
-				<?php //BOF developer-13 18/06/2014 ?>
-				<div id="main-tab">
-					<div class="product-collateral toggle-content tabs">
-						<?php echo $this->getChildHtml('product_additional_data') ?>						
-					</div>
-					<?php echo $this->getChildHtml('upsell_products') ?>
-				</div>			   
-			   <?php //EOF developer-13 18/06/2014 ?>
 			</div>
 		</div>
 </div>
