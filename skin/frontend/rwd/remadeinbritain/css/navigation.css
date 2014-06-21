@@ -129,7 +129,7 @@
 .lof-main-wapper .back-link { font: bold 15px/20px arial; margin: 2% 0; text-align: left; }
 #nav .sub-categories li.level1.over { background: #75757C; }
 #nav .sub-categories li.level1.over a.over { color: #fff; }
-#nav li .menu-bootm.shown-sub li.parent .menu-bootm.shown-sub { background: #75757c; border: 1px solid #494956; box-shadow: 0 0 6px #494956; left: 193px; padding: 5px 0 13px; top: -5px; }
+#nav li .menu-bootm.shown-sub li.parent .menu-bootm.shown-sub { background: #75757c; border: 1px solid #494956; box-shadow: 3px 0 6px 2px #494956; left: 185px; padding: 5px 0 13px; top: -34px; z-index: 991; }
 #nav li .menu-bootm.shown-sub li.parent .menu-bootm.shown-sub li a { color: #fff; }
 #nav .sub-categories li.level1.parent { background: url(../images/spritehome.png) no-repeat 8px -526px; position: relative; }
 #nav .sub-categories li.level1.parent.over { background: url(../images/spritehome.png) no-repeat 8px -496px #75757C; }
