@@ -287,7 +287,11 @@
    padding-left: 15px;
    width: 30%;
    }
-.customer-account-index .col2-left-layout .col-main {
+.customer-account-index .col2-left-layout .col-main, 
+.customer-account-edit .col2-left-layout .col-main, 
+.customer-address-index .col2-left-layout .col-main, 
+.sales-order-history .col2-left-layout .col-main,
+.sales-billing-agreement-index .col2-left-layout .col-main {
    float: right;
    padding-right: 25px;
    width: 65% !important;
@@ -680,11 +684,11 @@ body, label, button, input, select, table, textarea {
 .col-left.sidebar .social-media .media li.instagram a {
    background: url("../images/spritehome.png") no-repeat scroll -175px -102px transparent;
    }
- .customer-account-edit .col2-left-layout .col-main {
+ /*.customer-account-edit .col2-left-layout .col-main {
    float: left;
    margin-left: 3.2%;
    width: 71%;
-   }
+   }*/
 .category-content {
    background: url("../images/categorybg.png") repeat scroll 0 0 transparent;
    height:226px;
@@ -1540,9 +1544,9 @@ body, label, button, input, select, table, textarea {
  .back-button .button:hover {
    background:none;
    }
-.col-left.sidebar {
+/*.col-left.sidebar {
    display: none;
-   }
+   }*/
 .category-content .title-description h1 {
    padding: 6%;
    } 
