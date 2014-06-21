@@ -506,6 +506,7 @@ $j(document).ready(function () {
 				$j('#main-imgs').prepend($j('.product-img-box'));                               
 				$j('#main-tab').prepend($j('.product-collateral'));                               
             }
+
         });
 
     // ==============================================
