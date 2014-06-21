@@ -36,6 +36,9 @@
     $_product = $this->getProduct();
     $_helper = $this->helper('catalog/output');
 ?>
+<style>
+.thumbnil-slider .viewport { height: 390px !important}
+</style>
 <div class="product-image product-image-zoom">
 <div class="image-gallery-or-thumbnil">
     <div class="product-image-gallery">
@@ -102,20 +105,12 @@
 //<![CDATA[
     jQuery(function($) {
         $('.itemslider-thumbnails').flexslider({
-            namespace: "",
+			namespace: "",
             animation: "slide",
-			direction: "vertical",
-            easing: "easeInQuart",
-			smoothHeight: !1,
-            animationSpeed: 300,
-            animationLoop: false,
+			animationSpeed: 300,
             slideshow: false,
-            pauseOnHover: true,
-            controlNav: false,
-            itemWidth: 130,
-			minItems: 1,
-            maxItems: 3,
-            move: 0
+			controlNav: false,
+			direction: "vertical"            
         });
     });
 //]]>
