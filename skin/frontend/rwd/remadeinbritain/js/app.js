@@ -493,16 +493,16 @@ $j(document).ready(function () {
             match: function () {
 				$j('#desc-wrap').prepend($j('.category-title-description'));
 				$j('#tool-wrap').prepend($j('.top-toolbar'));
-				$j('.left column .left-category').hide();
-				$j('.left column .social-media').hide();
+				$j('.col-left .left-category').hide();
+				$j('.col-left .social-media').hide();
 				$j('#mobie-img').prepend($j('.product-img-box'));
 				$j('#mobile-tab').prepend($j('.product-collateral'));
             },
             unmatch: function () {
                 $j('#description-wrapper').prepend($j('.category-title-description'));                
                 $j('#toolbar-wrapper').prepend($j('.top-toolbar'));
-				$j('.left column .left-category').show();
-				$j('.left column .social-media').show();                                
+				$j('.col-left .left-category').show();
+				$j('.col-left .social-media').show();                                
 				$j('#main-imgs').prepend($j('.product-img-box'));                               
 				$j('#main-tab').prepend($j('.product-collateral'));                               
             }
