@@ -85,46 +85,53 @@
 							</div>
 						</div>
 					   </div>
-					   <h3 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>">
-					   <?php
-                                $_productName = $this->escapeHtml($_product->getName());
-                                        $_count = strlen($_productName);
-                                        echo strip_tags(substr($_productName, 0, 80));
-                                        if ($_count > 80) {
-                                            echo '...';
-                                        }
-                                        ?>
-					   
-					   
-					  </a></h3>
-					   <div class="price-Or-retailername">
-					   <?php if ($_product->getSpecialPrice()): ?>
-                                
-                                
-								<div class="sale-price">
-									<div class="now">
-                                        <span class="price"><?php
-                                            
-                                            $_price = $_taxHelper->getPrice($_product, $_product->getFinalPrice());
-                                            echo $_coreHelper->currency($_price, true, false);
-                                            ?>
-                                        </span>
-                                    </div>
-                                    <div class="was">
-                                        <label><?php echo $this->__('was'); ?></label>
-                                        <span class="price"><?php
-                                            
-                                            $_realPrice = $_taxHelper->getPrice($_product, $_product->getPrice());
-                                            echo $_coreHelper->currency($_realPrice, true, false);
-                                            ?>
-                                        </span>
-                                    </div>
-                                </div>
+					   <h3 class="product-name">
+						   <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>">
+						   <?php
+							$_productName = $this->escapeHtml($_product->getName());
+							$_count = strlen($_productName);
+							echo strip_tags(substr($_productName, 0, 80));
+							if ($_count > 80) {
+								echo '...';
+							}
+							?>
+						  </a>
+					  </h3>
+					  <div class="price-Or-retailername">
+						<?php if ($_product->getSpecialPrice()): ?>     
+							<div class="sale-price">
+								<div class="now">
+									<span class="price">
+										<?php 
+										$_price = $_taxHelper->getPrice($_product, $_product->getFinalPrice());
+										echo $_coreHelper->currency($_price, true, false);
+										?>
+									</span>
+								</div>
+								<div class="was">
+									<label><?php echo $this->__('was'); ?></label>
+									<span class="price">
+									<?php
+									$_realPrice = $_taxHelper->getPrice($_product, $_product->getPrice());
+									echo $_coreHelper->currency($_realPrice, true, false);
+									?>
+									</span>
+								</div>
+							</div>
 								<?php else:?>
 								<?php echo $this->getPriceHtml($_product, true, '-new') ?>
 								<?php endif ?>
-							
-							<div class="retailer-name"><a href="#"><?php echo $this->__('Retailer Name Link') ?></a></div>
+						<!-- BOF developer #06  'Display retailer store name' 2014/06/21 -->
+							<div class="retailer-name">
+								<?php
+								$_product_id = $_product->getEntityId();
+								$retailerStoreName = Mage::helper('addcustomerattribute')->getRetailerStoreName($_product_id);
+								$retailerStoreLink = Mage::helper('addcustomerattribute')->getRetailerStoreLink($_product_id);
+								?>
+								<a href='<?php echo $retailerStoreLink; ?>' class="link_seller"><?php echo $retailerStoreName ?></a>
+								<!-- <a href="#"><?php //echo $this->__('Retailer Name Link') ?></a> -->
+							</div>
+						<!-- EOF developer #06  2014/06/21 -->
 							<div style="clear: both; height: 0;">&nbsp;</div>
 					   </div>
 					</div>

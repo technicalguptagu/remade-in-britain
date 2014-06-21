@@ -98,16 +98,17 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <?php endif;?>
 
     </td>
-<!-- OSCDEV #42  'Display retailer store name on cart' 2014/06/14 -->
+<!-- BOF developer #06  'Display retailer store name on cart' 2014/06/14 -->
 	<td>
          <span class="cell-label"><?php echo $this->__('Retailer Name'); ?></span>
 		 <?php
-		 // Call to getRetailerStoreName() method to display Retailer's store name
-		$retailerStoreName = Mage::helper('addcustomerattribute')->getRetailerStoreName($this);		
+			$_product_id = $_item->getProductId();
+			$retailerStoreName = Mage::helper('addcustomerattribute')->getRetailerStoreName($_product_id);
+			$retailerStoreLink = Mage::helper('addcustomerattribute')->getRetailerStoreLink($_product_id);
 		?>	
-		<a href='#' class="link_seller"><?php echo $retailerStoreName ?></a>
+		<a href='<?php echo $retailerStoreLink; ?>' class="link_seller"><?php echo $retailerStoreName ?></a>
 	</td>
-<!-- EOF OSCDEV #42 2014/06/14 -->
+<!-- EOF developer #06  2014/06/14 -->
 	<td class="edit-del">
 		<ul>
 		<?php if ($isVisibleProduct): ?>
