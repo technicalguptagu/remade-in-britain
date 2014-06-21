@@ -1232,13 +1232,14 @@ padding: 3% 2% 7% ;
 }
 .blog-index-list .postDetails, .comment, .posted-tag, .blog-post-view .postDetails, .comment, .posted-tag {
  font-size: 11px;
- padding: 0 0 0 7px;
+
 }
 .blog-index-list .postContent img, .blog-post-view .postContent img {
  float:none;
 } 
 .blog-index-list .blog-desc,.blog-index-list .aw-blog-read-more, .blog-post-view .blog-desc,.blog-index-list .aw-blog-read-more, .blog-post-view .required{
  font-size: 11px;
+  padding: 0 0 0 7px;
 }
 .blog-index-list .postTitle a, .blog-post-view .postTitle a  {
   padding: 0 0 0 10px;
