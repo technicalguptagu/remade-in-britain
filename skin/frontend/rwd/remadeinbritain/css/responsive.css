@@ -539,7 +539,7 @@ body.newsletter-manage-index .my-account .form-list {
 .marketplace-seller-dashboard .page-title h3 {
     font-size: 15px;
     font-weight: bold;
-    padding:8px 0 6px 15px;
+    padding:8px 0 8px 15px;
 	color: #494956;
     display: inline-block;
     font-family: Oswald;
@@ -587,7 +587,7 @@ body.newsletter-manage-index .my-account .form-list {
     }
 .mp_seller_sales_report button {
     margin: 6px 0 0;
-	padding: 5px 40px;
+	padding: 4px 40px;
    }
 .my-account #market_place_manage_products .page-title h1,
 .my-account #market_place_manage_products_order .page-title h1,
