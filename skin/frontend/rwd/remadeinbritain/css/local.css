@@ -675,11 +675,11 @@
 }
 .catalog-category-view .col2-left-layout .col-main {
   float: left;
-  margin-left: 2% !important;
-  width: 78% !important;
+  margin-left:2% ;
+  width: 77%;
 }
 .catalog-category-view .col-left{
-width:20%;
+width:20.8%;
 }
 .category-products .products-grid li.item .productbg span.new {
   right: 38px;

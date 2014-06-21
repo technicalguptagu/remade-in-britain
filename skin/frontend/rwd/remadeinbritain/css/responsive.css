@@ -281,24 +281,26 @@
 #checkout-review-table-wrapper .data-table tbody td .item-options dd {
   color: #333333;
   }
-.customer-account-index .col-left,
+/*.customer-account-index .col-left,
 .customer-account-edit .col-left,
 .customer-address-index .col-left,
 .sales-order-history .col-left,
-.sales-billing-agreement-index .col-left {
+.sales-billing-agreement-index .col-left*/
+.col-left {
    clear: left;
    float: left;
-   padding-left: 15px;
+   padding: 0 0 0 15px;
    width: 30%;
    }
-.customer-account-index .col2-left-layout .col-main, 
+/*.customer-account-index .col2-left-layout .col-main, 
 .customer-account-edit .col2-left-layout .col-main, 
 .customer-address-index .col2-left-layout .col-main, 
 .sales-order-history .col2-left-layout .col-main,
-.sales-billing-agreement-index .col2-left-layout .col-main {
+.sales-billing-agreement-index .col2-left-layout .col-main*/
+ .col-main {
    float: right;
    padding-right: 25px;
-   width: 65% !important;
+   width: 65%;
    }
 .customer-account-index .col2-left-layout .sidebar .block-account .block-title {
   margin: 55px 0 15px;
@@ -490,6 +492,11 @@ body.newsletter-manage-index .my-account .form-list {
   border-top: none;
   padding-top: 10px;
   }
+/*=======Market Place Modules========== */
+
+.marketplace-seller-dashboard .col-main .my-account{
+   margin:0 30px 0 0;
+   }
 .my-account #buyer-seller .input-box {
     padding-top: 15px;
   }
@@ -562,6 +569,7 @@ body.newsletter-manage-index .my-account .form-list {
 .mp_seller_sales_report {
    background: none repeat scroll 0 0 #FFFFFF;
    margin: 15px 15px 0;
+   width: 700px;
    }
 #market_place_manage_products .mp_action select, #select_filter, .mp_sellers_order select, #my-orders-table select {
     font-family: arial;
@@ -587,10 +595,22 @@ body.newsletter-manage-index .my-account .form-list {
     border: 0 none;
     float: none;
    }
+.mp_dashboard_average h3,
+.mp_dashboard_lifetime h3 {
+  font-family: oswald;
+  text-transform: capitalize;
+  }
+.mp_dashboard_lifetime p, 
+.mp_dashboard_average p {
+  color: #fff;
+  font-family: oswald;
+  font-size: 25px;
+  font-weight: 700;
+  }
 #market_place_manage_products > form {
-    padding: 20px 0 0;
-	clear: both;
-   }
+  padding: 20px 0 0;
+  clear: both;
+  }
 #addprofile .form-list li {
   background:none;
   }
@@ -607,6 +627,9 @@ body.newsletter-manage-index .my-account .form-list {
 #market_place_manage_products table tbody tr {
   background:none;
   }
+.mp_dashboard_container.data-table thead th, .mp_dashboard_container.data-table tbody td {
+  border: 1px solid #fff;
+ }
 #market_place_manage_products_order .top_amount, .mp_top_amount, #market_place_manage_products .top_amount, #mp_order_transaction .top_amount {
    padding:0 0 15px 0;
   }
@@ -862,8 +885,7 @@ body, label, button, input, select, table, textarea {
 .checkout-cart-index .cart-table.data-table tbody td.product-cart-image {
   border-left:none;
   }
-.product-cart-image .product-image, 
-.no-touch .product-img-box .product-image:hover:not(.zoom-available) {
+.product-cart-image .product-image {
   text-align:center;
   border: 0 none;
   }
