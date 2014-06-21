@@ -278,10 +278,14 @@
   margin-bottom: 15px;
   width: 100%;
   }
-#checkout-review-table-wrapper .data-table tbody td .item-options dd{
+#checkout-review-table-wrapper .data-table tbody td .item-options dd {
   color: #333333;
   }
-.customer-account-index .col-left {
+.customer-account-index .col-left,
+.customer-account-edit .col-left,
+.customer-address-index .col-left,
+.sales-order-history .col-left,
+.sales-billing-agreement-index .col-left {
    clear: left;
    float: left;
    padding-left: 15px;
@@ -430,6 +434,7 @@
   font-size: 16px;
   text-transform: capitalize;
   display:inline-block;
+  font-weight: 300;
   }
 .dashboard .col2-set .col-1 .box-title a, 
 .dashboard .col2-set .col-2 .box-title a {
@@ -470,6 +475,9 @@ form .legend {
   margin-bottom: 0;
   text-transform: capitalize;
   border-bottom:none;
+  }
+.customer-address-index .my-account .page-title.title-buttons button {
+   margin:10px 0;
   }
 .my-account .form-list .control label {
    background: none;
@@ -1170,6 +1178,7 @@ body, label, button, input, select, table, textarea {
   font-size: 14px;
   font-weight: 400;
   width: 30%;
+  margin: 6px 0 0;
   }
 .account-create .scaffold-form .form-list li .input-box input{
   width:70%;
@@ -1274,6 +1283,7 @@ body, label, button, input, select, table, textarea {
   font-size: 14px;
   width: 30%;
   font-weight: 400;
+  margin: 6px 0 0;
   }
 .marketplace-seller-create #form-validate .fieldset .form-list li label span {
   font-family: oswaldlight;
