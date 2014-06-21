@@ -1824,14 +1824,14 @@ a.button:hover {
 /* -------------------------------------------- *
  * Toolbar
  */
-.toolbar {
+/*.toolbar {
   margin-top: 10px;
   margin-bottom: 15px;
   border-bottom: 1px solid #cccccc;
   border-top: 1px solid #cccccc;
   background: #f4f4f4;
   padding: 5px 10px 0px 10px;
-}
+}*/
 .toolbar:after {
   content: '';
   display: table;
@@ -3356,9 +3356,10 @@ p.product-name a:hover {
 
 .products-grid .product-image:hover span.transparent-img {
 	background: url(../images/rollhovertransperentimage.png) repeat 0 0;
-    height: 99.99%;
+    box-shadow: 0 0 5px #acacac;
+    height: 100%;
     left: 0;
-    width: 99.99%;
+    width: 100%;
 }
 
 
@@ -3812,7 +3813,7 @@ p.product-name a:hover {
   clear: right;
 }
 
-.product-img-box {
+.product-view .product-essential #main-imgs {
   width: 66%;
   float: left;
   margin: 0; 
@@ -7543,7 +7544,7 @@ div.calendar table td.button {
 .box-up-sell .upsell-heading { background: url(../images/whitestrip.png) repeat-x 0 bottom; height: 50px; line-height: 50px; margin: 0 0 15px; }
 .box-up-sell .upsell-heading h2 { color: #FFFFFF; font-family: oswald; font-size: 17px; font-weight: 400; float: left; line-height: 50px; margin: 0; }
 .box-up-sell .upsell-heading a { color: #FFFFFF; font-family: oswald; font-size: 14px; font-weight: 300; float: right; }
-.box-up-sell ul.products-grid { background: #FFFFFF; border: 1px solid #8A9374; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; padding: 20px 10px; }
+.box-up-sell ul.products-grid { background: #FFFFFF; border: 1px solid #8A9374; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; padding: 20px 10px; width: 100%; border: 1px solid red; }
 .box-up-sell .products-grid .item .productbg .product-image { box-shadow: 0 0 5px #F3F2F3; -webkit-box-shadow: 0 0 5px #F3F2F3; border: none; }
 .box-up-sell .products-grid .item .productbg .product-image:hover .actions { bottom: 1px; left: 4px; width: 96.5%; margin: 0; }
 .product-view .product-essential .product-detail-box .block-related { position: relative; }
@@ -7949,6 +7950,19 @@ div.calendar table td.button {
 .header-right .cart-sude-bar { max-width: 138px; }
 .header-right .dropdown { max-width: 154px; }
 .header-right .information-advice { max-width: 160px; }
+
+/*****Product Info******/
+
+@media only screen and (min-width: 601px) and (max-width:967px) {
+
+.product-view .product-essential .product-detail-box { width: 100%; }
+.product-view .product-essential #main-imgs { width: 100%; }
+.product-view .product-shop, .product-view .add-to-cart-wrapper, .product-view .block-related { padding: 0; }
+
+}
+@media only screen and (min-width: 240px) and (max-width:600px) {}
+
+/*****Product Info******/
 
 
 
