@@ -622,6 +622,13 @@
   float:left;
   padding: 6px;
 }
+.category-title-description .category-description .category-image {
+    float: right;
+    margin: 0 0 0 15px !important;
+}
+.title-description .category-description .category-image {
+  display: none;
+}
 .category-products .pager-list li{
   color: #494956;
   font-family: oswaldlight;
@@ -686,7 +693,7 @@ width:20%;
 
 }
 .catalog-category-view .category-title-description {
-  background-color: #FFFFFF;
+  background: #FFFFFF;
   height: auto;
   margin: 2% 0 0;
   float: left;
@@ -915,6 +922,7 @@ font-family: oswaldlight;
 .category-products .pager .pages {
   margin-left: 52px;
  }
+
 
 
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
@@ -1395,15 +1403,10 @@ padding: 3% 2% 7% ;
 .blog-index-list .col-left, .blog-post-view .col-left {
   width: 100%;
 }
-/*.col2-left-layout .col-main {
-  float: none;
-  margin: 0 !important;
-  padding: 0 1%;
-  width: 98% !important;
+
+.category-title-description .category-image {
+  display: none;
 }
-.catalog-category-view .category-title-description {
-  padding: 0 1%;
-}*/
 .catalog-category-view .back-button {
   display:block;
 }
@@ -1445,7 +1448,43 @@ float:none;
 .product-listing .products-grid .actions ul li {
    margin: 0 3px 0 0;
 }
+.title-description .category-description .category-image {
+  display: block;
 }
+.catalog-category-view .col-left {
+  width: 100%;
+}
+.block-layered-nav--no-filters .block-title {
+ display:block;
+  }
+  #desc-wrap {
+  float: left;
+  padding: 0 1%;
+  width: 98%;
+   margin: 2% 0 0;
+}
+.catalog-category-view .category-title-description {
+  background: none repeat scroll 0 0 #ffffff;
+  float: left;
+  height: auto;
+  margin: 2% 0 0;
+  padding: 5px 9px 5px 10px;
+ 
+}
+#tool-wrap .toolbar {
+  background:none;
+  border-bottom:none; 
+  border-top:none; 
+  }
+  .category-title-description .title-description {
+ 
+  width: 100%;
+}
+.catalog-category-view .category-description.std > p {
+  line-height: 1.8;
+}
+}
+
 
 @media only screen and (min-width:240px) and (max-width:768px){ 
 .blog-post-view .block-title.account, .blog-index-list .block-title.account {
