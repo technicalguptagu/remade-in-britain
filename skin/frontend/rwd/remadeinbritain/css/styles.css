@@ -7440,9 +7440,9 @@ div.calendar table td.button {
 .this-month-featured-retailer .featured-retailer .feature-product .Featured-contant .products-grid > li { width: 33.33%; list-style: none; margin: 0; }
 .this-month-featured-retailer .featured-retailer .feature-product .Featured-contant .products-grid > li .productbg { list-style: none; width: 90%; margin: 0 5%; }
 .products-grid .actions .product-links { height: 42px; float: right; }
-.price-Or-retailername .sale-price { float: left; }
-.price-Or-retailername .sale-price .now { float: left; margin: 0 12px 0 0; }
-.price-Or-retailername .sale-price .was { float: left; }
+.sale-price { float: left; }
+.sale-price .now { float: left; margin: 0 12px 0 0; }
+.sale-price .was { float: left; }
 .this-month-featured-retailer .featured-retailer .feature-product .Featured-contant .products-grid .actions ul li { margin: 0 5px 0 0; }
 .this-month-featured-retailer .featured-retailer .feature-product .Featured-contant .products-grid .actions ul li.add-cart { margin: 0; }
 .footer-block #nav li.level-top { width: 100%; float: none; margin: 0; height: auto; float: left; padding: 0 0 5px; }
@@ -7539,12 +7539,13 @@ div.calendar table td.button {
 .product-view .add-to-links .add-to-box .info-social-links .add-to-any .share { color: #D36B53; font-family: Oswald; font-size: 13px; font-weight: 400; text-transform: uppercase; float: left; padding: 0 14px 0 0; }
 .product-view .product-collateral { width: 100%; background: none; margin: 0; }
 .product-collateral > dl > dd .tab-content .std { font-family: Oswald; font-weight: 300; font-size: 16px; Color: #494956; }
-.box-up-sell .products-grid .item { width: 33.33%; float: left; }
+.box-up-sell .products-grid .item { width: 33.33%; float: left; margin: 20px 0 0; }
 .box-up-sell .products-grid .item .productbg { position: relative; margin: 0 5%; width: 90%; }
 .box-up-sell .upsell-heading { background: url(../images/whitestrip.png) repeat-x 0 bottom; height: 50px; line-height: 50px; margin: 0 0 15px; }
 .box-up-sell .upsell-heading h2 { color: #FFFFFF; font-family: oswald; font-size: 17px; font-weight: 400; float: left; line-height: 50px; margin: 0; }
 .box-up-sell .upsell-heading a { color: #FFFFFF; font-family: oswald; font-size: 14px; font-weight: 300; float: right; }
-.box-up-sell ul.products-grid { background: #FFFFFF; border: 1px solid #8A9374; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; padding: 20px 10px; width: 100%; border: 1px solid red; }
+.box-up-sell ul.products-grid {  }
+.box-up-sell .itemslider-wrapper { padding: 0 10px; background: #FFFFFF; border: 1px solid #8A9374; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; }
 .box-up-sell .products-grid .item .productbg .product-image { box-shadow: 0 0 5px #F3F2F3; -webkit-box-shadow: 0 0 5px #F3F2F3; border: none; }
 .box-up-sell .products-grid .item .productbg .product-image:hover .actions { bottom: 1px; left: 4px; width: 96.5%; margin: 0; }
 .product-view .product-essential .product-detail-box .block-related { position: relative; }
@@ -7620,6 +7621,7 @@ div.calendar table td.button {
 #customer-reviews .date { padding: 0 0 40px 0; }
 #product-review-table td { padding: 0; }
 #main-tab { float: left; width: 100%; }
+.thumbnil-slider .viewport { height: 390px !important; margin: 52px 0; }
 
 /***********Product Info Page**********/
 
@@ -7958,7 +7960,7 @@ div.calendar table td.button {
 .product-view .product-essential .product-detail-box { width: 100%; }
 .product-view .product-essential #main-imgs { width: 100%; }
 .product-view .product-shop, .product-view .add-to-cart-wrapper, .product-view .block-related { padding: 0; }
-
+.product-options { width: 50%; }
 }
 @media only screen and (min-width: 240px) and (max-width:600px) {}
 
