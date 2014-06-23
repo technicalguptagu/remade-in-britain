@@ -7481,7 +7481,7 @@ div.calendar table td.button {
 /***********Category Listing Page**********/
 
 .catalog-category-view .back-button { display: none; }
-.breadcrumb-links { height: 45px; line-height: 45px; background:url(../images/whitestrip.png) repeat-x 0px 43px; }
+.breadcrumb-links { /*height: 45px; line-height: 45px;*/ background:url(../images/whitestrip.png) repeat-x 0px 43px; }
 .col-left .left-retailer .retailer-title h2 { Font-family: Oswald; font-weight: 400; font-size: 17px; Color: #FFFFFF; margin: 0 0 12px; }
 .catalog-category-view .col-left { width: 20.8%; padding: 0; float: left; }
 .col-left .left-retailer { padding: 8% 0 12% 12%; border-bottom: 2px solid #fff; margin: 0 0 16%; }
@@ -7628,7 +7628,9 @@ div.calendar table td.button {
 .box-up-sell .direction-nav li a.prev { background: url(../images/spritearrow.png) no-repeat 1px -43px; display: block; height: 34px; position: absolute; right: 21px; text-indent: -10000px; top: 32px; width: 34px; }
 .box-up-sell .direction-nav li a.next { background: url(../images/spritearrow.png) no-repeat -47px -43px; display: block; height: 34px; left: 21px; position: absolute; text-indent: -10000px; top: 32px; width: 34px; }
 .product-view .product-shop .tier-price { width: 100%; float: left; margin: 0 0 28px; padding: 0; }
-.product-view .product-shop .tier-price li.tier-price { margin: 0;  }
+.product-view .product-shop .tier-price li.tier-price { margin: 0; font-family: Oswald; font-weight: 300; font-size: 16px; color: #FFFFFF; text-transform: uppercase; }
+.product-view .product-shop .tier-price li.tier-price span.price { [12:42:56 PM] Rahul Malani:  Oswald, Regular, 16pt, FFFFFF}
+.product-view .product-shop .tier-price li.tier-price strong.benefit {}
 
 /***********Product Info Page**********/
 
