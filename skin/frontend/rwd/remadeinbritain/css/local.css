@@ -625,6 +625,9 @@
 #left-nav .Category.active > a {
   color: #ffffff;
 }
+.catalog-category-view .social-media {
+  display: none;
+}
 .category-title-description .category-description .category-image {
     float: right;
     margin: 0 0 0 15px !important;
@@ -875,10 +878,13 @@ width: 80px;
  border: medium none !important;
 }
 .block .block-content .actions {
-  background: url("../images/close.png") no-repeat scroll 121px 16px  transparent;
-  border-bottom: 2px solid #FFFFFF;
-  border-top: 2px solid #FFFFFF;
-  padding: 10px 0 6px 23px;
+  background: url("../images/close.png") no-repeat scroll 130px 15px transparent;
+  border-bottom: 2px solid #ffffff;
+  border-top: 2px solid #ffffff;
+  padding: 10px 0 6px 36px;
+}
+.toggle-content .actions a {
+  color: #ffffff;
 }
  #narrow-by-list dt {
   margin: 14px 0 0 !important;
