@@ -21,172 +21,36 @@ $currentDate = Mage::getModel('core/date')->date('Y-m-d');
 
 //display product collection
 $seller_page = Mage::getModel('marketplace/sellerprofile')->collectprofile($id);?>
-
-<script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id))
-            return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=439794342797425";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<div class="market_place_profile">
-    <div class="markeft_place_main_widget">               
-        
-        
-<?php //Face book Like Button Script  ?>
-        <div id="fb-root"></div>           
-        <!--display seller logo-->
-        <div class="mp_profiles_container">            
-                <p class="mp_profiles_logo">
-                    <?php if (strpos($seller_page->getStoreLogo(), '.')) { ?>
-                        <img src="<?php echo Mage::getBaseUrl('media') . "marketplace/resized/" . $seller_page->getStoreLogo(); ?>" alt="store logo" class="market_place_store_img" />                        
-                    <?php } else { ?>
+<?php  $_coreHelper = $this->helper('core');
+       $_taxHelper = $this->helper('tax'); ?>
+<div id="description-wrapper">
+<div class="category-title-description">            
+                      
+                    
+                     
+			<div class="title-description">			
+                   <div class="page-title category-title">
                         <h1><?php echo $seller_page->getStoreTitle(); ?></h1>
-                        <?php 
-                     } ?>
-                </p>
-                <div class="sellers_store_info">
-                <div class="page-title sellers_store">
-                   
-                    <?php //Face book Like Button  ?>
-                    <div class="fb-like mp_fb_like_btn" data-href="<?php echo $current_url; ?>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
-                <?php
-                $fbImage = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN) . 'frontend/default/market_place/marketplace/images/shareb.jpg';
-                $fbUrl = 'http://www.facebook.com/sharer.php?s=100' . '&p[url]=' . $current_url . '&p[images][0]=' . Mage::getBaseUrl('media') . "sellerimage/" . $seller_page->getStoreBanner() . '&p[title]=' . $seller_page->getStoreTitle() . '&p[summary]=' . strip_tags($seller_page->getDescription());
-                ?>
-                   
-                    <a class="mp_social_network" target="_blank" href="<?php echo $fbUrl; ?>"><img src="<?php echo $fbImage ?>" title="<?php echo $this->__('Share with Facebook'); ?>" alt="<?php echo $this->__('Share with Facebook'); ?>" /></a>
+						</div>
+				   <div class="category-description std">
+				       <p class="mp_profiles_desc"><?php echo $seller_page->getDescription(); ?></p>
+                   </div>
+                   <div class="category-image">
+                   <img src="<?php echo Mage::getBaseUrl('media') . "marketplace/resized/" . $seller_page->getStoreLogo(); ?>" alt="store logo" class="market_place_store_img" />
+				   </div>
+				   <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+             </div>           
+               
+                
+               
 
-                <?php //Google Share Button
-                $googleImage = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN) . 'frontend/default/market_place/marketplace/images/gplus.png';
-                ?>
-                   
-                    <a class="mp_social_network" href="https://plus.google.com/share?url=<?php echo $current_url; ?>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
-                        return false;" title="<?php echo $this->__('Share with Google+'); ?>">
-                        <img src="<?php echo $googleImage; ?>" alt="<?php echo $this->__('Share with Google+'); ?>" />
-                    </a>
-                </div> 
-                    <?php $collection = Mage::getModel('customer/customer')->load($id); ?>
-                   
-                </div>
-                <p class="mp_profiles_desc"><?php echo $seller_page->getDescription(); ?></p>
-    </div>
-    <?php
-    //Display Reviews and Ratings
-    //$displaySeller  = Mage::getModel('marketplace/sellerreview')->displayReview($id);
-    //$first_star     = $second_star = $third_star = $fourth_star = $fifth_star = $advanced_total = $ratingbar_color = 0;
-   
-    // ITERATING ALL RATINGS
-    $advanced_total=0;
-    foreach ($displaySeller as $individual_star) {
-        $advanced_total = $advanced_total + 1;
-        if ($individual_star['rating'] == 1) {
-            $first_star = $first_star + 1;
-        } elseif ($individual_star['rating'] == 2) {
-            $second_star = $second_star + 1;
-        } elseif ($individual_star['rating'] == 3) {
-            $third_star = $third_star + 1;
-        } elseif ($individual_star['rating'] == 4) {
-            $fourth_star = $fourth_star + 1;
-        } elseif($individual_star['rating'] == 5) {
-            $fifth_star = $fifth_star + 1;
-        }
-    }
-    
-    // CALCULATING INDIVIDUAL RATINGS       
-    $advanced_one   = ($first_star / $advanced_total) * 100;
-    $advanced_two   = ($second_star / $advanced_total) * 100;
-    $advanced_three = ($third_star / $advanced_total) * 100;
-    $advanced_four  = ($fourth_star / $advanced_total) * 100;
-    $advanced_five  = ($fifth_star / $advanced_total) * 100;
-    ?>      
-    <div class="individual-star-ratings">
-        <h3><?php echo $this->__('Feedback Ratings'); ?> </h3>
-        <ul class="rating-histogram">
-            <li class="advanced-font-small"><span><?php echo $this->__('5 Stars'); ?></span>
-                <div class="rating-bars">
-                    <div class="progress  " style="width:<?php echo ceil($advanced_five); ?>%; background-color: <?php echo '#' . $ratingbar_color; ?> !important;"></div>
-                </div> &nbsp;<strong><?php echo $fifth_star; ?> </strong>
-            </li>
-            <li class="advanced-font-small"><span><?php echo $this->__('4 Stars'); ?></span>
-                <div class="rating-bars">
-                    <div class="progress  " style="width:<?php echo ceil($advanced_four); ?>%; background-color: <?php echo '#' . $ratingbar_color; ?> !important;"></div>
-                </div> &nbsp;<strong><?php echo $fourth_star; ?> </strong>
-            </li>
-            <li class="advanced-font-small"><span><?php echo $this->__('3 Stars'); ?></span>
-                <div class="rating-bars">
-                    <div class="progress  " style="width:<?php echo ceil($advanced_three); ?>%; background-color: <?php echo '#' . $ratingbar_color; ?> !important;"></div>
-                </div> &nbsp;<strong><?php echo $third_star; ?> </strong>
-            </li>
-            <li class="advanced-font-small"><span><?php echo $this->__('2 Stars'); ?></span>
-                <div class="rating-bars">
-                    <div class="progress  " style="width:<?php echo ceil($advanced_two); ?>%; background-color: <?php echo '#' . $ratingbar_color; ?> !important;"></div>
-                </div> &nbsp;<strong><?php echo $second_star; ?> </strong>
-            </li>
-            <li class="advanced-font-small"><span><?php echo $this->__('1 Stars'); ?></span>
-                <div class="rating-bars">
-                    <div class="progress  " style="width:<?php echo ceil($advanced_one); ?>%; background-color: <?php echo '#' . $ratingbar_color; ?> !important;"></div>
-                </div> &nbsp;<strong><?php echo $first_star; ?> </strong>
-            </li>
-        </ul>
-
-        <div class="positive_review_ratings">            
-            <div class="positive_review_positive"><?php echo $this->__('Positive'); ?></div>
-            <div class="positive_review_neutral"><?php echo $this->__('Neutral'); ?></div>
-            <div class="positive_review_negative"><?php echo $this->__('Negative'); ?></div>
-        </div>
-        <div class="customer_review">
-        <?php
-        // Get Reviews and Ratings 
-        $review_count = Mage::helper('marketplace/marketplace')->getallreviewdata($id);
-        if (count($review_count) > 0) { 
-            $customer_id = $product_id = '';?>            
-            <a class="mp_view_all" href='<?php echo $this->getAllreview($customer_id, $id, $product_id); ?>'> <?php echo $this->__('View all Reviews'); ?> </a>
-            <br />      
-        <?php        }
-        if (Mage::getStoreConfig('marketplace/seller_review/enable_review')) {
-            if (Mage::getSingleton('customer/session')->isLoggedIn()) {
-                $customer_id    = Mage::getSingleton('customer/session')->getId();
-                $orders         = Mage::helper('marketplace/marketplace')->allowReview($customer_id);
-                $order_id       = $orders->getFirstItem()->getId();
-                $end_date       = $orders->getFirstItem()->getCreatedAt();
-                $current_date   = Mage::getModel('core/date')->date('Y-m-d H:i:s');
-                $days           = abs(strtotime($current_date) - strtotime($end_date));
-                $years          = floor($days / (365*60*60*24));
-                $months         = floor(($days - $years * 365*60*60*24) / (30*60*60*24));
-                $diff           = floor(($days - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
-                $order          = Mage::getModel('sales/order')->load($order_id);
-                $items          = $order->getAllItems();
-                $getitem        = array_slice($items, -1, 1, true);
-                foreach ($getitem as $item) {
-                    $product_id     = $item->getProductId();
-                    $products       = Mage::getModel('catalog/product')->load($product_id);
-                    $product_seller = $products->getSellerId();                   
-                    $checkReview    = Mage::getModel('marketplace/sellerreview')->checkReview($customer_id, $id, $product_id);
-                    if ($diff <= 30 && $product_seller == $id && $checkReview == '') {
-                        ?>
-                         <a href='<?php echo $this->getAllreview($customer_id, $id, $product_id) . '#seller_review'; ?>'> <?php echo $this->__('Write a Review to this Seller'); ?> </a> 
-                        </p>
-            <?php
-            }
-        }
-    } else { ?>       
-                <div>
-                    <h6><?php echo $this->__('Have you bought something from this seller?'); ?> </h6>
-                    <a class="mp_view_allreview" href='<?php echo $this->loginUrl(); ?>'> <?php echo $this->__('Login to Review'); ?> </a></div><br />
-    <?php }
-} ?>
-    </div>        
-    </div>        
+         
+         
     <div class="clear"></div>
     <?php  $display_product_count = $this->getCollection();
     $count_product = count($display_product_count);
     if($count_product>0){ ?>
-<h2  class="pdct_name home_pdt_name"><span><?php echo $this->__('All Products'); ?></span>
+<!-- <h2  class="pdct_name home_pdt_name"><span><?php echo $this->__('All Products'); ?></span> -->
     <?php } //Display seller category and products   ?>
     <div class="toolbar">
 <?php
@@ -199,28 +63,22 @@ foreach ($seller_value as $_value) {
         $cat_ids_value[] = $_value['category_id'];
     }
 }
-//echo $this->getPagerHtml();
+echo $this->getPagerHtml();
 ?>
         <div class="sorter">
             <form name="category_products" id="mp_category_products" action="" method="post"> 
-                <select name="category_name" onchange="this.form.submit();">
-                    <option value="0" <?php if ($display_cat_product == 0) { ?>selected="selected" <?php } ?>> <?php echo $this->__('Select One Category'); ?></option>
-                        <?php
-                        foreach ($cat_ids_value as $category) {
-                            $cat = Mage::getModel('catalog/category');
-                            $cat->load($category);
-                            ?>   
-                        <option value=" <?php echo $category; ?>" <?php if ($display_cat_product == $category) { ?>selected="selected" <?php } ?> > <?php echo $cat->getName(); ?></option>
-                    <?php } ?>
-                </select>
+			<div class="sort-by">
+		    <label><?php echo $this->__('List By') ?></label>
                 <select name="sorting" onchange="this.form.submit();" id="sorting">
                     <option value="name" <?php if ($sort_product == 'name') { ?>selected="selected" <?php } ?>><?php echo $this->__('Name'); ?></option>
 
                     <option value="price" <?php if ($sort_product == 'price') { ?>selected="selected" <?php } ?>><?php echo $this->__('Price'); ?></option>
                 </select>
+				</div>
             </form>
         </div></div> 
     </h2>
+	
     <ul class="products-grid product_snipt f-left">
        
         <?php
@@ -229,173 +87,93 @@ foreach ($seller_value as $_value) {
             foreach ($display_product as $_product) {
                 $wordsCount_category = strlen($_product->getName()); ?>                
                 <li class="item">
+				<div class="productbg">
+						<?php if ($_product->getNews_from_date()): ?>
+						<?php if ($_product->getNews_to_date()): ?>
+							<span class="new">
+								<img src="<?php echo $this->getskinUrl('images/new.png') ?>" width="82" height="72" alt=""/>
+							</span>
+						<?php endif; ?>
+					   <?php endif; ?>
+					   <?php if ($_product->getSpecialPrice()): ?>
+					     <span class="sale">
+                                    <img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
+                                </span>
+					   <?php endif ?>
                     <a href="<?php echo $_product->getProductUrl(); ?>">
                         <img class="product-image" src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(183); ?>" width="183" height="183" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
                     </a>
-                    <h2 class="product-name">
-                        <a href="<?php echo $_product->getProductUrl(); ?>"> 
-                            <?php if ($wordsCount_category > 15) { 
-                                echo substr($this->htmlEscape($_product->getName()), 0, 15) . '...';
-                                } else {
-                                echo $_product->getName();
-                             } ?>
-                        </a>
-                    </h2> 
-                    <span class="regular-price">             
-                        <span class="price">
+					<h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
+					<?php $_productName = $this->escapeHtml($_product->getName());?>
+                                       <?php $_count = strlen($_productName);?>
+                                        <?php echo strip_tags(substr($_productName, 0, 80));?>
+                                        <?php if ($_count > 80): ?>
+                                           <?php echo $this->__('...')?>  
+										   <?php endif; ?>
+                                        </a></h2>
+										<div class="product-secondary">
+                        <?php //if($_product->isSaleable() && !$_product->canConfigure()): ?>
+                            <p class="action"><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
+                        <?php //elseif($_product->isSaleable()): ?>
+                            <p class="action"><a title="<?php echo $this->__('View Details') ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a></p>
+                        
+                        <?php //endif; ?>
+                        <ul class="add-to-links">
+                            <?php //if ($this->helper('wishlist')->isAllow()) : ?>
+                                <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                            <?php //endif; ?>
+                            <?php //if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                <li><span class="separator">|</span> <a href="<?php echo $this->getAddToCompareUrl($_product) ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                            <?php //endif; ?>
+                        </ul>
+                    </div>
+                    <div class="price-Or-retailername">
                             <?php
                             //Display Product Price
                             $price          = $_product->getPrice();
                             $spl_price      = $_product->getSpecialPrice();
-                            $dealExpireDate = $_product->getspecial_to_date();
-                            if (!empty($spl_price) && ($dealExpireDate != '') && ($dealExpireDate >= $currentDate)) { ?>
-                              <p><?php  echo '<del>' . Mage::helper('core')->currency($price, true, false) . '</del>'; ?></p>
-                               <p><?php echo Mage::helper('core')->currency($spl_price, true, false); ?></p>
-                            <?php } else { ?>
-                              <p> <?php echo Mage::helper('core')->currency($price, true, false); ?></p>
-                          <?php  }
-                            ?>
-                        </span>
-                    </span>
+                            $dealExpireDate = $_product->getspecial_to_date(); ?>  
+					   
+
+								<div class="sale-price">
+								<?php if ($_product->getSpecialPrice()): ?>
+									<div class="now">
+                                        <span class="price"><?php                                            
+                                            $_price = $_taxHelper->getPrice($_product, $_product->getFinalPrice());
+                                            echo $_coreHelper->currency($_price, true, false);
+                                            ?>
+                                        </span>
+                                    </div>
+                                    <div class="was">
+                                        <label><?php echo $this->__('was'); ?></label>
+                                        <span class="price"><?php
+                                            
+                                            $_realPrice = $_taxHelper->getPrice($_product, $_product->getPrice());
+                                            echo $_coreHelper->currency($_realPrice, true, false);
+                                            ?>
+                                        </span>
+                                    </div>
+								<?php else:?>
+								 <p> <?php echo Mage::helper('core')->currency($price, true, false); ?></p>
+								<?php endif ?>
+								</div>
+							
+							<div class="retailer-name">
+								<?php									
+									$_product_id = $_product->getEntityId();
+									$retailerStoreName = Mage::helper('addcustomerattribute')->getRetailerStoreName($_product_id);
+									$retailerStoreLink = Mage::helper('addcustomerattribute')->getRetailerStoreLink($_product_id);
+								?>	
+								<a href='<?php echo $retailerStoreLink; ?>' class="link_seller"><?php echo $retailerStoreName ?></a>
+								<!-- <a href="#"><?php echo $this->__('Retailer Name Link') ?></a> -->
+							</div>
+							<div style="clear: both; height: 0;">&nbsp;</div>
+					   </div>
                 </li>
                         <?php   }
                     } else {
                         echo 'No products exists';
                     }    ?>
-    </ul>
-        <?php echo $this->getPagerHtml();
-
-        //Display New products
-                $enable_new = Mage::getStoreConfig('marketplace/admin_approval_seller_registration/display_new');
-                if ($enable_new == 1) {
-                    $new_products = Mage::getModel('marketplace/sellerprofile')->newproduct($id);
-                    $new_count = count($new_products);
-                    if ($new_count >= 1) { ?>
-            <h2  class="pdct_name home_pdt_name"><span><?php echo $this->__('New Products'); ?></span></h2>
-            <ul class="products-grid product_snipt">
-            <?php
-            //Display New Products of this seller
-
-            foreach ($new_products as $new) {
-                $wordsCount_new = strlen($new->getName());
-                ?>
-                    <li class="item">
-                        <a href="<?php echo $new->getProductUrl(); ?>">
-                            <img class="product-image" src="<?php echo $this->helper('catalog/image')->init($new, 'thumbnail')->resize(183); ?>" width="183" height="183" alt="<?php echo $this->stripTags($this->getImageLabel($new, 'small_image'), null, true) ?>" />
-                        </a>
-                        <h2 class="product-name">
-                            <a href="<?php echo $new->getProductUrl(); ?>"><?php if ($wordsCount_new > 15) { ?>
-                                <?php echo substr($this->htmlEscape($new->getName()), 0, 15) . '...';
-                                } else {
-                                echo $new->getName();
-                                } ?> 
-                            </a>
-                        </h2> 
-                        <span class="regular-price">
-                            <span class="price">
-                            <?php       //Display Product Price
-                            $new_price      = $new->getPrice();
-                            $new_spl_price  = $new->getSpecialPrice();                            
-                            if (!empty($spl_price) && ($dealExpireDate != '') && ($dealExpireDate >= $currentDate)) { ?>
-                                <p><?php  echo '<del>' . Mage::helper('core')->currency($new_spl_price, true, false) . '</del>'; ?></p>
-                                <p><?php echo Mage::helper('core')->currency($new_spl_price, true, false); ?></p>
-                           <?php } else { ?>
-                                <p><?php echo Mage::helper('core')->currency($new_price, true, false); ?></p>
-                            <?php }
-                            ?>
-                            </span>
-                        </span>
-                    </li>
-            <?php }
-     } ?> 
-        </ul>
-  <?php
-        }
-        $enable_popular = Mage::getStoreConfig('marketplace/admin_approval_seller_registration/display_popular');
-        if ($enable_popular == 1) {
-            $popular_products = Mage::getModel('marketplace/sellerprofile')->popularproduct($id);
-            $popular_count = count($popular_products);
-            if ($popular_count >= 1) {
-                ?>
-            <h2 class="pdct_name home_pdt_name"><span><?php echo $this->__('Popular Products'); ?></span> </h2>
-            <!--Display Popular product-->
-            <ul class="products-grid product_snipt">
-
-            <?php foreach ($popular_products as $popular) {
-                $wordsCount_popular = strlen($popular->getName());
-                ?>
-                    <li class="item">
-                        <a href="<?php echo $popular->getProductUrl(); ?>">
-                            <img class="product-image" src="<?php echo $this->helper('catalog/image')->init($popular, 'thumbnail')->resize(183); ?>" width="183" height="183" alt="<?php echo $this->stripTags($this->getImageLabel($popular, 'small_image'), null, true) ?>" />
-                        </a>
-                        <h2 class="product-name"><a href="<?php echo $popular->getProductUrl(); ?>"><?php if ($wordsCount_popular > 15) { ?>
-                        <?php echo substr($this->htmlEscape($popular->getName()), 0, 15) . '...';
-                    } else {
-                        echo $popular->getName();
-                    } ?> </a></h2>
-                        <span class="regular-price">
-                            <span class="price">
-                            <?php //Display Product Price
-                            $price          = $popular->getPrice();
-                            $spl_price      = $popular->getSpecialPrice();
-                            $dealExpireDate = $popular->getspecial_to_date();
-                            if (!empty($spl_price) && ($dealExpireDate != '') && ($dealExpireDate >= $currentDate)) { ?>
-                              <p><?php  echo '<del>' . Mage::helper('core')->currency($price, true, false) . '</del>'; ?></p>
-                              <p><?php echo Mage::helper('core')->currency($spl_price, true, false); ?></p>
-                           <?php } else { ?>
-                                <p><?php echo Mage::helper('core')->currency($price, true, false); ?></p>
-                           <?php }
-                            ?></span>
-                        </span>
-                    </li>
-        <?php }
-    } ?>
-        </ul>
-    <?php
-}
-//display seller category
-$enable_category = Mage::getStoreConfig('marketplace/admin_approval_seller_registration/display_categories');
-if ($enable_category == 1) {
- 
-    $cat_ids = array();
-    $value = $this->sellerproduct($id);
-    $value_count = count($value);
-    if($value_count>0){
-    ?>
-            <h2 class="pdct_name home_pdt_name"><span><?php echo $this->__('Categories'); ?></span></h2>
-        <ul class="products-grid product_snipt f-left">
-    <?php
-    foreach ($value as $_value) {
-        if (!in_array($_value['category_id'], $cat_ids)) {
-            $cat_ids[] = $_value['category_id'];
-        }
-    }
-    foreach ($cat_ids as $category) {
-        $cat = Mage::getModel('catalog/category');
-        $cat->load($category);
-        $wordsCount_popular = strlen($cat->getName());
-        ?>
-
-                <li class="item"><a href="<?php echo $this->getCategoryUrl($category, $id); ?>" >
-
-        <?php if ($cat->getThumbnail()) { ?>
-                            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'catalog/category/' . $cat->getThumbnail(); ?>" height=135 width=135 />
-        <?php } else { ?>
-                            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN) . 'frontend/default/market_place/images/np_thumb2.gif'; ?>" height=135 width=135 />
-        <?php }
-        ?>
-                        <h2 class="product-name"> 
-                            
-                            <a href="<?php echo $cat->getProductUrl(); ?>"><?php if ($wordsCount_popular > 15) { ?>
-                        <?php echo substr($this->htmlEscape($cat->getName()), 0, 15) . '...';
-                    } else {
-                        echo $cat->getName();
-                    } ?> </a>
-                            </h2>
-                    </a>
-                </li>
-    <?php }
-    ?>
-        </ul>
-<?php } }?>
+   </ul>
+</div>
 </div>

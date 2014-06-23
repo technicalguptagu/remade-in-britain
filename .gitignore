@@ -5,7 +5,7 @@ app/etc/local.xml.additional
 app/etc/local.xml.template
 app/etc/local.xml
 app/.htaccess
-app/locale/
+#app/locale/
 app/Mage.php
 cron.php
 cron.sh

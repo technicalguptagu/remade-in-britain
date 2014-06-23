@@ -86,5 +86,35 @@ class Apptha_Marketplace_Block_Displayseller extends Mage_Core_Block_Template
     //Get all reviews link
     function getAllreview($customer_id,$id,$product_id){
         return  Mage::getUrl('marketplace/seller/allreview',array('id'=>$id,'cus'=>$customer_id,'product'=>$product_id));
-  }    
+  } 
+   public function getAddToCartUrl($product, $additional = array())
+    {
+        if ($this->hasCustomAddToCartUrl()) {
+            return $this->getCustomAddToCartUrl();
+        }
+
+        if ($this->getRequest()->getParam('wishlist_next')) {
+            $additional['wishlist_next'] = 1;
+        }
+
+        $addUrlKey = Mage_Core_Controller_Front_Action::PARAM_NAME_URL_ENCODED;
+        $addUrlValue = Mage::getUrl('*/*/*', array('_use_rewrite' => true, '_current' => true));
+        $additional[$addUrlKey] = Mage::helper('core')->urlEncode($addUrlValue);
+
+        return $this->helper('checkout/cart')->getAddUrl($product, $additional);
+    }
+	public function getAddToCompareUrl($product)
+    {
+        return $this->helper('catalog/product_compare')->getAddUrl($product);
+    }
+	public function getMessagesBlock()
+    {
+        if (is_null($this->_messagesBlock)) {
+            return $this->getLayout()->getMessagesBlock();
+        }
+        return $this->_messagesBlock;
+    }
+    
+
+
 } 
