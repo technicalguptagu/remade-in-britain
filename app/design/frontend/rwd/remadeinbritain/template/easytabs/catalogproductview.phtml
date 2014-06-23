@@ -211,4 +211,38 @@ $_product = $this->getProduct(); ?>
 		</div>
 </div>
 </div>
+<!-- BOF developer #06 'displays success/failure message of product enquiry' -->
+<?php $session = Mage::helper('productenquiry')->getSessionData();?>
+	<a class="fancy-terms <?php if($session->getProductEnquiryMessage() == 'true'): ?>success <?php elseif( $session-> getProductEnquiryMessage() =='false'):?>failure<?php endif; ?>" href="#productenquiry" onclick="return false;" id="enquiry"></a>
+	<?php if($session->getProductEnquiryMessage() == 'true'): ?>
+		<div style="display: none;">
+			 <div id="productenquiry">
+				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('product-enquiry-success')->toHtml(); ?>
+			 </div>
+		</div>
+	<?php elseif($session->getProductEnquiryMessage() == 'false'):?>
+		<div style="display: none;">
+			 <div id="productenquiry">
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('error')->toHtml(); ?>
+			 </div>
+		</div>
+	<?php endif; ?>
+	<?php $session->unsProductEnquiryMessage();?>
 
+ <script type="text/javascript">
+    //<![CDATA[	
+	jQuery(document).ready(function() {
+    jQuery('a#enquiry').fancybox();
+	jQuery('#productenquiry').find('form').eq(0).submit(function(){
+		return false;
+	});
+	if(jQuery('#enquiry').hasClass("success") || jQuery('#enquiry').hasClass("failure")){
+		 jQuery('a#enquiry').click();
+		}
+	jQuery(document).on('click', '#cancel-filters-btn', function(){
+    jQuery.fancybox.close();
+});
+    });
+    //]]>
+</script>
+<!-- EOF developer #06  -->

@@ -20,12 +20,9 @@ class Oscp_ProductEnquiry_IndexController extends Mage_Core_Controller_Front_Act
         $post = $this->getRequest()->getPost();
 		$recipient = $post['retaileremailid'];
         $model = Mage::getModel('productenquiry/productenquiry');
-        $model->setData($post);
-		
+        $model->setData($post);		
         $translate = Mage::getSingleton('core/translate');
-
         $translate->setTranslateInline(false);
-
 
         try {
             $postObject = new Varien_Object();
@@ -36,7 +33,6 @@ class Oscp_ProductEnquiry_IndexController extends Mage_Core_Controller_Front_Act
             /* @var $mailTemplate Mage_Core_Model_Email_Template */
 
             $mailTemplate = Mage::getModel('core/email_template');
-
             $mailTemplate->setDesignConfig(array('area' => 'frontend'))
                     ->setReplyTo($post['email'])
                     ->sendTransactional(Mage::getStoreConfig(self::XML_PATH_EMAIL_TEMPLATE), Mage::getStoreConfig(self::XML_PATH_EMAIL_SENDER), $recipient, null, array('data' => $postObject)
@@ -47,16 +43,19 @@ class Oscp_ProductEnquiry_IndexController extends Mage_Core_Controller_Front_Act
             }
 
             $translate->setTranslateInline(true);
-            
-            Mage::getSingleton('core/session')->addSuccess(Mage::helper('productenquiry')->__('Thank you for your enquiry, we will get back to you shortly .'));
-            $this->_redirectUrl($_SERVER['HTTP_REFERER']);
-			//$this->_redirect('*/*/');
+            $session = Mage::getSingleton('core/session',array('name' => 'frontend'));
+			    $session->setProductEnquiryMessage("true");
+            //Mage::getSingleton('core/session')->addSuccess(Mage::helper('productenquiry')->__('Thank you for your enquiry, we will get back to you shortly .'));
+           // $this->_redirectUrl($_SERVER['HTTP_REFERER']);
+		   $this->_redirectReferer();
             return;
         } catch (Exception $e) {
             $translate->setTranslateInline(true);
-            Mage::getSingleton('core/session')->addSuccess(Mage::helper('productenquiry')->__('Unable to submit your request. Please, check all required fields'));
-            $this->_redirectUrl($_SERVER['HTTP_REFERER']);
-			//$this->_redirect('*/*/');
+			$session = Mage::getSingleton('core/session',array('name' => 'frontend'));
+			    $session->setProductEnquiryMessage("false");
+            //Mage::getSingleton('core/session')->addSuccess(Mage::helper('productenquiry')->__('Unable to submit your request. Please, check all required fields'));
+            //$this->_redirectUrl($_SERVER['HTTP_REFERER']);
+			$this->_redirectReferer();
             return;
         }
     }
@@ -83,8 +82,6 @@ class Oscp_ProductEnquiry_IndexController extends Mage_Core_Controller_Front_Act
 			if (!Zend_Validate::is(trim($post['telephone']), 'NotEmpty')) {
                 $error = true;
             }
-
-
             if ($error) {
                 throw new Exception();
             }
@@ -93,8 +90,4 @@ class Oscp_ProductEnquiry_IndexController extends Mage_Core_Controller_Front_Act
             return;
         }
     }
-
-
-	
-
 }
