@@ -625,7 +625,7 @@
 #left-nav .Category.active > a {
   color: #ffffff;
 }
-.catalog-category-view .social-media {
+.block-layered-nav--no-filters .collapsible .block-title {
   display: none;
 }
 .category-title-description .category-description .category-image {
