@@ -1609,7 +1609,7 @@ a.button:hover {
 .tier-prices-grouped {
   display: inline-block;
   padding: 0;
-  margin: 0 0 0 8px;
+  margin: 0 0 0 7px;
 }
 .product-pricing li,
 .tier-prices li,
@@ -7625,12 +7625,11 @@ div.calendar table td.button {
 .thumbnil-slider .viewport { height: 390px !important; margin: 62px 0; }
 .block-related .ratings .rating-links { display: none; }
 .block-related .products-grid .product-image:hover .actions .product-rating { border: 1px solid transparent; display: inline-block; margin: 0 10px 0 0; width: 117px; }
-.box-up-sell .direction-nav li a.prev { background: url(../images/spritearrow.png) no-repeat 1px -43px; display: block; height: 34px; position: absolute; right: 21px; text-indent: -10000px; top: 32px; width: 34px; }
-.box-up-sell .direction-nav li a.next { background: url(../images/spritearrow.png) no-repeat -47px -43px; display: block; height: 34px; left: 21px; position: absolute; text-indent: -10000px; top: 32px; width: 34px; }
+.box-up-sell .direction-nav
 .product-view .product-shop .tier-price { width: 100%; float: left; margin: 0 0 28px; padding: 0; }
 .product-view .product-shop .tier-price li.tier-price { margin: 0; font-family: Oswald; font-weight: 300; font-size: 16px; color: #FFFFFF; text-transform: uppercase; }
-.product-view .product-shop .tier-price li.tier-price span.price { [12:42:56 PM] Rahul Malani:  Oswald, Regular, 16pt, FFFFFF}
-.product-view .product-shop .tier-price li.tier-price strong.benefit {}
+.product-view .product-shop .tier-price li.tier-price span.price { font-weight: 400; color: #fff; margin: 0 0 0 2px; }
+.product-view .product-shop .tier-price li.tier-price strong.benefit { font-weight: 400; }
 
 /***********Product Info Page**********/
 
@@ -7902,7 +7901,7 @@ div.calendar table td.button {
 .subscribe-contant.expanddiv .Sub-img-title { display: none; }
 .subscribe-contant.expanddiv .subscriber-title-content .block-content .input-box input { display: block; }
 .subscriber-title-content .block-content .input-box .button { display: none; }
-.subscriber-title-content .block-content .input-box  .sign-up { background: #E87E62; border: 1px solid #D16235; margin: 0; width: 88px; }
+.subscriber-title-content .block-content .input-box  .sign-up { background: #E87E62; border: 1px solid #D16235; margin: 0; width: 88px; display: block; }
 .subscriber-title-content .block-content .input-box .sign-up:hover { background: #D36B53 }
 .subscriber-title-content .block-content .input-box .sign-up a { color: #fff; font-family: "Oswald",Arial,sans-serif; font-size: 13px; font-weight: normal; padding: 6px 22px; display: block; }
 .subscriber-title-content .block-content { width: 24%; }
@@ -7964,7 +7963,7 @@ div.calendar table td.button {
 
 /*****Product Info******/
 
-@media only screen and (min-width: 601px) and (max-width:967px) {
+@media only screen and (min-width: 300px) and (max-width:967px) {
 
 .product-view .product-essential .product-detail-box { width: 100%; }
 .product-view .product-essential #main-imgs { width: 100%; }
@@ -7977,8 +7976,12 @@ div.calendar table td.button {
 .product-view .add-to-links .add-to-box .add-to-compare { margin: 0; width: 49.6%; }
 .product-view .add-to-links { margin: 0 0 18px; }
 .product-view .add-to-cart { margin: 5px 0 10px; }
+.product-img-box .product-image .product-image-gallery { width: 100%; }
+.product-img-box .product-image .thumbnil-slider { width: 100%; margin: 0; }
+.product-img-box .product-image .thumbnil-slider .more-images { padding: 0; }
+.product-image-thumbs li { float: left; }
 }
-@media only screen and (min-width: 240px) and (max-width:600px) {}
+/*@media only screen and (min-width: 240px) and (max-width:600px) {}*/
 
 /*****Product Info******/
 
