@@ -415,7 +415,8 @@
    width: 80%;
    }
 .dashboard .box-recent .orders th , .dashboard .box-recent .orders td,
-.my-account .data-table.orders th, .my-account .data-table.orders td  {
+.my-account .data-table.orders th, .my-account .data-table.orders td,
+.my-account .linearize-table-large th, .my-account .linearize-table-large td{
   border: 2px solid #FFFFFF !important;
    }
 #co-shipping-form .wide > label {
@@ -1402,11 +1403,14 @@ body, label, button, input, select, table, textarea {
 #review-buttons-container .buttons-set {
   width: 160px;
   }
+ .col-left.sidebar  {
+   width: 100%;
+   }
  .sidebar .block .block-content {
    border: medium none !important;
-  }
+   }
 .col2-left-layout .sidebar .collapsible.mobile-collapsible {
-  margin: 55px 0 0 25px;
+  margin: 55px 0 0 0;
   }
 .col2-left-layout .sidebar .block-account .block-title {
   margin: 0;
@@ -1686,8 +1690,11 @@ body, label, button, input, select, table, textarea {
 #review-buttons-container .buttons-set {
    width: 160px;
    }
+ .col-left.sidebar  {
+   width: 100%;
+   }
 .col2-left-layout .sidebar .collapsible.mobile-collapsible {
-   margin: 55px 0 0 25px;
+   margin: 55px 0 0 0;
    }
 .col2-left-layout .sidebar .block-account .block-title {
    margin: 0;
