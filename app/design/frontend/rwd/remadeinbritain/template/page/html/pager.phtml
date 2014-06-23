@@ -37,16 +37,6 @@
     <div class="pager">
     <?php endif ?>
 
-    <?php if($this->getShowAmounts()): ?>
-    <p class="amount">
-        <?php if($this->getLastPageNum()>1): ?>
-            <?php echo $this->__('Items %s to %s of %s total', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
-        <?php else: ?>
-            <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
-        <?php endif; ?>
-    </p>
-    <?php endif ?>
-
     <?php if($this->getShowPerPage()): ?>
     <div class="limiter">
         <label><?php echo $this->__('Show') ?></label>
@@ -58,6 +48,19 @@
         <?php endforeach; ?>
         </select> <?php echo $this->__('per page') ?>
     </div>
+    <?php endif ?>
+	 <?php if($this->getShowAmounts()): ?>
+    <p class="amount">
+        <?php if($this->getLastPageNum()>1): ?>
+                <p class="amount amount--has-pages">
+                    <?php echo $this->__('(%s-%s / %s)', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+                </p>
+            <?php else: ?>
+                <p class="amount amount--no-pages">
+                    <strong><?php echo $this->__('(%s Item(s))', $this->getTotalNum()) ?></strong>
+                </p>
+            <?php endif; ?>
+    </p>
     <?php endif ?>
 
     <?php if($this->getLastPageNum()>1): ?>
