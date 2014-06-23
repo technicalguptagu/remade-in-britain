@@ -659,10 +659,10 @@ body, label, button, input, select, table, textarea {
     width: 100%;
   }
 /*=======Category page========== */  
-.catalog-category-view .col-left.sidebar .block-cate-content {
+.catalog-category-view .col-left.sidebar #left-nav {
    border-bottom:2px solid #e8eae4;;
-   margin: 0 0 30px;
-   padding: 0 0 15px 35px;
+    margin: 0 0 30px;
+    padding: 0 0 30px;
    }
 .catalog-category-view .col-left.sidebar .block-cate-content .block-title {
    border-top: medium none;
@@ -799,24 +799,29 @@ body, label, button, input, select, table, textarea {
   font-family: oswaldlight;
   font-size: 17px;
   margin: 10px 0 10px 5px;
-  width: 215px;
- }
+  width:75%;
+  }
 .subs-category-list .catagory-grid .category-bg .view {
-    color: #f48f6b;
-    font-family: oswaldlight;
-	text-transform: uppercase;
-    font-size: 17px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
+   color: #f48f6b;
+   font-family: oswaldlight;
+   text-transform: uppercase;
+   font-size: 17px;
+   position: absolute;
+   right: 10px;
+   top: 10px;
+   float: right;
    }
 .subs-category-list .catagory-grid .category-bg .catagory-view {
 	position: relative;
 	height: 50px;
+	width: 100%;
     }
 .subs-category-list .catagory-grid .category-bg .category-name > a {
     display: block;
-    line-height: 23px;
+    height: 50px;
+    line-height: 25px;
+    overflow: hidden;
+    width: 100%;
    }
 .page-title h1  {
    border-bottom:none;
@@ -1348,6 +1353,9 @@ body, label, button, input, select, table, textarea {
   }
 .breadcrumbs {
    display: block;
+  }
+.col-left.sidebar .left-category {
+   display: block !important;
   }
 .sidebar .block .block-content {
    border: medium none !important;
