@@ -246,7 +246,9 @@ $_product = $this->getProduct(); ?>
     </div>
 
   <!-- Developer 06  2014/06/16 -->
+	<div class="productenquiry">
 		<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('productenquiry/productenquiry.phtml')->toHtml(); ?>
+	</div>
   <!-- EOF Developer 06  2014/06/16 -->
     <div class="product-collateral toggle-content tabs">
         <?php if ($detailedInfoGroup = $this->getChildGroup('detailed_info', 'getChildHtml')):?>

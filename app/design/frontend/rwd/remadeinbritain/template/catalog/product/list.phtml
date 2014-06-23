@@ -207,8 +207,17 @@
 								<?php else:?>
 								<?php echo $this->getPriceHtml($_product, true, '-new') ?>
 								<?php endif ?>
-							
-							<div class="retailer-name"><a href="#"><?php echo $this->__('Retailer Name Link') ?></a></div>
+						<!-- BOF developer #06  'Display retailer store name on listing page' 2014/06/21 -->
+							<div class="retailer-name">
+								<?php									
+									$_product_id = $_product->getEntityId();
+									$retailerStoreName = Mage::helper('addcustomerattribute')->getRetailerStoreName($_product_id);
+									$retailerStoreLink = Mage::helper('addcustomerattribute')->getRetailerStoreLink($_product_id);
+								?>	
+								<a href='<?php echo $retailerStoreLink; ?>' class="link_seller"><?php echo $retailerStoreName ?></a>
+								<!-- <a href="#"><?php echo $this->__('Retailer Name Link') ?></a> -->
+							</div>
+						<!-- EOF developer #06  2014/06/21 -->
 							<div style="clear: both; height: 0;">&nbsp;</div>
 					   </div>
 					  
