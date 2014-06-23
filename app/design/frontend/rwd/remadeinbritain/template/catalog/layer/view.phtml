@@ -38,6 +38,11 @@
 		<div class="block-title">
 			<strong><span><?php echo $this->__('FILTER BY')?></span></strong>  
 		</div>	
+		<?php if ($this->getLayer()->getState()->getFilters()): ?>
+			<div class="mobile-filter">
+				<div class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear all selections') ?></a></div>
+			</div>
+		<?php endif; ?>
 		<div class="block-content toggle-content">
 			<?php //echo $this->getStateHtml() ?>
 			<?php if($this->canShowOptions()): ?>

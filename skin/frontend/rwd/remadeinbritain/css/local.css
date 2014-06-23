@@ -269,7 +269,7 @@
   margin-bottom: 5%;
   padding: 0 1%;
 }
-.join-page .sign-desc p {
+.join-page .sign-desc p, .join-account p{
   color: #494956;
   font-family: oswaldlight;
   font-size: 20px;
@@ -914,10 +914,13 @@ font-family: oswaldlight;
     font-size: 17px;
 }
 #left-nav li.parent .opener {
-   
+    border: 1px solid red;
+    height: 15px;
     left: 0;
     position: absolute;
     top: 0;
+    width: 15px;
+    z-index: 99;
 }
 #narrow-by-list .m-selected-ln-item {
   position: relative;
@@ -933,10 +936,8 @@ font-family: oswaldlight;
  }
 
 .block-layered-nav .block-content > dl > dt:after {
- 
-  border-style: none;
- 
-}
+ border-style: none;
+ }
 
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
@@ -1343,7 +1344,7 @@ float:none;
   background: none repeat scroll 0 0 #ffffff;
   float: left;
   height: auto;
-  margin: 2% 0 0;
+ 
   padding: 5px 9px 5px 10px;
  
 }
@@ -1412,8 +1413,14 @@ background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -53px rgb
 .mobile-collapsible .toggle-content #narrow-by-list dt {
  padding-left:23px !important;
 }
+.block-layered-nav .block-content > dl > dd{
+background: url("../images/sprite-listing-300.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+display:none;
 }
-
+.block-layered-nav .block-content.accordion-open > dl > dd.current{
+display:block;
+}
+}
 
 @media only screen and (min-width:200px) and (max-width:299px){  
 .join-page , .join-page .join-us {
