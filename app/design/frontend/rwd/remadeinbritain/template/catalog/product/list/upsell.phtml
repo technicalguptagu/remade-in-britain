@@ -34,10 +34,12 @@ $_count = count($this->getItemCollection());?>
 ?>
 <div class="box-collateral box-up-sell">
 	<div class="upsell-heading">
-		<h2><?php echo $this->__('more items from this retailer') ?></h2>
+		<h2><?php echo $this->__('more items from this retailerfrom this retailer') ?></h2>
 		<a href="#"><?php echo $this->__('View all &raquo;') ?></a>
 		<div class="clearer">&nbsp;</div>
 	</div>
+	<div class="content-heading"><h1><?php echo $this->__('more from this retailer') ?></h1></div>
+	<div class="mobile-view-all"><a href="#"><?php echo $this->__('View all &raquo;') ?></a></div>
    <div class="itemslider-wrapper<?php if($_count > 5):?> three<?php endif;?>">
 		<div class="itemslider-related-main itemslider-horizontal itemslider-responsive" id="itemslider-related-main">                
                 <ul class="slides products-grid">
