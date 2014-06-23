@@ -54,22 +54,26 @@ $_url = str_replace('/index.php/','',$_url); ?>
 		</ul>
 	<?php endif ?>
 </div>
+
 <script type="text/javascript">
 	//<!--![CDATA[
 		jQuery(function($) {					
-				activateMobileMenu();
-				$('#mobnav-trigger').toggle(function() {
-				$(this).addClass('active');
-				$('.vertnav-top').addClass('show');
-			}, function() {
-				$(this).removeClass('active');
-				$('.vertnav-top').removeClass('show');
+			activateMobileMenu();
+			$('#mobnav-trigger').click(function() {
+				if ($(this).hasClass('active')) {
+					$(this).removeClass('active');
+					$('.vertnav-top').removeClass('show');				
+				} else { 				
+					$(this).addClass('active');
+					$('.vertnav-top').addClass('show');
+				}
+				return false;
 			});			
 
 			if($('.accordion.vertnav li').hasClass('active')){
-			$('#mobnav-trigger').addClass('on');
+				$('#mobnav-trigger').addClass('on');
 			} else {
-			$('#mobnav-trigger').removeClass('on');
+				$('#mobnav-trigger').removeClass('on');
 			}
 
 			$('.accordion.vertnav .opener').click(function() {
