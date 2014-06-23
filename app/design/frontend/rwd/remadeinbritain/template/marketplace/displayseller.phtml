@@ -158,7 +158,15 @@ echo $this->getPagerHtml();
 								<?php endif ?>
 								</div>
 							
-							<div class="retailer-name"><a href="#"><?php echo $this->__('Retailer Name Link') ?></a></div>
+							<div class="retailer-name">
+								<?php									
+									$_product_id = $_product->getEntityId();
+									$retailerStoreName = Mage::helper('addcustomerattribute')->getRetailerStoreName($_product_id);
+									$retailerStoreLink = Mage::helper('addcustomerattribute')->getRetailerStoreLink($_product_id);
+								?>	
+								<a href='<?php echo $retailerStoreLink; ?>' class="link_seller"><?php echo $retailerStoreName ?></a>
+								<!-- <a href="#"><?php echo $this->__('Retailer Name Link') ?></a> -->
+							</div>
 							<div style="clear: both; height: 0;">&nbsp;</div>
 					   </div>
                 </li>
