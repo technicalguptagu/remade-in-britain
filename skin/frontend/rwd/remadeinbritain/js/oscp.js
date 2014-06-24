@@ -65,7 +65,15 @@ jQuery(document).ready(function()
   jQuery('#search').click(function(){
   jQuery('#search').toggleClass('active');
 });
+
   });
+
+jQuery(document).ready(function(){	
+var submenuhtml2 = '';
+submenuhtml2=jQuery('.main-container .main .col-left .block-title').html();
+jQuery('.main-container .main .col-left .block-title').remove();
+jQuery('.main-container .main .breadcrumb-links .breadcrumbs').after(submenuhtml2);
+ });
 
 /*EOF developer.21*/
 
