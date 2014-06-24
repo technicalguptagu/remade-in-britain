@@ -79,8 +79,9 @@
 
 
 <?php if (count($this->getGalleryImages()) > 0): ?>
+<div class="horizontal-slider">
 		<div class="thumbnil-slider" style="float:left;">
-			 <div class="more-images itemslider itemslider-thumbnails gen-slider-arrows3  count-multi">
+			 <div id="itemslider-thumbnails-horizontal" class="more-images itemslider itemslider-thumbnails gen-slider-arrows3  count-multi">
 				<ul class="product-image-thumbs slides">
 				<?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
         <?php
@@ -102,7 +103,7 @@
 		<script type="text/javascript">
 //<![CDATA[
     jQuery(function($) {
-        $('.itemslider-thumbnails').flexslider({
+        $('#itemslider-thumbnails-horizontal').flexslider({
 			namespace: "",
             animation: "slide",
 			animationSpeed: 300,
@@ -113,6 +114,67 @@
     });
 //]]>
 </script>
+</div>
+<div class="vertical-slider">
+<div class="thumbnil-slider vertical" style="float:left;">
+			 <div id="itemslider-thumbnails-vertical" class="more-images itemslider itemslider-thumbnails gen-slider-arrows3  count-multi">
+				<ul class="product-image-thumbs slides">
+				<?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
+        <?php
+        if (($filterClass = $this->getGalleryFilterHelper()) && ($filterMethod = $this->getGalleryFilterMethod()) && !Mage::helper($filterClass)->$filterMethod($_product, $_image)):
+            continue;
+        endif;
+        ?>
+        <li>
+            <a class="thumb-link" href="#" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>" data-image-index="<?php echo $i; ?>">
+							<img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(115); ?>"
+								alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" />
+						</a>
+        </li>
+    <?php $i++; endforeach; ?>
+				</ul>
+			</div>
+			<h2><?php echo $this->__('CLICK ABOVE TO VIEW MORE IMAGES') ?></h2>
+		</div>
+	</div>
+		<script type="text/javascript">
+//<![CDATA[
+    jQuery(function($) {
+        //<![CDATA[
+	jQuery("#itemslider-thumbnails-vertical").flexslider({
+	namespace: "",
+	animation: "slide",
+	easing: "easeInQuart",
+	slideshow: false,
+	animationLoop: false,
+	animationSpeed: 400,
+	pauseOnHover: true,
+	controlNav: false,
+	controlsContainer: "#nav-itemslider-vertical",
+	itemWidth: 95,
+	minItems: 1,
+	maxItems: 3,
+	move: 0
+	}); 
+    });
+//]]>
+</script>
+
+		<?php endif; ?>
+	<?php if (count($this->getGalleryImages()) < 3): ?>
+	<script type="text/javascript">
+	jQuery(function(){
+		thumbnilList();
+	})
+	jQuery(document).resize(function(){
+		thumbnilList();
+	})
+	function thumbnilList(){
+	var imgheight = jQuery('.product-image-gallery').height();
+	alert(imgheight);
+	jQuery('.horizontal-slider .thumbnil-slider').css('height',imgheight);
+	}
+	</script>
 		<?php endif; ?>
 		
 </div>

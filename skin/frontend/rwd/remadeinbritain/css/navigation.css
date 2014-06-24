@@ -65,7 +65,7 @@
 .vertnav-top.mobile.show { }
 
 #mobnav.grid-full { margin: 2px 0; }
-#mobnav #mobnav-trigger { /*background: url("../images/homepage-sprite.png") no-repeat scroll -229px -362px #FFFFFF;*/ color: #000000; display: block; font-size: 11px; padding: 11px 0 11px 10px; text-align: left; text-decoration: none; text-transform: uppercase; }
+#mobnav #mobnav-trigger { /*background: url("../images/homepage-sprite.png") no-repeat scroll -229px -362px #FFFFFF;*/ color: #000000; display: block; font-size: 11px; padding: 11px 0 11px 5px; text-align: left; text-decoration: none; text-transform: uppercase; }
 #mobnav-trigger .trigger-icon { background: url(../images/spritehome.png) no-repeat -202px -469px; display: block; height: 24px; width: 76px; }
 
 #mobnav #mobnav-trigger.active span{ background: url(../images/spritehome.png) no-repeat -203px -510px; color: #ffffff; transition: color 500ms ease-in-out 0s, background-color 450ms ease-in-out 0s;}
@@ -74,7 +74,7 @@
 .accordion > li:firat-child { background: none; }
 .accordion > li > a { color: #75757C; display: block; font-family: oswald; font-size: 14px; font-weight: 300; padding: 5px 0 5px 67px; text-align: left; text-decoration: none; text-transform: uppercase; }
 .accordion > li.fit-guide > a { background: url("../images/footer-shadow-strip.png") repeat-x scroll 0 100% transparent; padding-bottom: 23px }
-.accordion > li.active > a  { background: #000000; color: #ffffff; }
+.accordion > li.active > a  { /*background: #000000; color: #ffffff;*/ }
 .accordion > li .opener { background: url(../images/spritehome.png) no-repeat -342px -565px; cursor: pointer; height: 12px; left: 45px; position: absolute; top: 9px; width: 12px; }
 .accordion > li.active .opener { background: url(../images/spritehome.png) no-repeat -342px -594px; top: 10px; }
 .accordion > li ul { padding-left: 67px; padding-bottom: 2px; }
