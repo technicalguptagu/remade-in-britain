@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Oscp_OverrideReview>
+      <version>0.1.0</version>
+    </Oscp_OverrideReview>
+  </modules>
+  <frontend>
+    <routers>
+      <overridereview>
+        <use>standard</use>
+          <args>
+            <module>Oscp_OverrideReview</module>
+            <frontName>overridereview</frontName>
+          </args>
+      </overridereview>
+    </routers>
+  </frontend>
+  <global>
+		<rewrite>        
+            <oscp_overridereview_review_productcontroller>
+                <from><![CDATA[#^/review/product/#]]></from> <!-- Mage_Review_ProductController  -->
+                <to>/overridereview/review_product/</to> <!-- Oscp_OverrideReview_Review_ProductController  -->
+            </oscp_overridereview_review_productcontroller>
+		</rewrite>
+    <helpers>
+      <overridereview>
+        <class>Oscp_OverrideReview_Helper</class>
+      </overridereview>
+        <review>
+			<rewrite>
+				<data>Oscp_OverrideReview_Helper_Review_Data</data>
+            </rewrite>
+        </review>
+    </helpers>
+  </global>
+  <admin>
+	<routers>
+	  <overridereview>
+	    <use>admin</use>
+		<args>
+		  <module>Oscp_OverrideReview</module>
+		  <frontName>overridereview</frontName>
+		</args>
+	  </overridereview>
+	</routers>
+  </admin>
+</config> 
