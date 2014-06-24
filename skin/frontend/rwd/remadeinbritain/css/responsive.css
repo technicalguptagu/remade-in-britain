@@ -1576,9 +1576,6 @@ body, label, button, input, select, table, textarea {
     padding-left: 0;
     width: 100% !important;
     }
-  .breadcrumbs {
-    display: none;
-    } 
 .back-button {
     display: block !important;
     padding: 15px 0 0;
@@ -1843,9 +1840,6 @@ body, label, button, input, select, table, textarea {
     padding-left: 0;
     width: 100% !important;
     }
-  .breadcrumbs {
-    display: none;
-    } 
 .back-button {
     display: block !important;
     padding: 15px 0 0;

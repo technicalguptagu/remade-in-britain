@@ -63,16 +63,25 @@
         </div>
     <?php endif; ?>
     <?php // developer-19 back button for mobile ?>
-    <div class="back-button">
+    
+    <div id="desc-wrap"></div>
+    <div id="tool-wrap"></div>
+</div>
+<div class="back-button">
         <button onclick="history.back();" class="button" title="<?php echo $this->__('Go Back') ?>" type="button">
             <span>
                 <span><?php echo $this->__('Go Back') ?></span>
             </span>
         </button>
     </div>
-    <div id="desc-wrap"></div>
-    <div id="tool-wrap"></div>
-</div>
-
+<script type="text/javascript">
+jQuery(document).ready(function(){
+jQuery('.back-button').hide();
+if(jQuery(window).width < 740){
+jQuery('.back-button').show();
+jQuery('.breadcrumb-links').hide();
+}
+});
+</script>
 <?php
 //EOF developer-19 4/6/2013     ?>
