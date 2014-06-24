@@ -236,7 +236,7 @@ Customer account pages, rendered for all tabs in dashboard
                 <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
             </block>
             <block type="catalog/product_compare_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
-            <remove name="tags_popular"/>
+            
 
         </reference>
     </customer_account>
