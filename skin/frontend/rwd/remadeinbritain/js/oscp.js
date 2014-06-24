@@ -70,9 +70,9 @@ jQuery(document).ready(function()
 
 jQuery(document).ready(function(){	
 var submenuhtml2 = '';
-submenuhtml2=jQuery('.main-container .main .col-left .block-title').html();
-jQuery('.main-container .main .col-left .block-title').remove();
-jQuery('.main-container .main .breadcrumb-links .breadcrumbs').after(submenuhtml2);
+submenuhtml2=jQuery('.customer-account-index .main-container .main .col-left .block-title').html();
+jQuery('.customer-account-index .main-container .main .col-left .block-title').remove();
+jQuery('.customer-account-index .main-container .main .breadcrumb-links .breadcrumbs').after(submenuhtml2);
  });
 
 /*EOF developer.21*/
