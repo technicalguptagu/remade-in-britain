@@ -72,8 +72,11 @@ echo $this->getPagerHtml();
                 <select name="sorting" onchange="this.form.submit();" id="sorting">
                     <option value="name" <?php if ($sort_product == 'name') { ?>selected="selected" <?php } ?>><?php echo $this->__('Name'); ?></option>
 
+
                     <option value="price" <?php if ($sort_product == 'price') { ?>selected="selected" <?php } ?>><?php echo $this->__('Price'); ?></option>
                 </select>
+
+              
 				</div>
             </form>
         </div></div> 
@@ -82,7 +85,12 @@ echo $this->getPagerHtml();
     <ul class="products-grid product_snipt f-left">
        
         <?php
+
+        $display_product1 = $this->getCollection();
+		//echo $display_product1->getSelect()->__toString();
+
         $display_product = $this->getCollection();
+
         if (!empty($display_product)) {
             foreach ($display_product as $_product) {
                 $wordsCount_category = strlen($_product->getName()); ?>                

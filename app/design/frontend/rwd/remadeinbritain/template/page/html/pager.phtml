@@ -40,13 +40,28 @@
     <?php if($this->getShowPerPage()): ?>
     <div class="limiter">
         <label><?php echo $this->__('Show') ?></label>
-        <select onchange="setLocation(this.value)">
+        <!-- <select onchange="setLocation(this.value)">
         <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
             <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
                 <?php echo $_limit ?>
             </option>
         <?php endforeach; ?>
-        </select> <?php echo $this->__('per page') ?>
+        </select>  -->
+		
+		<ul class="pager-list">			
+            <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
+			<?php $data = Mage::app()->getRequest()->getParam('limit');?>
+			    <li onclick="setLocation('<?php echo $this->getLimitUrl($_key) ?>')" <?php if($_limit == $data): ?> class="active"<?php endif ?>>
+				    <?php echo $_limit ?>
+				</li>
+            <?php endforeach; ?>
+			</ul>
+		
+		
+		
+		
+		
+		<?php echo $this->__('per page') ?>
     </div>
     <?php endif ?>
 

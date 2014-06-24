@@ -34,7 +34,7 @@ class Apptha_Marketplace_Block_Displayseller extends Mage_Core_Block_Template
                         ->createBlock('page/html_pager', 'my.pager')                      
                         ->setCollection($display_collection); 
                  $pager->setAvailableLimit(array(10 => 10,20 => 20,30=>30,50=>50));
-                 $pager->setLimit(20);
+                 $pager->setLimit(10);
        $this->setChild('pager', $pager);
        return $this;     
     }
@@ -69,7 +69,8 @@ class Apptha_Marketplace_Block_Displayseller extends Mage_Core_Block_Template
                                 $collection->addAttributeToFilter('seller_id',$id);
                                 $collection->addStoreFilter();         
                                 $collection->addAttributeToSort($sort_product);
-        return $collection;
+      
+		return $collection;
     }
     //Get category Url
     function getCategoryUrl($customer_id,$id){
