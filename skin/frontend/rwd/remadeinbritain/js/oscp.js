@@ -68,6 +68,7 @@ jQuery(document).ready(function()
 
   });
 
+
 jQuery(document).ready(function(){	
 var submenuhtml2 = '';
 submenuhtml2=jQuery('.customer-account-index .main-container .main .col-left .block-title').html();
