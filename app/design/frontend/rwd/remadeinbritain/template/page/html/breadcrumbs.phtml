@@ -24,22 +24,18 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<?php //BOF developer-19 4/11/2013       ?>
+<?php //BOF developer-19 4/6/2013      ?>
 <div class="breadcrumb-links">
     <?php if (is_null($crumbs)): ?>
         <?php
         $_controllerName = $this->getLayout()->getBlock('head')->getTitle();
         ;
         $_controllerName = ucfirst($_controllerName);
-        //$controllerName = str_replace("/", " ", $urlPart);
-        //$controllerName = str_replace("_", " ", $controllerName);
-        //$controllerName = str_replace("-", " ", $controllerName);
-        //$controllerName = ucfirst($controllerName);
         ?>
         <div class="breadcrumbs">
             <ul>
                 <li class="789home"><a title="<?php echo $this->__('Go to Home Page') ?>" href="<?php echo $this->getUrl() ?>"><?php echo $this->__('Home') ?></a>
-                    <span class="sep">&frasl;</span></li>
+                    <span class="sep"></span></li>
                 <li class=" last <?php echo strtolower($_controllerName) ?>"><strong><?php echo $this->__($_controllerName) ?></strong></li>
             </ul>
         </div>
@@ -54,28 +50,29 @@
                             <a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->htmlEscape($_crumbInfo['title']) ?>"><?php echo $this->htmlEscape($_crumbInfo['label']) ?></a>
                             <span class="sep">&nbsp; </span>
                         <?php elseif ($_crumbInfo['last']): ?>
-                        <strong><?php echo $this->htmlEscape($_crumbInfo['label']) ?></strong>
-                    <?php else: ?>
-                        <?php echo $this->htmlEscape($_crumbInfo['label']) ?>
-                    <?php endif; ?>
-                    <?php if (!$_crumbInfo['last']): ?>
+                            <strong><?php echo $this->htmlEscape($_crumbInfo['label']) ?></strong>
+                        <?php else: ?>
+                            <?php echo $this->htmlEscape($_crumbInfo['label']) ?>
+                        <?php endif; ?>
+                        <?php if (!$_crumbInfo['last']): ?>
 
-                    <?php endif; ?>
+                        <?php endif; ?>
                     </li>
                 <?php endforeach; ?>
             </ul>
         </div>
     <?php endif; ?>
-	<div class="back-button">
-		<button onclick="history.back();" class="button" title="<?php echo $this->__('Go Back') ?>" type="button">
-			<span>
-				<span><?php echo $this->__('Go Back') ?></span>
-			</span>
-		</button>
-	</div>
-	<div id="desc-wrap"></div>
-	<div id="tool-wrap"></div>
+    <?php // developer-19 back button for mobile ?>
+    <div class="back-button">
+        <button onclick="history.back();" class="button" title="<?php echo $this->__('Go Back') ?>" type="button">
+            <span>
+                <span><?php echo $this->__('Go Back') ?></span>
+            </span>
+        </button>
+    </div>
+    <div id="desc-wrap"></div>
+    <div id="tool-wrap"></div>
 </div>
 
 <?php
-//EOF developer-19 4/11/2013     ?>
+//EOF developer-19 4/6/2013     ?>
