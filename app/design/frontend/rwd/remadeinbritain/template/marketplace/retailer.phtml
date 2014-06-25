@@ -1,0 +1,42 @@
+<?php
+/**
+ *
+ * @package         Apptha Marketplace
+ * @version         1.2.1
+ * @since           Magento 1.5
+ * @author          Apptha Team
+ * @copyright       Copyright (C) 2014 Powered by Apptha
+ * @license         http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date   Oct 23 2012
+ * @Modified By     Jenifer Ratchanya
+ * @Modified Date   Mar 27 2014
+ *
+ * */
+ //media/marketplace/resized/category1_1.png
+?>
+<?php $_collection = $this->getRetailer();?>
+<div class="subs-category-list">
+<ul class="catagory-grid">
+<?php foreach($_collection as $_retailer):?>
+	<?php 
+	        $_targetPath = 'marketplace/seller/displayseller/id/' . $_retailer->getSellerId();
+            $_mainUrlRewrite     = Mage::getModel('core/url_rewrite')->load($_targetPath, 'target_path');
+            $_getRequestPath     = $_mainUrlRewrite->getRequestPath();
+            $_getUrl  = Mage::getUrl($_getRequestPath);
+	?>
+	<?php $_image = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'marketplace/resized/'.$_retailer->getStoreLogo() ?>
+		<li class="item">
+		 <div class="category-bg">
+		 <a href="<?php echo $_getUrl?>" class="category-image" <?php /* if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; */ ?>>
+			<img src="<?php echo $_image ?>" alt="<?php echo $_image ?>" title="<?php echo $_image ?>" /></a>			 
+            <!-- <a href="<?php echo $_getUrl?>"><?php echo $_title = $_retailer->getStoreTitle();?></a> -->
+
+                      <div class="catagory-view">
+                            <div class="category-name"><a href="<?php echo $_getUrl?>" title="<?php echo $_title = $_retailer->getStoreTitle();?>"><?php echo $_title = $_retailer->getStoreTitle();?></a></div>
+                            <a class="view" href="<?php echo $_getUrl?>"><?php echo $this->__('View &raquo;')?></a>
+                       </div>
+					   </div>
+		</li>               
+	
+<?php endforeach;?>
+</ul>
