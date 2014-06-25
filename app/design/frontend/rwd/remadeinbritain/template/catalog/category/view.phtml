@@ -47,7 +47,7 @@
 
 
 <?php else: ?>
-<div id="description-wrapper <?php if(!$_description=$this->getCurrentCategory()->getDescription()): ?> no-description <?php endif; ?>">
+<div id="description-wrapper" <?php if(!$_description=$this->getCurrentCategory()->getDescription()): ?>class="no-description"<?php endif; ?>>
 <div class="category-title-description">
 <?php //BOF developer 09 For adding div?>
 <div class="title-description">
