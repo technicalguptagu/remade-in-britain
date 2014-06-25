@@ -614,13 +614,13 @@
   margin: 0 0 0 15px;
 }
 /* - - - - product listing page - - -*/
- .category-products .sort-by label, .category-products .pager .limiter label{
+ .category-products .sort-by label, .pager .limiter label{
   color: #FFFFFF;
   font-family: oswald;
   font-size: 14px !important;
   font-weight: 400;
   float:left;
-  padding: 6px;
+ padding: 6px 0 0;
 }
 #left-nav .Category.active > a {
   color: #ffffff;
@@ -661,7 +661,7 @@
 }
 .sort-list .sorter_name, .pager .amount-pages, .first-page .first, .last-page .last, .per-page{
   color: #494956 !important;
-  font-family: oswaldlight;
+  font-family: oswaldlight !important;
   font-size: 14px;
   
 }
@@ -675,6 +675,9 @@
 .latest-products .itemslider-similar-main .products-grid > li {
   float: left;
   width: 33.33%;
+}
+.pager .amount > strong {
+  font-weight: 300;
 }
 .amount-pages {
   float: left;
@@ -835,6 +838,9 @@ width:20.8%;
  font-size: 14px;
   padding: 0 0 0 10px;
 }
+.catalog-category-view .block-title {
+  display: none;
+}
 #narrow-by-list li a.checked{
  background: url("../images/chk-mark-sprite.png") no-repeat scroll 0 -23px transparent;
  color: #FFFFFF;
@@ -876,7 +882,7 @@ width: 80px;
  border: medium none !important;
 }
 .block .block-content .actions {
-  background: url("../images/close.png") no-repeat scroll 130px 15px transparent;
+  background: url("../images/close.png") no-repeat scroll 138px 17px transparent;
   border-bottom: 2px solid #ffffff;
   border-top: 2px solid #ffffff;
   padding: 10px 0 6px 36px;
@@ -912,7 +918,7 @@ font-family: oswaldlight;
     font-size: 17px;
 }
 #left-nav li.parent .opener {
-    border: 1px solid red;
+  
     height: 15px;
     left: 0;
     position: absolute;
@@ -920,6 +926,7 @@ font-family: oswaldlight;
     width: 15px;
     z-index: 99;
 }
+
 #narrow-by-list .m-selected-ln-item {
   position: relative;
 }
@@ -940,7 +947,7 @@ border-style:none;
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:1024px) and (max-width:1245px){  
 }
-@media only screen and (min-width:768px) and (max-width:1023px){  
+@media only screen and (min-width:768px) and (max-width:1024px){  
 .contact-page {
   width: 98%;
   padding: 0 1% 0;
@@ -1116,12 +1123,7 @@ padding: 5px 9px 5px 10px;
 #tool-wrap .pager .count-container {
   float: none;
 }
-#tool-wrap .pager .limiter {
-  float: left;
-  height: 30px;
-  line-height: 30px;
-  width: 64%;
-}
+
 .col-left .mobile-collapsible {
   background: url("../images/whitestrip.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
   margin: 15px 0 0;
@@ -1143,11 +1145,22 @@ padding: 5px 9px 5px 10px;
 .mobile-collapsible .toggle-content #narrow-by-list dt {
   padding-left: 23px !important;
 }
-.block-layered-nav .block-content dl dt {
-  background: url("../images/sprite-listing-300.png") no-repeat scroll 445px -102px rgba(0, 0, 0, 0) !important;
+.block-layered-nav .block-content dl dt span {
+  background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -110px rgba(0, 0, 0, 0) !important;
+  display: block;
+  height: 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20px;
 }
-.block-layered-nav .block-content.accordion-open dl dt.current {
-  background: url("../images/sprite-listing-300.png") no-repeat scroll 445px -164px rgba(0, 0, 0, 0) !important;
+.block-layered-nav .block-content.accordion-open dl dt.current span {
+  background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -173px rgba(0, 0, 0, 0) !important;
+  height: 20px;
+  width: 20px;
+}
+#narrow-by-list {
+  position: relative;
 }
 .catalog-category-view .col2-left-layout .col-main {
   float: left;
@@ -1182,8 +1195,13 @@ padding: 5px 9px 5px 10px;
 .mobile-collapsible .toggle-content.accordion-open #narrow-by-list dt.current {
   border-bottom: medium none;
 }
-
-
+.latest-products .itemslider-similar-main .products-grid > li {
+ width: 70%;
+}
+#tool-wrap .pager .pager-list {
+  float: left;
+  padding: 0 14px 0 0;
+}
 }
 
  @media only screen and (min-width:300px) and (max-width:479px){  
@@ -1490,29 +1508,22 @@ float:none;
 }
 #tool-wrap .pager {
   float: none;
- 
-}
+  }
 #tool-wrap .pager  .count-container {
-    float: none;
-}
-#tool-wrap .pager .limiter {
-    float: left;
-    height: 30px;
-    line-height: 30px;
-    width: 64%;
+float: none;
 }
 .toolbar .pager .pager-list  li {
   padding: 0 4px 0 15px;
 }
- .catalog-category-view  .block .mobile-collapsible .block-title {
+.catalog-category-view  .block .mobile-collapsible .block-title {
   padding: 0 0 15px 10px;
   border:none;
   display: block;
- background: url("../images/whitestrip.png") repeat-x scroll left bottom rgba(0, 0, 0, 0) !important;;
+  background: url("../images/whitestrip.png") repeat-x scroll left bottom rgba(0, 0, 0, 0) !important;;
 }
 .col2-left-layout .sidebar .collapsible.active .block-title {
   background:none;
-  }
+ }
 
  .catalog-category-view .mobile-collapsible .block-title span {
   color: #ffffff;
@@ -1529,6 +1540,10 @@ background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -53px rgb
   float: left;
   margin-left: 4px;
   
+}
+#tool-wrap .pager .pager-list {
+  float: left;
+  padding: 3px 14px 0 0;
 }
 .mobile-collapsible .toggle-content.accordion-open #narrow-by-list dt.current {
     border-bottom: medium none;
@@ -1583,6 +1598,7 @@ padding: 0 0 20px;
     float: left;
     padding-left: 0;
     width: 100% !important;
+	margin:0;
 }
 .category-products .products-grid li.item .productbg span.new {
   right: 34px;
