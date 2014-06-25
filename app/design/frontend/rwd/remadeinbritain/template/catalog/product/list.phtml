@@ -135,12 +135,15 @@
 								<img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
 							</span>
 						<?php endif ?>
-						<div href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+						<div class="product-image">
 							<?php $_imgSize = 210; ?>
-							<img id="product-collection-image-<?php echo $_product->getId(); ?>"
-							src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
-							alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
-							<span class="transparent-img"><a href="<?php echo $_product->getProductUrl()?>">&nbsp;</a></span>
+							<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image-img">
+							<?php $_imgSize = 210; ?>
+								<img id="product-collection-image-<?php echo $_product->getId(); ?>"
+								src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
+								alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+								<span class="transparent-img">&nbsp;</span>						
+							</a>
 							<div class="actions">
 								<div class="product-links">
 									<ul class="add-to-links">
@@ -232,4 +235,8 @@
 <?php endif; ?>
 </div>
 </div>
-
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	jQuery('.left-category').wrap('<div class="prod-list"></div>');
+})
+</script>
