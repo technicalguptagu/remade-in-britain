@@ -69,8 +69,9 @@
 		<?php if ($_currentCategoryId !==4):?>			  
 			<?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
 		<?php endif; ?>
-		
+		         
 	 </div>
+	 <div class="read"><a class="expand">Read more</a></div>
     <?php endif; ?>
 </div>
 <?php //EOF developer 09?>
@@ -94,4 +95,60 @@
 <?php else: ?>
     <?php echo $this->getProductListHtml() ?>
 <?php endif; ?>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+  if(jQuery(".category-description").length == 1){
+	if (jQuery(window).width() >= 0x3EA){
+		if(jQuery(".category-description").html().length > 340){
+			jQuery(".category-description").next(".read").css('display','block');
+		}
+	}else if ((jQuery(window).width() < 0x3EA) && (jQuery(window).width() >= 0x3c5)) {
+		if(jQuery(".category-description").html().length > 280){
+			jQuery(".category-description").next(".read").css('display','block');
+		}
+	} else if ((jQuery(window).width() < 0x3c5) && (jQuery(window).width() >= 0x300)) {
+		if(jQuery(".category-description").html().length > 270){
+			jQuery(".category-description").next(".read").css('display','block');
+		}
+	}else if ((jQuery(window).width() < 0x300) && (jQuery(window).width() >= 0x1e0)) {
+		if(jQuery(".category-description").html().length > 255){
+			jQuery(".category-description").next(".read").css('display','block');
+		}
+	}else if ((jQuery(window).width() <= 0x1e0) && (jQuery(window).width() >= 0x141)){
+		if(jQuery(".category-description").html().length > 160){
+			jQuery(".category-description").next(".read").css('display','block');
+		}
+	}
+	else if (jQuery(window).width() < 0x141){
+		if(jQuery(".category-description").html().length > 105){
+			jQuery(".category-description").next(".read").css('display','block');
+			
+		}
+	}
+}
+});
 
+ jQuery(document).ready(function() {
+        jQuery('.read').hide();
+        if (jQuery(window).width < 740) {
+            jQuery('.read').show();
+            //jQuery('.edit-del').hide();
+        }
+    }); 
+
+jQuery('.expand').click(function(){
+	if(jQuery(this).parent().hasClass("less")){
+	jQuery('.category-description').toggleClass('expanddiv');
+	jQuery('.expand').html("Read more");
+	jQuery(this).parent().toggleClass("less");
+	}
+	else{
+	jQuery('.category-description').toggleClass('expanddiv');
+	jQuery('.expand').html("Read less");
+	jQuery(this).parent().toggleClass("less");
+	}
+
+});
+</script>
+
+   

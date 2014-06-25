@@ -24,41 +24,43 @@
  * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<?php $_items = $this->getReviewsCollection()->getItems();?>
-<?php if (count($_items)):?>
-<div class="collateral-box dedicated-review-box" id="customer-reviews">
-    <?php echo $this->getChildHtml('toolbar') ?>
-    <ol>
-        <?php foreach ($_items as $_review):?>
-            <li>
-                <div class="review-title">
-				    <div class="title"><strong><?php echo $this->htmlEscape($_review->getTitle()) ?></strong></div>
-					<div class="cust-name"><?php echo $this->__('Review by')?>
-					<span><?php echo $this->__('%s', $this->htmlEscape($_review->getNickname())) ?></span></div>
-				</div>
-				<div class="label-or-rating">
-					<div class="ratings">
-						<div class="label"><?php echo $this->__('Overall')?></div>
-						<?php foreach ($_review->getRatingVotes() as $_vote): ?>
-							<div class="rating-box">
-								<div class="rating" style="width: <?php echo $_vote->getPercent() ?>%;"></div>
-							</div>
-						<?php endforeach; ?>
-					</div>
-				</div>
-				<?php 
-				@list($y, $d,$M) = explode('-',$_review->getCreatedAt());
-			    $_date = date("d M Y",mktime(0,0,0,$d,$M,$y));
-				?>
-				<div class="review">
-				    <?php echo nl2br($this->htmlEscape($_review->getDetail())) ?>
-				</div>
-				<div class="date">(<?php echo $this->__('Posted on')?><?php echo $_date; ?>)</div>
-            </li>
-        <?php endforeach; ?>
-    </ol>
-    <?php echo $this->getChildHtml('toolbar') ?>
-</div>
-<?php endif;?>
+<?php //BOF developer-19 19/06/2013   ?>
+<?php $_items = $this->getReviewsCollection()->getItems(); ?>
+<?php if (count($_items)): ?>
+    <div class="collateral-box dedicated-review-box" id="customer-reviews">
+        <?php echo $this->getChildHtml('toolbar') ?>
+        <ol>
+            <?php foreach ($_items as $_review): ?>
+                <li>
+                    <div class="review-title">
+                        <div class="title"><strong><?php echo $this->htmlEscape($_review->getTitle()) ?></strong></div>
+                        <div class="cust-name"><?php echo $this->__('Review by') ?>
+                            <span><?php echo $this->__('%s', $this->htmlEscape($_review->getNickname())) ?></span></div>
+                    </div>
+                    <div class="label-or-rating">
+                        <div class="ratings">
+                            <div class="label"><?php echo $this->__('Overall') ?></div>
+                            <?php foreach ($_review->getRatingVotes() as $_vote): ?>
+                                <div class="rating-box">
+                                    <div class="rating" style="width: <?php echo $_vote->getPercent() ?>%;"></div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                    <?php
+                    @list($y, $d, $M) = explode('-', $_review->getCreatedAt());
+                    $_date = date("d M Y", mktime(0, 0, 0, $d, $M, $y));
+                    ?>
+                    <div class="review">
+                        <?php echo nl2br($this->htmlEscape($_review->getDetail())) ?>
+                    </div>
+                    <div class="date">(<?php echo $this->__('Posted on') ?><?php echo $_date; ?>)</div>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+        <?php echo $this->getChildHtml('toolbar') ?>
+    </div>
+<?php endif; ?>
 <?php echo $this->getLayout()->createBlock('review/form')->setBlockId('product.review.form')->toHtml() ?>
 <?php echo $this->getChildHtml('review_form') ?>
+<?php //EOF developer-19 19/06/2013 ?>

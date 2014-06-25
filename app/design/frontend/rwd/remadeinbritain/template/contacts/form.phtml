@@ -24,20 +24,21 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php //BOF developer-19 28/5/2013   ?>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 <div class="contact-page">
-<div class="contact-image">
-<?php echo $this->getLayout()->createBlock('cms/block')->setblockId('remade-contact-logo')->toHtml(); ?>
-</div>
-<div class="page-title">
-    <p><?php echo Mage::helper('contacts')->__('CONTACT US AT REMADE IN BRITAIN') ?></p>
-</div>
-<div class="contact-details">
-<div class="remade-ques">
-<?php echo $this->getLayout()->createBlock('cms/block')->setblockId('contact-question')->toHtml(); ?>
-</div>
-<form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post" class="scaffold-form">
-    <div class="fieldset">        
+    <div class="contact-image">
+        <?php echo $this->getLayout()->createBlock('cms/block')->setblockId('remade-contact-logo')->toHtml(); ?>
+    </div>
+    <div class="page-title">
+        <p><?php echo Mage::helper('contacts')->__('contact us at remade in britain') ?></p>
+    </div>
+    <div class="contact-details">
+        <div class="remade-ques">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setblockId('contact-question')->toHtml(); ?>
+        </div>
+        <form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post" class="scaffold-form">
+            <div class="fieldset">        
                 <ul class="form-list">
                     <li class="fields">
                         <div class="customer-name">
@@ -94,15 +95,16 @@
                     </li>
                 </ul>
             </div>
-    <div class="buttons-set">
-	    <span class="right"><p class="required"><?php echo Mage::helper('contacts')->__('* Required fields') ?></p>
-        <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
-        <button type="submit" title="<?php echo Mage::helper('contacts')->__('Submit Your Quiry') ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Submit Your Enquiry') ?></span></span></button>
-		</span>
+            <div class="buttons-set">
+                <span class="right"><p class="required"><?php echo Mage::helper('contacts')->__('* Required fields') ?></p>
+                    <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+                    <button type="submit" title="<?php echo Mage::helper('contacts')->__('Submit Your Quiry') ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Submit Your Enquiry') ?></span></span></button>
+                </span>
+            </div>
+        </form>
     </div>
-</form>
 </div>
-</div>
+<?php //EOF developer-19 28/5/2013 ?>
 <script type="text/javascript">
 //<![CDATA[
     var contactForm = new VarienForm('contactForm', true);

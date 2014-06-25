@@ -1,45 +1,51 @@
+<?php //BOF developer-19 8/06/2013   ?>
+<?php // developer-19 for display latest blog on homepage    ?>
 <?php $posts = $this->getPosts(); ?>
 <div id="messages_product_view">
     <?php Mage::app()->getLayout()->getMessagesBlock()->setMessages(Mage::getSingleton('customer/session')->getMessages(true)); ?>
     <?php echo Mage::app()->getLayout()->getMessagesBlock()->getGroupedHtml(); ?>
 </div>
-<?php $i=0; foreach ($posts as $post): ?>
-    <?php if($i==1) break; ?>
-	<div class="block-title">
+<?php $i = 0;
+foreach ($posts as $post):
+    ?>
+    <?php if ($i == 1) break; ?>
+    <div class="block-title">
         <strong><span><?php echo $this->__('Remade Blog'); ?></span></strong>
-		<h3><?php echo Mage::helper('blog')->__('Posted on'); ?> <?php echo $post->getCreatedTime(); ?><br/><?php echo $this->__('by')?> <?php echo $post->getUser(); ?></h3>
+        <h3><?php echo Mage::helper('blog')->__('Posted on'); ?> <?php echo $post->getCreatedTime(); ?><br/><?php echo $this->__('by') ?> <?php echo $post->getUser(); ?></h3>
     </div>
     <div id="postWrapper" class="postWrapper">
         <div class="postTitle">
             <h2><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h2>          
         </div>
         <div class="postContent">
-			<div class="innerpostContent"><?php echo strip_tags(substr($post->getPostContent(), 0)); ?></div>			
-		</div>
-		<div class="read"><span class="dots"><?php echo $this->__('...')?></span><a href="<?php //echo Mage::getBaseUrl('/news')?>">Read more</a></div>
+            <div class="innerpostContent"><?php echo strip_tags(substr($post->getPostContent(), 0)); ?></div>			
+        </div>
+        <div class="read"><span class="dots"><?php echo $this->__('...') ?></span><a href="<?php //echo Mage::getBaseUrl('/news')  ?>">Read more</a></div>
 
-        <?php echo $this->getBookmarkHtml($post) ?>
+    <?php echo $this->getBookmarkHtml($post) ?>
         <div class="tags"><?php echo $this->getTagsHtml($post) ?></div>
     </div>
-	<?php $i++;?>
+    <?php $i++; ?>
 <?php endforeach; ?>
 <script type="text/javascript">
-jQuery(document).ready(function(){
-	blogcontent ()
-});
-jQuery(window).resize(function(){
-	blogcontent ()
-});
+    jQuery(document).ready(function() {
+        blogcontent()
+    });
+    jQuery(window).resize(function() {
+        blogcontent()
+    });
 
-function blogcontent (){
-	var postWrapper = jQuery('.postWrapper').height();
-	var postContent = jQuery('.innerpostContent').height();
-	if(postContent > postWrapper ){
-		jQuery('#postWrapper').addClass('big-content');
-		jQuery('#postWrapper').removeClass('small-content');
-	}else{
-		jQuery('#postWrapper').addClass('small-content');
-		jQuery('#postWrapper').removeClass('big-content');
-	}
-}
+    function blogcontent() {
+        var postWrapper = jQuery('.postWrapper').height();
+        var postContent = jQuery('.innerpostContent').height();
+        if (postContent > postWrapper) {
+            jQuery('#postWrapper').addClass('big-content');
+            jQuery('#postWrapper').removeClass('small-content');
+        } else {
+            jQuery('#postWrapper').addClass('small-content');
+            jQuery('#postWrapper').removeClass('big-content');
+        }
+    }
 </script>
+<?php
+//EOF developer-19 8/06/2013 ?>

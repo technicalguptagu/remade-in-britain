@@ -141,6 +141,13 @@ class Apptha_Marketplace_Helper_Data extends Mage_Core_Helper_Abstract
            $response = "";
         }
         return $response;
-    }   
+    }  
+
+	// to retun target path as per magento
+	
+	Public function getTargetPlace($targetPath){
+	    return Mage::getModel('core/url_rewrite')->load($targetPath, 'target_path');
+	
+	}
 } 
 	 

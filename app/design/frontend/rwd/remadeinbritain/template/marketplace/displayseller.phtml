@@ -70,16 +70,18 @@ echo $this->getPagerHtml();
 			<div class="sort-by">
 		    <label><?php echo $this->__('List By') ?></label>
                 <select name="sorting" onchange="this.form.submit();" id="sorting">
-                    <option value="name" <?php if ($sort_product == 'name') { ?>selected="selected" <?php } ?>><?php echo $this->__('Name'); ?></option>
+                    <option value="name?dir=asc" <?php if ($sort_product == 'name?dir=asc') { ?>selected="selected" <?php } ?>><?php echo $this->__('A-Z'); ?></option>
+                    
+					<option value="price?dir=asc" <?php if ($sort_product == 'price?dir=asc') { ?>selected="selected" <?php } ?>><?php echo $this->__('Price low'); ?></option>
 
+                    <option value="price?dir=desc" <?php if ($sort_product == 'price?dir=desc') { ?>selected="selected" <?php } ?>><?php echo $this->__('Price high'); ?></option>
 
-                    <option value="price" <?php if ($sort_product == 'price') { ?>selected="selected" <?php } ?>><?php echo $this->__('Price'); ?></option>
+                    <option value="position?dir=asc" <?php if ($sort_product == 'position?dir=asc') { ?>selected="selected" <?php } ?>><?php echo $this->__('Position'); ?></option>
                 </select>
-
-              
 				</div>
             </form>
         </div></div> 
+
     </h2>
 	
     <ul class="products-grid product_snipt f-left">
