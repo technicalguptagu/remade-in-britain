@@ -46,12 +46,14 @@ $_url = str_replace('/index.php/', '', $_url);
                 <span class="trigger-icon">&nbsp;</span>
             </a>
         </div>
-        <ul class="accordion vertnav vertnav-top grid-full">			
+        <ul class="accordion vertnav vertnav-top grid-full">
+		<li class="level0 nav-1 first level-top"><a class="level-top" href="<?php echo $this->getUrl('retailers') ?>" ><?php echo $this->__('Retailers') ?></a></li>
         <?php echo $_mobimenu ?>			
         </ul> 
     <?php endif; ?>
         <?php if ($_menu): ?>
         <ul id="nav">
+		<li class="level0 nav-1 first level-top"><a class="level-top" href="<?php echo $this->getUrl('retailers') ?>" ><?php echo $this->__('Retailers') ?></a></li>
         <?php echo $_menu ?>		
         </ul>
 <?php endif ?>
