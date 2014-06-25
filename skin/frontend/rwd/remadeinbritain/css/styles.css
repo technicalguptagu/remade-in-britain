@@ -691,7 +691,7 @@ h6, .h6 {
   position: relative;
   padding: 10px 0 0;
   margin-bottom: 5px;
-  border-top: 1px solid #cccccc;
+  /*border-top: 1px solid #cccccc;*/
 }
 .block-title h2,
 .block-title h3,
@@ -3589,9 +3589,9 @@ p.product-name a:hover {
 .block-layered-nav .block-content > dl > dd {
   padding: 10px;
   margin: 0;
-  border-width: 0 1px;
+  /*border-width: 0 1px;
   border-style: solid;
-  border-color: #cccccc;
+  border-color: #cccccc;*/
 }
 .block-layered-nav .block-content > dl > dd:last-child {
   border-width: 0 1px 1px 1px;
@@ -4994,12 +4994,13 @@ p.product-name a:hover {
  * ============================================ */
 .checkout-onepage-index .col-right,
 .checkout-onepage-index .col-left {
-  display: none;
+  /*display: none;*/
 }
 
 .checkout-onepage-index .col-main {
-  width: auto;
-  float: none;
+  float: left;
+  padding: 0 0 0 15px;
+  width: 75%;
 }
 
 .opc select {
@@ -5943,10 +5944,9 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
  * Order View
  * ============================================ */
 .order-info {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #ededed;
+  padding-bottom: 5px;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 .order-info dt,
 .order-info dd,

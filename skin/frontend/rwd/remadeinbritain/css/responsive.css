@@ -484,6 +484,9 @@ body.newsletter-manage-index .my-account .form-list {
   border-top: none;
   padding-top: 10px;
   }
+.sales-order-view .my-account h1 {
+  margin: 0 0 10px 10px;
+  }
 /*=======Market Place Modules========== */
 
 .marketplace-seller-dashboard .col-main .my-account{
@@ -653,6 +656,7 @@ body, label, button, input, select, table, textarea {
 .breadcrumb-links{
   background: url("../images/whitestrip.png") repeat-x scroll 0 bottom transparent;
   padding: 15px 0 20px;
+  margin: 0 0 20px;
   }
 .breadcrumbs {
    padding: 0 0 10px 35px;
@@ -671,7 +675,6 @@ body, label, button, input, select, table, textarea {
    }
 .catalog-category-view .col-left.sidebar #left-nav {
    border-bottom:2px solid #e8eae4;;
-    margin: 0 0 30px;
     padding: 0 0 30px;
    }
 .catalog-category-view .col-left.sidebar .block-cate-content .block-title {
@@ -728,7 +731,7 @@ body, label, button, input, select, table, textarea {
    }
 .category-content {
    background: url("../images/cat-content-img.png") repeat scroll 0 0 transparent;
-   margin: 15px 0 0;
+   margin: 0 0 15px;
    width: 100%;
    }
 .category-content .title-description h1 {
@@ -1162,7 +1165,10 @@ body, label, button, input, select, table, textarea {
    font-size: 13px;
    font-style: normal;
   }
-
+.customer-account-login .scaffold-form p.required {
+  color: #fff;
+  float: none;
+ }
 /*=======User Registration========== */
 
 .customer-account-login .col2-set .buttons-set button, .customer-account-login .col2-set .buttons-set .button {

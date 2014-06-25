@@ -65,7 +65,6 @@
                 <div class="content fieldset">
                     <h2><?php echo $this->__('Already registered?') ?></h2>
                     <p class="form-instructions"><?php echo $this->__('If you have an account with us, please log in.') ?></p>
-                    <p class="required"><?php echo $this->__('* Required Fields') ?></p>
                     <ul class="form-list">
                         <li>
                             <label for="email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
@@ -82,6 +81,7 @@
                         <?php echo $this->getChildHtml('form.additional.info'); ?>
                         <li>
                             <a href="<?php echo $this->getForgotPasswordUrl() ?>" class="f-left"><?php echo $this->__('Forgot Your Password?') ?></a>
+							 <p class="required"><?php echo $this->__('* Required Fields') ?></p>
                         </li>
                         <?php echo $this->getChildHtml('persistent.remember.me'); ?>
                     </ul>
