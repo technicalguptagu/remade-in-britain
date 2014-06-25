@@ -34,7 +34,7 @@
 var bp = {
     xsmall: 479,
     small: 599,
-    medium: 770,
+    medium: 949,
     large: 979,
     xlarge: 1199
 }
