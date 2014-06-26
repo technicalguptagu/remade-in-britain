@@ -60,6 +60,7 @@ class Apptha_Marketplace_Block_Displayseller extends Mage_Core_Block_Template
     function categoryProducts(){
         $display_cat_product = $this->getRequest()->getParam('category_name');
         $sort_product        = $this->getRequest()->getParam('sorting');
+		$direction = explode('?dir=',$sort_product);
         $id                  = $this->getRequest()->getParam('id');
         $catagory_model      = Mage::getModel('catalog/category')->load($display_cat_product);
         $collection          = Mage::getResourceModel('catalog/product_collection');
@@ -68,8 +69,13 @@ class Apptha_Marketplace_Block_Displayseller extends Mage_Core_Block_Template
                                 $collection->addAttributeToSelect('*'); //add product attribute to be fetched
                                 $collection->addAttributeToFilter('seller_id',$id);
                                 $collection->addStoreFilter();         
-                                $collection->addAttributeToSort($sort_product);
-      
+                               // $collection->addAttributeToSort($sort_product);
+							   if($sort_product){
+                                $collection->addAttributeToSort($direction[0],$direction[1]);
+							   }
+							   else{
+							    $collection->addAttributeToSort('name','asc');
+							   }
 		return $collection;
     }
     //Get category Url

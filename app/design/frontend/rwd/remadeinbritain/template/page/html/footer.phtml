@@ -24,23 +24,26 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php //BOF developer-19 24/05/2013   ?>
 <div class="footer-container">
-<div class="footer-newsletter">
-<?php echo $this->getChildHtml("footer.newsletter"); ?>
-</div>
-    <div class="footer">
-		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links')->toHtml(); ?>
-        <?php // echo $this->getChildHtml() ?>
-		<div class="footer-bottom">
-			<div class="footer-logo"><img src="<?php echo $this->getSkinUrl('images/logofooter2.png')?>" alt="" /></div>
-			<div class="copyright"><address><?php echo $this->getCopyright() ?></address></div>
-			<div class="ecommerce-logo">
-				<div class="ecommerce-text"><?php echo $this->__('Ecommerce by')?></div>
-				<div class="ecommerce-logo">&nbsp;</div>
-			</div>
-			<div style="clear: both; height: 0;">&nbsp;</div>
-		</div>
-		<div class="copyright-moblie" style="display: none;"><address><?php echo $this->getCopyright() ?></address></div>
+    <?php // developer-19 for block newsletter ?>
+    <div class="footer-newsletter">
+        <?php echo $this->getChildHtml("footer.newsletter"); ?>
     </div>
-	  <a id="scroll-to-top" href="#top" style="display: inline;">To top</a>
+    <div class="footer">
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links')->toHtml(); ?>
+        <?php // echo $this->getChildHtml() ?>
+        <div class="footer-bottom">
+            <div class="footer-logo"><img src="<?php echo $this->getSkinUrl('images/logofooter2.png') ?>" alt="" /></div>
+            <div class="copyright"><address><?php echo $this->getCopyright() ?></address></div>
+            <div class="ecommerce-logo">
+                <div class="ecommerce-text"><?php echo $this->__('Ecommerce by') ?></div>
+                <div class="ecommerce-logo">&nbsp;</div>
+            </div>
+            <div style="clear: both; height: 0;">&nbsp;</div>
+        </div>
+        <div class="copyright-moblie" style="display: none;"><address><?php echo $this->getCopyright() ?></address></div>
+    </div>
+    <a id="scroll-to-top" href="#top" style="display: inline;"><?php echo $this->__('To top') ?></a>
 </div>
+<?php //EOF developer-19 24/05/2013   ?>

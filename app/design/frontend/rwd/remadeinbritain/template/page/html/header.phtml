@@ -27,119 +27,85 @@
  * @var Mage_Page_Block_Html_Header $this
  */
 ?>
-
+<?php //BOF developer-19 23/05/2013   ?>
 <div id="header" class="page-header">
     <div class="page-header-container">
         <a class="logo" href="<?php echo $this->getUrl('') ?>">
             <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="large" />
             <img src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="small" />
         </a>
-		<!-- **************************** -->
-		<div class="header-right">
-		<div class="header-right-top">
-			 <div class="cart-sude-bar">
-				<div class="head-sidebar">
-					<div id="viewcart" class="viewcart head-link">
-						<div class="mycart">
-							<div id="cartHeader">
-								<?php echo $this->getChildHtml('header_sidebar'); ?>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="dropdown">
-				<div id="viewlogin" <?php if (! Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-				class="isnotlogin"
-				<?php else: ?>
-				class="isnotlogout"
-				<?php endif; ?>style="position:relative;"></div>
-				   <?php $_login = Mage::getSingleton("customer/session")->isLoggedIn(); ?>
-					<div id="login-head" class="login">
-						<div class="login-border">
-							<div class="info-border">
-								<div class="logintext">
-									<ul class="links">
-									<?php if (! Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-									<li class="head-link login-logout"><a title="Login/Register"><?php echo $this->__('Login / Register') ?></a></li>
-									<?php else: ?>
-									<li class="head-link login-logout"><a title="My Account"><?php echo $this->__('My Account')
-									?></a></li>
-									<?php endif; ?>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div id="loginheader">
-							<div class="login-bottom-img">
-								<?php echo $this->getChildHtml('customer_form_header_login'); ?> 
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="information-advice">
-					<?php echo $this->getLayout()->createBlock('cms/block')->setblockId('information-advice')->toHtml(); ?>
-				</div>
-				<div style="clear: right; height: 0;">&nbsp;</div>
-			</div>
-		   <div class="header-right-btm">
-				<!-- Search -->
-				<div id="header-search">
-					<?php echo $this->getChildHtml('topSearch'); ?>
-				</div>
-		   </div>
-		</div>
-			<div style="clear: both; height: 0;">&nbsp;</div>
-		</div>
-        
-        <div id="header-account" class="skip-content">
-            <?php echo $this->getChildHtml('topLinks'); ?>
+        <!-- **************************** -->
+        <?php // developer-19 for block cart-sidebar ?>
+        <div class="header-right">
+            <div class="header-right-top">
+                <div class="cart-sude-bar">
+                    <div class="head-sidebar">
+                        <div id="viewcart" class="viewcart head-link">
+                            <div class="mycart">
+                                <div id="cartHeader">
+                                    <?php echo $this->getChildHtml('header_sidebar'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div id="viewlogin" <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+                             class="isnotlogin"
+                         <?php else: ?>
+                             class="isnotlogout"
+                         <?php endif; ?>style="position:relative;"></div>
+                         <?php $_login = Mage::getSingleton("customer/session")->isLoggedIn(); ?>
+                    <div id="login-head" class="login">
+                        <div class="login-border">
+                            <div class="info-border">
+                                <div class="logintext">
+                                    <ul class="links">
+                                        <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+                                            <li class="head-link login-logout"><a title="Login/Register"><?php echo $this->__('Login / Register') ?></a></li>
+                                        <?php else: ?>
+                                            <li class="head-link login-logout"><a title="My Account"><?php echo $this->__('My Account')
+                                            ?></a></li>
+                                        <?php endif; ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <?php // developer-19 for block login ?>
+                        <div id="loginheader">
+                            <div class="login-bottom-img">
+                                <?php echo $this->getChildHtml('customer_form_header_login'); ?> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php // developer-19 for block information ?>
+                <div class="information-advice">
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setblockId('information-advice')->toHtml(); ?>
+                </div>
+                <div style="clear: right; height: 0;">&nbsp;</div>
+            </div>
+            <div class="header-right-btm">
+                <!-- Search -->
+                <div id="header-search">
+                    <?php echo $this->getChildHtml('topSearch'); ?>
+                </div>
+            </div>
         </div>
-    
-	
-    <?php //echo $this->getChildHtml('topMenu') ?>
-	<!-- <script type="text/javascript">
-	//<![CDATA[
-		
-		jQuery(document).ready(function(){
-            jQuery("#loginheader").hide();
-            jQuery('.login').hover(function() {   
-            jQuery('#loginheader').stop().show();
-            jQuery('#login-head').addClass('active');                                
-            }, function(){  
-            jQuery('#loginheader').stop().hide();
-            jQuery('#login-head').removeClass('active'); 
-        });
-		
-	    
-			jQuery("#cartHeader .block-content").hide();
-			jQuery('.mycart').hover(function() {			
-				jQuery('#cartHeader .block-content').stop().show();
-				jQuery('#cartHeader').find('.block-title').addClass('active');
-			}, function(){		
-				jQuery('#cartHeader .block-content').stop().hide();
-				jQuery('#cartHeader').find('.block-title').removeClass('active');
-			});			
-	
-	
-        
-		jQuery("#informationhead").hide();
+        <div style="clear: both; height: 0;">&nbsp;</div>
+    </div>
 
-		jQuery('.information-advice').hover(function() {			
-			jQuery('#informationhead').stop().show();
-                        jQuery('#info-head').addClass('active');
-		}, function(){		
-			jQuery('#informationhead').stop().hide();
-            jQuery('#info-head').removeClass('active'); 
-	    });			
-	    });
-		
-// ]]></script>  -->
-	
-	
-	<?php echo $this->getChildHtml('topContainer'); ?>
+    <div id="header-account" class="skip-content">
+        <?php echo $this->getChildHtml('topLinks'); ?>
+    </div>
 
-<div id="header-nav">
-		<?php echo $this->getChildHtml('topMenu'); ?>
-	</div>
-	</div>
+
+    <?php //echo $this->getChildHtml('topMenu') ?>	
+
+    <?php echo $this->getChildHtml('topContainer'); ?>
+
+    <div id="header-nav">
+        <?php echo $this->getChildHtml('topMenu'); ?>
+    </div>
+</div>
+<?php //EOF developer-19 23/05/2013   ?>

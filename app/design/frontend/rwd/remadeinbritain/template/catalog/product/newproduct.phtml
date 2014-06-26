@@ -24,126 +24,125 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php //BOF developer-19 26/5/2013     ?>
 <?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
-<div class="content-heading"><h1><?php echo $this->__('Latest Products') ?></h1></div>
-<?php $_columnCount = $this->getColumnCount(); ?>
-<?php
-                                $_coreHelper = $this->helper('core');
-                                $_taxHelper = $this->helper('tax');
-                                ?>
-<div class="products-grid products-grid--max- latest-products<?php echo $_columnCount; ?>-col">
-        <div class="itemslider-wrapper<?php if($_count > 3):?> three<?php endif;?>">
+    <div class="content-heading"><h1><?php echo $this->__('Latest Products') ?></h1></div>
+    <?php $_columnCount = $this->getColumnCount(); ?>
+    <?php
+    $_coreHelper = $this->helper('core');
+    $_taxHelper = $this->helper('tax');
+    ?>
+    <div class="products-grid products-grid--max- latest-products<?php echo $_columnCount; ?>-col">
+        <div class="itemslider-wrapper<?php if ($_count > 3): ?> three<?php endif; ?>">
             <div class="nav-wrapper-similar-main nav-wrapper gen-slider-arrows1 gen-slider-arrows1-pos-top-right" id="nav-wrapper-new-main">&nbsp;</div>    
             <div class="itemslider-similar-main itemslider itemslider-horizontal itemslider-responsive" id="itemslider-new-main">
-    <ul class=" slides products-grid">
-             <?php foreach ($_products->getItems() as $_product):?>
-                  <li class="item">
-					<div class="productbg">
-						<?php if ($_product->getNews_from_date()): ?>
-						<?php if ($_product->getNews_to_date()): ?>
-							<span class="new">
-								<img src="<?php echo $this->getskinUrl('images/new.png') ?>" width="82" height="72" alt=""/>
-							</span>
-						<?php endif; ?>
-					<?php endif; ?>
-					<?php if ($_product->getSpecialPrice()): ?>
-                                
-                                <span class="sale">
-                                    <img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
-                                </span>
-						<?php endif ?>
-						<div class="product-image"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>" >
-			
-						<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(362); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
-						<span class="transparent-img">&nbsp;</span>
-						<div class="actions">
-							<div class="product-rating">
-								<?php echo $this->getReviewsSummaryHtml($_product, true, '-new') ?>
-							</div>
-							<div class="product-links">
-								<ul class="add-to-links">
-									<!-- <li class="product-rating">
-										<?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
-									</li> -->
-									<?php if ($this->helper('wishlist')->isAllow()) : ?>
-									<li class="add-wishlist"><a href="<?php echo $this->getAddToWishlistUrl($_product) ?>" class="link-wishlist">&nbsp;</a></li>
-									<?php endif; ?>
-									<?php if ($_compareUrl = $this->getAddToCompareUrl($_product)): ?>
-									<li class="add-compare"><a href="<?php echo $_compareUrl ?>" class="link-compare">&nbsp;</a></li>
-									<?php endif; ?>
-									<li class="view-products">
-										<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->__('View Product') ?>" class="view-prod">&nbsp;</a>
-									</li>
-									<?php if ($_product->isSaleable()): ?>
-									<li class="add-cart">
-										<a href="<?php echo $this->getAddToCartUrl($_product) ?>" title="<?php echo $this->__('Add to Cart') ?>">&nbsp;</a>
-									</li>
-									<?php else: ?>
-									<li class="out-of-stock"><?php echo $this->__('Out of stock') ?></li>
-									<?php endif; ?>
-								 </ul>
-							</div>
-						</div>
-					   </div>
-					   <h3 class="product-name">
-						   <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>">
-						   <?php
-							$_productName = $this->escapeHtml($_product->getName());
-							$_count = strlen($_productName);
-							echo strip_tags(substr($_productName, 0, 80));
-							if ($_count > 80) {
-								echo '...';
-							}
-							?>
-						  </a>
-					  </h3>
-					  <div class="price-Or-retailername">
-						<?php if ($_product->getSpecialPrice()): ?>     
-							<div class="sale-price">
-								<div class="now">
-									<span class="price">
-										<?php 
-										$_price = $_taxHelper->getPrice($_product, $_product->getFinalPrice());
-										echo $_coreHelper->currency($_price, true, false);
-										?>
-									</span>
-								</div>
-								<div class="was">
-									<label><?php echo $this->__('was'); ?></label>
-									<span class="price">
-									<?php
-									$_realPrice = $_taxHelper->getPrice($_product, $_product->getPrice());
-									echo $_coreHelper->currency($_realPrice, true, false);
-									?>
-									</span>
-								</div>
-							</div>
-								<?php else:?>
-								<?php echo $this->getPriceHtml($_product, true, '-new') ?>
-								<?php endif ?>
-						<!-- BOF developer #06  'Display retailer store name' 2014/06/21 -->
-							<div class="retailer-name">
-								<?php
-								$_product_id = $_product->getEntityId();
-								$retailerStoreName = Mage::helper('addcustomerattribute')->getRetailerStoreName($_product_id);
-								$retailerStoreLink = Mage::helper('addcustomerattribute')->getRetailerStoreLink($_product_id);
-								?>
-								<a href='<?php echo $retailerStoreLink; ?>' class="link_seller"><?php echo $retailerStoreName ?></a>
-								<!-- <a href="#"><?php //echo $this->__('Retailer Name Link') ?></a> -->
-							</div>
-						<!-- EOF developer #06  2014/06/21 -->
-							<div style="clear: both; height: 0;">&nbsp;</div>
-					   </div>
-					</div>
-               </li>
-           <?php endforeach; ?>  
+                <ul class=" slides products-grid">
+                    <?php foreach ($_products->getItems() as $_product): ?>
+                        <li class="item">
+                            <?php // developer-19 stickers for product    ?>
+                            <div class="productbg">
+                                <?php if ($_product->getNews_from_date()): ?>
+                                    <?php if ($_product->getNews_to_date()): ?>
+                                        <span class="new">
+                                            <img src="<?php echo $this->getskinUrl('images/new.png') ?>" width="82" height="72" alt=""/>
+                                        </span>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                                <?php if ($_product->getSpecialPrice()): ?>
+                                    <span class="sale">
+                                        <img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
+                                    </span>
+                                <?php endif ?>
+                                <div class="product-image"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>" >
+
+                                        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(362); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+                                    <span class="transparent-img">&nbsp;</span>
+                                    <div class="actions">
+                                        <div class="product-rating">
+                                            <?php echo $this->getReviewsSummaryHtml($_product, true, '-new') ?>
+                                        </div>
+                                        <div class="product-links">
+                                            <ul class="add-to-links">
+                                                <!-- <li class="product-rating">
+                                                <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                                                </li> -->
+                                                <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                                    <li class="add-wishlist"><a href="<?php echo $this->getAddToWishlistUrl($_product) ?>" class="link-wishlist">&nbsp;</a></li>
+                                                <?php endif; ?>
+                                                <?php if ($_compareUrl = $this->getAddToCompareUrl($_product)): ?>
+                                                    <li class="add-compare"><a href="<?php echo $_compareUrl ?>" class="link-compare">&nbsp;</a></li>
+                                                <?php endif; ?>
+                                                <li class="view-products">
+                                                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->__('View Product') ?>" class="view-prod">&nbsp;</a>
+                                                </li>
+                                                <?php if ($_product->isSaleable()): ?>
+                                                    <li class="add-cart">
+                                                        <a href="<?php echo $this->getAddToCartUrl($_product) ?>" title="<?php echo $this->__('Add to Cart') ?>">&nbsp;</a>
+                                                    </li>
+                                                <?php else: ?>
+                                                    <li class="out-of-stock"><?php echo $this->__('Out of stock') ?></li>
+                                                <?php endif; ?>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php // developer-19 for display name in two lines after that ...   ?>
+                                <h3 class="product-name">
+                                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>">
+                                        <?php $_productName = $this->escapeHtml($_product->getName()); ?>
+                                        <?php $_count = strlen($_productName); ?>
+                                        <?php echo strip_tags(substr($_productName, 0, 80)); ?>
+                                        <?php if ($_count > 80): ?>
+                                            <?php echo $this->__('...') ?>
+                                        <?php endif; ?>
+                                    </a>
+                                </h3>
+                                <div class="price-Or-retailername">
+                                    <?php if ($_product->getSpecialPrice()): ?>     
+                                        <div class="sale-price">
+                                            <div class="now">
+                                                <span class="price">
+                                                    <?php
+                                                    $_price = $_taxHelper->getPrice($_product, $_product->getFinalPrice());
+                                                    echo $_coreHelper->currency($_price, true, false);
+                                                    ?>
+                                                </span>
+                                            </div>
+                                            <div class="was">
+                                                <label><?php echo $this->__('was'); ?></label>
+                                                <span class="price">
+                                                    <?php
+                                                    $_realPrice = $_taxHelper->getPrice($_product, $_product->getPrice());
+                                                    echo $_coreHelper->currency($_realPrice, true, false);
+                                                    ?>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    <?php else: ?>
+                                        <?php echo $this->getPriceHtml($_product, true, '-new') ?>
+                                    <?php endif ?>
+                                    <!-- BOF developer #06  'Display retailer store name' 2014/06/21 -->
+                                    <div class="retailer-name">
+                                        <?php
+                                        $_product_id = $_product->getEntityId();
+                                        $_retailerStoreName = Mage::helper('addcustomerattribute')->getRetailerStoreName($_product_id);
+                                        $_retailerStoreLink = Mage::helper('addcustomerattribute')->getRetailerStoreLink($_product_id);
+                                        ?>
+                                        <a href='<?php echo $_retailerStoreLink; ?>' class="link_seller"><?php echo $_retailerStoreName ?></a>
+                                    </div>
+                                    <!-- EOF developer #06  2014/06/21 -->
+                                    <div style="clear: both; height: 0;">&nbsp;</div>
+                                </div>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>  
                 </ul>
             </div>
         </div>
-	
-		
+
+        <?php // developer-19 script for slide new product    ?>	
         <script type="text/javascript">
-			//<![CDATA[
+            //<![CDATA[
             jQuery(function() {
                 jQuery("#itemslider-new-main").flexslider({
                     namespace: "",
@@ -160,12 +159,14 @@
                     maxItems: 3,
                     move: 0
                 })
-				.data("showItems", 3 )
-				.data("breakpoints", [ [1200, 3], [1000, 3], [800, 3], [600, 2], [400, 1], [300, 1]] )
+                        .data("showItems", 3)
+                        .data("breakpoints", [[1200, 3], [1000, 3], [800, 3], [600, 2], [400, 1], [300, 1]])
 
-					; //IMPORTANT: don't remove semicolon! 
+                        ; //IMPORTANT: don't remove semicolon! 
             });
-			//]]>
+            //]]>
         </script>    
- 	</div>
-	<?php endif; ?>
+    </div>
+<?php endif; ?>
+<?php
+//EOF developer-19 26/5/2013 ?>

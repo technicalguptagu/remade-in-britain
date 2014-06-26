@@ -33,76 +33,80 @@
 ?>
 <?php $_menu = $this->getHtml('level-top') ?>
 <?php $_mobimenu = $this->getMobiHtml('level-top') ?>
-<?php $_url = $this->getUrl();
-$_url = str_replace('/index.php/','',$_url); ?>
+<?php
+$_url = $this->getUrl();
+$_url = str_replace('/index.php/', '', $_url);
+?>
 
-
+<?php //BOF developer-19 24/05/2013   ?>
 <div class="nav-container">
-	<?php if ($_mobimenu): ?>
-		<div id="mobnav" class="grid-full">
-			<a id="mobnav-trigger" href="">	
-				<span class="trigger-icon">&nbsp;</span>
-			</a>
-		</div>
-		<ul class="accordion vertnav vertnav-top grid-full">			
-			<?php echo $_mobimenu ?>			
-		</ul> 
-	<?php endif; ?>
-	<?php if($_menu): ?>
-		<ul id="nav">
-			<?php echo $_menu ?>		
-		</ul>
-	<?php endif ?>
+<?php if ($_mobimenu): ?>
+        <div id="mobnav" class="grid-full">
+            <a id="mobnav-trigger" href="">	
+                <span class="trigger-icon">&nbsp;</span>
+            </a>
+        </div>
+        <ul class="accordion vertnav vertnav-top grid-full">
+		<li class="level0 nav-1 first level-top"><a class="level-top" href="<?php echo $this->getUrl('retailers') ?>" ><?php echo $this->__('Retailers') ?></a></li>
+        <?php echo $_mobimenu ?>			
+        </ul> 
+    <?php endif; ?>
+        <?php if ($_menu): ?>
+        <ul id="nav">
+		<li class="level0 nav-1 first level-top"><a class="level-top" href="<?php echo $this->getUrl('retailers') ?>" ><?php echo $this->__('Retailers') ?></a></li>
+        <?php echo $_menu ?>		
+        </ul>
+<?php endif ?>
 </div>
 
 <script type="text/javascript">
-	//<!--![CDATA[
-		jQuery(function($) {					
-			activateMobileMenu();
-			$('#mobnav-trigger').click(function() {
-				if ($(this).hasClass('active')) {
-					$(this).removeClass('active');
-					$('.vertnav-top').removeClass('show');				
-				} else { 				
-					$(this).addClass('active');
-					$('.vertnav-top').addClass('show');
-				}
-				return false;
-			});			
+    //<!--![CDATA[
+    jQuery(function($) {
+        activateMobileMenu();
+        $('#mobnav-trigger').click(function() {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+                $('.vertnav-top').removeClass('show');
+            } else {
+                $(this).addClass('active');
+                $('.vertnav-top').addClass('show');
+            }
+            return false;
+        });
 
-			if($('.accordion.vertnav li').hasClass('active')){
-				$('#mobnav-trigger').addClass('on');
-			} else {
-				$('#mobnav-trigger').removeClass('on');
-			}
+        if ($('.accordion.vertnav li').hasClass('active')) {
+            $('#mobnav-trigger').addClass('on');
+        } else {
+            $('#mobnav-trigger').removeClass('on');
+        }
 
-			$('.accordion.vertnav .opener').click(function() {
-			if($('.accordion.vertnav li').hasClass('active')){
-			$('#mobnav-trigger').removeClass('on');
-			} else {
-			$('#mobnav-trigger').addClass('on');
-			}
-			});
-		})
+        $('.accordion.vertnav .opener').click(function() {
+            if ($('.accordion.vertnav li').hasClass('active')) {
+                $('#mobnav-trigger').removeClass('on');
+            } else {
+                $('#mobnav-trigger').addClass('on');
+            }
+        });
+    })
 
-		jQuery(window).resize(function(){
-			activateMobileMenu();
-		});
-		function activateMobileMenu(){			
-					if (jQuery(window).width() < 960)
-					{
-						jQuery('#mobnav').show();
-						jQuery('.vertnav-top').addClass('mobile');
-						jQuery('#nav').addClass('mobile');
-					}
-					else
-					{
-						jQuery('#nav').removeClass('mobile');
-						jQuery('.vertnav-top').removeClass('mobile');
-						jQuery('#mobnav').hide();
-					}
-				}
-	//]] -->
+    jQuery(window).resize(function() {
+        activateMobileMenu();
+    });
+    function activateMobileMenu() {
+        if (jQuery(window).width() < 960)
+        {
+            jQuery('#mobnav').show();
+            jQuery('.vertnav-top').addClass('mobile');
+            jQuery('#nav').addClass('mobile');
+        }
+        else
+        {
+            jQuery('#nav').removeClass('mobile');
+            jQuery('.vertnav-top').removeClass('mobile');
+            jQuery('#mobnav').hide();
+        }
+    }
+    //]] -->
 </script>
-
+<?php //EOF developer-19 24/05/2013   ?>
 

@@ -31,29 +31,13 @@
  * @see Mage_Catalog_Block_Product_List_Toolbar
  */
 ?>
+   <?php //BOF developer-19 14/6/2013    ?>
 <?php if($this->getCollection()->getSize()): ?>
 <div class="toolbar">
     <?php if( $this->isExpanded() ): ?>
         <div class="sorter">
-            <!-- <?php if( $this->isEnabledViewSwitcher() ): ?>
-                <p class="view-mode">
-                    <?php $_modes = $this->getModes(); ?>
-                    <?php if($_modes && count($_modes)>1): ?>
-                        <label><?php echo $this->__('View as') ?></label>
-                        <?php foreach ($this->getModes() as $_code=>$_label): ?>
-                            <?php if($this->isModeActive($_code)): ?>
-                                <strong title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></strong>
-                            <?php else: ?>
-                                <a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></a>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </p>
-            <?php endif; ?> -->
-
            <div class="sort-by">
-		    <label><?php echo $this->__('List By') ?></label>
-			
+		    <label><?php echo $this->__('List By') ?></label>			
 			<ul class="sort-list">
 			<?php $i=1;
 			    foreach($this->getAvailableOrders() as $_key=>$_order):?>
@@ -90,9 +74,7 @@
                     </li>
 				<?php endif; ?>
 			<?php endforeach; ?>
-			</ul>
-			
-			
+			</ul>		
         </div>
         </div>
     <?php endif; ?>
@@ -105,7 +87,6 @@
 			    <li onclick="setLocation('<?php echo $this->getLimitUrl($_key) ?>')" <?php if($this->isLimitCurrent($_key)): ?> class="active"<?php endif ?>>
 				    <?php echo $_limit ?>
 				</li>
-				<!--<li class="sorter_line"><span><?php echo $this->__('&nbsp;') ?></span></li>--> 
             <?php endforeach; ?>
 			</ul>
 			<label class="per-page"><?php echo $this->__('PER PAGE') ?></label>
@@ -122,9 +103,8 @@
             <?php endif; ?>
 			</div>
         </div>
-
         <?php echo $this->getPagerHtml() ?>
-
     </div>
 </div>
 <?php endif ?>
+<?php //EOF developer-19 14/6/2013    ?>

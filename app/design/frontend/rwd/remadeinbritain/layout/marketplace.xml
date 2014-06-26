@@ -281,7 +281,9 @@
             </action>
         </reference>
 		<reference name="left">
-		<block type="mana_filters/view" name="mana.catalog.leftnav" before="-" template="catalog/layer/view.phtml"/>
+		<block type="marketplace/retailer" name="left_category" before="-" template="marketplace/leftcategorymarket.phtml"/>
+
+		<block type="mana_filters/view" name="mana.catalog.leftnav" template="catalog/layer/view.phtml"/>
 			 <block type="cms/block"  name="Social Media" >
 				<action method="setBlockId">
 					<block_id>social-media</block_id>

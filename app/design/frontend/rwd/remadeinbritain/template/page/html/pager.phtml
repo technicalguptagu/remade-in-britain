@@ -31,12 +31,13 @@
  * @see Mage_Page_Block_Html_Pager
  */
 ?>
+<?php //BOF developer-19 20/06/2013   ?>
 <?php if($this->getCollection()->getSize()): ?>
 
     <?php if($this->getUseContainer()): ?>
     <div class="pager">
     <?php endif ?>
-
+<?php // developer-19 for show per page display for marketplace listing ?>
     <?php if($this->getShowPerPage()): ?>
     <div class="limiter">
         <label><?php echo $this->__('Show') ?></label>
@@ -55,12 +56,7 @@
 				    <?php echo $_limit ?>
 				</li>
             <?php endforeach; ?>
-			</ul>
-		
-		
-		
-		
-		
+		</ul>
 		<?php echo $this->__('per page') ?>
     </div>
     <?php endif ?>
@@ -78,7 +74,7 @@
             <?php endif; ?>
     </p>
     <?php endif ?>
-
+<?php // developer-19 for first and previous functionality in pager ?>
     <?php if($this->getLastPageNum()>1): ?>
     <div class="pages">
         <!-- <strong><?php //echo $this->__('Page:') ?></strong> -->
@@ -147,3 +143,4 @@
     <?php endif ?>
 
 <?php endif ?>
+<?php //EOF developer-19 20/06/2013   ?>
