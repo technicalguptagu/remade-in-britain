@@ -107,9 +107,6 @@
 
 	<catalogsearch_result_index> 
 		<reference name="left"> 
-		     <block type="catalog/layer_view" name="catalog.leftnav" after="currency" template="catalog/layer/view.phtml">  
-                 <action method="unsetChild"><alias>category_filter</alias></action>
-             </block>
 			<block type="cms/block"  name="What Is Upcycling" >
 				<action method="setBlockId">
 					<block_id>what-is-upcycling</block_id>
