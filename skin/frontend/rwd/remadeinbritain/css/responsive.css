@@ -678,22 +678,26 @@ body, label, button, input, select, table, textarea {
     float: left;
     padding: 0 5px;
    }
-.catalog-category-view .col-left.sidebar #left-nav {
+.catalog-category-view .col-left.sidebar #left-nav,
+.cms-retailers .col-left.sidebar #left-nav{
    border-bottom:2px solid #e8eae4;;
     padding: 0 0 30px;
    }
-.catalog-category-view .col-left.sidebar .block-cate-content .block-title {
+.catalog-category-view .col-left.sidebar .block-cate-content .block-title,
+.cms-retailers .col-left.sidebar .left-category .block-title {
    border-top: medium none;
    margin-bottom: 5px;
-   padding: 20px 0 0;
+   padding: 0 0 0 30px;
    }
-.catalog-category-view .col-left.sidebar .block-cate-content .block-title h2 {
+.catalog-category-view .col-left.sidebar .block-cate-content .block-title h2,
+.cms-retailers .col-left.sidebar .left-category .block-title h2{
    color: #fff;
    font-family: oswald;
    font-size: 17px;
    font-weight: 500;
    }
-.catalog-category-view .col-left.sidebar .block-cate-content a {
+.catalog-category-view .col-left.sidebar .block-cate-content a,
+.cms-retailers .col-left.sidebar .left-category li a {
    color: #494956;
    display: block;
    font-family: oswaldlight;
@@ -784,6 +788,9 @@ body, label, button, input, select, table, textarea {
   text-transform: lowercase;
   font-weight: 300;
   }
+.subs-category-list ul {
+  list-style: none outside none;
+ }
 .subs-category-list .catagory-grid li {
   float: left;
   margin: 0 2% 2% 0;
@@ -798,8 +805,7 @@ body, label, button, input, select, table, textarea {
   margin:0;
   }
 .subs-category-list .catagory-grid .category-image img {
-  max-width: auto;
-  width: auto;
+   width: 100%;
   }
 .subs-category-list .catagory-grid .category-bg{
   background: none repeat scroll 0 0 #fff;
@@ -822,6 +828,7 @@ body, label, button, input, select, table, textarea {
    right: 10px;
    top: 10px;
    float: right;
+   font-style: normal;
    }
 .subs-category-list .catagory-grid .category-bg .catagory-view {
 	position: relative;
@@ -834,6 +841,7 @@ body, label, button, input, select, table, textarea {
     line-height: 25px;
     overflow: hidden;
     width: 100%;
+	font-style: normal;
    }
 .page-title h1  {
    border-bottom:none;
@@ -844,6 +852,16 @@ body, label, button, input, select, table, textarea {
    font-family: oswald;
    font-weight: 300;
   }
+.cms-retailers .col-left {
+   float: left;
+   padding: 0;
+   width: 20.8%;
+   }
+.cms-retailers .col2-left-layout .col-main {
+   float: left;
+   margin-left: 2%;
+   width: 77%;
+   }
 
 /*=======Shopping Cart========== */
 .cart.display-single-price {
