@@ -106,7 +106,6 @@
 	</contacts_index_index>
 
 	<catalogsearch_result_index> 
-	<remove name="mana.catalogsearch.leftnav"/>
 		<reference name="left"> 
 		     <block type="catalog/layer_view" name="catalog.leftnav" after="currency" template="catalog/layer/view.phtml">  
                  <action method="unsetChild"><alias>category_filter</alias></action>
