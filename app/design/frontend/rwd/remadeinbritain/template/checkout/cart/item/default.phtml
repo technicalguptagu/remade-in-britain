@@ -338,11 +338,13 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
 
 
 <script type="text/javascript">
-jQuery(document).ready(function(){
-jQuery('.cell-label').hide();
-if(jQuery(window).width < 740){
-jQuery('.cell-label').show();
-jQuery('.edit-del').hide();
-}
-});
+//<![CDATA[
+	jQuery(document).ready(function(){
+	jQuery('.cell-label').hide();
+	if(jQuery(window).width < 740){
+	jQuery('.cell-label').show();
+	jQuery('.edit-del').hide();
+	}
+	});
+//]]>
 </script>

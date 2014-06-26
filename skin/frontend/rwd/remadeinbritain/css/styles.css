@@ -2415,7 +2415,7 @@ p.required,
 .form-list .control label,
 .sp-methods dt label,
 #checkout-shipping-method-load .sp-methods dd label,
-#co-shipping-method-form .sp-methods dd label,
+/*#co-shipping-method-form .sp-methods dd label,*/
 .product-options ul.options-list label {
   color: #636363;
   background-color: #f4f4f4;
@@ -2430,7 +2430,7 @@ p.required,
 .form-list .control label:hover,
 .sp-methods dt label:hover,
 #checkout-shipping-method-load .sp-methods dd label:hover,
-#co-shipping-method-form .sp-methods dd label:hover,
+/*#co-shipping-method-form .sp-methods dd label:hover,*/
 .product-options ul.options-list label:hover {
   background-color: #e7e7e7;
 }

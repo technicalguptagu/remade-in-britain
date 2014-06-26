@@ -233,7 +233,16 @@ $_product = $this->getProduct(); ?>
  <script type="text/javascript">
     //<![CDATA[	
 	jQuery(document).ready(function() {
-    jQuery('a#enquiry').fancybox();
+    jQuery('a#enquiry').fancybox({
+		maxWidth	: 464,
+		minHeight	: 200,
+		fitToView	: false,
+		width		: '80%',
+		height		: 'auto',
+		autoSize	: false,
+		showCloseButton : true
+
+  });
 	jQuery('#productenquiry').find('form').eq(0).submit(function(){
 		return false;
 	});
@@ -265,7 +274,16 @@ $_product = $this->getProduct(); ?>
  <script type="text/javascript">
     //<![CDATA[	
 	jQuery(document).ready(function() {
-    jQuery('a#review').fancybox();
+    jQuery('a#review').fancybox({
+		maxWidth	: 464,
+		minHeight	: 200,
+		fitToView	: false,
+		width		: '80%',
+		height		: 'auto',
+		autoSize	: false,
+		showCloseButton : true
+
+  });
 	jQuery('#productreview').find('form').eq(0).submit(function(){
 		return false;
 	});
@@ -280,3 +298,62 @@ $_product = $this->getProduct(); ?>
 </script>
 
 <!-- EOF developer #06  -->
+
+<!-- dOF developer #03  -->
+<div style="display:none;">
+ <a href="#proaddtocart" id="anchoraddpopup"></a>
+ <div id="proaddtocart">
+  <div class="name-mass">
+   <div class="product-name">
+    <h2 class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h2>
+    <div class="succes-massage"><?php echo $this->__('has been Successfully added to your bag') ?></div>
+    <ul class="cart-button">
+     <li><a href="<?php echo $this->getUrl() ?>" id="conti-shopping" class="button"><span><?php echo $this->__('Continue Shopping')?></span></a></li>
+     <li><a href="<?php echo Mage::helper('checkout/url')->getCartUrl() ?>" id="view-bag" class="button"><span><?php echo $this->__('View Bag')?></span></a></li>
+     <li><a href="<?php echo Mage::helper('checkout/url')->getCheckoutUrl() ?>" id="go-checkout" class="button"><span><?php echo $this->__('Go to Checkout')?></span></a></li>
+    </ul>
+             </div>
+  </div>
+ </div>
+</div>
+<script type="text/javascript">
+    //<![CDATA[ 
+	var flag ='false';
+	/*var lastcookieproduct='';
+	var search_cookie = "lastproduct" + "=" ;
+	if (document.cookie.length > 0) {  
+	  start_position = document.cookie.indexOf(search_cookie);  
+	  if (start_position!= -1) 
+	  { 
+	  start_position += search_cookie.length 
+	  end_position = document.cookie.indexOf(";", start_position) 
+	  if (end_position == -1)  
+	  end_position = document.cookie.length 
+	  lastcookieproduct=document.cookie.substring(start_position, end_position); 
+	  } 
+	}  */
+ check='<?php echo (Mage::getSingleton("checkout/session")->getLastAddedProductId(true)); ?>';
+ //alert(check);
+ document.cookie="lastproduct" + "=" +'<?php echo (Mage::getSingleton("checkout/session")->getLastAddedProductId(true)); ?>';
+ if(check!=''){
+  flag='true';
+ }
+jQuery(document).ready(function(){
+  //if(flag=='true'){
+  jQuery('a#anchoraddpopup').fancybox({
+		maxWidth	: 464,
+		minHeight	: 200,
+		fitToView	: false,
+		width		: '80%',
+		height		: 'auto',
+		autoSize	: false,
+		showCloseButton : true
+
+  });
+  setTimeout(function(){jQuery('#anchoraddpopup').click()},1000);  
+ // }
+ });
+
+//]]> 
+</script>
+<!-- eOF developer #03  -->
