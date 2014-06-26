@@ -620,7 +620,7 @@
   font-size: 14px !important;
   font-weight: 400;
   float:left;
- padding: 6px 0 0;
+ padding: 7px 0 0;
 }
 #left-nav .Category.active > a {
   color: #ffffff;
@@ -654,9 +654,11 @@
 }
 .sort-list li, .pager-list li {
  float: left;
- padding: 2px 0 0 13px ;
+ padding: 2px 0 0 7px ;
  background: url("../images/listing-sep.png") no-repeat scroll 0 9px transparent;
  cursor: pointer;
+ font-size:14px;
+  color: #494949;
 
 }
 .sort-list .sorter_name, .pager .amount-pages, .first-page .first, .last-page .last, .per-page{
@@ -666,7 +668,7 @@
   
 }
 .category-products .pager {
-  margin-left: 50px;
+padding: 0 35px 0 0;
   clear: none;
 }
 .category-products .pager .pager-list {
@@ -896,7 +898,7 @@
     position: relative;
 	background: url("../images/listing-plus-minus-sprite.png") no-repeat scroll 10px 10px transparent;
 }
-#left-nav li.parent.open {
+#left-nav li.parent.active {
     background: url("../images/listing-plus-minus-sprite.png") no-repeat scroll 10px -57px transparent;
 }
 #left-nav .Category li.active a span{
@@ -906,11 +908,12 @@
 }
 #left-nav li.parent .opener {
     height: 15px;
-    left: 0;
+    left: 5px;
     position: absolute;
-    top: 0;
+    top: 5px;
     width: 15px;
     z-index: 99;
+	cursor:pointer;
 }
 
 #narrow-by-list .m-selected-ln-item {
@@ -940,7 +943,13 @@ border-style:none;
     margin-left: 2%;
     width: 77%;
 }
-
+.product-listing .itemslider-similar-main .products-grid > li .productbg {
+  background: none repeat scroll 0 0 #fff;
+  border: 1px solid #8b9475;
+  box-shadow: 0 0 5px #838383;
+  margin: 0 3% 0 0;
+  padding: 10px;
+}
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:768px) and (max-width:1024px){  
 .contact-page {
@@ -979,9 +988,10 @@ border-style:none;
 .blog-index-list .col-left, .blog-post-view .col-left {
   width: 100%;
 }
+
 }
 /*   -------------       --------------------                 ----------------- */
-@media only screen and (min-width:951px) and (max-width:1024px){
+@media only screen and (min-width:950px) and (max-width:1024px){
 .latest-products .itemslider-similar-main .products-grid > li {
  width: 50%;
 }
@@ -995,6 +1005,11 @@ border-style:none;
 .toolbar .pager {
  float:none;
 }
+.category-products #toolbar-wrapper {
+  background: url("../images/whitestrip.png") repeat-x scroll 0 85px transparent;
+  padding: 3px 5px 25px 10px;
+}
+
 }
 
 
@@ -1021,7 +1036,7 @@ border-style:none;
   display: none;
 }
 .catalog-category-view .mobile-collapsible .block-title span {
-  background: url("../images/sprite-listing-300.png") no-repeat scroll 0 7px rgba(0, 0, 0, 0);
+  background: url("../images/sprite-listing-300.png") no-repeat scroll 0 7px transparent;
   color: #ffffff;
   font-family: oswald;
   font-size: 17px;
@@ -1029,7 +1044,7 @@ border-style:none;
   padding: 0 0 0 13px;
 }
 .catalog-category-view .mobile-collapsible.active .block-title span {
-  background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -53px rgba(0, 0, 0, 0);
+  background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -53px transparent;
 }
 .category-title-description .category-image {
   display: none;
@@ -1049,7 +1064,9 @@ border-style:none;
   width: 100%;
   }
 #tool-wrap {
+  background: url("../images/whitestrip.png") repeat-x scroll 0 78px transparent;
   clear: both;
+  padding: 0 0 12px;
 }
 #tool-wrap .sort-by label, #tool-wrap .pager .limiter label {
   color: #ffffff;
@@ -1059,9 +1076,7 @@ border-style:none;
   font-weight: 400;
   padding: 7px 0 0 3px;
 }
-#tool-wrap {
-  clear: both;
-}
+
 #tool-wrap .sorter {
   float: none;
 }
@@ -1085,18 +1100,15 @@ border-style:none;
 #tool-wrap .pager .count-container {
   float: none;
 }
-.col-left .mobile-collapsible {
-  background: url("../images/whitestrip.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
-  margin: 15px 0 0;
-}
+
 .catalog-category-view .block .mobile-collapsible .block-title {
-  background: url("../images/whitestrip.png") repeat-x scroll left bottom rgba(0, 0, 0, 0) !important;
+  background: url("../images/whitestrip.png") repeat-x scroll left bottom transparent !important;
   border: medium none;
   display: block;
   padding: 0 0 15px 10px;
 }
 .catalog-category-view .mobile-collapsible .block-title span {
-  background: url("../images/sprite-listing-300.png") no-repeat scroll 0 7px rgba(0, 0, 0, 0) ;
+  background: url("../images/sprite-listing-300.png") no-repeat scroll 0 7px transparent;
   color: #ffffff;
   font-family: oswald;
   font-size: 17px;
@@ -1107,7 +1119,7 @@ border-style:none;
   padding-left: 23px !important;
 }
 .block-layered-nav .block-content dl dt span {
-  background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -110px rgba(0, 0, 0, 0) !important;
+  background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -110px transparent !important;
   display: block;
   height: 20px;
   position: absolute;
@@ -1116,7 +1128,7 @@ border-style:none;
   width: 20px;
 }
 .block-layered-nav .block-content.accordion-open dl dt.current span {
-  background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -173px rgba(0, 0, 0, 0) !important;
+  background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -173px transparent !important;
   height: 20px;
   width: 20px;
 }
@@ -1134,11 +1146,11 @@ border-style:none;
 }
 
 .mobile-filter {
-  background: url("../images/spritestrip.png") repeat-x scroll 1px 35px rgba(0, 0, 0, 0);
+  background: url("../images/spritestrip.png") repeat-x scroll 1px 35px transparent;
   padding: 0 0 20px;
 }
 .mobile-filter .actions {
-  background: url("../images/close.png") no-repeat scroll 130px 8px rgba(0, 0, 0, 0);
+  background: url("../images/close.png") no-repeat scroll 130px 8px transparent;
 }
 .mobile-filter .actions a {
   color: #ffffff;
@@ -1173,10 +1185,16 @@ border-style:none;
   display: block;
 }
 .catalog-category-view .mobile-collapsible.active .block-title span {
-  background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -53px rgba(0, 0, 0, 0);
+  background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -53px transparent;
 }
 .toggle-content .actions {
   display: none;
+}
+#tool-wrap .pages{
+float:none;
+}
+.category-description.std {
+  overflow: hidden;
 }
 }
 
@@ -1449,7 +1467,7 @@ padding: 3% 2% 7% ;
   margin-bottom: 25px ;
 }
 .what-is-upcycling {
-  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+  background: none repeat scroll 0 0 transparent;
 }
 .delivery-details-image{
  width: 70%;
@@ -1483,7 +1501,7 @@ padding: 3% 2% 7% ;
   width: 100%;
 }
 .contact-page .connect-link ul li.Pinterest {
-  background: url("../images/contactsprite.png") no-repeat scroll 0 -209px rgba(0, 0, 0, 0);
+  background: url("../images/contactsprite.png") no-repeat scroll 0 -209px transparent;
   height: 40px;
   margin: 11px 0 0;
 }
@@ -1576,7 +1594,7 @@ float: none;
   padding: 0 0 15px 24px;
   border:none;
   display: block;
-  background: url("../images/whitestrip.png") repeat-x scroll left bottom rgba(0, 0, 0, 0) !important;;
+  background: url("../images/whitestrip.png") repeat-x scroll left bottom transparent !important;;
 }
 .col2-left-layout .sidebar .collapsible.active .block-title {
   background:none;
@@ -1588,10 +1606,10 @@ float: none;
   font-size: 17px;
   font-weight: 400;
    padding: 0 0 0 18px;
-   background: url("../images/sprite-listing-300.png") no-repeat scroll 0 7px rgba(0, 0, 0, 0);
+   background: url("../images/sprite-listing-300.png") no-repeat scroll 0 7px transparent;
 }
 .catalog-category-view .mobile-collapsible.active .block-title span{
-background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -53px rgba(0, 0, 0, 0);
+background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -53px transparent;
 }
 #tool-wrap .pages {
   float: left;
@@ -1616,7 +1634,7 @@ display:block;
 
 }
 .block-layered-nav .block-content  dl  dt span {
- background:url("../images/sprite-listing-300.png") no-repeat scroll 0 -110px rgba(0, 0, 0, 0) !important;
+ background:url("../images/sprite-listing-300.png") no-repeat scroll 0 -110px transparent !important;
 
   display: block;
   height: 20px;
@@ -1629,12 +1647,12 @@ display:block;
   position: relative;
 }
 .block-layered-nav .block-content.accordion-open dl dt.current span{
-  background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -173px rgba(0, 0, 0, 0) !important;
+  background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -173px transparent !important;
   height: 20px;
   width: 20px;
 }
 .col-left .mobile-collapsible{
-background: url("../images/whitestrip.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+background: url("../images/whitestrip.png") repeat-x scroll 0 0 transparent;
  margin: 15px 0 0;
 }
 .mobile-filter .actions a {
@@ -1642,10 +1660,10 @@ background: url("../images/whitestrip.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0)
   padding: 0 0 0 20px;
  }
 .mobile-filter .actions{
- background: url("../images/close.png") no-repeat scroll 130px 8px rgba(0, 0, 0, 0);
+ background: url("../images/close.png") no-repeat scroll 130px 8px transparent;
 }
 .mobile-filter{
-background:url("../images/spritestrip.png") repeat-x scroll 1px 35px rgba(0, 0, 0, 0);
+background:url("../images/spritestrip.png") repeat-x scroll 1px 35px transparent;
 padding: 0 0 20px;
 }
 .catalog-category-view .col2-left-layout .col-main {
@@ -1668,6 +1686,14 @@ padding: 0 0 20px;
 }
 .toggle-content .actions {
   display: none;
+}
+#tool-wrap {
+  /*background: url("../images/whitestrip.png") repeat-x scroll 0 78px transparent;*/
+  clear: both;
+  padding: 0 0 12px;
+}
+.category-description.std {
+  overflow: hidden;
 }
 }
 
