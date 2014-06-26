@@ -223,16 +223,6 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <span class="cell-label"><?php echo $this->__('Qty'); ?></span>
 		 <input type="text" pattern="\d*" name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" />
 
-        <ul class="cart-links">
-            <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
-            <li>
-                <?php if ($isVisibleProduct): ?>
-                    <a href="<?php echo $this->helper('wishlist')->getMoveFromCartUrl($_item->getId()); ?>" class="link-wishlist use-ajax"><?php echo $this->__('Move to wishlist'); ?></a>
-                <?php endif ?>
-            </li>
-            <?php endif ?>
-        </ul>
-
     </td>
 
     <!--Sub total starts here -->

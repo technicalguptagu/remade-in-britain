@@ -640,6 +640,13 @@ body.newsletter-manage-index .my-account .form-list {
 #market_place_manage_products_order .top_amount, .mp_top_amount, #market_place_manage_products .top_amount, #mp_order_transaction .top_amount {
    padding:0 0 15px 0;
   }
+#market_place_manage_products_order .data-table thead th, 
+#market_place_manage_products_order .data-table tbody td {
+    border: 1px solid;
+    color: #ffffff;
+    font-family: oswaldlight;
+    font-size: 13px;
+   }
 .wide.fields label, .fields .field_store_logos label {
    color: #494956;
    font-family: oswald;
@@ -967,7 +974,7 @@ body, label, button, input, select, table, textarea {
   font-size: 13px;
   font-weight: 400;
   line-height: 19px;
-  padding: 3px 20px;
+  padding: 4px 20px;
   text-align: center;
   text-transform: capitalize;
   vertical-align: middle;
@@ -975,7 +982,7 @@ body, label, button, input, select, table, textarea {
   }
 
 #shopping-cart-table tfoot td.cart-footer-actions {
-  padding: 14px 0 10px;
+  padding: 18px 0 10px;
   }
 .cart-footer-actions .button2.btn-continue {
   float:left;
