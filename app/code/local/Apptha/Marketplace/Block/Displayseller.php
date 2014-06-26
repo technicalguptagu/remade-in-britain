@@ -60,6 +60,13 @@ class Apptha_Marketplace_Block_Displayseller extends Mage_Core_Block_Template
     function categoryProducts(){
         $display_cat_product = $this->getRequest()->getParam('category_name');
         $sort_product        = $this->getRequest()->getParam('sorting');
+
+
+        $order        = explode('/', Mage::app()->getRequest()->getParam('order'));
+        $_direction        =  Mage::app()->getRequest()->getParam('dir');
+
+
+
 		$direction = explode('?dir=',$sort_product);
         $id                  = $this->getRequest()->getParam('id');
         $catagory_model      = Mage::getModel('catalog/category')->load($display_cat_product);
@@ -70,8 +77,8 @@ class Apptha_Marketplace_Block_Displayseller extends Mage_Core_Block_Template
                                 $collection->addAttributeToFilter('seller_id',$id);
                                 $collection->addStoreFilter();         
                                // $collection->addAttributeToSort($sort_product);
-							   if($sort_product){
-                                $collection->addAttributeToSort($direction[0],$direction[1]);
+							   if($order[0]||$_direction){
+                                $collection->addAttributeToSort($order[0],$_direction);
 							   }
 							   else{
 							    $collection->addAttributeToSort('name','asc');

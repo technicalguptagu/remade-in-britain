@@ -21,11 +21,12 @@ class Apptha_Marketplace_Block_Retailer extends Mage_Core_Block_Template
 {
 
 	public function getRetailer(){
-	$collection   = Mage::getModel('marketplace/sellerprofile')->getCollection();
-                        
-        //foreach($collection as $data){
+	 $collection   = Mage::getModel('marketplace/sellerprofile')->getCollection();
+     $collection->setOrder('store_title', 'ASC'); 
+	  
+     
            return $collection;
-       // }    
+     
 	
 	}
 
