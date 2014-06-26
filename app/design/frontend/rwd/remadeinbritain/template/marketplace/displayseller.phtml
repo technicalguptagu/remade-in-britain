@@ -33,12 +33,14 @@ $seller_page = Mage::getModel('marketplace/sellerprofile')->collectprofile($id);
                         <h1><?php echo $seller_page->getStoreTitle(); ?></h1>
 						</div>
 				   <div class="category-description std">
-				       <p class="mp_profiles_desc"><?php echo $seller_page->getDescription(); ?></p>
+				   <p class="category-image">
+				   <img src="<?php echo Mage::getBaseUrl('media') . "marketplace/resized/" . $seller_page->getStoreLogo(); ?>" alt="store logo" class="market_place_store_img" />
+				   </p>
+				   <p><?php echo $seller_page->getDescription(); ?></p>
                    </div>
-                   <div class="category-image">
+                   <p class="category-image">
                    <img src="<?php echo Mage::getBaseUrl('media') . "marketplace/resized/" . $seller_page->getStoreLogo(); ?>" alt="store logo" class="market_place_store_img" />
-				   </div>
-				   <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+				   </p>
              </div>           
      </div>          
  </div>               
@@ -46,7 +48,6 @@ $seller_page = Mage::getModel('marketplace/sellerprofile')->collectprofile($id);
 
          
          
-    <div class="clear"></div>
     <?php  $display_product_count = $this->getCollection();
     $count_product = count($display_product_count);
     if($count_product>0){ ?>
@@ -168,8 +169,6 @@ foreach ($seller_value as $_value) {
 								alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
 								<span class="transparent-img">&nbsp;</span>						
 							</a>
-					
-					<div class="product-secondary">
                         <div class="actions">
 								<div class="product-links">
 									<ul class="add-to-links">
@@ -192,6 +191,7 @@ foreach ($seller_value as $_value) {
 										<?php endif; ?>
 									</ul>
 								</div>
+							</div>
 							</div>
 							<h3 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
 					<?php $_productName = $this->escapeHtml($_product->getName());?>
@@ -248,8 +248,8 @@ foreach ($seller_value as $_value) {
                     } else {
                         echo 'No products exists';
                     }    ?>
+					</div>
    </ul>
-</div>
        <div class="toolbar-bottom">
               <div class="toolbar">
 		      <?php echo $this->getPagerHtml();?>
