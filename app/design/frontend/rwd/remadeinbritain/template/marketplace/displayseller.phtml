@@ -24,7 +24,7 @@ $seller_page = Mage::getModel('marketplace/sellerprofile')->collectprofile($id);
 <?php  $_coreHelper = $this->helper('core');
        $_taxHelper = $this->helper('tax'); ?>
 <div id="description-wrapper">
-<div class="category-title-description">            
+    <div class="category-title-description">            
                       
                     
                      
@@ -40,8 +40,8 @@ $seller_page = Mage::getModel('marketplace/sellerprofile')->collectprofile($id);
 				   </div>
 				   <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
              </div>           
-               
-                
+     </div>          
+ </div>               
                
 
          
@@ -63,7 +63,7 @@ foreach ($seller_value as $_value) {
         $cat_ids_value[] = $_value['category_id'];
     }
 }
-echo $this->getPagerHtml();
+//echo $this->getPagerHtml();
 ?>
 <?php //=====================?>
 <?php 
@@ -78,7 +78,10 @@ echo $this->getPagerHtml();
 ?>
 
 <?php //=====================?>
-
+<div class="category-products">
+<div id="toolbar-wrapper">
+<div class="top-toolbar">
+        <div class="toolbar">
         <div class="sorter">
             <form name="category_products" id="mp_category_products" action="" method="post"> 
 			<div class="sort-by">
@@ -93,29 +96,30 @@ echo $this->getPagerHtml();
                     <option value="position?dir=asc" <?php if ($sort_product == 'position?dir=asc') { ?>selected="selected" <?php } ?>><?php echo $this->__('Position'); ?></option>
                 </select><?php */?>
 <?php //=====================?>
-               <ul name="sorting"  id="sorting">
-                    <li class="<?php if (($_order[0] == 'name') && ($_direction == 'asc')) :?>active<?php endif;?>">
-					    <a onclick="setLocation('<?php echo $this->getUrl($_getUrl.'?dir=asc&order=name') ?>')" title="<?php echo $this->__('A-Z'); ?>">
-                            <?php echo $this->__('A-Z'); ?>
+               <ul class="sort-list" id="sorting">
+                    <li class="<?php if (($_order[0] == 'price') && ($_direction == 'desc')) :?>active<?php endif;?>">
+					    <a onclick="setLocation('<?php echo $this->getUrl($_getUrl.'?dir=desc&order=price') ?>')" title="<?php echo $this->__('HIGHEST'); ?>">
+                            <span class="sorter_name"><?php echo $this->__('HIGHEST') ?> <?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?></span>
                         </a>
-					</li>
-
-					<li class="<?php if (($_order[0] == 'price') && ($_direction == 'asc')) :?>active<?php endif;?>">
-					    <a onclick="setLocation('<?php echo $this->getUrl($_getUrl.'?dir=asc&order=price') ?>')" title="<?php echo $this->__('Price low'); ?>">
-                            <?php echo $this->__('Price low'); ?>
-                        </a>
-					</li>
-
-					<li class="<?php if (($_order[0] == 'price') && ($_direction == 'desc')) :?>active<?php endif;?>">
-					    <a onclick="setLocation('<?php echo $this->getUrl($_getUrl.'?dir=desc&order=price') ?>')" title="<?php echo $this->__('Price high'); ?>">
-                            <?php echo $this->__('Price high'); ?>
-                        </a>
+						<span class="sorter_line"><?php echo $this->__('&nbsp;&nbsp; ') ?></span>
 					</li >
-
-					<li class="<?php if (($_order[0] == 'position') && ($_direction == 'asc')) :?>active<?php endif;?>">
-					    <a onclick="setLocation('<?php echo $this->getUrl($_getUrl.'?dir=asc&order=position') ?>')" title="<?php echo $this->__('Position'); ?>">
-                            <?php echo $this->__('Position'); ?>
+					<li class="<?php if (($_order[0] == 'price') && ($_direction == 'asc')) :?>active<?php endif;?>">
+					    <a onclick="setLocation('<?php echo $this->getUrl($_getUrl.'?dir=asc&order=price') ?>')" title="<?php echo $this->__('LOWEST'); ?>">
+                         <span class="sorter_name"><?php echo $this->__('LOWEST') ?> <?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?></span>
                         </a>
+						<span class="sorter_line"><?php echo $this->__('&nbsp;&nbsp; ') ?></span>
+					</li>
+					 <li class="<?php if (($_order[0] == 'name') && ($_direction == 'asc')) :?>active<?php endif;?>">
+					    <a onclick="setLocation('<?php echo $this->getUrl($_getUrl.'?dir=asc&order=name') ?>')" title="<?php echo $this->__('A-Z'); ?>">
+                            <span class="sorter_name"><?php echo $this->__('A-Z'); ?></span>
+                        </a>
+						<span class="sorter_line"><?php echo $this->__('&nbsp;&nbsp; ') ?></span>
+					</li>
+					<li class="<?php if (($_order[0] == 'position') && ($_direction == 'asc')) :?>active<?php endif;?>">
+					    <a onclick="setLocation('<?php echo $this->getUrl($_getUrl.'?dir=asc&order=position') ?>')" title="<?php echo $this->__('RATING'); ?>">
+                            <span class="sorter_name"><?php echo $this->__('RATING') ?></span>
+                        </a>
+						<span class="sorter_line"><?php echo $this->__('&nbsp;&nbsp; ') ?></span>
 					</li>
                    
       <?php //=====================?>
@@ -123,11 +127,15 @@ echo $this->getPagerHtml();
 
 				</div>
             </form>
-        </div></div> 
+        </div>
+		<?php echo $this->getPagerHtml();?>
+		</div>
+		</div>
+		</div>
 
-    </h2>
-	
-    <ul class="products-grid product_snipt f-left">
+<div class="latest-products product-listing products-grid products-grid--max-<?php echo $_columnCount; ?>-col">
+		<div class="itemslider-similar-main">
+			<ul class=" slides products-grid">
        
         <?php
 
@@ -139,7 +147,7 @@ echo $this->getPagerHtml();
         if (!empty($display_product)) {
             foreach ($display_product as $_product) {
                 $wordsCount_category = strlen($_product->getName()); ?>                
-                <li class="item">
+                <li class="item last">
 				<div class="productbg">
 						<?php if ($_product->getNews_from_date()): ?>
 						<?php if ($_product->getNews_to_date()): ?>
@@ -153,33 +161,46 @@ echo $this->getPagerHtml();
                                     <img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
                                 </span>
 					   <?php endif ?>
-                    <a href="<?php echo $_product->getProductUrl(); ?>">
-                        <img class="product-image" src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(183); ?>" width="183" height="183" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
-                    </a>
-					<h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
+					   <div class="product-image">
+                   <a href="<?php echo $_product->getProductUrl(); ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image-img">
+								<img class="product-image"
+								src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(183); ?>"
+								alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+								<span class="transparent-img">&nbsp;</span>						
+							</a>
+					
+					<div class="product-secondary">
+                        <div class="actions">
+								<div class="product-links">
+									<ul class="add-to-links">
+										<li class="product-rating"><?php echo $this->getReviewsSummaryHtml($_product, 'short') ?></li>
+										<?php if ($this->helper('wishlist')->isAllow()) : ?>
+										<li class="add-wishlist"><a href="<?php echo $this->getAddToWishlistUrl($_product) ?>" class="link-wishlist">&nbsp;</a></li>
+										<?php endif; ?>
+										<?php if ($_compareUrl = $this->getAddToCompareUrl($_product)): ?>
+										<li class="add-compare"><a href="<?php echo $_compareUrl ?>" class="link-compare">&nbsp;</a></li>
+										<?php endif; ?>
+										<li class="view-products">
+										<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->__('View Product') ?>" class="view-prod">&nbsp;</a>
+										</li>
+										<?php if ($_product->isSaleable()): ?>
+										<li class="add-cart">
+										<a href="<?php echo $this->getAddToCartUrl($_product) ?>" title="<?php echo $this->__('Add to Cart') ?>">&nbsp;</a>
+										</li>
+										<?php else: ?>
+										<li class="out-of-stock"><?php echo $this->__('Out of stock') ?></li>
+										<?php endif; ?>
+									</ul>
+								</div>
+							</div>
+							<h3 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
 					<?php $_productName = $this->escapeHtml($_product->getName());?>
                                        <?php $_count = strlen($_productName);?>
                                         <?php echo strip_tags(substr($_productName, 0, 80));?>
                                         <?php if ($_count > 80): ?>
                                            <?php echo $this->__('...')?>  
 										   <?php endif; ?>
-                                        </a></h2>
-										<div class="product-secondary">
-                        <?php //if($_product->isSaleable() && !$_product->canConfigure()): ?>
-                            <p class="action"><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
-                        <?php //elseif($_product->isSaleable()): ?>
-                            <p class="action"><a title="<?php echo $this->__('View Details') ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a></p>
-                        
-                        <?php //endif; ?>
-                        <ul class="add-to-links">
-                            <?php //if ($this->helper('wishlist')->isAllow()) : ?>
-                                <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
-                            <?php //endif; ?>
-                            <?php //if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
-                                <li><span class="separator">|</span> <a href="<?php echo $this->getAddToCompareUrl($_product) ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
-                            <?php //endif; ?>
-                        </ul>
-                    </div>
+                                        </a></h3>
                     <div class="price-Or-retailername">
                             <?php
                             //Display Product Price
@@ -229,4 +250,16 @@ echo $this->getPagerHtml();
                     }    ?>
    </ul>
 </div>
+       <div class="toolbar-bottom">
+              <div class="toolbar">
+		      <?php echo $this->getPagerHtml();?>
+		      </div>
+	   </div>
 </div>
+</div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	jQuery('.left-category').wrap('<div class="prod-list"></div>');
+})
+</script>
