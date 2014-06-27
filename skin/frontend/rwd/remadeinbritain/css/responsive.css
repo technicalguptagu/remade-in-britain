@@ -361,6 +361,7 @@
 .dashboard .welcome-msg {
    float:left;
    padding: 0 0 10px;
+   width: 50%;
    }
 .dashboard .welcome-msg p {
    color: #FFFFFF;
@@ -422,7 +423,9 @@
    }
 .dashboard .box-recent .orders th , .dashboard .box-recent .orders td,
 .my-account .data-table.orders th, .my-account .data-table.orders td,
-.my-account .linearize-table-large th, .my-account .linearize-table-large td{
+.my-account .linearize-table-large th, .my-account .linearize-table-large td,
+#wishlist-table.clean-table thead th, #wishlist-table.clean-table td,
+#my-reviews-table.data-table thead th, #my-reviews-table.data-table td {
   border: 2px solid #FFFFFF !important;
    }
 #co-shipping-form .wide > label {
@@ -476,6 +479,19 @@
   font-family: oswaldlight;
   font-size: 16px;
   font-style: normal;
+  }
+#wishlist-table .product-name {
+  font-family: "oswald",Arial,sans-serif;
+  font-size: 16px;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  }
+#wishlist-table .product-name a {
+  color: #494956;
+  }
+#wishlist-table .wishlist-sku {
+  font-family: "oswald",Arial,sans-serif;
+  font-size: 11px;
   }
 form .legend {
   font-family: Oswald;
@@ -1547,7 +1563,7 @@ form .form-instructions {
    border: medium none !important;
    }
 .col2-left-layout .sidebar .collapsible.mobile-collapsible {
-  margin: 55px 0 0 0;
+  /*margin: 55px 0 0 0;*/
   }
 .col2-left-layout .sidebar .block-account .block-title {
   margin: 0;
@@ -1577,7 +1593,7 @@ form .form-instructions {
    width: 100%
    }
 .dashboard .welcome-msg {
-   margin: 20px 0 0;
+   /*margin: 20px 0 0;*/
    }
 /*=======Category-Page========== */
 
