@@ -24,11 +24,11 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-
+<?php //BOF developer-19 24/06/2013     ?>
 <?php $_product = $this->getProduct(); ?>
 <?php $buttonTitle = $this->__('Update Cart'); ?>
 <?php if ($_product->isSaleable()): ?>
-<div class="quantity">
+    <div class="quantity">
         <div class="qty-box">
             <?php if (!$_product->isGrouped()): ?>
                 <label for="qty"><?php echo $this->__('Quantity') ?></label>
@@ -56,124 +56,124 @@
                        ?>
                    <?php endif; ?>
         </div>
-		<div class="tier-price">
-		    <?php if ($this->displayProductStockStatus()): ?>
-               <?php if ($_product->isAvailable()): ?>
-                   <p class="availability in-stock">
-                   <span><?php echo $this->helper('catalog')->__('Availability') ?></span>
-                   <span class="value"><?php echo $this->helper('catalog')->__('In stock') ?></span>
-                   </p>
-               <?php else: ?>
-                   <p class="availability out-of-stock">
-                   <span><?php echo $this->helper('catalog')->__('Availability') ?></span>
-                   <span class="value"><?php echo $this->helper('catalog')->__('Out of stock') ?></span>
-                   </p>
-               <?php endif; ?>
-          <?php endif; ?>
-       </div>
-	   </div>
+        <div class="tier-price">
+            <?php if ($this->displayProductStockStatus()): ?>
+                <?php if ($_product->isAvailable()): ?>
+                    <p class="availability in-stock">
+                        <span><?php echo $this->helper('catalog')->__('Availability') ?></span>
+                        <span class="value"><?php echo $this->helper('catalog')->__('In stock') ?></span>
+                    </p>
+                <?php else: ?>
+                    <p class="availability out-of-stock">
+                        <span><?php echo $this->helper('catalog')->__('Availability') ?></span>
+                        <span class="value"><?php echo $this->helper('catalog')->__('Out of stock') ?></span>
+                    </p>
+                <?php endif; ?>
+            <?php endif; ?>
+        </div>
+    </div>
 
-	   <div class="add-to-cart">
-		   <div class="total-addto">
-				<div class="update-total">
-					<div class="lable-total">
-						<?php echo $this->__('Total') ?>
-					</div>
-					<div class="price-update-box">
-						<span class="update-price">
-						<?php echo $this->getPriceHtml($_product) ?></span>
-					</div>
-				</div>
-				 <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
-			</div>
-			<div class="payment">&nbsp;</div>
-		</div>
+    <div class="add-to-cart">
+        <div class="total-addto">
+            <div class="update-total">
+                <div class="lable-total">
+                    <?php echo $this->__('Total') ?>
+                </div>
+                <div class="price-update-box">
+                    <span class="update-price">
+                        <?php echo $this->getPriceHtml($_product) ?></span>
+                </div>
+            </div>
+            <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+        </div>
+        <div class="payment">&nbsp;</div>
+    </div>
 <?php endif; ?>
 <input type="hidden" id="productOriginalPrice" value="" />
 
 <script type="text/javascript">
-                   function numberWithCommas(n) {
-                       var parts = n.toString().split(".");
-                       return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
-                   }
+    function numberWithCommas(n) {
+        var parts = n.toString().split(".");
+        return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
+    }
 
-                   function updatePrice(elem)
-                   {
+    function updatePrice(elem)
+    {
 
 
-                       prodId = '<?php echo $_product->getId(); ?>';
-                       qty = elem.value;
-                       skiphtml = "<?php
+        prodId = '<?php echo $_product->getId(); ?>';
+        qty = elem.value;
+        skiphtml = "<?php
 echo Mage::app()->getLocale()->currency(Mage::app()->getStore()
                 ->getCurrentCurrencyCode())->getSymbol();
 ?>";
 
-                       var specialPrice = false;
-                       $$('body .special-price').each(function(element) {
-                           var children = $A(element.childNodes);
-                           children.each(function(child) {
+        var specialPrice = false;
+        $$('body .special-price').each(function(element) {
+            var children = $A(element.childNodes);
+            children.each(function(child) {
 
-                               if (child.id == 'product-price-' + prodId) {
-                                   specialPrice = true;
-                               }
-                           });
-                       });
+                if (child.id == 'product-price-' + prodId) {
+                    specialPrice = true;
+                }
+            });
+        });
 
-                       if (specialPrice == true) {
-                           $$('body .price').each(function(element) {
-                               if (element.id == 'product-price-' + prodId) {
-                                   //alert(element.innerHTML);
-                                   formattedprice = element.innerHTML;
-                                   formattedprice = formattedprice.replace(skiphtml, "").replace(',', "");
-                                   if ($('productOriginalPrice').value == '')
-                                   {
-                                       $('productOriginalPrice').value = formattedprice;
-                                   }
-                                   else
-                                       formattedprice = $('productOriginalPrice').value;
+        if (specialPrice == true) {
+            $$('body .price').each(function(element) {
+                if (element.id == 'product-price-' + prodId) {
+                    //alert(element.innerHTML);
+                    formattedprice = element.innerHTML;
+                    formattedprice = formattedprice.replace(skiphtml, "").replace(',', "");
+                    if ($('productOriginalPrice').value == '')
+                    {
+                        $('productOriginalPrice').value = formattedprice;
+                    }
+                    else
+                        formattedprice = $('productOriginalPrice').value;
 
-                                   price = qty * Number(formattedprice);
-                                   price1 = (parseFloat(price)).toFixed(2);
+                    price = qty * Number(formattedprice);
+                    price1 = (parseFloat(price)).toFixed(2);
 
-                                   element.update(skiphtml + numberWithCommas(price1));
-                               }
+                    element.update(skiphtml + numberWithCommas(price1));
+                }
 
-                           });
-                       }
-                       else {
+            });
+        }
+        else {
 
-                           $$('body .regular-price').each(function(element) {
+            $$('body .regular-price').each(function(element) {
 
-                               if (element.id == 'product-price-' + prodId) {
-                                   var children = $A(element.childNodes);
-                                   children.each(function(child) {
-                                       if (child.innerHTML) {
-                                           formattedprice = child.innerHTML;
-                                           formattedprice = formattedprice.replace(skiphtml, "").replace(',', "");
+                if (element.id == 'product-price-' + prodId) {
+                    var children = $A(element.childNodes);
+                    children.each(function(child) {
+                        if (child.innerHTML) {
+                            formattedprice = child.innerHTML;
+                            formattedprice = formattedprice.replace(skiphtml, "").replace(',', "");
 
-                                           if ($('productOriginalPrice').value == '')
-                                           {
-                                               $('productOriginalPrice').value = formattedprice;
-                                           }
-                                           else
-                                               formattedprice = $('productOriginalPrice').value;
+                            if ($('productOriginalPrice').value == '')
+                            {
+                                $('productOriginalPrice').value = formattedprice;
+                            }
+                            else
+                                formattedprice = $('productOriginalPrice').value;
 
-                                           price = qty * Number(formattedprice);
+                            price = qty * Number(formattedprice);
 
-                                           price1 = (parseFloat(price)).toFixed(2);
+                            price1 = (parseFloat(price)).toFixed(2);
 
-                                           child.update(skiphtml + numberWithCommas(price1));
-
-
-                                       }
-                                   });
-                               }
-                           });
-                       }
+                            child.update(skiphtml + numberWithCommas(price1));
 
 
+                        }
+                    });
+                }
+            });
+        }
 
-                   }
+
+
+    }
 
 
 </script>
@@ -192,3 +192,5 @@ echo Mage::app()->getLocale()->currency(Mage::app()->getStore()
 
     });
 </script>
+<?php
+//EOF developer-19 24/06/2013    ?>

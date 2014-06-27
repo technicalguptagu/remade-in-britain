@@ -30,20 +30,12 @@
  *
  * @var $this Mage_Checkout_Block_Cart
  */
-?>
+?><?php //BOF developer-19 18/06/2013      ?>
+
 <?php $_priceDisplay = ($this->helper('tax')->displayCartBothPrices()) ? 'display-both-prices' : 'display-single-price'; ?>
 <div class="cart <?php echo $_priceDisplay; ?>">
     <div class="page-title title-buttons">
         <h1><?php echo $this->__('Shopping Cart') ?></h1>
-        <!-- <?php if(!$this->hasError()): ?>
-        <ul class="checkout-types top">
-        <?php foreach ($this->getMethods('top_methods') as $method): ?>
-            <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
-            <li><?php echo $methodHtml; ?></li>
-            <?php endif; ?>
-        <?php endforeach; ?>
-        </ul>
-        <?php endif; ?> -->
     </div>
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <?php echo $this->getChildHtml('form_before') ?>
@@ -59,67 +51,54 @@
             <col/>
             <col />
             <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
-            <col/>
-            <col/>
+                <col/>
+                <col/>
             <?php endif; ?>
 
-        <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
+            <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
             <thead>
                 <tr>
-                    <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php //echo $this->__('Product') ?></span></th>
+                    <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php //echo $this->__('Product')   ?></span></th>
                     <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
-                    <th rowspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Retailer Name')?></th>
+                    <th rowspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Retailer Name') ?></th>
                     <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
                     <th class="a-center cart-price-head" colspan="<?php echo $mergedCells; ?>">
-<!--                            <div class="cart-price-placeholder">-->
-                            <span class="nobr"><?php echo $this->__('Unit Price') ?></span>
-<!--                            </div>-->
+                        <span class="nobr"><?php echo $this->__('Unit Price') ?></span>
                     </th>
 
                     <th rowspan="<?php echo $mergedCells; ?>" class="a-center">
                         <?php echo $this->__('Qty') ?>
-
-                        <?php /*if ($this->helper('wishlist')->isAllowInCart()) : ?>
-                            <span class="nobr"><?php echo $this->__('Move to Wishlist') ?></span>
-                        <?php endif*/ ?>
-
                     </th>
 
                     <th class="a-center cart-total-head" colspan="<?php echo $mergedCells; ?>">
-<!--                            <div class="cart-total-placeholder">-->
-                            <?php echo $this->__('Subtotal') ?>
-<!--                            </div>-->
+                        <?php echo $this->__('Subtotal') ?>
                     </th>
 
                     <th class="a-center" rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
 
                 </tr>
                 <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
-                <tr>
-                    <th class="a-center cart-price-head"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
-                    <th class="a-center cart-price-head"><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
-                    <th class="a-center cart-total-head"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
-                    <th class="a-center cart-total-head"><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
-                </tr>
+                    <tr>
+                        <th class="a-center cart-price-head"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                        <th class="a-center cart-price-head"><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                        <th class="a-center cart-total-head"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                        <th class="a-center cart-total-head"><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                    </tr>
                 <?php endif; ?>
             </thead>
             <tfoot>
                 <tr>
                     <td colspan="50" class="a-right cart-footer-actions">
-					<?php if($this->getContinueShoppingUrl()): ?>
+                        <?php if ($this->getContinueShoppingUrl()): ?>
                             <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button2 btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
                         <?php endif; ?>
-
-                        <!-- Make this button the first responder rather than empty cart -->
-                        <!-- <button type="submit" style="visibility:hidden;" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button2 btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button> -->
-
                         <button type="submit" name="update_cart_action" value="empty_cart" title="<?php echo $this->__('Shipping Details'); ?>" class="button2 btn-empty" id="empty_cart_button"><span><span><?php echo $this->__('Shipping Details'); ?></span></span></button>
 
                         <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button2 btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
 
-                        
 
-                        
+
+
                         <!--[if lt IE 8]>
                         <input type="hidden" id="update_cart_action_container" />
                         <script type="text/javascript">
@@ -146,9 +125,9 @@
                 </tr>
             </tfoot>
             <tbody>
-            <?php foreach($this->getItems() as $_item): ?>
-                <?php echo $this->getItemHtml($_item) ?>
-            <?php endforeach ?>
+                <?php foreach ($this->getItems() as $_item): ?>
+                    <?php echo $this->getItemHtml($_item) ?>
+                <?php endforeach ?>
             </tbody>
         </table>
         <script type="text/javascript">decorateTable('shopping-cart-table')</script>
@@ -160,24 +139,26 @@
         <?php echo $this->getChildHtml('checkout_cart_widget') ?>
         <?php echo $this->getChildHtml('coupon') ?>
         <?php echo $this->getChildHtml('checkout.cart.extra') ?>
-        <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+        <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping');
+        endif;
+        ?>
     </div>
     <div class="cart-totals-wrapper">
-	    <h2><?php echo $this->__('Order Total') ?></h2>
-         <div class="cart-totals">
+        <h2><?php echo $this->__('Order Total') ?></h2>
+        <div class="cart-totals">
             <?php echo $this->getChildHtml('totals'); ?>
-            <?php if(!$this->hasError()): ?>
-            <ul class="checkout-types bottom">
-            <?php foreach ($this->getMethods('methods') as $method): ?>
-                <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
-                <li class="method-<?php echo preg_replace("/[^_a-zA-Z0-9-]/", '-', $method); ?>"><?php echo $methodHtml; ?></li>
-                <?php endif; ?>
-            <?php endforeach; ?>
-            </ul>
-            <?php endif; ?>
+                <?php if (!$this->hasError()): ?>
+                <ul class="checkout-types bottom">
+                    <?php foreach ($this->getMethods('methods') as $method): ?>
+                            <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                            <li class="method-<?php echo preg_replace("/[^_a-zA-Z0-9-]/", '-', $method); ?>"><?php echo $methodHtml; ?></li>
+                            <?php endif; ?>
+                <?php endforeach; ?>
+                </ul>
+<?php endif; ?>
         </div>
     </div>
-    <?php echo $this->getChildHtml('crosssell') ?>
+<?php echo $this->getChildHtml('crosssell') ?>
 </div>
-
+<?php //EOF developer-19 18/06/2013    ?>
  

@@ -103,10 +103,10 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
          <span class="cell-label"><?php echo $this->__('Retailer Name'); ?></span>
 		 <?php
 			$_product_id = $_item->getProductId();
-			$retailerStoreName = Mage::helper('addcustomerattribute')->getRetailerStoreName($_product_id);
-			$retailerStoreLink = Mage::helper('addcustomerattribute')->getRetailerStoreLink($_product_id);
+			$_retailerStoreName = Mage::helper('addcustomerattribute')->getRetailerStoreName($_product_id);
+			$_retailerStoreLink = Mage::helper('addcustomerattribute')->getRetailerStoreLink($_product_id);
 		?>	
-		<a href='<?php echo $retailerStoreLink; ?>' class="link_seller"><?php echo $retailerStoreName ?></a>
+		<a href='<?php echo $_retailerStoreLink; ?>' class="link_seller"><?php echo $_retailerStoreName ?></a>
 	</td>
 <!-- EOF developer #06  2014/06/14 -->
 	<td class="edit-del">
