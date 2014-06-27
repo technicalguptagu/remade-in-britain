@@ -274,9 +274,34 @@
 }
 
 #proaddtocart .succes-massage {
-  margin: 15px 0;
+  margin: 30px 0 0;
+  padding: 0 0 20px;
+  background: url("../images/spritestrip.png") repeat-x scroll 0 -10px transparent;
+  text-transform: capitalize;
+  }
+#proaddtocart .name-mass .product-name h2 {
+  border-bottom: medium none;
+  font-family: oswald;
+  text-transform: capitalize;
+  }
+#proaddtocart .cart-button {
+   margin: 10px 0 0;
   }
 #proaddtocart .cart-button li{
   float:left;
-  width:
+  margin: 2px 12px 0 0;
+  }
+#proaddtocart .cart-button #conti-shopping {
+   background:#5dc1c0;
+   border:1px solid #48A7A5;
+   }
+#proaddtocart .cart-button #view-bag {
+  background:#e87e62;
+  border:1px solid #d16235;
+  width:130px;
+  }
+#proaddtocart .cart-button #go-checkout {
+  background:#75757C;
+  border:1px solid #5F5F69;
+  width:130px;
  }
