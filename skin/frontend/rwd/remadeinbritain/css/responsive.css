@@ -22,7 +22,7 @@
    position: static;
    padding: 2px 0;
    }
-.opc .section .step-title .number{
+.opc .section .step-title .number {
   background-color: #494956 !important;
   display: block;
   float: left;
@@ -33,6 +33,7 @@
   margin: 6px 12px !important;
   position: static !important;
   width: 26px !important;
+  color:#fff;
   }
 .opc.opc-firststep-login #opc-login.section .step-title h2 {
   float: left;
@@ -381,7 +382,8 @@
    font-size: 16px;
    font-weight: 300;
    }
-.dashboard > p {
+.dashboard > p,
+.box-account.box-reviews > ol{
    color: #fff;
    font-family: oswaldlight;
    font-size: 16px;
@@ -440,13 +442,15 @@
     width: 80%;
    }
 .dashboard .col2-set .col-1 .box-title h3, .dashboard .col2-set .col-2 .box-title h3,
-.my-account .addresses-primary h3{
+.my-account .addresses-primary h3,
+#my_recent_reviews .details .product-name {
   color: #FFFFFF;
   font-family:oswaldlight;
   font-size: 16px;
   text-transform: capitalize;
   display:inline-block;
   font-weight: 300;
+  margin: 0;
   }
 .dashboard .col2-set .col-1 .box-title a, 
 .dashboard .col2-set .col-2 .box-title a {
@@ -493,6 +497,16 @@
   font-family: "oswald",Arial,sans-serif;
   font-size: 11px;
   }
+.dashboard .box-reviews li .details .ratings strong {
+  font-size: 13px;
+  margin-right: 5px;
+  font-family: "oswald",Arial,sans-serif;
+  }
+.dashboard .box-reviews li .details .ratings .rating-box {
+  width: 118px;
+  }
+#my_recent_reviews .details .product-name a {
+}
 form .legend {
   font-family: Oswald;
   font-size: 16px;
