@@ -1556,7 +1556,7 @@ a.button:hover {
 .price-box .minimal-price-link {
   padding-left: 1em;
   color: #3399cc;
-  display: block;
+  display: none;
   /* We want this to show on its own line, otherwise the layout looks funky */
 }
 .price-box .minimal-price-link .label {
@@ -3070,7 +3070,7 @@ a.skip-link {
   color: #636363;
 }
 .footer .links a:hover {
-  color: #3399cc;
+  /*color: #3399cc;*/
 }
 .footer .block-subscribe {
   float: right;
@@ -7196,12 +7196,13 @@ div.calendar table td.button {
   text-transform: none;
 }
 /*****BOF Developer 13*****/
+.footer-block .links #nav li.level0.nav-1.first { display: none; }
 .page-header-container { max-width: 1200px; margin: 0 auto; }
 .sign-up { display: none; }
 .mycart #cartHeader .block-cart .block-content .cart-middle-img .empty { color: #75757c; font-family: Oswald; font-size: 13px; font-weight: 300; }
 .about-remade { width: 100%; padding: 0 0 1.7%; }
 .about-remade .upcycling, .about-remade .blog-remade { float: left; width: 32.2%; }
-.about-remade .join-us {float: left; margin: 0 1.6%; width: 32.2%; }
+.about-remade .join-us {float: left; margin: 0 1.6%; width: 32.4%; }
 .main-container { background: url(../images/green_cup.png) repeat 0 0; box-shadow: 0 5px 14px -5px #858585 inset; }
 .footer-container { background: url("../images/fabric_of_squares_gray.png") repeat 0 0; padding: 0 0 20px; }
 .header-right { float: right; width: 50%; }
@@ -7219,7 +7220,7 @@ div.calendar table td.button {
   z-index: 12;
 }
 .header-right .dropdown { position: relative; float: right; }
-.header-right .dropdown .login { margin: 0 22px 0 0;width: 132px; }
+.header-right .dropdown .login { margin: 0 13px 0 8px; width: 132px; }
 .header-right .dropdown .login .logintext { background: url("../images/spritehome.png") no-repeat -322px -60px; padding: 2px 0 2px 34px; }
 /*.header-right .dropdown .login.active { background: #FFFFFF; box-shadow: 0 0 6px #B3B3BA; border-left: 1px solid #DFDADD; border-right: 1px solid #DFDADD; }*/
 .header-right .dropdown .login.active .logintext { background: url("../images/spritehome.png") no-repeat -322px -87px; }
@@ -7240,11 +7241,11 @@ div.calendar table td.button {
 
 
 .mycart #cartHeader .block-cart { margin: 0; }
-.mycart #cartHeader .block-cart .block-title { padding: 12px; width: 152px; margin: 0; }
+.mycart #cartHeader .block-cart .block-title { padding: 12px 0 12px 12px; width: 138px; margin: 0; }
 
 .mycart #cartHeader .block-cart .block-title .cart-contant {  background: url(../images/spritehome.png) no-repeat -329px 0px; padding: 2px 0 2px 30px; margin: -1px 0 0; }
 
-.mycart #cartHeader .block-cart .block-title .cart-contant .cart-contant-item { background: url(../images/spritehome.png) no-repeat 83px 8px; }
+.mycart #cartHeader .block-cart .block-title .cart-contant .cart-contant-item { background: url(../images/spritehome.png) no-repeat 85px 8px; }
 .mycart #cartHeader .block-cart .block-title.active .cart-contant .cart-contant-item { background: url(../images/spritehome.png) no-repeat 83px -13px; }
 
 .mycart #cartHeader .block-cart .block-title.active { background: #FFFFFF; box-shadow: 0 0 6px #B3B3BA; border-left: 1px solid #DFDADD; border-right: 1px solid #DFDADD; width: 152px; padding-bottom: 0; }
@@ -7273,7 +7274,7 @@ div.calendar table td.button {
 .header-right .dropdown #loginheader .block-login .before-login .block-content {  background: url(../images/spritestrip.png) repeat-x 0 111px; margin: 0 0 18px; padding: 0 10px 14px; }
 .header-right .dropdown #loginheader .new-account { padding: 0 10px; }
 .header-right .dropdown #loginheader .block-login .before-login { background: #FFFFFF; box-shadow: 0 2px 6px #B3B3BA; border: 1px solid #DFDADD; border-top: none; padding: 12px 10px; right: -141px; width: 455px; position: absolute; top: 45px; z-index: 5; }
-.header-right .dropdown #loginheader .block-login .after-login { background: #FFFFFF; box-shadow: 0 6px 6px #B3B3BA; left: 0; padding: 10px; position: absolute; top: 38px; width: 132px; z-index: 5; }
+.header-right .dropdown #loginheader .block-login .after-login { background: #FFFFFF; box-shadow: 0 6px 6px #B3B3BA; padding: 10px; position: absolute; top: 38px; width: 132px; z-index: 5; }
 .header-right .dropdown #loginheader .block-login .after-login li a { color: #75757C; display: block; font-family: Oswald; font-size: 13px; font-weight: 300; padding: 12px 0 12px 37px;  }
 .header-right .dropdown #loginheader .block-login .after-login li.account-info a { background: url(../images/spritehome.png) no-repeat -324px -227px; }
 .header-right .dropdown #loginheader .block-login .after-login li.my-wishlist a { background: url(../images/spritehome.png) no-repeat 8px -456px ; }
@@ -7346,7 +7347,7 @@ div.calendar table td.button {
 .footer-bottom .ecommerce-logo { float: right; width: 110px; }
 .footer .links li.level0.nav-1.first.parent { display: none; }
 .tel-mail .email {  margin-top: -3px; }
-.latest-products .itemslider-wrapper { margin: 0 -1%; width: 102%;}
+.latest-products .itemslider-wrapper { margin: 0 -1%; width: 102%; }
 .latest-products .itemslider-similar-main { width: 100%; }
 .latest-products .itemslider-similar-main .products-grid > li { /*margin: 0 22px 0 0;*/ }
 
@@ -7414,18 +7415,18 @@ div.calendar table td.button {
 .subscriber-title-content .block-content .input-box .button { padding: 6px 27px; margin: -2px 0 0; }
 .subscriber-title-content .block-content .input-box .button:hover { background: #D36B53; }
 
-.home-banner {  background: #FFFFFF; border: 1px solid #8B9475; max-width: 1200px; padding: 15px 0; position: relative; margin: 22px 0 45px; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; }
-.latest-products { position: relative; margin: 0 0 32px; }
+.home-banner {  background: #FFFFFF; border: 1px solid #8B9475; max-width: 1200px; padding: 15px 0; position: relative; margin: 20px 0 45px; box-shadow: 0 0 5px #838383; -webkit-box-shadow: 0 0 5px #838383; }
+.latest-products { position: relative; margin: 0 0 35px; }
 .latest-products .itemslider-wrapper .direction-nav, .home-banner .direction-nav { list-style: none; margin: 0; }
 
-.latest-products .itemslider-wrapper .direction-nav li a.prev { background: url(../images/spritearrow.png) no-repeat 1px -43px; display: block; height: 34px; right: 14px; position: absolute; text-indent: -10000px; top: -31px; width: 34px; }
-.latest-products:hover .itemslider-wrapper .direction-nav li a.prev { background: url(../images/spritearrow.png) no-repeat 1px -189px; }
+.latest-products .itemslider-wrapper .direction-nav li a.next  { background: url(../images/spritearrow.png) no-repeat 1px -43px; display: block; height: 34px; right: 14px; position: absolute; text-indent: -10000px; top: -31px; width: 34px; }
+.latest-products:hover .itemslider-wrapper .direction-nav li a.next { background: url(../images/spritearrow.png) no-repeat 1px -189px; }
 
 
 
 
-.latest-products .itemslider-wrapper .direction-nav li a.next { background: url(../images/spritearrow.png) no-repeat -47px -44px; display: block; height: 34px; left: 10px; position: absolute; text-indent: -10000px; top: -29px; width: 34px; }
-.latest-products:hover .itemslider-wrapper .direction-nav li a.next { background: url(../images/spritearrow.png) no-repeat -47px -188px; }
+.latest-products .itemslider-wrapper .direction-nav li a.prev { background: url(../images/spritearrow.png) no-repeat -47px -44px; display: block; height: 34px; left: 10px; position: absolute; text-indent: -10000px; top: -29px; width: 34px; }
+.latest-products:hover .itemslider-wrapper .direction-nav li a.prev { background: url(../images/spritearrow.png) no-repeat -47px -188px; }
 .header-right .information-advice #info-head.active .info-border { background: url(../images/spritestrip.png) repeat-x 0 32px; margin: 0 auto; padding: 0 0 12px; width: 143px; }
 .about-remade .upcycling a, .about-remade .join-us a, .about-remade .blog-remade a { box-shadow: 0 0 5px #797979; display: block; }
 .about-remade img { width: 100%; }
@@ -7464,13 +7465,13 @@ div.calendar table td.button {
 .products-grid .price-box .price-from, .products-grid .price-box .price-label { display: none; }
 .latest-products .products-grid li.item .productbg span.new, 
 .latest-products .products-grid li.item .productbg span.sale { top: 10px; right: 9px; }
-.mycart #cartHeader .block-cart .block-title.active .cart-border { background: url(../images/spritestrip.png) repeat-x 0 32px; padding: 0 0 12px 0; }
+.mycart #cartHeader .block-cart .block-title.active .cart-border { background: url(../images/spritestrip.png) repeat-x 0 32px; padding: 0 0 12px 0; margin: 0 12px 0 0; }
 .header-right .dropdown #loginheader .block-login .after-login .block-content { margin: 0; }
 .header-right .information-advice #informationhead li a:hover { color: #DB8773; text-decoration: none; }
 .page-header { background: url(../images/fabric_of_squares_gray.png) repeat 0 0; }
 #header-nav { display: block; clear: left; background: url("../images/spritestrip.png") repeat-x 0 -43px; }
 .feature-product .Featured-contant .products-grid li { float: left; }
-.collapsible .block-content li a { color: #75757C; font-family: Oswald; font-size: 13px; font-weight: 300; text-transform: capitalize; }
+.collapsible .block-content li a { color: #75757C; font-family: Oswald; font-size: 13px; font-weight: 300; text-transform: initial; }
 .footer-block #nav li.level-top ul { display: none; }
 .footer-block .links #nav { min-height: 205px; margin: 0 0 22px; }
 .footer-block .links .block-content ul { margin: 0 0 22px; }
@@ -7481,7 +7482,8 @@ div.calendar table td.button {
 .blog-socialLinks .homepage-blog .postWrapper .read .dots { color: #75757C; margin: 0 2px 0 0; }
 .blog-socialLinks .homepage-blog .postWrapper .read a { color: #D36B53; font-size: 12px; font-weight: 300; font-family: oswald;  }
 .blog-socialLinks .homepage-blog .postWrapper.small-content .read { background: #FFFFFF; bottom: 2px; position: absolute; right:0; }
-.footer .links .mobile-collapsible .block-content #nav li.over a.level-top, #nav li.active a.level-top { height: auto; color: #75757c; }
+.footer .links .mobile-collapsible .block-content #nav li.over a.level-top,
+.footer .links #nav li.active a.level-top { height: auto; color: #75757c; }
 /***********Category Listing Page**********/
 
 .catalog-category-view .back-button { display: none; }
@@ -7730,7 +7732,6 @@ div.calendar table td.button {
 .products-grid .actions ul li.product-rating { width: 100%;  }
 .blog-socialLinks .homepage-blog .postWrapper.big-content .postContent { color: #75757C; font-family: Oswald; font-size: 12px; font-weight: 300; height: 65px; line-height: 21px; overflow: hidden; padding: 0; }
 .blog-socialLinks .homepage-blog .postWrapper.big-content .read { background: #FFFFFF; bottom: 2px; position: absolute; right: 0; }
-.home-banner, .about-remade, .latest-products, .this-month-featured-retailer, .connect { padding: 0 5px; }
 .product-view .product-essential { padding: 0 10px; }
 .product-view .product-collateral .easytabs .tabs li a { font-size: 100%; }
 .Featured-contant .ratings .rating-box { background: url(../images/sprite-small-stars.png) repeat-x 0 -29px !important; width: 80px; }
@@ -7802,8 +7803,30 @@ div.calendar table td.button {
 .ecommerce-logo .ecommerce-text { display: none; }
 .footer-bottom .ecommerce-logo { width: 35px; }
 .this-month-featured-retailer .featured-retailer .feature-product .Featured-contant .products-grid .actions ul li { margin: 0 0px 0 0; }
-.home-banner, .about-remade, .latest-products, .this-month-featured-retailer, .connect { padding: 0 5px; }
+
 #search_mini_form input[type="search"] { width: 100%; }
+.header-right .dropdown .login { margin: 0 21%; width: 42px; }
+.login-border { padding: 12px 0; width: 42px; }
+.header-right .dropdown .login .logintext { background: url(../images/spritedrpdwn.png) no-repeat 0 -61px; height: 25px; overflow: hidden; padding: 0; text-indent: -10000px; width: 42px; }
+.header-right .information-advice .Info { margin: 0; width: 40px; }
+.header-right .information-advice #info-head { padding: 12px 0; width: 40px; }
+.header-right .information-advice #info-head span { background: url(../images/spritedrpdwn.png) no-repeat 0 4px; height: 25px; padding: 0; text-indent: -10000px; width: 42px; }
+.header-right .dropdown .login.active { margin: 0; position: absolute; right: -30px; width: 132px; }
+.header-right .dropdown #loginheader .block-login .before-login { right: -117px; }
+.header-right .dropdown .login.active .login-border { background: #ffffff; box-shadow: 0 -6px 5px 0 #b3b3b9; padding-bottom: 0; width: 132px; }
+.header-right .dropdown .login.active .logintext { background: url(../images/spritedrpdwn.png) no-repeat 0 -96px; margin: 0 auto; }
+.header-right .dropdown .login.active .login-border .info-border { margin: 0 auto; width: 120px; }
+.header-right .information-advice #info-head.active { left: -62px; position: absolute; width: 168px; z-index: 12; }
+.header-right .information-advice #info-head.active .info-border { background: url(../images/spritestrip.png) repeat-x 0 32px; margin: 0 auto; padding: 0 0 12px; width: 143px; }
+.header-right .information-advice #info-head.active span { background: url(../images/spritedrpdwn.png) no-repeat 0 -28px; margin: 0 auto; }
+.header-right .information-advice #info-head.active #informationhead { left: -1px; top: 49px; }
+.footer .footer-block { margin: 0 10px; }
+.footer .links {
+    margin: 0;
+    width: 50%;
+}
+.footer .collapsible { background: url(../images/spritestrip.png) repeat-x 0 45px; float: none; padding: 0; width: 100%; }
+.footer .collapsible .block-title { background: url(../images/spritehome.png) no-repeat -337px -754px; padding: 5px 0 16px 18px; }
 }
 
 @media only screen and (min-width: 300px) and (max-width:599px) {
