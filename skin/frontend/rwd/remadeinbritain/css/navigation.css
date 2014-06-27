@@ -38,7 +38,7 @@
 
 
 
-#nav .sub-categories li.level1 { /*display: block; float: left; height: auto; width: 25%;*/ padding: 6px 5px 6px 30px; }
+#nav .sub-categories li.level1 > a{ /*display: block; float: left; height: auto; width: 25%;*/ padding: 6px 5px 6px 30px; margin-right: -1px; position: relative; z-index: 271; }
 #nav .sub-categories li.level1  li.level2 { padding: 5px 18px; }
 #nav .sub-categories.menu-left li { width: 33%; }
 #nav ul li.last { border-bottom:0; }
@@ -48,7 +48,7 @@
 #nav ul li a:hover { color:#939598; }
 #nav ul li a span {}
 #nav ul li.over a.over { color:#939598; }
-#nav ul li.active > a { color:#939598; }
+#nav ul li.active > a { color: #939598; position: relative; z-index: 271; }
 
 /* 3rd+ Level */
 #nav ul ul,
@@ -129,10 +129,10 @@
 .lof-main-wapper .back-link { font: bold 15px/20px arial; margin: 2% 0; text-align: left; }
 #nav .sub-categories li.level1.over { background: #75757C; }
 #nav .sub-categories li.level1.over a.over { color: #fff; }
-#nav li .menu-bootm.shown-sub li.parent .menu-bootm.shown-sub { background: #75757c; border: 1px solid #494956; box-shadow: 3px 0 6px 2px #494956; left: 185px; padding: 5px 0 13px; top: -5px; z-index: 991; }
+#nav li .menu-bootm.shown-sub li.parent .menu-bootm.shown-sub { background: #75757c; border: 1px solid #494956; box-shadow: 3px 0 6px 2px #494956; left: 193px; padding: 5px 0 13px; top: -5px; z-index: 270; }
 #nav li .menu-bootm.shown-sub li.parent .menu-bootm.shown-sub li a { color: #fff; }
 #nav .sub-categories li.level1.parent { background: url(../images/spritehome.png) no-repeat 8px -526px; position: relative; }
-#nav .sub-categories li.level1.parent.over { background: url(../images/spritehome.png) no-repeat 8px -496px #75757C; }
+#nav .sub-categories li.level1.parent.over > a { background: url(../images/spritehome.png) no-repeat 8px -496px #75757C; }
 .accordion > li.level0.parent a {  }
 .accordion > li.level0.active.parent { background: #75757C; }
 .accordion > li.level0.active.parent a { color: #fff; background: url(../images/spritehome.png) no-repeat -298px -547px; padding-top: 7px; }
