@@ -140,6 +140,49 @@ class Apptha_Marketplace_SellerController extends Mage_Core_Controller_Front_Act
         public function createPostAction()
         {
             $admin_approval = Mage::getStoreConfig('marketplace/admin_approval_seller_registration/need_approval');
+
+			//BOF developer 06 'check for file existance, image's validation , image resizing and upload image to respective directories'.
+			$uploadsData = new Zend_File_Transfer_Adapter_Http();
+            $filesDataArray = $uploadsData->getFileInfo();						
+			$store_logo         = $filesDataArray['example_image']['name'];
+			$basedir            = Mage::getBaseDir('media');
+			$file               = new Varien_Io_File();
+			//create a folder to save the logo and banner images in media folder
+                if (!is_dir($basedir . '/sellerimage')){
+                   $file->mkdir($basedir . '/sellerimage');
+                }
+				if (isset($filesDataArray['example_image']['name']) && (file_exists($filesDataArray['example_image']['tmp_name']))) {
+                    try {
+                        $uploader = new Varien_File_Uploader($filesDataArray['example_image']);     
+                                    $uploader->setAllowedExtensions(array('jpg', 'jpeg', 'gif', 'png'));
+                                    $uploader->addValidateCallback('catalog_product_image',
+                                    Mage::helper('catalog/image'), 'validateUploadFile');                      
+                        $uploader->setAllowRenameFiles(true);
+                        $uploader->setFilesDispersion(false);
+                        $path = $basedir . DS . 'sellerimage';                            
+                        $uploader->save($path, $filesDataArray['example_image']['name']);                            
+                        $images_path = $uploader->getUploadedFileName();
+                                 } catch (Exception $e) {
+                                     // Display error message for images upload   
+                                     Mage::getSingleton('core/session')->addError($this->__($e->getMessage()));
+                                 }
+                       if (!is_dir($basedir . '/marketplace/resized')){
+                            $file->mkdir($basedir . '/marketplace/resized');
+                        }
+                        $imageUrl_logo = Mage::getBaseDir('media'). DS .'sellerimage'. DS .$images_path;     
+                        $imageResized_logo = Mage::getBaseDir('media'). DS .'marketplace'. DS .'resized'. DS .$images_path;
+                       if(file_exists($imageUrl_logo) && !file_exists($imageResized_logo)) 
+                       {            
+                           $imageObj = new Varien_Image($imageUrl_logo);
+                           $imageObj->constrainOnly(TRUE);
+                           $imageObj->keepAspectRatio(False);
+                           $imageObj->keepFrame(FALSE);
+                           $imageObj->resize(124,124);
+                           $imageObj->save($imageResized_logo); 
+                       }
+                }
+			//EOF developer 06
+
             $session = $this->_getSession();
             if ($session->isLoggedIn()) {
                 $this->_redirect('*/*/');
@@ -300,7 +343,11 @@ class Apptha_Marketplace_SellerController extends Mage_Core_Controller_Front_Act
                 $filesDataArray     = $uploadsData->getFileInfo();
                 $seller_id          = $data['seller_id'];
                 $store_name         = $data['store_name'];
-                $store_logo         = $filesDataArray['store_logo']['name'];             
+				//BOF developer 06 'fetch existing website field and additional information'
+                $website         = $data['exist_website'];
+                $additional_info      = $data['additional_info'];
+				//EOF developer 06
+                $store_logo         = $filesDataArray['store_logo']['name'];
                 //$country            = $data['country'];
                 $description        = $data['description'];
                 $meta_keyword       = $data['meta_keyword'];
@@ -361,6 +408,10 @@ class Apptha_Marketplace_SellerController extends Mage_Core_Controller_Front_Act
                     $collection = Mage::getModel('marketplace/sellerprofile')->load($seller_id, 'seller_id');
                     $collection->setSellerId($seller_id);
                     $collection->setStoreTitle($store_name);
+					//BOF developer 06 'set existing website field and additional information to collection'
+                    $collection->setExistWebsite($website);
+                    $collection->setAdditionalInfo($additional_info);
+					//EOF developer 06
                     if (!empty($store_logo)) {
                         $collection->setStoreLogo($images_path);
                     }
@@ -399,6 +450,10 @@ class Apptha_Marketplace_SellerController extends Mage_Core_Controller_Front_Act
                     $collection = Mage::getModel('marketplace/sellerprofile');
                     $collection->setSellerId($seller_id);
                     $collection->setStoreTitle($store_name);
+					//BOF developer 06 'set existing website field and additional information to collection'.
+                    $collection->setExistWebsite($website);
+                    $collection->setAdditionalInfo($additional_info);
+					//EOF developer 06
                     $collection->setStoreLogo($images_path);                       
                     //$collection->setCountry($country);
                     $collection->setContact($contact);

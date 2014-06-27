@@ -6,27 +6,26 @@
  * @package    Oscp_AddCustomerAttribute
  */
 
- /* OSCDEV #42 Observer to store custom fields value in the databasa.  2014/06/13 */
+ /* developer 06 'Observer to store custom field's value in the database.  2014/06/13' */
 
 class Oscp_AddCustomerAttribute_Model_Observer {
 
     public function customerRegistered($observer)
-	{
-        $customer = $observer->getEvent()->getCustomer();
+	{		
+		$uploadsData = new Zend_File_Transfer_Adapter_Http();
+		$filesDataArray = $uploadsData->getFileInfo();						
+		$store_logo  = $filesDataArray['example_image']['name'];
+		$model = Mage::getModel('marketplace/sellerprofile');
+		$customer = $observer->getEvent()->getCustomer();
 		$request = Mage::app()->getRequest();
-		$_store_trading_name =  $request->getParam('store_trading_name');
-		$_seller_existing_website =  $request->getParam('seller_existing_website');	
-		$_seller_example_image =  $request->getParam('seller_example_image');	
-		$_seller_additional_info =  $request->getParam('seller_additional_info');	
-
-		$customer->setStoreTradingName($_store_trading_name)
-		         ->setSellerExistingWebsite($_seller_existing_website)
-				 ->setSellerExampleImage($_seller_example_image)
-				 ->setSellerAdditionalInfo($_seller_additional_info);
-
-		$customer->save();
-        return $this;
+		$model->setSellerId($customer->getEntityId());
+		$model->setStoreTitle($request->getParam('store_trading_name'));
+		$model->setContact($request->getParam('telephone'));
+		$model->setExistWebsite($request->getParam('seller_existing_website'));
+		$model->setAdditionalInfo($request->getParam('additional'));
+		$model->setStoreLogo($store_logo);
+		$model->save();
+		return $this;
     }
 }
 
-/* EOF OSCDEV #42 */

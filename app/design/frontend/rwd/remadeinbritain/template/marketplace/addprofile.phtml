@@ -70,11 +70,27 @@ if (Mage::getSingleton('customer/session')->isLoggedIn()) {
                     <?php //} ?>
                 </div>                 
             </li>-->
+			<!-- BOF developer 06 -->
+            <li class="fields">
+                    <label for="exist_website" ><?php echo $this->__('Existing website'); ?></label>
+                    <div class="input-box"><input type="url" name="exist_website" id="exist_website" value="<?php echo $profile_data['exist_website']; ?>" class="input-text " /></div> 
+            </li>
+			<!-- EOF developer 06 -->
             <li class="fields">
                     <label for="contact" class="required"><?php echo $this->__('Contact Number'); ?> <em><?php echo $this->__('*'); ?></em>   </label>
                     <div class="input-box"><input type="text" name="contact" id="contact" value="<?php echo $profile_data['contact']; ?>" class="input-text required-entry" /></div> 
             </li>
-
+			<!-- BOF developer 06 -->
+			<li class="fields">
+				<div class="additional-information">
+					<label for="additional_info"><?php echo $this->__('Additional information...') ?></label>
+					<p><?php echo $this->__('Please use this box to offer any additional info you feel is applicable') ?></p>
+				</div>
+				<div class="input-box">
+					<textarea title="<?php echo $this->__('Additional information...') ?>" class="input-text" name="additional_info" id="additional_info" value="<?php echo $profile_data['additional_info']; ?>"></textarea>
+				</div>
+			</li>
+			<!-- EOF developer 06 -->
             <!--Description -->      
             <li class="wide fields">
                 <div>

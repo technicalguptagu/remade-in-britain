@@ -25,7 +25,7 @@
 	<div class="retailer-registration-detail">
 	<?php echo $this->getLayout()->createBlock('cms/block')->setblockId('retailer-registration-detail')->toHtml(); ?>
 	</div>
-    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate">
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate" enctype="multipart/form-data">
         <div class="fieldset">
             <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
             <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
@@ -174,19 +174,19 @@
 				</li>
 				<li class="fields">
 					<div class="seller-image">
-						<label for="seller_example_image"><?php echo $this->__('Upload example product images') ?></label>
+						<label for="example_image"><?php echo $this->__('Upload example product images'); ?>  </label>                    
 						<div class="input-box">
-                            <input type="file" name="seller_example_image"  id="seller_example_image"  title="<?php echo $this->__('Upload example product images') ?>" class="" />
-                        </div>					
-					</div>					
+							<input type="file" name="example_image" id="example_image" onchange="return validateFileExtension(this);" title="<?php echo $this->__('Upload example product images') ?>"/>
+						</div>            
+					</div>
 				</li>
 				<li class="fields">
 					<div class="additional-information">
-						<label for="seller_additional_info"><?php echo $this->__('Additional information...') ?></label>
+						<label for="additional"><?php echo $this->__('Additional information...') ?></label>
 						<p><?php echo $this->__('Please use this box to offer any additional info you feel is applicable') ?></p>
 					</div>
 					<div class="input-box">
-						<textarea title="<?php echo $this->__('Additional information...') ?>" class="input-text" name="seller_additional_info" id="seller_additional_info"></textarea>
+						<textarea title="<?php echo $this->__('Additional information...') ?>" class="input-text" name="additional" id="additional"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -213,3 +213,15 @@
         //]]>
     </script>
 </div>
+<!--  Form validation script -->
+<script type="text/javascript">
+    function validateFileExtension(fld) {
+        if (!/(\.bmp|\.png|\.gif|\.jpg|\.jpeg)$/i.test(fld.value)) {
+            fld.form.reset();
+            fld.focus();
+            document.getElementById("errormsg").innerHTML = "invalid file format";
+            return false;
+        }
+        return true;
+    }
+</script>
