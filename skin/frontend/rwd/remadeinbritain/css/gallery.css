@@ -107,12 +107,12 @@
 #imagegallary3 ul.horizontal li { float:left; }
 #imagegallary3 ul.horizontal li + li { margin:0 0 0 8px; }
 .lof-container ol { display: none; }
-#simple-slide.lof-container .direction-nav li a.prev { background: url(../images/spritearrow.png) no-repeat 0 1px; height: 25px; right: 0; position: absolute; text-indent: -10000px; top: 48%; width: 20px; }
-#simple-slide.lof-container .direction-nav li a.next { background: url(../images/spritearrow.png) no-repeat -61px 1px; height: 25px; left: 0; position: absolute; text-indent: -10000px; top: 48%; width: 20px; }
+#simple-slide.lof-container .direction-nav li a.next { background: url(../images/spritearrow.png) no-repeat 0 1px; height: 25px; right: 0; position: absolute; text-indent: -10000px; top: 48%; width: 20px; }
+#simple-slide.lof-container .direction-nav li a.prev { background: url(../images/spritearrow.png) no-repeat -61px 1px; height: 25px; left: 0; position: absolute; text-indent: -10000px; top: 48%; width: 20px; }
 @media only screen and (min-width: 599px) and (max-width:800px) {
 
-#simple-slide.lof-container .direction-nav li a.prev { background: url(../images/spritebanneraro.png) no-repeat 6px 3px; top: 50%; }
-#simple-slide.lof-container .direction-nav li a.next { background: url(../images/spritebanneraro.png) no-repeat -17px 3px; top: 50%; }
+#simple-slide.lof-container .direction-nav li a.prev { background: url(../images/spritebanneraro.png) no-repeat -16px 3px; top: 50%; }
+#simple-slide.lof-container .direction-nav li a.next { background: url(../images/spritebanneraro.png) no-repeat 8px 3px; top: 50%; }
 
 }
 
