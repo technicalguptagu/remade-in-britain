@@ -42,9 +42,9 @@
                                 <img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
                             </span>
                         <?php endif; ?>
-                        <div href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="product-image">
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="product-image">
                             <img class="product-img" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(230, 230) ?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" />
-                            <span class="transparent-img">&nbsp;</span>
+                            <span class="transparent-img">&nbsp;</span></a>
                             <div class="actions"> 
                                 <div class="product-rating">
                                     <?php echo $this->getReviewsSummaryHtml($_product, true, '-new') ?>

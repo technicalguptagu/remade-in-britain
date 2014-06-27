@@ -55,8 +55,8 @@
                                 <?php endif ?>
                                 <div class="product-image"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>" >
 
-                                        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(362); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
-                                    <span class="transparent-img">&nbsp;</span>
+                                        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(362); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                                    <span class="transparent-img">&nbsp;</span></a>
                                     <div class="actions">
                                         <div class="product-rating">
                                             <?php echo $this->getReviewsSummaryHtml($_product, true, '-new') ?>

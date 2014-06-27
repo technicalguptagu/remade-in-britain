@@ -48,8 +48,8 @@
                         </div>
                     </div>
                     <?php
-                    @list($y, $d, $M) = explode('-', $_review->getCreatedAt());
-                    $_date = date("d M Y", mktime(0, 0, 0, $d, $M, $y));
+                    @list($_y, $_d, $_M) = explode('-', $_review->getCreatedAt());
+                    $_date = date("d M Y", mktime(0, 0, 0, $_d, $_M, $_y));
                     ?>
                     <div class="review">
                         <?php echo nl2br($this->htmlEscape($_review->getDetail())) ?>
