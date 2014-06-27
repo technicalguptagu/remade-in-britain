@@ -87,7 +87,7 @@ if (Mage::getSingleton('customer/session')->isLoggedIn()) {
 					<p><?php echo $this->__('Please use this box to offer any additional info you feel is applicable') ?></p>
 				</div>
 				<div class="input-box">
-					<textarea title="<?php echo $this->__('Additional information...') ?>" class="input-text" name="additional_info" id="additional_info" value="<?php echo $profile_data['additional_info']; ?>"></textarea>
+					<textarea title="<?php echo $this->__('Additional information...') ?>" class="input-text" name="additional_info" id="additional_info" ><?php echo $profile_data['additional_info']; ?></textarea>
 				</div>
 			</li>
 			<!-- EOF developer 06 -->
