@@ -1000,7 +1000,11 @@ border-style:none;
 }
 .last-page .last.i-last{
  color: #494949 !important;
-
+}
+#read > a {
+  color: #5dc1c0;
+  font-family: oswaldlight;
+  font-size: 13px;
 }
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:768px) and (max-width:1024px){  
@@ -1647,7 +1651,7 @@ float: none;
   padding: 0 4px 0 15px;
 }
 .catalog-category-view  .block .mobile-collapsible .block-title {
-  padding: 0 0 15px 24px;
+  padding: 0 0 15px 6px;
   border:none;
   display: block;
   background: url("../images/whitestrip.png") repeat-x scroll left bottom transparent !important;;
@@ -1713,7 +1717,7 @@ background: url("../images/whitestrip.png") repeat-x scroll 0 0 transparent;
 }
 .mobile-filter .actions a {
   color: #ffffff;
-  padding: 0 0 0 20px;
+  padding: 0 0 0 24px;
  }
 .mobile-filter .actions{
  background: url("../images/close.png") no-repeat scroll 130px 8px transparent;
