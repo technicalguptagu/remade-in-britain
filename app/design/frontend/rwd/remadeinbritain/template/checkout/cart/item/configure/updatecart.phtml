@@ -28,16 +28,167 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $buttonTitle = $this->__('Update Cart'); ?>
 <?php if ($_product->isSaleable()): ?>
-    <div class="add-to-cart">
-        <?php if (!$_product->isGrouped()): ?>
-        <div class="qty-wrapper">
-            <label for="qty"><?php echo $this->__('Qty:') ?></label>
-            <input type="text" pattern="\d*" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+<div class="quantity">
+        <div class="qty-box">
+            <?php if (!$_product->isGrouped()): ?>
+                <label for="qty"><?php echo $this->__('Quantity') ?></label>
+                <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Quantity') ?>" class="input-text qty"
+                <?php
+                if ($_product->getTypeInstance(true)->hasOptions($_product) && $_product->getTypeId() == Mage_Catalog_Model_Product_Type::TYPE_SIMPLE):
+                    ?>
+                           onchange="opConfig.reloadPrice()" 
+                       <?php else :
+                           ?>
+                           onchange="updatePrice(this)" 
+                       <?php endif; ?> />
+                       <?php
+                       $_productId = $_product->getId();
+                       $_quote = Mage::getSingleton('checkout/session')->getQuote();
+                       $_items = $_quote->getAllVisibleItems();
+                       $_checked = 1;
+                       foreach ($_items as $_item) {
+                           if ($_item->getProductId() == $_productId) {
+                               $_checked = 2;
+                               $_carts = $_item->getId();
+                               break;
+                           }
+                       }
+                       ?>
+                   <?php endif; ?>
         </div>
-        <?php endif; ?>
-        <div class="add-to-cart-buttons">
-            <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
-            <?php echo $this->getChildHtml('', true, true) ?>
-        </div>
-    </div>
+		<div class="tier-price">
+		    <?php if ($this->displayProductStockStatus()): ?>
+               <?php if ($_product->isAvailable()): ?>
+                   <p class="availability in-stock">
+                   <span><?php echo $this->helper('catalog')->__('Availability') ?></span>
+                   <span class="value"><?php echo $this->helper('catalog')->__('In stock') ?></span>
+                   </p>
+               <?php else: ?>
+                   <p class="availability out-of-stock">
+                   <span><?php echo $this->helper('catalog')->__('Availability') ?></span>
+                   <span class="value"><?php echo $this->helper('catalog')->__('Out of stock') ?></span>
+                   </p>
+               <?php endif; ?>
+          <?php endif; ?>
+       </div>
+	   </div>
+
+	   <div class="add-to-cart">
+		   <div class="total-addto">
+				<div class="update-total">
+					<div class="lable-total">
+						<?php echo $this->__('Total') ?>
+					</div>
+					<div class="price-update-box">
+						<span class="update-price">
+						<?php echo $this->getPriceHtml($_product) ?></span>
+					</div>
+				</div>
+				 <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+			</div>
+			<div class="payment">&nbsp;</div>
+		</div>
 <?php endif; ?>
+<input type="hidden" id="productOriginalPrice" value="" />
+
+<script type="text/javascript">
+                   function numberWithCommas(n) {
+                       var parts = n.toString().split(".");
+                       return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
+                   }
+
+                   function updatePrice(elem)
+                   {
+
+
+                       prodId = '<?php echo $_product->getId(); ?>';
+                       qty = elem.value;
+                       skiphtml = "<?php
+echo Mage::app()->getLocale()->currency(Mage::app()->getStore()
+                ->getCurrentCurrencyCode())->getSymbol();
+?>";
+
+                       var specialPrice = false;
+                       $$('body .special-price').each(function(element) {
+                           var children = $A(element.childNodes);
+                           children.each(function(child) {
+
+                               if (child.id == 'product-price-' + prodId) {
+                                   specialPrice = true;
+                               }
+                           });
+                       });
+
+                       if (specialPrice == true) {
+                           $$('body .price').each(function(element) {
+                               if (element.id == 'product-price-' + prodId) {
+                                   //alert(element.innerHTML);
+                                   formattedprice = element.innerHTML;
+                                   formattedprice = formattedprice.replace(skiphtml, "").replace(',', "");
+                                   if ($('productOriginalPrice').value == '')
+                                   {
+                                       $('productOriginalPrice').value = formattedprice;
+                                   }
+                                   else
+                                       formattedprice = $('productOriginalPrice').value;
+
+                                   price = qty * Number(formattedprice);
+                                   price1 = (parseFloat(price)).toFixed(2);
+
+                                   element.update(skiphtml + numberWithCommas(price1));
+                               }
+
+                           });
+                       }
+                       else {
+
+                           $$('body .regular-price').each(function(element) {
+
+                               if (element.id == 'product-price-' + prodId) {
+                                   var children = $A(element.childNodes);
+                                   children.each(function(child) {
+                                       if (child.innerHTML) {
+                                           formattedprice = child.innerHTML;
+                                           formattedprice = formattedprice.replace(skiphtml, "").replace(',', "");
+
+                                           if ($('productOriginalPrice').value == '')
+                                           {
+                                               $('productOriginalPrice').value = formattedprice;
+                                           }
+                                           else
+                                               formattedprice = $('productOriginalPrice').value;
+
+                                           price = qty * Number(formattedprice);
+
+                                           price1 = (parseFloat(price)).toFixed(2);
+
+                                           child.update(skiphtml + numberWithCommas(price1));
+
+
+                                       }
+                                   });
+                               }
+                           });
+                       }
+
+
+
+                   }
+
+
+</script>
+<script type="text/javascript">
+    Event.observe(window, 'load', function() {
+        $$('body .super-attribute-select').each(function(element) {
+            Event.observe($(element.id), 'change', function() {
+                $$('body .input-text').each(function(elem) {
+                    if (elem.name == 'qty') {
+                        elem.value = 1;
+                        $('productOriginalPrice').value = '';
+                    }
+                });
+            });
+        });
+
+    });
+</script>

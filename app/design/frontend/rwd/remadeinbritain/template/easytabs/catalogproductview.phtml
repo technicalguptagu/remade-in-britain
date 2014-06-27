@@ -332,7 +332,7 @@ $_product = $this->getProduct(); ?>
 	  } 
 	}  */
  check='<?php echo (Mage::getSingleton("checkout/session")->getLastAddedProductId(true)); ?>';
- //alert(check);
+ 
  document.cookie="lastproduct" + "=" +'<?php echo (Mage::getSingleton("checkout/session")->getLastAddedProductId(true)); ?>';
  if(check!=''){
   flag='true';
