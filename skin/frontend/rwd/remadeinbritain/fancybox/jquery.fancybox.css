@@ -29,9 +29,9 @@
 	background: #f9f9f9;
 	color: #444;
 	text-shadow: none;
-	-webkit-border-radius: 4px;
+	/*-webkit-border-radius: 4px;
 	   -moz-border-radius: 4px;
-	        border-radius: 4px;
+	        border-radius: 4px;*/
 }
 
 .fancybox-opened {
@@ -76,7 +76,7 @@
 }
 
 #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
-	background-image: url('fancybox_sprite.png');
+	background: none;
 }
 
 #fancybox-loading {
@@ -274,34 +274,45 @@
 }
 
 #proaddtocart .succes-massage {
-  margin: 30px 0 0;
-  padding: 0 0 20px;
-  background: url("../images/spritestrip.png") repeat-x scroll 0 -10px transparent;
-  text-transform: capitalize;
+	background: url(../images/spritestrip.png) repeat-x 0 -2px;
+    color: #494956;
+    font-size: 17px;
+    font-weight: 300;
+    margin: 20px 0 0;
+    padding: 0 0 20px;
+    text-transform: capitalize;
   }
 #proaddtocart .name-mass .product-name h2 {
-  border-bottom: medium none;
-  font-family: oswald;
-  text-transform: capitalize;
+   border-bottom: medium none;
+   color: #494956;
+   font-family: oswald;
+   font-size: 22px;
+   font-weight: 300;
+   text-transform: capitalize;
   }
 #proaddtocart .cart-button {
-   margin: 10px 0 0;
+   margin: 15px 0 0;
+   float: left; 
   }
 #proaddtocart .cart-button li{
   float:left;
-  margin: 2px 12px 0 0;
+  margin: 2px 14px 0 0;
   }
 #proaddtocart .cart-button #conti-shopping {
    background:#5dc1c0;
    border:1px solid #48A7A5;
+   width: 128px; 
    }
 #proaddtocart .cart-button #view-bag {
-  background:#e87e62;
-  border:1px solid #d16235;
-  width:130px;
+  background: url(../images/spritehome.png) no-repeat 88px -27px #e87e62;
+  border: 1px solid #d16235;
+  width: 128px;
+  text-align: left;
   }
 #proaddtocart .cart-button #go-checkout {
-  background:#75757C;
-  border:1px solid #5F5F69;
-  width:130px;
+  background: url(../images/spritehome.png) no-repeat 105px -55px #75757c;
+  border: 1px solid #5F5F69;
+  width: 150px;
+  text-align: left;
  }
+#proaddtocart .cart-button li + li + li { margin: 0; }
