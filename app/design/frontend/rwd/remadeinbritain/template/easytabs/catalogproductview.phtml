@@ -31,267 +31,273 @@
  */
 ?>
 <?php $_helper = $this->helper('catalog/output'); ?>
-<?php $_product = $this->getProduct();
-$_product = $this->getProduct(); ?>
- <?php $_coreHelper = $this->helper('core');
-       $_taxHelper = $this->helper('tax');?>
+<?php
+$_product = $this->getProduct();
+$_product = $this->getProduct();
+?>
+<?php
+$_coreHelper = $this->helper('core');
+$_taxHelper = $this->helper('tax');
+?>
 <script type="text/javascript">
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
+<?php //BOF developer-19 24/6/2013        ?>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 <div class="product-view">
     <div class="product-essential">
-            <div class="product-detail-box">
-			<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
-            <?php echo $this->getBlockHtml('formkey') ?>
-            <div class="no-display">
-                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
-                <input type="hidden" name="related_product" id="related-products-field" value="" />
-            </div>
-               <div class="product-shop">
-                <div class="product-name">
-                    <span class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
+        <div class="product-detail-box">
+            <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+                <?php echo $this->getBlockHtml('formkey') ?>
+                <div class="no-display">
+                    <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                    <input type="hidden" name="related_product" id="related-products-field" value="" />
                 </div>
-                <div class="price-info">
-				<?php if ($_product->getSpecialPrice()): ?>
-                              <div class="sale-price">
-                                    <div class="now">
-                                        <span class="price"><?php                                           
-                                            $_price = $_taxHelper->getPrice($_product, $_product->getFinalPrice());
-                                            echo $_coreHelper->currency($_price, true, false);
-                                            ?>
-                                        </span>
-                                    </div>
-									<div class="was">
-                                        <label><?php echo $this->__('was'); ?></label>
-                                        <span class="price"><?php                                            
-                                            $_realPrice = $_taxHelper->getPrice($_product, $_product->getPrice());
-                                            echo $_coreHelper->currency($_realPrice, true, false);
-                                            ?>
-                                        </span>
-                                    </div>
-                                </div>                                
-								<?php else:?>
-								<?php echo $this->getPriceHtml($_product, true, '-clone') ?>				          
-								<?php endif ?>
-                    <?php //echo $this->getPriceHtml($_product, true, '-clone'); ?>
-                    <?php //echo $this->getChildHtml('bundle_prices') ?>
-					<div class="retailer-name">
-					<?php echo $this->getChildHtml('extrahint') ?>
-					</div>
-                </div>
-				<div id="mobie-img"></div>
-				<?php if ($_product->getShortDescription()):?>
-                    <div class="short-description">
-                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                <div class="product-shop">
+                    <div class="product-name">
+                        <span class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
                     </div>
-                <?php endif;?>
-				<div class="tier-price">
-				<?php echo $this->getTierPriceHtml() ?>
-				</div>
-				<div class="product-option">
-				<div class="combine">
-                        <div class="availability-options">
-                            <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
-                                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
-                            <?php endif; ?> 
-    
+                    <div class="price-info">
+                        <?php if ($_product->getSpecialPrice()): ?>
+                            <div class="sale-price">
+                                <div class="now">
+                                    <span class="price"><?php
+                                        $_price = $_taxHelper->getPrice($_product, $_product->getFinalPrice());
+                                        echo $_coreHelper->currency($_price, true, false);
+                                        ?>
+                                    </span>
+                                </div>
+                                <div class="was">
+                                    <label><?php echo $this->__('was'); ?></label>
+                                    <span class="price"><?php
+                                        $_realPrice = $_taxHelper->getPrice($_product, $_product->getPrice());
+                                        echo $_coreHelper->currency($_realPrice, true, false);
+                                        ?>
+                                    </span>
+                                </div>
+                            </div>                                
+                        <?php else: ?>
+                            <?php echo $this->getPriceHtml($_product, true, '-clone') ?>				          
+                        <?php endif ?>
+                        <?php //echo $this->getPriceHtml($_product, true, '-clone');   ?>
+                        <?php //echo $this->getChildHtml('bundle_prices') ?>
+                        <div class="retailer-name">
+                            <?php echo $this->getChildHtml('extrahint') ?>
                         </div>
                     </div>
-				</div>
-                <?php echo $this->getChildHtml('alert_urls') ?>                
-            </div>
-            <div class="add-to-cart-wrapper">             
+                    <div id="mobie-img"></div>
+                    <?php if ($_product->getShortDescription()): ?>
+                        <div class="short-description">
+                            <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                        </div>
+                    <?php endif; ?>
+                    <div class="tier-price">
+                        <?php echo $this->getTierPriceHtml() ?>
+                    </div>
+                    <div class="product-option">
+                        <div class="combine">
+                            <div class="availability-options">
+                                <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                                    <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+                                <?php endif; ?> 
 
-                <?php //if ($this->hasOptions()):?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php echo $this->getChildHtml('alert_urls') ?>                
+                </div>
+                <div class="add-to-cart-wrapper">             
+
+                    <?php //if ($this->hasOptions()):?>
                     <div class="add-to-box">
-                        <?php //if($_product->isSaleable()): ?>
-                            <?php echo $this->getChildHtml('addtocart') ?>
-                      </div>     
-                <?php //endif; ?>
-            </div>			           
-        </form>
-        <script type="text/javascript">
-        //<![CDATA[
-            var productAddToCartForm = new VarienForm('product_addtocart_form');
-            productAddToCartForm.submit = function(button, url) {
-                if (this.validator.validate()) {
-                    var form = this.form;
-                    var oldUrl = form.action;
-
-                    if (url) {
-                       form.action = url;
-                    }
-                    var e = null;
-                    try {
-                        this.form.submit();
-                    } catch (e) {
-                    }
-                    this.form.action = oldUrl;
-                    if (e) {
-                        throw e;
-                    }
-
-                    if (button && button != 'undefined') {
-                        button.disabled = true;
-                    }
-                }
-            }.bind(productAddToCartForm);
-
-            productAddToCartForm.submitLight = function(button, url){
-                if(this.validator) {
-                    var nv = Validation.methods;
-                    delete Validation.methods['required-entry'];
-                    delete Validation.methods['validate-one-required'];
-                    delete Validation.methods['validate-one-required-by-name'];
-                    // Remove custom datetime validators
-                    for (var methodName in Validation.methods) {
-                        if (methodName.match(/^validate-datetime-.*/i)) {
-                            delete Validation.methods[methodName];
-                        }
-                    }
-
+                        <?php //if($_product->isSaleable()):   ?>
+                        <?php echo $this->getChildHtml('addtocart') ?>
+                    </div>     
+                    <?php //endif;   ?>
+                </div>			           
+            </form>
+            <script type="text/javascript">
+                //<![CDATA[
+                var productAddToCartForm = new VarienForm('product_addtocart_form');
+                productAddToCartForm.submit = function(button, url) {
                     if (this.validator.validate()) {
+                        var form = this.form;
+                        var oldUrl = form.action;
+
                         if (url) {
-                            this.form.action = url;
+                            form.action = url;
                         }
-                        this.form.submit();
+                        var e = null;
+                        try {
+                            this.form.submit();
+                        } catch (e) {
+                        }
+                        this.form.action = oldUrl;
+                        if (e) {
+                            throw e;
+                        }
+
+                        if (button && button != 'undefined') {
+                            button.disabled = true;
+                        }
                     }
-                    Object.extend(Validation.methods, nv);
-                }
-            }.bind(productAddToCartForm);
-        //]]>
-        </script>
-		<div id="mobile-tab"></div>
-        <?php echo $this->getChildHtml('related_products') ?>
+                }.bind(productAddToCartForm);
+
+                productAddToCartForm.submitLight = function(button, url) {
+                    if (this.validator) {
+                        var nv = Validation.methods;
+                        delete Validation.methods['required-entry'];
+                        delete Validation.methods['validate-one-required'];
+                        delete Validation.methods['validate-one-required-by-name'];
+                        // Remove custom datetime validators
+                        for (var methodName in Validation.methods) {
+                            if (methodName.match(/^validate-datetime-.*/i)) {
+                                delete Validation.methods[methodName];
+                            }
+                        }
+
+                        if (this.validator.validate()) {
+                            if (url) {
+                                this.form.action = url;
+                            }
+                            this.form.submit();
+                        }
+                        Object.extend(Validation.methods, nv);
+                    }
+                }.bind(productAddToCartForm);
+                //]]>
+            </script>
+            <div id="mobile-tab"></div>
+            <?php echo $this->getChildHtml('related_products') ?>
+        </div>
+        <div id="main-imgs">
+            <div class="product-img-tab">
+                <?php // developer-19 for social icon  ?>
+                <div class="product-img-box">
+                    <?php echo $this->getChildHtml('media') ?>
+                    <div class="add-to-links">
+                        <?php if ($this->helper('wishlist')->isAllow() || $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                        <?php endif; ?>       
+
+                        <?php echo $this->getChildHtml('extra_buttons') ?>
+                        <?php //elseif (!$_product->isSaleable()): ?>
+                        <div class="add-to-box">
+                            <?php echo $this->getReviewsSummaryHtml($_product, 'default', false) ?>
+                            <div class="info-social-links">
+                                <div class="add-to-any">
+                                    <div class="share"><?php echo $this->__('SHARE'); ?></div>
+                                    <div class="a2a_kit a2a_kit_size_32 a2a_default_style">					  
+                                        <a class="a2a_button_facebook"></a>
+                                        <a class="a2a_button_twitter"></a>
+                                        <a class="a2a_button_email"></a>
+                                        <a class="a2a_button_google_plus"></a>
+                                        <a class="a2a_dd" href="http://www.addtoany.com/share_save"></a>
+
+                                    </div>
+                                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-529720077da28e22"></script>
+
+                                    <script type="text/javascript" src="//static.addtoany.com/menu/page.js">
+                                    </script>
+                                </div>
+                            </div>  
+                            <?php echo $this->getChildHtml('addto') ?>
+                        </div>
+                    </div>
+                </div>
+                <div id="main-tab">
+                    <div class="product-collateral toggle-content tabs">
+                        <?php echo $this->getChildHtml('product_additional_data') ?>						
+                    </div>
+                    <?php echo $this->getChildHtml('upsell_products') ?>
+                </div>			  
+            </div>
+        </div>
     </div>
-	<div id="main-imgs">
-		<div class="product-img-tab">
-			<div class="product-img-box">
-				<?php echo $this->getChildHtml('media') ?>
-				<div class="add-to-links">
-					 <?php if( $this->helper('wishlist')->isAllow() ||	$_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
-					<?php endif; ?>       
-					
-					<?php echo $this->getChildHtml('extra_buttons') ?>
-					<?php //elseif (!$_product->isSaleable()): ?>
-						<div class="add-to-box">
-							<?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>
-							<div class="info-social-links">
-									<div class="add-to-any">
-										<div class="share"><?php echo $this->__('SHARE'); ?></div>
-										<div class="a2a_kit a2a_kit_size_32 a2a_default_style">					  
-											<a class="a2a_button_facebook"></a>
-											<a class="a2a_button_twitter"></a>
-											<a class="a2a_button_email"></a>
-											<a class="a2a_button_google_plus"></a>
-											<a class="a2a_dd" href="http://www.addtoany.com/share_save"></a>
-
-										</div>
-										<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-529720077da28e22"></script>
-
-											<script type="text/javascript" src="//static.addtoany.com/menu/page.js">
-											</script>
-									</div>
-								</div>  
-							<?php echo $this->getChildHtml('addto') ?>
-						</div>
-				   </div>
-				</div>
-				<?php //BOF developer-13 18/06/2014 ?>
-				<div id="main-tab">
-					<div class="product-collateral toggle-content tabs">
-						<?php echo $this->getChildHtml('product_additional_data') ?>						
-					</div>
-					<?php echo $this->getChildHtml('upsell_products') ?>
-				</div>			   
-			   <?php //EOF developer-13 18/06/2014 ?>
-			</div>
-		</div>
-</div>
 </div>
 
 <!-- BOF developer #06 'displays success/failure message of product enquiry and product review' -->
 
 <!-- 'display pop up of product enquiry ' -->
-<?php $session = Mage::helper('productenquiry')->getSessionData();
-	$_enquiryMessage = $session->getProductEnquiryMessage();
+<?php
+$session = Mage::helper('productenquiry')->getSessionData();
+$_enquiryMessage = $session->getProductEnquiryMessage();
 ?>
-	<a class="fancy-terms <?php if($_enquiryMessage == 'true'): ?>success <?php elseif( $_enquiryMessage =='false'):?>failure<?php endif; ?>" href="#productenquiry" onclick="return false;" id="enquiry"></a>	
-		<div style="display: none;">
-			 <div id="productenquiry">
-				 <?php if($_enquiryMessage == 'true'): ?>
-					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('product-enquiry-success')->toHtml(); ?>
-				 <?php elseif($_enquiryMessage == 'false'):?>
-					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('error')->toHtml(); ?>
-				<?php endif; ?>
-			 </div>
-		</div>
-	<?php $session->unsProductEnquiryMessage();?>
+<a class="fancy-terms <?php if ($_enquiryMessage == 'true'): ?>success <?php elseif ($_enquiryMessage == 'false'): ?>failure<?php endif; ?>" href="#productenquiry" onclick="return false;" id="enquiry"></a>	
+<div style="display: none;">
+    <div id="productenquiry">
+        <?php if ($_enquiryMessage == 'true'): ?>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('product-enquiry-success')->toHtml(); ?>
+        <?php elseif ($_enquiryMessage == 'false'): ?>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('error')->toHtml(); ?>
+        <?php endif; ?>
+    </div>
+</div>
+<?php $session->unsProductEnquiryMessage(); ?>
 
- <script type="text/javascript">
+<script type="text/javascript">
     //<![CDATA[	
-	jQuery(document).ready(function() {
-    jQuery('a#enquiry').fancybox({
-		maxWidth	: 464,
-		minHeight	: 200,
-		fitToView	: false,
-		width		: '80%',
-		height		: 'auto',
-		autoSize	: false,
-		showCloseButton : true
+    jQuery(document).ready(function() {
+        jQuery('a#enquiry').fancybox({
+            maxWidth: 464,
+            minHeight: 200,
+            fitToView: false,
+            width: '80%',
+            height: 'auto',
+            autoSize: false,
+            showCloseButton: true
 
-  });
-	jQuery('#productenquiry').find('form').eq(0).submit(function(){
-		return false;
-	});
-	if(jQuery('#enquiry').hasClass("success") || jQuery('#enquiry').hasClass("failure")){
-		 jQuery('a#enquiry').click();
-		}
-	jQuery(document).on('click', '#cancel-filters-btn', function(){
-    jQuery.fancybox.close();
-});
+        });
+        jQuery('#productenquiry').find('form').eq(0).submit(function() {
+            return false;
+        });
+        if (jQuery('#enquiry').hasClass("success") || jQuery('#enquiry').hasClass("failure")) {
+            jQuery('a#enquiry').click();
+        }
+        jQuery(document).on('click', '#cancel-filters-btn', function() {
+            jQuery.fancybox.close();
+        });
     });
     //]]>
 </script>
 
 <!-- 'display pop up of product review ' -->
-<?php $session = Mage::helper('overridereview')->getSessionData();
-	  $_reviewMessage = $session->getProductReviewMessage();
+<?php
+$session = Mage::helper('overridereview')->getSessionData();
+$_reviewMessage = $session->getProductReviewMessage();
 ?>
-	<a class="fancy-terms <?php if($_reviewMessage == 'true'): ?>review-success <?php elseif( $_reviewMessage =='false'):?>review-failure<?php endif; ?>" href="#productreview" onclick="return false;" id="review"></a>	
-		<div style="display: none;">
-			 <div id="productreview">
-				<?php if($_reviewMessage == 'true'): ?>
-					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('product_reveiw_success')->toHtml(); ?>
-				<?php elseif($_reviewMessage == 'false'):?>
-					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('error')->toHtml(); ?>
-				<?php endif; ?>
-			 </div>
-		</div>
-	<?php $session->unsProductReviewMessage();?>
- <script type="text/javascript">
+<a class="fancy-terms <?php if ($_reviewMessage == 'true'): ?>review-success <?php elseif ($_reviewMessage == 'false'): ?>review-failure<?php endif; ?>" href="#productreview" onclick="return false;" id="review"></a>	
+<div style="display: none;">
+    <div id="productreview">
+        <?php if ($_reviewMessage == 'true'): ?>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('product_reveiw_success')->toHtml(); ?>
+        <?php elseif ($_reviewMessage == 'false'): ?>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('error')->toHtml(); ?>
+        <?php endif; ?>
+    </div>
+</div>
+<?php $session->unsProductReviewMessage(); ?>
+<script type="text/javascript">
     //<![CDATA[	
-	jQuery(document).ready(function() {
-    jQuery('a#review').fancybox({
-		maxWidth	: 464,
-		minHeight	: 200,
-		fitToView	: false,
-		width		: '80%',
-		height		: 'auto',
-		autoSize	: false,
-		showCloseButton : true
+    jQuery(document).ready(function() {
+        jQuery('a#review').fancybox({
+            maxWidth: 464,
+            minHeight: 200,
+            fitToView: false,
+            width: '80%',
+            height: 'auto',
+            autoSize: false,
+            showCloseButton: true
 
-  });
-	jQuery('#productreview').find('form').eq(0).submit(function(){
-		return false;
-	});
-	if(jQuery('#review').hasClass("review-success") || jQuery('#review').hasClass("review-failure")){
-		 jQuery('a#review').click();
-		}
-	jQuery(document).on('click', '#cancel-filters-btn', function(){
-    jQuery.fancybox.close();
-});
+        });
+        jQuery('#productreview').find('form').eq(0).submit(function() {
+            return false;
+        });
+        if (jQuery('#review').hasClass("review-success") || jQuery('#review').hasClass("review-failure")) {
+            jQuery('a#review').click();
+        }
+        jQuery(document).on('click', '#cancel-filters-btn', function() {
+            jQuery.fancybox.close();
+        });
     });
     //]]>
 </script>
@@ -300,59 +306,63 @@ $_product = $this->getProduct(); ?>
 
 <!-- dOF developer #03  -->
 <div style="display:none;">
- <a href="#proaddtocart" id="anchoraddpopup"></a>
- <div id="proaddtocart">
-  <div class="name-mass">
-   <div class="product-name">
-    <h2 class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h2>
-    <div class="succes-massage"><?php echo $this->__('has been Successfully added to your bag') ?></div>
-    <ul class="cart-button">
-     <li><a href="<?php echo $this->getUrl() ?>" id="conti-shopping" class="button"><span><?php echo $this->__('Continue Shopping')?></span></a></li>
-     <li><a href="<?php echo Mage::helper('checkout/url')->getCartUrl() ?>" id="view-bag" class="button"><span><?php echo $this->__('View Bag')?></span></a></li>
-     <li><a href="<?php echo Mage::helper('checkout/url')->getCheckoutUrl() ?>" id="go-checkout" class="button"><span><?php echo $this->__('Go to Checkout')?></span></a></li>
-    </ul>
-             </div>
-  </div>
- </div>
+    <a href="#proaddtocart" id="anchoraddpopup"></a>
+    <div id="proaddtocart">
+        <div class="name-mass">
+            <div class="product-name">
+                <h2 class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h2>
+                <div class="succes-massage"><?php echo $this->__('has been Successfully added to your bag') ?></div>
+                <ul class="cart-button">
+                    <li><a href="<?php echo $this->getUrl() ?>" id="conti-shopping" class="button"><span><?php echo $this->__('Continue Shopping') ?></span></a></li>
+                    <li><a href="<?php echo Mage::helper('checkout/url')->getCartUrl() ?>" id="view-bag" class="button"><span><?php echo $this->__('View Bag') ?></span></a></li>
+                    <li><a href="<?php echo Mage::helper('checkout/url')->getCheckoutUrl() ?>" id="go-checkout" class="button"><span><?php echo $this->__('Go to Checkout') ?></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
     //<![CDATA[ 
-	var flag ='false';
-	/*var lastcookieproduct='';
-	var search_cookie = "lastproduct" + "=" ;
-	if (document.cookie.length > 0) {  
-	  start_position = document.cookie.indexOf(search_cookie);  
-	  if (start_position!= -1) 
-	  { 
-	  start_position += search_cookie.length 
-	  end_position = document.cookie.indexOf(";", start_position) 
-	  if (end_position == -1)  
-	  end_position = document.cookie.length 
-	  lastcookieproduct=document.cookie.substring(start_position, end_position); 
-	  } 
-	}  */
- check='<?php echo (Mage::getSingleton("checkout/session")->getLastAddedProductId(true)); ?>';
- 
- document.cookie="lastproduct" + "=" +'<?php echo (Mage::getSingleton("checkout/session")->getLastAddedProductId(true)); ?>';
- if(check!=''){
-  flag='true';
- }
-jQuery(document).ready(function(){
-  if(flag=='true'){
-  jQuery('a#anchoraddpopup').fancybox({
-		maxWidth	: 464,
-		minHeight	: 200,
-		fitToView	: false,
-		width		: '80%',
-		height		: 'auto',
-		autoSize	: false,
-		showCloseButton : true
+    var flag = 'false';
+    /*var lastcookieproduct='';
+     var search_cookie = "lastproduct" + "=" ;
+     if (document.cookie.length > 0) {  
+     start_position = document.cookie.indexOf(search_cookie);  
+     if (start_position!= -1) 
+     { 
+     start_position += search_cookie.length 
+     end_position = document.cookie.indexOf(";", start_position) 
+     if (end_position == -1)  
+     end_position = document.cookie.length 
+     lastcookieproduct=document.cookie.substring(start_position, end_position); 
+     } 
+     }  */
+    check = '<?php echo (Mage::getSingleton("checkout/session")->getLastAddedProductId(true)); ?>';
 
-  });
-  setTimeout(function(){jQuery('#anchoraddpopup').click()},1000);  
-  }
- });
+    document.cookie = "lastproduct" + "=" + '<?php echo (Mage::getSingleton("checkout/session")->getLastAddedProductId(true)); ?>';
+    if (check != '') {
+        flag = 'true';
+    }
+    jQuery(document).ready(function() {
+        if (flag == 'true') {
+            jQuery('a#anchoraddpopup').fancybox({
+                maxWidth: 464,
+                minHeight: 200,
+                fitToView: false,
+                width: '80%',
+                height: 'auto',
+                autoSize: false,
+                showCloseButton: true
+
+            });
+            setTimeout(function() {
+                jQuery('#anchoraddpopup').click()
+            }, 1000);
+        }
+    });
 
 //]]> 
 </script>
 <!-- eOF developer #03  -->
+<?php
+//EOF developer-19 24/6/2013      ?>
