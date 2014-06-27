@@ -64,7 +64,7 @@
                 <?php if( $this->helper('customer')->isRegistrationAllowed() ): ?>
                 <li class="control">
                     <input type="radio" name="checkout_method" id="login:register" value="register"<?php if($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_REGISTER || !$this->getQuote()->isAllowedGuestCheckout()): ?> checked="checked"<?php endif ?> class="radio" />
-                    <label for="login:register"><?php echo $this->__('Register and Checkout') ?></label>
+                    <label for="login:register"><?php echo $this->__('Checkout a Remade in Britain account') ?></label>
                 </li>
                 <?php endif; ?>
             </ul>
@@ -118,7 +118,7 @@
 		    <div class="password-reguired">
 			  <p class="required"><?php echo $this->__('* Required fields') ?></p>
                
-             <a href="<?php echo $this->getUrl('customer/account/forgotpassword') ?>" class="f-left"><?php echo $this->__('Forgot your password ?') ?></a>
+             <a href="<?php echo $this->getUrl('customer/account/forgotpassword') ?>" class="f-left"><?php echo $this->__('Forgot your password?') ?></a>
             </div> 
            <div class="buttons-set">
             <button type="submit" class="button" onclick="onepageLogin(this)"><span><span><?php echo $this->__('Login') ?></span></span></button>

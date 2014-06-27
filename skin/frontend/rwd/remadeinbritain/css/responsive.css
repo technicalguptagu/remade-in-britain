@@ -72,7 +72,8 @@
    }
 .checkout-onepage-index .opc h3,
 .new-users .content h2,
-.registered-users h2 {
+.registered-users h2,
+.customer-account-forgotpassword .fieldset h2{
    color: #FFFFFF;
    font-family: oswald;
    font-size: 20px;
@@ -83,14 +84,19 @@
    }
  .checkout-onepage-index .opc #checkout-step-login h3 {
    text-transform:none;
+   }
+#checkout-step-login .col-1 .form-list li.control {
+   margin: 0;
+   }
+#checkout-step-login .col-1 .buttons-set {
+    padding: 10px 0 0 !important;
   }
-
 .checkout-onepage-index #checkout-step-login .fieldset {
     width: 290px;
   }
- .checkout-onepage-index .buttons-set {
+/*.checkout-onepage-index .buttons-set {
    margin: 0 0 40px;
-  }
+  }*/
 .checkout-onepage-index .password-buttons-set {
   float: left;
   width: 100%;
@@ -105,11 +111,15 @@
    color: #6C6E6E;
    float:left;
    margin: 5px 0;
+   font-family: oswaldlight;
    }
 .checkout-onepage-index .password-reguired a {
    color: #494956;
    float: left;
    width: 140px;
+   font-family: oswald;
+   font-size: 13px;
+   font-weight: 400;
    }
 .checkout-onepage-index .password-buttons-set .buttons-set{
   clear:none;
@@ -144,8 +154,11 @@
    }
 #checkout-step-login .col2-set .col-2 .buttons-set {
    float: left;
-   width: 50%;
-   } 
+   padding: 0 0 0 40px;
+   }
+#checkoutSteps .buttons-set .button {
+  padding: 6px 36px;
+ }
 #checkoutSteps #checkout-step-login  .form-list .control label, 
 #checkoutSteps #checkout-step-billing  .form-list .control label,
 #checkoutSteps #checkout-step-shipping_method  .sp-methods dd label,
@@ -163,7 +176,9 @@
    padding-top: 0;
    }
 #checkoutSteps .buttons-set #onepage-guest-register-button {
-  margin: 0 0 0 140px;
+  margin: 20px 115px 0 0;
+  float: right;
+  padding: 6px 36px;
   }
 #opc-review.section {
   background: url("../images/spritestrip.png") repeat-x scroll 0 41px transparent;
@@ -541,7 +556,6 @@ body.newsletter-manage-index .my-account .form-list {
 	}
 .marketplace-seller-dashboard .page-title {
     clear: both;
-    padding: 25px 0 0;
     }
 .marketplace-seller-dashboard .page-title h3 {
     font-size: 15px;
@@ -640,8 +654,10 @@ body.newsletter-manage-index .my-account .form-list {
 #market_place_manage_products_order .top_amount, .mp_top_amount, #market_place_manage_products .top_amount, #mp_order_transaction .top_amount {
    padding:0 0 15px 0;
   }
-#market_place_manage_products_order .data-table thead th, 
-#market_place_manage_products_order .data-table tbody td {
+#my-product-table.data-table thead th, 
+#my-product-table.data-table tbody td, 
+#my-orders-table.data-table thead th, 
+#my-orders-table.data-table tbody td {
     border: 1px solid;
     color: #ffffff;
     font-family: oswaldlight;
@@ -857,7 +873,7 @@ body, label, button, input, select, table, textarea {
    margin-bottom: 20px;
    color: #FFFFFF;
    font-family: oswald;
-   font-weight: 300;
+   font-weight: 400;
   }
 .cms-retailers .col-left {
    float: left;
@@ -1189,19 +1205,29 @@ body, label, button, input, select, table, textarea {
 .customer-account-login .col2-set .col-2 {
    border-left:none;
    }
-.customer-account-login form .form-instructions {
+form .form-instructions {
    color: #494956;
    font-family: oswald,Times,"Times New Roman",serif;
    font-size: 13px;
    font-style: normal;
   }
-.customer-account-login .scaffold-form p.required {
+.customer-account-login .scaffold-form p.required,
+.customer-account-forgotpassword .buttons-set p.required,
+.customer-account-resetpassword .buttons-set p.required {
   color: #fff;
   float: none;
+  text-align: left;
+  width: 100%;
  }
+.cart-empty {
+  min-height: 225px;
+  }
+
 /*=======User Registration========== */
 
-.customer-account-login .col2-set .buttons-set button, .customer-account-login .col2-set .buttons-set .button {
+.customer-account-login .col2-set .buttons-set button, 
+.customer-account-login .col2-set .buttons-set .button,
+.customer-account-forgotpassword .buttons-set button{
   min-width:115px;
   }
 .customer-account-create .col-main .account-create {
@@ -1451,6 +1477,12 @@ body, label, button, input, select, table, textarea {
     border: none !important;
 	padding:0;
   }
+/*=======Category-Page========== */
+.cms-retailers .col-left.sidebar {
+   display:none;
+  }
+
+
 /*=======Shopping Cart========== */
 
 .cart-totals-wrapper .cart-totals {
@@ -1466,7 +1498,6 @@ body, label, button, input, select, table, textarea {
 .cart-totals .checkout-types .btn-checkout {
   padding: 12px 15px;
   }
-
 
 
  }
@@ -1549,6 +1580,9 @@ body, label, button, input, select, table, textarea {
    }
 /*=======Category-Page========== */
 
+.cms-retailers .col-left.sidebar {
+  display:none;
+   }
 .category-content .title-description h1 {
    padding: 6%;
    } 
@@ -1648,8 +1682,11 @@ body, label, button, input, select, table, textarea {
 
 /*=======Category-Page========== */
 
-.breadcrumbs {
+.cms-retailers .col-left.sidebar {
   display:none;
+   }
+.breadcrumbs {
+   display: none;
   }
 .back-button {
   display: block !important;
@@ -1660,7 +1697,8 @@ body, label, button, input, select, table, textarea {
   border: none;
   box-shadow: none;
   margin: 0;
-  padding: 6px 18px;
+  padding: 15px 18px 0;
+  display:block;
   }
 .back-button button span {
    background: url("../images/gobackaro.png") no-repeat scroll 0 0 transparent;
@@ -1945,9 +1983,12 @@ body, label, button, input, select, table, textarea {
  
  /*=======Category-Page========== */
 
- .breadcrumbs {
-   display:none;
+ .cms-retailers .col-left.sidebar {
+  display:none;
    }
+.breadcrumbs {
+    display: none;
+  }
 .back-button {
    display: block !important;
    margin: 0 0 15px;
@@ -1956,8 +1997,8 @@ body, label, button, input, select, table, textarea {
   background: none;
   border: none;
   box-shadow: none;
-  margin: 0;
-  padding: 6px 18px;
+  padding: 15px 18px 0;
+  display:block;
   }
 .back-button button span {
    background: url("../images/gobackaro.png") no-repeat scroll 0 0 transparent;
