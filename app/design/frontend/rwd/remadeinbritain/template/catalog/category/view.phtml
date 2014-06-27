@@ -70,12 +70,13 @@ if ($_imgUrl = $_category->getImageUrl()) {
                 <?php endif; ?>
             </div>
 
-            <?php if ($_imgUrl): ?>
-                <?php echo $_imgHtml ?>
-            <?php endif; ?>
-
-        </div>
-    </div>
+<?php if($_imgUrl): ?>
+    <?php echo $_imgHtml ?>
+<?php endif; ?>
+	
+</div>
+<div class="clearer"></div>
+</div>
 
 
 
@@ -91,48 +92,49 @@ if ($_imgUrl = $_category->getImageUrl()) {
     <?php echo $this->getProductListHtml() ?>
 <?php endif; ?>
 <script type="text/javascript">
-    jQuery(document).ready(function() {
+jQuery(document).ready(function(){
+	setTimeout(function(){
         descimage();
-    });
-    jQuery(window).resize(function() {
-        descimage();
-    });
-    function descimage() {
-        var desHeight = "";
-        var imgHeight = "";
-        if ((jQuery(".category-title-description .com-des").length) && (jQuery(".category-title-description .category-image").length)) {
-            jQuery('#read-wapper').show();
-        } else {
-            jQuery('#read-wapper').hide();
-        }
-        if (jQuery(".category-title-description .com-des").length) {
-            desHeight = jQuery(".category-title-description .com-des").height();
-        }
-        if (jQuery(".category-image").length) {
-            imgHeight = jQuery(".category-image").height();
-            //alert('viru '+imgHeight );
-        }
-        if (desHeight > imgHeight) {
-            jQuery('#read').show();
-            jQuery('#expand').show();
-            jQuery('#colapse').hide();
-            jQuery(".category-title-description .category-description").css('height', imgHeight);
-        } else {
-            jQuery('#read').hide();
-            jQuery(".category-title-description .category-description").css('height', 'auto');
-        }
-        jQuery('#expand').click(function() {
-            jQuery(this).hide();
-            jQuery('#colapse').show();
-            jQuery(".category-title-description .category-description").css('height', 'auto');
-        })
-        jQuery('#colapse').click(function() {
-            jQuery(this).hide();
-            jQuery('#expand').show();
-            jQuery(".category-title-description .category-description").css('height', imgHeight);
-        })
-    }
-    ;
+    },500);
+ });
+ jQuery(window).resize(function(){
+	descimage();
+ });
+ function descimage(){
+	var desHeight = "";
+	var imgHeight = "";
+	if((jQuery(".category-title-description .com-des").length) && (jQuery(".category-title-description .category-image").length)){
+		jQuery('#read-wapper').show();
+	}else {
+		jQuery('#read-wapper').hide();
+	}
+	if(jQuery(".category-title-description .com-des").length){
+		desHeight = jQuery(".category-title-description .com-des").height();
+	}
+	if(jQuery(".category-image").length){
+		imgHeight = jQuery(".category-image").height();
+		//alert('viru '+imgHeight );
+	}
+	if(desHeight > imgHeight){
+		jQuery('#read').show();
+		jQuery('#expand').show();
+		jQuery('#colapse').hide();
+		jQuery(".category-title-description .category-description").css('height', imgHeight);
+	}else {
+		jQuery('#read').hide();
+		jQuery(".category-title-description .category-description").css('height', 'auto');
+	}
+	jQuery('#expand').click(function(){
+		jQuery(this).hide();
+		jQuery('#colapse').show();
+		jQuery(".category-title-description .category-description").css('height', 'auto');
+	})
+	jQuery('#colapse').click(function(){
+		jQuery(this).hide();
+		jQuery('#expand').show();
+		jQuery(".category-title-description .category-description").css('height', imgHeight);
+	})
+ };
 </script>
 <?php //EOF developer-19 14/6/2013      ?>
    

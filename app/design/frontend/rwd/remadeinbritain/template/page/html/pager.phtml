@@ -83,8 +83,8 @@
 				<li class="first-page">
 					<a class="first i-first" href="<?php echo $this->getFirstPageUrl() ?>" title="<?php echo $this->__('First') ?>"><?php echo $this->__('First') ?></a>
 				</li>
-				<li>
-					<a class="previous i-previous" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo $this->__('Previous') ?>">
+				<li class="previous">
+					<a class="prev i-previous" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo $this->__('Previous') ?>">
 						<?php echo $this->__('previous') ?></span>                    
 					</a>
 				</li>
@@ -92,8 +92,8 @@
 				<li class="first-page">
 					<span class="first"><?php echo $this->__('First') ?></span>
 				</li>
-				<li class="prev">
-					<span class="previous">
+				<li class="previous">
+					<span>
 						<?php echo $this->__('previous') ?></span>
                     </span>
 				</li>
@@ -108,7 +108,7 @@
 
 			<?php foreach ($this->getFramePages() as $_page): ?>
 				<?php if ($this->isPageCurrent($_page)): ?>
-					<li class="current"><?php echo $_page ?></li>
+					<li class="current"><span><?php echo $_page ?></span></li>
 				<?php else: ?>
 					<li><a href="<?php echo $this->getPageUrl($_page) ?>"><?php echo $_page ?></a></li>
 				<?php endif;?>
@@ -124,7 +124,7 @@
 
 			<?php if (!$this->isLastPage()): ?>
 				<li class="next">
-					<a class="next i-next" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo $this->__('Next') ?>">
+					<a class="i-next" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo $this->__('Next') ?>">
 					   <?php echo $this->__('next') ?>
 					</a>
 				</li> 
@@ -133,7 +133,7 @@
 				</li>
 			<?php else: ?>
 				<li class="next">
-					<span class="next" >
+					<span class="nex" >
 						<?php echo $this->__('next') ?>
 					</span>
 				</li> 

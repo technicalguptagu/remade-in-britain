@@ -613,6 +613,18 @@
 .blog-index-list .block-content, .blog-post-view .block-content  {
   margin: 0 0 0 15px;
 }
+
+/*-- ---   Retailor listing -- - - -*/
+.marketplace-seller-displayseller .col-left {
+  float: left;
+  padding: 0;
+  width: 20.8%;
+}
+.marketplace-seller-displayseller .col2-left-layout .col-main {
+  float: left;
+  margin-left: 2%;
+  width: 77%;
+}
 /* - - - - product listing page - - -*/
  .category-products .sort-by label, .pager .limiter label{
   color: #FFFFFF;
@@ -667,9 +679,13 @@
   font-size: 14px;
   
 }
+#toolbar-wrapper .pages {
+  padding: 0 35px 0 0;
+}
 .category-products .pager {
-padding: 0 35px 0 0;
   clear: none;
+  padding: 0 0 0 35px;
+  float: left;
 }
 .category-products .pager .pager-list {
   float: left;
@@ -717,6 +733,7 @@ padding: 0 35px 0 0;
   font-family: oswaldlight;
   font-size: 16px;
   padding:0;
+  line-height: 25px;
  }
 .category-title-description .title-description {
   float: left;
@@ -762,7 +779,7 @@ padding: 0 35px 0 0;
   font-weight: 400;
   font-size: 14px;
 }
-.pages li.current {
+.pages li.current span {
   background: none repeat scroll 0 0  transparent;
   border: medium none;
   color: #FFFFFF;
@@ -796,10 +813,8 @@ padding: 0 35px 0 0;
  .sort-list li:first-child, .pager-list li:first-child {
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
-.category-products {
-  float: left;
-}
-.catalog-category-view .left-category h2, #narrow-by-list dt {
+
+.catalog-category-view .left-category h2, #narrow-by-list dt, .marketplace-seller-displayseller .block-title h2 {
   color: #FFFFFF;
   font-family: oswald;
   font-size: 17px;
@@ -829,7 +844,7 @@ padding: 0 35px 0 0;
   font-size: 14px;
   padding: 0 0 0 10px;
 }
-.catalog-category-view .block-title {
+.catalog-category-view .block-title, .marketplace-seller-displayseller .block-title span {
   display: none;
 }
 #narrow-by-list li a.checked{
@@ -870,21 +885,22 @@ padding: 0 35px 0 0;
  padding: 0 !important;
  border: medium none !important;
 }
-.block .block-content .actions {
-  background: url("../images/close.png") no-repeat scroll 138px 17px transparent;
+.block-layered-nav .toggle-content .actions a {
+  background: url("../images/close.png") no-repeat scroll 125px center transparent;
   border-bottom: 2px solid #ffffff;
   border-top: 2px solid #ffffff;
-  padding: 10px 0 6px 36px;
+ padding: 10px 0 10px 27px;
+  text-align: left;
+  width: 100%;
+   color: #ffffff;
 }
-.toggle-content .actions a {
-  color: #ffffff;
-}
+
  #narrow-by-list dd {
   border-bottom: 2px solid #ffffff;
   padding: 10px 0 25px 2px;
    margin: 0 0 20px;
 }
-.catalog-category-view .left-category h2{
+.catalog-category-view .left-category h2, .marketplace-seller-displayseller .left-category h2{
   display: block;
   margin: 0 !important;
   padding: 10px 0 10px 32px;
@@ -950,6 +966,42 @@ border-style:none;
   margin: 0 3% 0 0;
   padding: 10px;
 }
+.pages .next, .pages .previous {
+ text-indent: -1000px; width: 25px; font-size: 12px; 
+}
+.pages .current span, .pages .next a, .pages .next span, .pages .previous a, .pages .previous span, .pages .first-page a, .pages .first-page span, .pages .last-page a, .pages .last-page span { 
+  border: 0 none; color: #3399cc; display: inline-block; font-family: "Helvetica Neue",Verdana,Arial,sans-serif; font-size: 13px; height: 30px; line-height: 30px; min-width: 25px; padding: 0; text-align: center; text-transform: uppercase; vertical-align: middle; white-space: nowrap; 
+}
+.pages .next a {
+ background: url("../images/spritehome.png") no-repeat scroll 17px -258px transparent;
+ display:block;
+}
+.pages .next span { 
+  background: url("../images/spritehome.png") no-repeat scroll 12px -280px transparent;
+   display: block;
+ }
+.pages .previous a {
+ background: url("../images/spritehome.png") no-repeat scroll -331px -415px transparent;
+ display: block;
+  }
+.first-page .first {
+  color: #ffffff !important;
+}
+.pages .previous span {
+  background: url("../images/spritehome.png") no-repeat scroll -329px -436px transparent;
+  display: block;
+}
+.first-page .first.i-first {
+  color: #494949 !important;
+}
+.last-page .last{
+  color: #ffffff !important;
+  
+}
+.last-page .last.i-last{
+ color: #494949 !important;
+
+}
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:768px) and (max-width:1024px){  
 .contact-page {
@@ -991,7 +1043,7 @@ border-style:none;
 
 }
 /*   -------------       --------------------                 ----------------- */
-@media only screen and (min-width:950px) and (max-width:1024px){
+@media only screen and (min-width:950px) and (max-width:1200px){
 .latest-products .itemslider-similar-main .products-grid > li {
  width: 50%;
 }
@@ -1002,14 +1054,16 @@ border-style:none;
 {
  float:none;
 }
-.toolbar .pager {
- float:none;
-}
 .category-products #toolbar-wrapper {
-  background: url("../images/whitestrip.png") repeat-x scroll 0 85px transparent;
+  background: url("../images/whitestrip.png") repeat-x scroll 0 49px transparent;
   padding: 3px 5px 25px 10px;
 }
-
+.category-products .pager {
+  padding:0;
+}
+#toolbar-wrapper .pages {
+   padding:0;
+}
 }
 
 
@@ -1027,7 +1081,6 @@ border-style:none;
  width:100%;
 }
 }
-
 @media only screen and (min-width:480px) and (max-width:949px){
 .product-listing .itemslider-similar-main .products-grid > li {
   width: 33.33%;
@@ -1064,9 +1117,11 @@ border-style:none;
   width: 100%;
   }
 #tool-wrap {
-  background: url("../images/whitestrip.png") repeat-x scroll 0 78px transparent;
-  clear: both;
-  padding: 0 0 12px;
+ clear: both;
+}
+.col-left .mobile-collapsible {
+  background: url("../images/whitestrip.png") repeat-x scroll 0 0 transparent;
+  margin: 15px 0 0;
 }
 #tool-wrap .sort-by label, #tool-wrap .pager .limiter label {
   color: #ffffff;
@@ -1095,10 +1150,10 @@ border-style:none;
   padding: 2px 0 0 9px;
 }
 #tool-wrap .pager {
-  float: none;
+  float:left;
 }
 #tool-wrap .pager .count-container {
-  float: none;
+  float:left;
 }
 
 .catalog-category-view .block .mobile-collapsible .block-title {
@@ -1195,6 +1250,9 @@ float:none;
 }
 .category-description.std {
   overflow: hidden;
+}
+.sort-list li, .pager-list li {
+ padding: 2px 7px 0;
 }
 }
 
@@ -1581,9 +1639,7 @@ float:none;
 
   padding: 2px 0 0 9px;
 }
-#tool-wrap .pager {
-  float: none;
-  }
+
 #tool-wrap .pager  .count-container {
 float: none;
 }
@@ -1688,12 +1744,15 @@ padding: 0 0 20px;
   display: none;
 }
 #tool-wrap {
-  /*background: url("../images/whitestrip.png") repeat-x scroll 0 78px transparent;*/
-  clear: both;
+clear: both;
   padding: 0 0 12px;
 }
 .category-description.std {
   overflow: hidden;
+}
+#tool-wrap .pager {
+  float: none;
+ 
 }
 }
 
@@ -1840,3 +1899,40 @@ padding: 0 0 20px;
 }
 
 }
+
+/*.pages .next, .pages .previous {
+ text-indent: -1000px; width: 25px; font-size: 12px; 
+}
+.pages .current span, .pages .next a, .pages .next span, .pages .previous a, .pages .previous span, .pages .first-page a, .pages .first-page span, .pages .last-page a, .pages .last-page span { 
+  border: 0 none; color: #3399cc; display: inline-block; font-family: "Helvetica Neue",Verdana,Arial,sans-serif; font-size: 13px; height: 30px; line-height: 30px; min-width: 25px; padding: 0; text-align: center; text-transform: uppercase; vertical-align: middle; white-space: nowrap; 
+}
+.pages .next a {
+ background: url("../images/spritehome.png") no-repeat scroll 19px -256px transparent;
+ display:block;
+}
+.pages .next span { 
+  background: url("../images/spritehome.png") no-repeat scroll 19px -279px transparent;
+   display: block;
+ }
+.pages .previous a {
+ background: url("../images/spritehome.png") no-repeat scroll -331px -411px transparent;
+ display: block;
+  }
+.first-page .first {
+  color: #ffffff !important;
+}
+.pages .previous span {
+  background: url("../images/spritehome.png") no-repeat scroll -329px -436px transparent;
+  display: block;
+}
+.first-page .first.i-first {
+  color: #494949 !important;
+}
+.last-page .last{
+  color: #ffffff !important;
+}
+.last-page .last.i-last{
+ color: #494949 !important;
+}*/
+
+.clearer{ display:block; content:"."; clear:both; font-size:0; line-height:0; height:0; overflow:hidden; }
