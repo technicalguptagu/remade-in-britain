@@ -29,16 +29,17 @@ class Oscp_Contactrewrite_Contacts_IndexController extends Mage_Contacts_IndexCo
 				if (!Zend_Validate::is(trim($post['sname']), 'NotEmpty')) {
                     $error = true;
                 }
-
-				if (!Zend_Validate::is(trim($post['nameprefix']), 'NotEmpty')) {
+				//BOF developer 06 'add fields for validatin check and for fixing bugs.'
+				if (!Zend_Validate::is(trim($post['telephone']), 'NotEmpty')) {
                     $error = true;
                 }
-				
-				
+				if (!Zend_Validate::is(trim($post['subjectenquiry']), 'NotEmpty')) {
+                    $error = true;
+                }
+				//EOF developer 06
                 if (!Zend_Validate::is(trim($post['email']), 'EmailAddress')) {
                     $error = true;
-                }
-               
+                }               
 
                 if ($error) {
                     throw new Exception();
