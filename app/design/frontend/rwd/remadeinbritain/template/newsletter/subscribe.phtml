@@ -24,7 +24,7 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-
+<?php //BOF developer-19 12/06/2013   ?>
 <div class="block block-subscribe">
 	<div class="subscribe-contant">
 		<div class="subscriber-img"><img src="<?php echo $this->getskinUrl('images/footer-subscriber-logo.png') ?>" alt="footer-logo" /></div>
@@ -44,6 +44,7 @@
 						   <input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="email" id="newsletter" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text required-entry validate-email" placeholder="<?php echo $this->__('Enter your email address here') ?>" />
 						   <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button"><span><span><?php echo $this->__('Subscribe') ?>
 						   </button>
+						   <?php // developer-19 for expand funcationlity on mobile view ?>
 						   <div class="sign-up"><a class="newsletterexpand" href="javascript:void(0)"><?php echo $this->__('Sign up!') ?></a></div></span></span>
 						</div>
 					</div>
@@ -131,4 +132,4 @@ jQuery('.newsletterexpand').click(function(){
 
 });
 </script>
-
+<?php //EOF developer-19 12/06/2013   ?>
