@@ -32,38 +32,44 @@ jQuery(function($) {
 
 /*BOF developer.21*/
 			
-jQuery(document).ready(function()
- {
-  jQuery('#cartHeader .block-content').hide();
-  jQuery('#loginheader').hide();
-  jQuery("#informationhead").hide();
-  jQuery('#cartHeader .block-title').click(function(){
- jQuery('#cartHeader .block-content').toggle();
- jQuery('#cartHeader').find('.block-title').toggleClass('active');
- jQuery('#login-head').removeClass('active');
- jQuery('#loginheader').hide();
-  jQuery('#info-head').removeClass('active');
-  jQuery('#informationhead').hide();
+jQuery(function($) {
+  $('#cartHeader .block-content').hide();
+  $('#loginheader').hide();
+  $("#informationhead").hide();
+  $('#cartHeader .block-title').click(function(){
+  if ($(window).width() < 966) {
+ $('#cartHeader .block-content').toggle();
+ $('#cartHeader').find('.block-title').toggleClass('active');
+ $('#login-head').removeClass('active');
+ $('#loginheader').hide();
+  $('#info-head').removeClass('active');
+  $('#informationhead').hide();
+ }
  }); 
- jQuery('#login-head').click(function(){
-  jQuery('#loginheader').toggle();
-  jQuery('#login-head').toggleClass('active');
-  jQuery('#cartHeader').find('.block-title').removeClass('active');
-  jQuery('#cartHeader .block-content').hide();
-  jQuery('#info-head').removeClass('active');
-  jQuery('#informationhead').hide();
-  
+ $('#login-head').click(function(){
+  if ($(window).width() < 966) {
+  $('#loginheader').toggle();
+  $('#login-head').toggleClass('active');
+  $('#cartHeader').find('.block-title').removeClass('active');
+  $('#cartHeader .block-content').hide();
+  $('#info-head').removeClass('active');
+  $('#informationhead').hide();
+  }
   });
- jQuery('#info-head').click(function(){
-  jQuery('#informationhead').toggle();
-  jQuery('#info-head').toggleClass('active');
-  jQuery('#cartHeader').find('.block-title').removeClass('active');
-  jQuery('#cartHeader .block-content').hide();
-  jQuery('#login-head').removeClass('active');
-  jQuery('#loginheader').hide();
+ $('#info-head').click(function(){
+  if ($(window).width() < 966) {
+  $('#informationhead').toggle();
+  $('#info-head').toggleClass('active');
+  $('#cartHeader').find('.block-title').removeClass('active');
+  $('#cartHeader .block-content').hide();
+  $('#login-head').removeClass('active');
+  $('#loginheader').hide();
+  }
   });
-  jQuery('#search').click(function(){
-  jQuery('#search').toggleClass('active');
+  $('#search').click(function(){
+  if ($(window).width() < 966) {
+  $('#search').toggleClass('active');
+  }
 });
 
   });
