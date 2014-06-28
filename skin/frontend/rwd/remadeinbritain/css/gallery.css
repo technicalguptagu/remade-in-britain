@@ -1,7 +1,7 @@
 
 /*===============================bof developer 11 22/7/2012 display home banner slider ====================================================*/
 #simple-slide .lof-slidecontent, .lof-slidecontent a {	color:#FFF;	}
-#simple-slide.lof-container { width: 95%; margin: 0 auto; }
+#simple-slide.lof-container { width: 94.7%; margin: 0 auto; }
 #simple-slide .lof-slidecontent{	position: relative;}
 #simple-slide .lof-slidecontent .preload{	position:absolute;	top:0;	left:0;	z-index:2; height: 100%; width: 100%;}
 #simple-slide .lof-main-outer {position: relative; overflow:hidden; margin: 0 auto; }
