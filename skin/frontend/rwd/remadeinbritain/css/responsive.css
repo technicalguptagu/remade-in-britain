@@ -158,7 +158,7 @@
    }
 #checkout-step-login .col2-set .col-2 .buttons-set {
    float: left;
-   padding: 0 0 0 40px;
+   padding: 0 0 0 44px;
    }
 #checkoutSteps .buttons-set .button {
   padding: 6px 36px;
@@ -246,7 +246,7 @@
    }
 #checkout-progress-wrapper .block-progress {
   padding-left: 20px;
-  margin: 48px 0 0;
+  margin: 55px 0 0;
   border:none;
   }
 #checkout-progress-wrapper .block-progress .block-title strong {
@@ -642,6 +642,7 @@ body.newsletter-manage-index .my-account .form-list {
 .mp_seller_sales_report button {
     margin: 6px 0 0;
 	padding: 4px 40px;
+	text-transform: uppercase;
    }
 .my-account #market_place_manage_products .page-title h1,
 .my-account #market_place_manage_products_order .page-title h1,
@@ -810,11 +811,12 @@ body, label, button, input, select, table, textarea {
   color: #494956;
   font-family: oswaldlight;
   font-size: 16px;
-  padding: 0 30px;
+  padding: 0 3% 1%;
+  width: 100%;
   }
 .title-description .std > span {
   display: block;
-  padding: 3% 0;
+  padding: 3% 0 0 0;
   }
 .title-description .std > span a {
   color: #5DC1C0;
@@ -911,7 +913,7 @@ body, label, button, input, select, table, textarea {
    font-family: oswald;
    font-weight: 400;
   }
-.cms-retailers .col-left {
+.cms-retailers .col-left.sidebar{
    float: left;
    padding: 0;
    width: 20.8%;
@@ -1087,6 +1089,9 @@ body, label, button, input, select, table, textarea {
   padding-left: 0;
   width: 65%;
   }
+.checkout-types {
+  padding: 0 10px 0 0;
+ }
 #discount-coupon-form, .cart .giftcard {
   float: left;
   padding-right: 2%;
@@ -1369,6 +1374,7 @@ form .form-instructions {
   font-family: oswald;
   padding: 0 35px 30px 0;
   font-weight: 500;
+  font-size: 16px;
   }
 .retailer-registration-detail .retailer-detail span {
   color: #ffffff;
@@ -1476,11 +1482,21 @@ form .form-instructions {
     margin: 0 0 20px;
   }
 
+ .cms-retailers .col-left.sidebar {
+   float: left;
+   padding: 0;
+   width: 20.8%;
+   }
+.cms-retailers .col2-left-layout .col-main {
+   float: left;
+   margin-left: 2%;
+   width: 77%;
+   }
+
  }
 
  @media only screen and (min-width:768px) and (max-width:964px){
   
-
  .breadcrumbs {
   background: url("../images/whitestrip.png") repeat-x scroll 0 bottom transparent;
   padding: 15px 0 30px;
@@ -1517,9 +1533,6 @@ form .form-instructions {
 /*=======Category-Page========== */
 .cms-retailers .col-left.sidebar {
    display:none;
-  }
-.cms-retailers .col2-left-layout .col-main {
-  width:98%;
   }
 
 /*=======Shopping Cart========== */
