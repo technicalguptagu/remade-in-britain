@@ -1,7 +1,7 @@
  /*  - - - -  Terms and condition Page - - - -*/
 
 .cms-terms-and-conditions .page-title h1, .cms-privacy-policy .page-title h1 { 
-  padding: 4% 0 0 1% !important;
+  padding: 1% 0 0 1% !important;
   color: #FFFFFF;
   font-family: oswald;
   font-size: 19px;
@@ -33,7 +33,7 @@
   padding: 0 0 7px;
 }
 .cms-terms-and-conditions .std, .cms-privacy-policy .std {
-  padding: 35px 1% 7%;
+   padding: 2% 1% 7%;
   width: 97%;
 }
  /*  - - - -  Contact US Page - - - -*/
@@ -503,26 +503,20 @@
 
 /* - - - -  Remade Blog - - - -*/
 /* - - - -  Blog Landing - - - -*/
-.blog-index-list .menu-recent h5, .menu-categories h5, .blog-post-view .menu-recent h5{
+.menu-recent h5, .menu-categories h5{
   color: #FFFFFF;
   font-family: oswald;
   font-size: 17px;
   font-weight: 400;
  }
- .blog-post-view .collapsible .block-content li a, .blog-index-list .collapsible .block-content li a, .block-blog .menu-tags UL LI a {
-  font-family:oswald;
-  font-size: 17px;
-  font-weight: 400;
-  color: #494956;
-}
-.block-title .menu-recent > h5{
+ .blog-post-view .collapsible .block-content li a, .blog-index-list .collapsible .block-content li a, .block-blog .menu-tags UL LI a, .blog-cat-view .block-content li a {
   font-family:oswald;
   font-size: 17px;
   font-weight: 400;
   color: #494956;
 }
 
-.blog-index-list .menu-recent h3, .blog-post-view .menu-recent h3  {
+ .menu-recent h3 {
   font-family: oswaldlight;
   font-size: 17px;
   color: #494956;
@@ -554,10 +548,10 @@
   font-size: 13px;
   line-height: 1.8;
 }
-.blog-index-list .col2-left-layout .col-main, .blog-post-view .col2-left-layout .col-main {
+.blog-index-list .col2-left-layout .col-main, .blog-post-view .col2-left-layout .col-main, .blog-cat-view .col2-left-layout .col-main{
   width: 76%;
 }
-.blog-index-list .col-left, .blog-post-view .col-left {
+.blog-index-list .col-left, .blog-post-view .col-left, .blog-cat-view .col-left{
  width: 19% ;
 }
 .blog-post-view .required {
@@ -624,6 +618,9 @@
   float: left;
   margin-left: 2%;
   width: 77%;
+}
+.block-title .menu-recent > h5 {
+  display: none;
 }
 /* - - - - product listing page - - -*/
  .category-products .sort-by label, .pager .limiter label{
@@ -748,29 +745,29 @@
 .catalog-category-view .category-description.std > p {
   margin: 2% 0 0;
 }
-.catalog-category-view .products-grid .actions ul li.add-wishlist a {
-  background: url("../images/spritehome.png") no-repeat scroll -52px -174px  transparent;
+ .product-listing .products-grid .actions ul li.add-wishlist a {
+  background: url("../images/spritehome.png") no-repeat scroll -52px -174px  transparent !important;
   display: block;
   height: 34px;
   text-decoration: none;
   width: 32px;
 }
-.catalog-category-view .products-grid .actions ul li.add-compare a {
-  background: url("../images/spritehome.png") no-repeat scroll -92px -174px  transparent;
+ .product-listing .actions ul li.add-compare a {
+  background: url("../images/spritehome.png") no-repeat scroll -92px -174px  transparent !important;
   display: block;
   height: 34px;
   text-decoration: none;
   width: 32px;
 }
-.catalog-category-view .products-grid .actions ul li.view-products a {
-  background: url("../images/spritehome.png") no-repeat scroll -131px -174px  transparent;
+ .product-listing .actions ul li.view-products a {
+  background: url("../images/spritehome.png") no-repeat scroll -131px -174px  transparent !important;
   display: block;
   height: 34px;
   text-decoration: none;
   width: 32px;
 }
-.catalog-category-view .products-grid .actions ul li.add-cart a {
-  background: url("../images/spritehome.png") no-repeat scroll -177px -174px  transparent;
+ .product-listing .actions ul li.add-cart a {
+  background: url("../images/spritehome.png") no-repeat scroll -177px -174px  transparent !important;
   display: block;
   float: right;
   height: 42px;
@@ -801,13 +798,12 @@
   height: 20px;
   margin: 10px 0 0 10px;
 }
-.products-grid .product-name a {
+.product-listing .products-grid .product-name a {
   color: #494956;
   font-family: oswaldlight;
   font-size: 17px;
   float: left;
-  height: 50px;
-  overflow: hidden;
+ 
 }
 .products-grid .price-box .price {
   color: #F48F6B;
@@ -849,7 +845,7 @@
   font-size: 14px;
   padding: 0 0 0 10px;
 }
-.catalog-category-view .block-layered-nav .block-title span{
+.catalog-category-view .block-layered-nav .block-title span, .marketplace-seller-displayseller .block-layered-nav .block-title span{
   display: none;
 }
 #narrow-by-list li a.checked{
@@ -1053,12 +1049,24 @@ border-style:none;
 .blog-index-list .postContent img, .blog-post-view .postContent img {
   float: none;
 }
+.block-title .menu-recent > h5 {
+  color: #494956;
+ 
+  font-family: oswald;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+
+}
+@media only screen and (max-width:768px){
+.blog-index-list .col-left, .blog-post-view .col-left {
+  padding: 0 1%;
+  width: 99%;
+}
 .blog-index-list .col2-left-layout .col-main, .blog-post-view .col2-left-layout .col-main {
   padding: 0 1%;
   width: 98%;
-}
-.blog-index-list .col-left, .blog-post-view .col-left {
-  width: 100%;
 }
 
 }
@@ -1273,6 +1281,10 @@ float:none;
   font-family: oswaldlight;
   font-size: 14px;
 }
+.catalog-category-view .block-layered-nav .block-title span{
+  display: block;
+}
+
 }
 
 
@@ -1357,11 +1369,17 @@ float: left;
 .blog-index-list .col-left, .blog-post-view .col-left {
   width: 100%;
 }
-
+.block-title .menu-recent > h5 {
+  color: #494956;
+  font-family: oswald;
+  font-size: 17px;
+  font-weight: 400;
+  display: block;
+}
 }
 
 
- @media only screen and (min-width:300px) and (max-width:479px){  
+@media only screen and (min-width:300px) and (max-width:479px){  
  .contact-page {
   width: 98%;
   padding: 0 1% 0;
@@ -1558,7 +1576,7 @@ padding: 3% 2% 7% ;
 } 
 .blog-index-list .blog-desc,.blog-index-list .aw-blog-read-more, .blog-post-view .blog-desc,.blog-index-list .aw-blog-read-more, .blog-post-view .required{
  font-size: 11px;
-  padding: 0 0 0 7px;
+  
 }
 .blog-index-list .postTitle a, .blog-post-view .postTitle a  {
   padding: 0 0 0 10px;
@@ -1575,7 +1593,15 @@ padding: 3% 2% 7% ;
   width: 87% !important;
 }
 .blog-index-list .col-left, .blog-post-view .col-left {
-  width: 100%;
+  padding: 0 1%;
+  width: 98%;
+}
+.block-title .menu-recent > h5 {
+  color: #494956;
+  font-family: oswald;
+  font-size: 17px;
+  font-weight: 400;
+  display: block;
 }
 .contact-page .connect-link ul li.Pinterest {
   background: url("../images/contactsprite.png") no-repeat scroll 0 -209px transparent;
@@ -1673,9 +1699,6 @@ float: none;
   display: block;
   background: url("../images/whitestrip.png") repeat-x scroll left bottom transparent !important;;
 }
-.col2-left-layout .sidebar .collapsible.active .block-title {
-  background:none;
- }
 
  .catalog-category-view .mobile-collapsible .block-title span {
   color: #ffffff;
@@ -1773,8 +1796,11 @@ clear: both;
 }
 #tool-wrap .pager {
   float: none;
- 
+ }
+ .catalog-category-view .block-layered-nav .block-title span{
+  display: none;
 }
+
 }
 
 
@@ -1826,9 +1852,6 @@ clear: both;
 .become-remade-retailer, .can-sell, .why-join-rmib, .how-work {
    width: 98% ;
 }
-/*.become-remade-retailer .retailer-image, .can-sell .can-sell-image, .why-join-rmib .rmib-image, .how-work .work-image {
- width: 100% !important;
-}*/
 .std .become-remade-retailer p, .can-sell .description, .why-join-rmib p, .how-work p{
  font-size: 13px ;
  }
@@ -1915,10 +1938,8 @@ clear: both;
     padding: 7px 30px;
 }
 .blog-index-list .collapsible.active .block-title, .blog-post-view  .collapsible.active .block-title {
-  background: url("../images/spritehome.png") no-repeat scroll -337px -794px #FFFFFF;
-  padding: 6px 13px;
+ background: url("../images/spritehome.png") no-repeat scroll -330px -796px #ffffff;
+ 
 }
 }
-
-
 .clearer{ display:block; content:"."; clear:both; font-size:0; line-height:0; height:0; overflow:hidden; }
