@@ -109,3 +109,37 @@
     </div>
 </div>
 <?php //EOF developer-19 23/05/2013   ?>
+ <script type="text/javascript">
+	//<![CDATA[
+		jQuery(document).ready(function(){
+                     jQuery("#loginheader").hide();
+                     jQuery('.login').hover(function() {   
+                     jQuery('#loginheader').stop().show();
+                     jQuery('#login-head').addClass('active');                                
+                     }, function(){  
+                     jQuery('#loginheader').stop().hide();
+                     jQuery('#login-head').removeClass('active'); 
+               });   
+  
+			jQuery("#cartHeader .block-content").hide();
+
+			jQuery('.mycart').hover(function() {			
+				jQuery('#cartHeader .block-content').stop().show();
+				jQuery('#cartHeader').find('.block-title').addClass('active');
+			}, function(){		
+				jQuery('#cartHeader .block-content').stop().hide();
+				jQuery('#cartHeader').find('.block-title').removeClass('active');
+			});			
+		
+	
+	jQuery('#info-head').hover(function(){
+  jQuery('#informationhead').toggle();
+  jQuery('#info-head').toggleClass('active');
+  jQuery('#cartHeader').find('.block-title').removeClass('active');
+  jQuery('#cartHeader .block-content').hide();
+  jQuery('#login-head').removeClass('active');
+  jQuery('#loginheader').hide();
+  });
+  });
+//]]>
+</script> 
