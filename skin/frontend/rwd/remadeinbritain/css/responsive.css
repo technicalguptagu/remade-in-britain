@@ -1,3 +1,6 @@
+.breadcrumbs > ul {
+  padding: 0 0 0 30px;
+ }
 .checkout-onepage-index .page-title h1,
 .account-login .page-title h1,
 .cms-index-noroute .std h1 {
@@ -883,6 +886,9 @@ body, label, button, input, select, table, textarea {
    float: right;
    font-style: normal;
    }
+.subs-category-list .catagory-grid .category-bg .view:hover {
+  color: #d36b53;
+ }
 .subs-category-list .catagory-grid .category-bg .catagory-view {
 	position: relative;
 	height: 50px;
@@ -1457,7 +1463,7 @@ form .form-instructions {
  .breadcrumb-links {
     margin: 0 0 20px;
   }
-
+ 
   }
 
  @media only screen and (min-width:965px) and (max-width:1199px){
@@ -1512,7 +1518,9 @@ form .form-instructions {
 .cms-retailers .col-left.sidebar {
    display:none;
   }
-
+.cms-retailers .col2-left-layout .col-main {
+  width:98%;
+  }
 
 /*=======Shopping Cart========== */
 
