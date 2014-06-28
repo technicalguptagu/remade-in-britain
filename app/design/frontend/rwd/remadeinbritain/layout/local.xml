@@ -63,16 +63,6 @@
 					<block_id>what-is-upcycling</block_id>
 					</action>
              </block>
-			 <block type="cms/block"  name="How To Join Us" >
-				<action method="setBlockId">
-					<block_id>how-to-join-us</block_id>
-					</action>
-             </block>
-			 <block type="cms/block"  name="Read The Remade Blog" >
-				<action method="setBlockId">
-					<block_id>read-the-remade-blog</block_id>
-					</action>
-             </block>
 			 <block type="cms/block"  name="Social Media" >
 				<action method="setBlockId">
 					<block_id>social-media</block_id>
