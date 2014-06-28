@@ -657,9 +657,8 @@
 .category-products #toolbar-wrapper {
   background: url("../images/whitestrip.png") repeat-x scroll 0 47px transparent;
   border: medium none;
-  margin-bottom: 21px;
-  margin-top: 10px;
-  padding: 3px 5px 10px;
+  margin: 2% 0;
+ padding: 0 0 12px 18px;
 }
 .category-products .sort-list {
   float: left;
@@ -684,7 +683,7 @@
 }
 .category-products .pager {
   clear: none;
-  padding: 0 0 0 35px;
+  padding: 0 0 0 5%;
   float: left;
 }
 .category-products .pager .pager-list {
@@ -702,7 +701,12 @@
 .amount-pages {
   float: left;
 }
-
+.amount-pages .amount {
+  float: left;
+  font-family: oswaldlight !important;
+  padding: 1px 0 0 7px;
+  font-size: 14px;
+}
 
 .title-description .page-title h1 {
   color: #494956;
@@ -786,6 +790,7 @@
   font-family: oswald;
   font-size: 14px;
   font-weight: bold;
+  margin-top: -2px;
 }
 .previous.i-previous {
   background: url("../images/pagination-left-arrow.png") no-repeat scroll 0 0  transparent;
@@ -844,7 +849,7 @@
   font-size: 14px;
   padding: 0 0 0 10px;
 }
-.catalog-category-view .block-title, .marketplace-seller-displayseller .block-title span {
+.catalog-category-view .block-layered-nav .block-title span{
   display: none;
 }
 #narrow-by-list li a.checked{
@@ -973,23 +978,34 @@ border-style:none;
   border: 0 none; color: #3399cc; display: inline-block; font-family: "Helvetica Neue",Verdana,Arial,sans-serif; font-size: 13px; height: 30px; line-height: 30px; min-width: 25px; padding: 0; text-align: center; text-transform: uppercase; vertical-align: middle; white-space: nowrap; 
 }
 .pages .next a {
- background: url("../images/spritehome.png") no-repeat scroll 17px -258px transparent;
- display:block;
+  background: url("../images/spritehome.png") no-repeat scroll 7px -262px transparent;
+  display: block;
+  height: 19px;
+  margin-top: 5px;
 }
-.pages .next span { 
-  background: url("../images/spritehome.png") no-repeat scroll 12px -280px transparent;
-   display: block;
- }
+.pages .next span {
+  background: url("../images/spritehome.png") no-repeat scroll 10px -280px transparent;
+  display: block;
+  margin-top: 2px;
+  width: 20px;
+}
 .pages .previous a {
- background: url("../images/spritehome.png") no-repeat scroll -331px -415px transparent;
- display: block;
-  }
+  background: url("../images/spritehome.png") no-repeat scroll -331px -417px transparent;
+  display: block;
+  height: 20px;
+  margin-top: 4px;
+  width: 20px;
+}
 .first-page .first {
   color: #ffffff !important;
 }
-.pages .previous span {
-  background: url("../images/spritehome.png") no-repeat scroll -329px -436px transparent;
+
+ .pages .previous span {
+  background: url("../images/spritehome.png") no-repeat scroll -329px -440px transparent;
   display: block;
+  height: 20px;
+  margin-top: 7px;
+  width: 20px;
 }
 .first-page .first.i-first {
   color: #494949 !important;
@@ -1051,13 +1067,7 @@ border-style:none;
 .latest-products .itemslider-similar-main .products-grid > li {
  width: 50%;
 }
-.toolbar .pager .amount-pages{
-  float:none ;
-}
-.toolbar .pager .amount
-{
- float:none;
-}
+
 .category-products #toolbar-wrapper {
   background: url("../images/whitestrip.png") repeat-x scroll 0 49px transparent;
   padding: 3px 5px 25px 10px;
@@ -1067,6 +1077,9 @@ border-style:none;
 }
 #toolbar-wrapper .pages {
    padding:0;
+}
+#toolbar-wrapper .pages {
+ margin:0;
 }
 }
 
@@ -1256,7 +1269,9 @@ float:none;
   overflow: hidden;
 }
 .sort-list li, .pager-list li {
- padding: 2px 7px 0;
+  padding: 2px 7px 0;
+  font-family: oswaldlight;
+  font-size: 14px;
 }
 }
 
@@ -1647,8 +1662,10 @@ float:none;
 #tool-wrap .pager  .count-container {
 float: none;
 }
-.toolbar .pager .pager-list  li {
+.toolbar .pager .pager-list li {
+  font-family: oswaldlight;
   padding: 0 4px 0 15px;
+  font-size: 14px;
 }
 .catalog-category-view  .block .mobile-collapsible .block-title {
   padding: 0 0 15px 6px;
@@ -1901,42 +1918,7 @@ clear: both;
   background: url("../images/spritehome.png") no-repeat scroll -337px -794px #FFFFFF;
   padding: 6px 13px;
 }
-
 }
 
-/*.pages .next, .pages .previous {
- text-indent: -1000px; width: 25px; font-size: 12px; 
-}
-.pages .current span, .pages .next a, .pages .next span, .pages .previous a, .pages .previous span, .pages .first-page a, .pages .first-page span, .pages .last-page a, .pages .last-page span { 
-  border: 0 none; color: #3399cc; display: inline-block; font-family: "Helvetica Neue",Verdana,Arial,sans-serif; font-size: 13px; height: 30px; line-height: 30px; min-width: 25px; padding: 0; text-align: center; text-transform: uppercase; vertical-align: middle; white-space: nowrap; 
-}
-.pages .next a {
- background: url("../images/spritehome.png") no-repeat scroll 19px -256px transparent;
- display:block;
-}
-.pages .next span { 
-  background: url("../images/spritehome.png") no-repeat scroll 19px -279px transparent;
-   display: block;
- }
-.pages .previous a {
- background: url("../images/spritehome.png") no-repeat scroll -331px -411px transparent;
- display: block;
-  }
-.first-page .first {
-  color: #ffffff !important;
-}
-.pages .previous span {
-  background: url("../images/spritehome.png") no-repeat scroll -329px -436px transparent;
-  display: block;
-}
-.first-page .first.i-first {
-  color: #494949 !important;
-}
-.last-page .last{
-  color: #ffffff !important;
-}
-.last-page .last.i-last{
- color: #494949 !important;
-}*/
 
 .clearer{ display:block; content:"."; clear:both; font-size:0; line-height:0; height:0; overflow:hidden; }
