@@ -91,8 +91,8 @@
                                     <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>">
                                         <?php $_productName = $this->escapeHtml($_product->getName()); ?>
                                         <?php $_count = strlen($_productName); ?>
-                                        <?php echo strip_tags(substr($_productName, 0, 80)); ?>
-                                        <?php if ($_count > 80): ?>
+                                        <?php echo strip_tags(substr($_productName, 0, 70)); ?>
+                                        <?php if ($_count > 70): ?>
                                             <?php echo $this->__('...') ?>
                                         <?php endif; ?>
                                     </a>
