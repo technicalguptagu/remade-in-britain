@@ -129,7 +129,8 @@ li.sl_clearfix{display:list-item}
 .left_login{float: left;width: 60%; padding-right: 25px; border-right: 1px dotted #ccc;}
 .sl_clearfix{clear:both;}
 
-.validation-advice { text-align:left; width: auto; }
+.validation-advice { text-align:left; width: auto; background: #a3aa93; border: 1px dashed red; color: #494956;
+float: left; margin: 0; padding: 5px; text-align: left; width: auto; }
 .popup_social_msg{width: 91%;border: 1px solid #ADD8A7;color: #3d6b2d;background-color: #eaf9e6;padding: 10px;}
 .socialpopup-submit-box{float: right;margin-bottom: 12px;width: 239px;margin-right: 19px;}
 .sl_captcha li{list-style: none;}
