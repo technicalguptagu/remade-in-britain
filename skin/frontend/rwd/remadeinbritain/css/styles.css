@@ -7640,15 +7640,20 @@ div.calendar table td.button {
 .product-img-box .product-image .thumbnil-slider.vertical { position: absolute; left: -10000px; }
 
 .product-reveiw-success-head h2,
-.product-enquiry-success-head h2 { text-align: center; font-size: 25.47px; color: #D36B53; font-weight: 300; font-family: oswald; text-transform: inherit; margin: 0 0 22px; }
+.product-enquiry-success-head h2,
+.news .block h2 { text-align: center; font-size: 25.47px; color: #D36B53; font-weight: 300; font-family: oswald; text-transform: inherit; margin: 0 0 22px; }
 
 .product-reveiw-success-body span,
-.product-enquiry-success-body span { font-size: 17px; color: #494956; font-weight: 300; font-family: oswald; padding: 0 0 10px 0; display: block; }
+.product-enquiry-success-body span,
+.newsletter-success span,
+.error-success span { font-size: 17px; color: #494956; font-weight: 300; font-family: oswald; display: block; }
 
 .product-reveiw-success-body p { font-size: 14px; color: #B3B3BA; font-weight: 300; font-family: oswald; }
 
-.product-reveiw-success,
-.product-enquiry-success { background: url(../images/spritestrip.png) repeat-x 0 134px; margin: 0 0 20px; padding: 0 0 28px; }
+.product-reveiw-success-body,
+.product-enquiry-success,
+.newsletter-success { background: url(../images/spritestrip.png) repeat-x 0 72px; margin: 0 0 20px; padding: 0 0 28px; }
+.error-success { background: url(../images/spritestrip.png) repeat-x 0 52px; margin: 0 0 20px; padding: 0 0 28px; } 
 
 .ok-btn { text-align: center; }
 .ok-btn input { width: 128px !important; height: 32px !important; background: #e87e62; border: 1px solid #d16235; box-shadow: 0 0 1px #838383;  font-size: 13px; color: #fff; font-weight: 400; }
@@ -7665,7 +7670,7 @@ div.calendar table td.button {
  .subscriber-title-content .block-title .subscriber-heading { font-size: 14px; }
  .subscriber-title-content .block-title .subscriber-label label { font-size: 12px !important; }
  .subscriber-title-content .block-content .input-box input[type="email"] { width: 194px !important; }
- .blog-socialLinks .homepage-blog { width: 79%; }
+ .blog-socialLinks .homepage-blog { width: 78%; }
  .blog-socialLinks .social-links { width: 19%; }
  .blog-socialLinks .homepage-blog .postWrapper.big-content .postContent { height: 65px; overflow: hidden; }
  .blog-socialLinks .homepage-blog .postWrapper.big-content .read { background: #FFFFFF; bottom: 2px; position: absolute; right: 0; }
@@ -7675,6 +7680,7 @@ div.calendar table td.button {
  .footer .links { width: 72%; }
  .footer .footer-connect { width: 28%; }
  .header-right .dropdown .login { margin: 0 13px 0 0; }
+ .subscriber-title-content .subscriber-title-content1 { background: url(../images/whitestrip.png) repeat-x 0 62px; }
 }
  @media only screen and (min-width: 601px) and (max-width:959px){
  .feature-product .products-grid .product-image:hover .actions { bottom: 7px; left: 20px; width: 85%; }
