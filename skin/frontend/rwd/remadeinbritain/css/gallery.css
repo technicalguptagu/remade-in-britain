@@ -118,7 +118,7 @@
 
 @media only screen and (min-width: 401px) and (max-width:600px) {
 
-#simple-slide.lof-container .direction-nav li a.prev { background: url(../images/spritebanneraro.png) no-repeat 10px -20px; top: 50%; }
-#simple-slide.lof-container .direction-nav li a.next { background: url(../images/spritebanneraro.png) no-repeat -20px -20px; top: 50%; }
+#simple-slide.lof-container .direction-nav li a.prev { background: url(../images/spritebanneraro.png) no-repeat -20px -20px; top: 50%; }
+#simple-slide.lof-container .direction-nav li a.next { background: url(../images/spritebanneraro.png) no-repeat 10px -20px; top: 50%; }
 
 }
