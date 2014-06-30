@@ -374,6 +374,7 @@
    font-weight: 300;
    margin-bottom: 15px;
    padding-bottom: 3px;
+   text-transform: capitalize;
    }
 .dashboard  .hello {
    clear: left;
@@ -535,6 +536,26 @@ body.newsletter-manage-index .my-account .form-list {
 .sales-order-view .my-account h1 {
   margin: 0 0 10px 10px;
   }
+ .product-review .product-img-box p.label {
+   font-family: oswaldlight;
+   border: 0 none;
+   font-size: 16px;
+   }
+.product-review .product-details h2 {
+   font-family: oswaldlight;
+   font-size: 16px;
+   color: #494956;
+   font-weight: 300;
+   border: 0 none;
+   }
+.product-review .product-details h3 {
+   color: #636363;
+    font-family: Oswald,Arial,sans-serif;
+    font-size: 18px;
+   }
+.success-msg {
+   font-family: oswald !important;
+  }
 /*=======Market Place Modules========== */
 .main-title {
   margin:10px 0 30px;
@@ -570,6 +591,7 @@ body.newsletter-manage-index .my-account .form-list {
    font-weight: 300;
    float: left;
    padding: 0; 
+   text-transform: capitalize;
   }
 .lifetime-average {
     clear: left;
@@ -579,7 +601,7 @@ body.newsletter-manage-index .my-account .form-list {
     height: 116px;
     margin: 0 0 25px;
     width: 50%;
-	margin:0;
+	margin-bottom: 40px;
    }
 .mp_dashboard_average {
     float: right;
@@ -610,7 +632,7 @@ body.newsletter-manage-index .my-account .form-list {
    }
 .mp_dashboard_container {
     border: medium none;
-    margin: 15px 0 0 15px;
+    margin:15px 0 45px 15px;
     width: 80%;
    }
 .mp_seller_sales_report input[type="text"] {
@@ -698,7 +720,7 @@ body.newsletter-manage-index .my-account .form-list {
     font-size: 13px;
    }
 .wide.fields label, .fields .field_store_logos label {
-   color: #494956;
+   color: #636363;
    font-family: oswald;
    font-size: 16px;
    font-weight: 300;
