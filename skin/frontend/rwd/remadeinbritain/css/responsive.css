@@ -307,7 +307,22 @@
    padding: 0 0 0 15px;
    width: 30%;
    }
- .col-main {
+.marketplace-seller-dashboard .col-main,
+.marketplace-product-manage .col-main,
+.marketplace-order-manage .col-main,
+.marketplace-order-viewtransaction .col-main,
+.marketplace-seller-addprofile .col-main,
+.marketplace-contact-form .col-main,
+.customer-account-index .col-main,
+.customer-account-edit .col-main,
+.customer-address-index .col-main,
+.sales-order-history .col-main,
+.sales-billing-agreement-index .col-main,
+.review-customer-index .col-main,
+.tag-customer-index .col-main,
+.wishlist-index-index .col-main,
+.oauth-customer-token-index .col-main,
+.downloadable-customer-products .col-main {
    float: right;
    padding-right: 25px;
    width: 65%;
@@ -556,6 +571,9 @@ body.newsletter-manage-index .my-account .form-list {
 .success-msg {
    font-family: oswald !important;
   }
+.block, .col-left-first {
+    margin-bottom: 0;
+  }
 /*=======Market Place Modules========== */
 .main-title {
   margin:10px 0 30px;
@@ -651,7 +669,7 @@ body.newsletter-manage-index .my-account .form-list {
     font-family: arial;
     font-size: 11px;
     margin: 5px 0 0 5px;
-    padding: 3px;
+    padding: 4px;
    }
 .my-account .mp_seller_sales_report .txtbox {
     border: 1px solid #B6B6B6;
@@ -662,8 +680,8 @@ body.newsletter-manage-index .my-account .form-list {
     padding: 2px 10px;
     }
 .mp_seller_sales_report button {
-    margin: 6px 0 0;
-	padding: 4px 40px;
+    margin: 4px 0 0;
+    padding: 3px 40px;
 	text-transform: uppercase;
    }
 .my-account #market_place_manage_products .page-title h1,
@@ -694,6 +712,10 @@ body.newsletter-manage-index .my-account .form-list {
 #addprofile .form-list label {
    padding-bottom: 4px;
    width: 100%;
+  }
+.marketplace-seller-addprofile .form-list .input-box {
+    clear: inherit;
+    float: none;
   }
 #market_place_manage_products_order table tbody tr:last-child td {
   border-bottom:1px solid #fff;
