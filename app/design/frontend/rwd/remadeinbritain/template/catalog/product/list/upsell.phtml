@@ -110,8 +110,8 @@ $_count = count($this->getItemCollection());
                                     <a href="<?php echo $_link->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_link->getName()) ?>">
                                         <?php $_productName = $this->escapeHtml($_link->getName()); ?>
                                         <?php $_count = strlen($_productName); ?>
-                                        <?php echo strip_tags(substr($_productName, 0, 80)); ?>
-                                        <?php if ($_count > 80): ?>
+                                        <?php echo strip_tags(substr($_productName, 0, 22)); ?>
+                                        <?php if ($_count > 22): ?>
                                             <?php echo $this->__('...'); ?>
                                         <?php endif; ?></a>
                                 </h3>

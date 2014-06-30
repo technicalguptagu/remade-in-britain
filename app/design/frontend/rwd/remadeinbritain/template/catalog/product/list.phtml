@@ -178,8 +178,8 @@ $_taxHelper = $this->helper('tax');
                                         <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
                                             <?php $_productName = $this->escapeHtml($_product->getName()); ?>
                                             <?php $_count = strlen($_productName); ?>
-                                            <?php echo strip_tags(substr($_productName, 0, 80)); ?>
-                                            <?php if ($_count > 80): ?>
+                                            <?php echo strip_tags(substr($_productName, 0, 22)); ?>
+                                            <?php if ($_count > 22): ?>
                                                 <?php echo $this->__('...'); ?>
                                             <?php endif; ?>
                                         </a>
