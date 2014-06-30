@@ -30,17 +30,18 @@
                                 </span>
                             <?php endif; ?>
                         <?php endif; ?>
-                        <?php $_lowQuantity = Mage::helper('productstickers')->getNotifyStock($_product); ?>
+                        <?php if ($_product->getSpecialPrice()): ?>
+                            <span class="sale">
+                                <img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
+                            </span>
+							<?php else: ?>
+							<?php $_lowQuantity = Mage::helper('productstickers')->getNotifyStock($_product); ?>
                         <?php $_productQuantity = Mage::helper('productstickers')->getNotifyStockQty($_product); ?>
                         <?php if ($_productQuantity <= $_lowQuantity): ?>
                             <span class="limited-lable">
                                 <img src="<?php echo $this->getSkinUrl('images/limited.png') ?>" alt=""/>
                             </span>
                         <?php endif; ?>
-                        <?php if ($_product->getSpecialPrice()): ?>
-                            <span class="sale">
-                                <img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
-                            </span>
                         <?php endif; ?>
                         <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="product-image">
                             <img class="product-img" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(230, 230) ?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" />

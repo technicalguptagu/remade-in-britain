@@ -140,6 +140,16 @@ $_taxHelper = $this->helper('tax');
                                             <img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
                                         </span>
                                     <?php endif ?>
+									<?php $_productAttribute = $this->helper('productstickers')->getProductAttributeGrid($_product);
+										  $_productTagImage = $this->helper('productstickers')->getProductTagImage();
+										  $_productAttribute = str_replace(' ', '', $_productAttribute);
+										  $_productTagImage = strtolower($_productTagImage . $_productAttribute . '.png');
+									?>
+									<?php if ($_productAttribute != 'No'): ?>
+											<span class="sticker">
+												<img src="<?php echo $_productTagImage; ?>" alt="<?php echo $_productAttribute; ?>" />
+											</span>
+									<?php endif; ?>
                                     <div class="product-image">
                                         <?php $_imgSize = 210; ?>
                                         <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image-img">
@@ -178,8 +188,8 @@ $_taxHelper = $this->helper('tax');
                                         <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
                                             <?php $_productName = $this->escapeHtml($_product->getName()); ?>
                                             <?php $_count = strlen($_productName); ?>
-                                            <?php echo strip_tags(substr($_productName, 0, 80)); ?>
-                                            <?php if ($_count > 80): ?>
+                                            <?php echo strip_tags(substr($_productName, 0, 22)); ?>
+                                            <?php if ($_count > 22): ?>
                                                 <?php echo $this->__('...'); ?>
                                             <?php endif; ?>
                                         </a>
