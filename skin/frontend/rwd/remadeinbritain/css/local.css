@@ -1036,6 +1036,17 @@ border-style:none;
   font-family: oswaldlight;
   font-size: 13px;
 }
+.product-listing li.item .productbg span.sticker {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+.latest-products .product-listing  li.item .productbg span.sticker
+  right: 9px;
+  top: 10px;
+}
+
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:768px) and (max-width:1024px){  
 .contact-page {
