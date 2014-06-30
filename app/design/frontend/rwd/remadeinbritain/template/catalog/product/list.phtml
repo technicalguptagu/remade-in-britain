@@ -146,11 +146,9 @@ $_taxHelper = $this->helper('tax');
 					  $_productTagImage = strtolower($_productTagImage . $_productAttribute . '.png');
 				?>
 				<?php if ($_productAttribute != 'No'): ?>
-					<div class="product-sticker">
 						<span class="sticker">
 							<img src="<?php echo $_productTagImage; ?>" alt="<?php echo $_productAttribute; ?>" />
 						</span>
-					</div>
 				<?php endif; ?>
                                     <div class="product-image">
                                         <?php $_imgSize = 210; ?>
