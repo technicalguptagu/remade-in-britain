@@ -141,15 +141,15 @@ $_taxHelper = $this->helper('tax');
                                         </span>
                                     <?php endif ?>
 									<?php $_productAttribute = $this->helper('productstickers')->getProductAttributeGrid($_product);
-					  $_productTagImage = $this->helper('productstickers')->getProductTagImage();
-					  $_productAttribute = str_replace(' ', '', $_productAttribute);
-					  $_productTagImage = strtolower($_productTagImage . $_productAttribute . '.png');
-				?>
-				<?php if ($_productAttribute != 'No'): ?>
-						<span class="sticker">
-							<img src="<?php echo $_productTagImage; ?>" alt="<?php echo $_productAttribute; ?>" />
-						</span>
-				<?php endif; ?>
+										  $_productTagImage = $this->helper('productstickers')->getProductTagImage();
+										  $_productAttribute = str_replace(' ', '', $_productAttribute);
+										  $_productTagImage = strtolower($_productTagImage . $_productAttribute . '.png');
+									?>
+									<?php if ($_productAttribute != 'No'): ?>
+											<span class="sticker">
+												<img src="<?php echo $_productTagImage; ?>" alt="<?php echo $_productAttribute; ?>" />
+											</span>
+									<?php endif; ?>
                                     <div class="product-image">
                                         <?php $_imgSize = 210; ?>
                                         <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image-img">
