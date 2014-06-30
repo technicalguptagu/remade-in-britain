@@ -24,28 +24,24 @@ $seller_page = Mage::getModel('marketplace/sellerprofile')->collectprofile($id);
 <?php  $_coreHelper = $this->helper('core');
        $_taxHelper = $this->helper('tax'); ?>
 <div id="description-wrapper">
-    <div class="category-title-description">            
-                      
-                    
-                     
-			<div class="title-description">			
-                   <div class="page-title category-title">
-                        <h1><?php echo $seller_page->getStoreTitle(); ?></h1>
-						</div>
-				   <div class="category-description std">
-				   <p class="category-image">
+    <div class="category-title-description">                     
+    	<div class="title-description">			
+            <div class="page-title category-title">
+                <h1><?php echo $seller_page->getStoreTitle(); ?></h1>
+			</div>
+		   <div class="category-description std">
+			   <p class="category-image">
 				   <img src="<?php echo Mage::getBaseUrl('media') . "marketplace/resized/" . $seller_page->getStoreLogo(); ?>" alt="store logo" class="market_place_store_img" />
-				   </p>
-				    <div class="com-des">
+			   </p>
+			    <div class="com-des">
 				   <p><?php echo $seller_page->getDescription(); ?></p>
-				   </div>
-				   <div id="read-wapper" style="display:none"><div id="read" style="display:none"><a id="expand">Read more</a><a id="colapse">Close</a></div></div>
-                   </div>
+				  </div>
             </div>    
-                   <p class="category-image">
-                   <img src="<?php echo Mage::getBaseUrl('media') . "marketplace/resized/" . $seller_page->getStoreLogo(); ?>" alt="store logo" class="market_place_store_img" />
-				   </p>
-                    
+            <p class="category-image">
+				<img src="<?php echo Mage::getBaseUrl('media') . "marketplace/resized/" . $seller_page->getStoreLogo(); ?>" alt="store logo" class="market_place_store_img" />
+			</p>
+			<div id="read-wapper" style="display:none"><div id="read" style="display:none"><a id="expand">Read more</a><a id="colapse">Close</a></div></div>
+            </div>                   
      </div>          
  </div>               
   <script type="text/javascript">

@@ -18,31 +18,5 @@
 			<?php //endif; ?>
         <?php endforeach; ?>
     </ul>
-	<script type="text/javascript">
-        jQuery(document).ready(function() {
-            //jQuery('#nav').find('ul').hide(); 
-            jQuery('#left-nav').find('li.parent > a ').after('<span class="opener"></span>');
-            jQuery('#left-nav').find('li.active.parent').addClass('open');
-            jQuery('#left-nav li.active.parent').find(' > ul').show();
-            jQuery('.opener').click(function() {
-                jQuery('#left-nav').find('a').removeClass('clicked');
-                jQuery('#left-nav').find('a').addClass('unclicked');
-                jQuery(this).parent().find('> a').removeClass('unclicked');
-                jQuery(this).parent().find('> a').addClass('clicked');
-
-                if (jQuery(this).parent().hasClass('active')) {
-                    jQuery(this).parent().removeClass('active');
-                    jQuery(this).parent().find('ul').hide();
-                } else {
-                    jQuery(this).parent().parent().find('li.parent').removeClass('active');
-                    jQuery(this).parent().parent().find('ul').hide();
-                    jQuery(this).parent().addClass('active');
-                    jQuery(this).parent().find(' > ul').show();
-                }
-                ;
-            });
-
-        });
-    </script>
 </div>
 <?php //EOF developer-19 24/06/2013   ?>
