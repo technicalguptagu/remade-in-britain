@@ -12,7 +12,7 @@
             $_getUrl = Mage::getUrl($_getRequestPath);
             ?>
             <?php $_image = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'marketplace/resized/' . $_retailer->getStoreLogo() ?>	
-            <li class="Category">
+            <li class="Category ">
                 <a href="<?php echo $_getUrl ?>"><?php echo $_title = $_retailer->getStoreTitle(); ?></a>
             </li>               
         <?php endforeach; ?>
