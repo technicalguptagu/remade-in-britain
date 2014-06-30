@@ -475,7 +475,7 @@
 }
 
 /* - - - -  About -Us  - - - -*/
- .cms-page-view  .col2-left-layout .col-main {
+ .cms-about-us  .col2-left-layout .col-main {
   float: none;
   padding:0;
   width:100%;
@@ -1040,6 +1040,14 @@ border-style:none;
   right: 9px;
   top: 10px;
 }
+ .product-listing .product-name, .products-list .product-name {
+  margin: 0 0 18px;
+  min-height: 50px;
+  padding: 0 5px;
+  text-align: left;
+  text-transform: capitalize;
+  width: 100%;
+}
 
 /* -----------------------------------------------Media Query -------------------------------------------------------------*/
 @media only screen and (min-width:768px) and (max-width:1024px){  
@@ -1155,7 +1163,14 @@ border-style:none;
   display: block;
   padding: 0 0 15px 6px;
 }
+
 }
+/*@media only screen and (min-width:800px)and (max-width:949px){
+.catalog-category-view .collapsible .block-content {
+  display:block !important;
+}
+
+}*/
 @media only screen and (min-width:480px) and (max-width:949px){
 .product-listing .itemslider-similar-main .products-grid > li {
   width: 33.33%;
@@ -1167,6 +1182,7 @@ border-style:none;
 .catalog-category-view .mobile-collapsible.active .block-title span {
   background: url("../images/sprite-listing-300.png") no-repeat scroll 0 -53px transparent;
 }
+
 .category-title-description .category-image {
   display: none;
 }
@@ -1801,7 +1817,9 @@ clear: both;
 #tool-wrap .pager {
   float: none;
  }
- 
+ #read #colapse {
+  background: url("../images/close.png") no-repeat scroll 77px 14px transparent;
+}
 }
 
 
