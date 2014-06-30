@@ -776,7 +776,7 @@ body, label, button, input, select, table, textarea {
   text-transform: uppercase;
   }
  .breadcrumbs li.last {
-  text-transform: lowercase;
+  text-transform:capitalize;
   }
 .breadcrumbs span.sep {
     background: url("../images/seperatorbreadcrumb.png") no-repeat scroll center center transparent;
@@ -1545,12 +1545,6 @@ form .form-instructions {
     margin: 0 0 20px;
   }
 
-.cms-retailers .col-left.sidebar {
-   display:none;
-   }
-.cms-retailers .col2-left-layout .col-main {
-  width: 100%;
-   }
 
 .col2-set .buttons-set .button, 
 .col2-set .buttons-set .button2 {
@@ -1559,9 +1553,24 @@ form .form-instructions {
 .col-left.sidebar .left-category {
    display: block;
   }
-.sidebar .block .block-content {
+.marketplace-seller-dashboard .sidebar .block .block-content,
+.marketplace-product-manage .sidebar .block .block-content,
+.marketplace-order-manage .sidebar .block .block-content,
+.marketplace-order-viewtransaction .sidebar .block .block-content,
+.marketplace-seller-addprofile .sidebar .block .block-content,
+.marketplace-contact-form .sidebar .block .block-content,
+.customer-account-index .sidebar .block .block-content,
+.customer-account-edit .sidebar .block .block-content,
+.customer-address-index .sidebar .block .block-content,
+.sales-order-history .sidebar .block .block-content,
+.sales-billing-agreement-index .sidebar .block .block-content,
+.review-customer-index .sidebar .block .block-content,
+.tag-customer-index .sidebar .block .block-content,
+.wishlist-index-index .sidebar .block .block-content,
+.oauth-customer-token-index .sidebar .block .block-content,
+.downloadable-customer-products .sidebar .block .block-content {
    border: medium none !important;
-   /*display: block !important;*/
+   display: block !important;
   }
 .sidebar .block:not(.block-layered-nav) .block-title > strong {
   background:none;
