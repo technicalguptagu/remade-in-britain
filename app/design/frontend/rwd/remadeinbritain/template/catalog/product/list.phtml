@@ -131,13 +131,13 @@ $_taxHelper = $this->helper('tax');
                                     <?php if ($_product->getNews_from_date()): ?>
                                         <?php if ($_product->getNews_to_date()): ?>
                                             <span class="new">
-                                                <img src="<?php echo $this->getskinUrl('images/new.png') ?>" width="82" height="72" alt=""/>
+                                                <img src="<?php echo $this->getskinUrl('images/new.png') ?>" alt=""/>
                                             </span>
                                         <?php endif; ?>
                                     <?php endif; ?>
                                     <?php if ($_product->getSpecialPrice()): ?>
                                         <span class="sale">
-                                            <img src="<?php echo $this->getskinUrl('images/sale.png') ?>" width="82" height="72" alt=""/>
+                                            <img src="<?php echo $this->getskinUrl('images/sale.png') ?>"  alt=""/>
                                         </span>
                                     <?php endif ?>
 									<?php $_productAttribute = $this->helper('productstickers')->getProductAttributeGrid($_product);
