@@ -767,12 +767,16 @@ body, label, button, input, select, table, textarea {
   }
 /*=======Category page========== */ 
 
+
 .breadcrumbs li{
   display: block;
-  font-family: "Oswald","Helvetica Neue",Verdana,Arial,sans-serif;
+  font-family: "Oswald",Arial,sans-serif;
   font-size: 12px;
   font-weight: 300;
   text-transform: uppercase;
+  }
+ .breadcrumbs li.last {
+  text-transform: lowercase;
   }
 .breadcrumbs span.sep {
     background: url("../images/seperatorbreadcrumb.png") no-repeat scroll center center transparent;
@@ -957,7 +961,7 @@ body, label, button, input, select, table, textarea {
    font-family: oswald;
    font-weight: 400;
   }
-.cms-retailers .col-left.sidebar{
+.cms-retailers .col-left.sidebar {
    float: left;
    padding: 0;
    width: 20.8%;
@@ -1526,21 +1530,13 @@ form .form-instructions {
     margin: 0 0 20px;
   }
 
- .cms-retailers .col-left.sidebar {
-   float: left;
-   padding: 0;
-   width: 20.8%;
-   }
-.cms-retailers .col2-left-layout .col-main {
-   float: left;
-   margin-left: 2%;
-   width: 77%;
-   }
-
  }
 
  @media only screen and (min-width:768px) and (max-width:964px){
   
+ 
+
+
  .breadcrumbs {
   background: url("../images/whitestrip.png") repeat-x scroll 0 bottom transparent;
   padding: 15px 0 30px;
@@ -1548,6 +1544,13 @@ form .form-instructions {
 .breadcrumb-links {
     margin: 0 0 20px;
   }
+
+.cms-retailers .col-left.sidebar {
+   display:none;
+   }
+.cms-retailers .col2-left-layout .col-main {
+  width: 100%;
+   }
 
 .col2-set .buttons-set .button, 
 .col2-set .buttons-set .button2 {
@@ -1574,12 +1577,8 @@ form .form-instructions {
     border: none !important;
 	padding:0;
   }
-/*=======Category-Page========== */
-.cms-retailers .col-left.sidebar {
-   display:none;
-  }
 
-/*=======Shopping Cart========== */
+
 
 .cart-totals-wrapper .cart-totals {
   width: 100%;
@@ -1679,14 +1678,17 @@ form .form-instructions {
 .cms-retailers .col-left.sidebar {
   display:none;
    }
+.cms-retailers .col2-left-layout .col-main {
+  width: 98%;
+   }
 .category-content .title-description h1 {
-   padding: 6%;
+  padding: 3%;
    } 
 .title-description .std {
    color: #494956;
    font-family: oswaldlight;
    font-size: 13px;
-   padding: 0 15px 0 18px;
+   padding: 0 3% 1%;
    }
 .alphabetical-order h4 {
    font-size: 14px;
@@ -1781,6 +1783,10 @@ form .form-instructions {
 .cms-retailers .col-left.sidebar {
   display:none;
    }
+.cms-retailers .col2-left-layout .col-main {
+  width:100%;
+  }
+
 .breadcrumbs {
    display: none;
   }
@@ -1822,10 +1828,7 @@ form .form-instructions {
    font-size: 24px;
    }
 .title-description .std {
-   color: #494956;
-   font-family: oswaldlight;
    font-size: 12px;
-   padding: 0 35px 0 20px;
    }
 .title-description .std > span a {
    display: block;
@@ -2077,11 +2080,13 @@ form .form-instructions {
 
 @media only screen and (min-width:240px) and (max-width:319px){
  
- /*=======Category-Page========== */
-
  .cms-retailers .col-left.sidebar {
   display:none;
    }
+.cms-retailers .col2-left-layout .col-main {
+  margin-left: 2%;
+  width: 96%;
+  }
 .breadcrumbs {
     display: none;
   }
@@ -2125,17 +2130,14 @@ form .form-instructions {
    font-size: 24px;
    }
 .title-description .std {
-   color: #494956;
-   font-family: oswaldlight;
    font-size: 12px;
-   padding: 0 25px 0 15px;
    }
 .title-description .std > span a {
    display: block;
    }
 .alphabetical-order h4 {
    font-size: 14px;
-   width: 158px;
+   width: 120px;
    }
 .alphabetical-order h4 .in-order {
    display: block;
@@ -2232,5 +2234,4 @@ form .form-instructions {
   padding: 12px 0;
   width: 100%;
  }
-
 }
