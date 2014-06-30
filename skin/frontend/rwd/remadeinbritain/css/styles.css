@@ -7231,7 +7231,9 @@ div.calendar table td.button {
 .dropdown li.head-link a, 
 .cart-sude-bar .empty_item span span.price,
 .cart-sude-bar .empty_price span span.price { font-size: 13px; color: #B3B3BA; font-family: Oswald; text-align: center; font-weight: 300; }
-.mycart #cartHeader .block-cart .block-title .empty_price span span.price { background: url(../images/spritehome.png) no-repeat 0 0; padding: 0 0 0 2px; margin: 0 0 0 2px; }
+.mycart #cartHeader .block-cart .block-title .empty_price span span.price { background: url(../images/spritehome.png) no-repeat -261px -175px; margin: 0 0 0 4px; padding: 0 0 0 5px; }
+.mycart #cartHeader .block-cart .block-title.active .empty_price span span.price { background: url(../images/spritehome.png) no-repeat -1px -138px; }
+
 
 /*.header-right .information-advice :hover { border: 1px solid green; }*/
 
@@ -7257,8 +7259,10 @@ div.calendar table td.button {
 .mycart #cartHeader .block-cart .block-title .empty_price { float: left; text-align: center; }
 .header-right .information-advice #informationhead li { padding: 0 0 9px 0; }
 .header-right .information-advice #informationhead li a { font-size: 13px; font-family: Oswald; color: #75757C; font-weight: 300; }
-.basket-checkout-link .cart-view-basket { border: 1px solid #D16235; color: #FFFFFF; display: block; padding: 5px; color: #FFFFFF; font-family: Oswald; font-size: 13px; font-weight: 400; background: #E87E62 url(../images/spritehome.png) no-repeat 91px -27px; text-indent: 10px; margin: 0 0 7px 0; cursor: pointer; }
-.basket-checkout-link .cart-view-checkout { border: 1px solid #545460; color: #FFFFFF; display: block; padding: 5px; color: #FFFFFF; font-family: Oswald; font-size: 13px; font-weight: 400; background: #75757C url(../images/spritehome.png) no-repeat 86px -55px; text-indent: 10px; cursor: pointer; }
+.basket-checkout-link .cart-view-basket { border: 1px solid #D16235; color: #FFFFFF; display: block; padding: 5px; color: #FFFFFF; font-family: Oswald; font-size: 13px; font-weight: 400; background: #E87E62 url(../images/spritehome.png) no-repeat 91px -27px; text-indent: 10px; margin: 0 0 7px 0; cursor: pointer; box-shadow: 0 0 1px #838383; }
+.basket-checkout-link .cart-view-basket:hover { background: url(../images/spritehome.png) no-repeat 91px -27px #d36b53; }
+.basket-checkout-link .cart-view-checkout { border: 1px solid #545460; color: #FFFFFF; display: block; padding: 5px; color: #FFFFFF; font-family: Oswald; font-size: 13px; font-weight: 400; background: #75757C url(../images/spritehome.png) no-repeat 86px -55px; text-indent: 10px; cursor: pointer; box-shadow: 0 0 1px #838383; }
+.basket-checkout-link .cart-view-checkout:hover { background: #6c6c73 url(../images/spritehome.png) no-repeat 86px -55px; }
 #header-nav nav { margin: 0 auto; max-width: 1200px; }
 .header-right .dropdown #loginheader .block-login .before-login .block-content h2 { background: url(../images/spritehome.png) no-repeat -335px -164px; color: #75757C; float: left; font-family: Oswald; font-size: 13px; padding: 7px 35px 4px 32px; text-transform: none; width: 236px; font-weight: 300; margin: 0 0 12px; }
 .header-right .dropdown #loginheader .new-account a { color: #75757C; display: block; float: left; font-family: Oswald; font-size: 13px; font-weight: 300; padding: 0 18px 0 0; width: 85px; }
@@ -7407,7 +7411,7 @@ div.calendar table td.button {
 .subscriber-title-content .block-title .subscriber-heading { font-family: Oswald; font-weight: 400; font-size: 19px; Color: #fff; text-transform: capitalize; margin: 0 10px 0 0; white-space: nowrap; }
 .subscriber-title-content .block-title .subscriber-label label { font-family: Oswald; font-weight: 400; font-size: 14px; Color: #fff; }
 .subscriber-title-content .block-title { float: left; width: 59%; margin: 0; }
-.subscriber-title-content .block-content { float: left; width: 39%; margin: 0; }
+.subscriber-title-content .block-content { float: left; width: 39%; margin: 0; position: relative; }
 .subscriber-title-content .subscriber-title-content1 { float: left; padding: 16px 13px; width: 100%; background: url(../images/whitestrip.png) repeat-x 0 64px; }
 .subscriber-title-content .block-content .input-box { padding: 0; }
 .subscriber-title-content .block-content .input-box input[type="email"] { color: #B3B3BA; font-family: oswald; font-size: 12px; font-weight: 400; height: 32px; margin: 0 15px 0 0; width: 270px; }
@@ -7664,9 +7668,14 @@ div.calendar table td.button {
 .ok-btn input:hover { background: #d36b53; }
 .block-related .products-grid li.item .productbg span.sale { top: 9px; right: 9px; }
 
+
 /***********Product Info Page**********/
 
- @media only screen and (min-width: 969px) and (max-width: 1000px) {
+@media only screen and (min-width: 801px) {
+ .collapsible .block-content { display: block ! important; }
+
+}
+ @media only screen and (min-width: 959px) and (max-width: 1000px) {
  #nav li.level-top { padding: 0 1.8% !important; }
  .blog-socialLinks .homepage-blog { padding: 4px 22px 5px 20px; width: 78%; }
  .blog-socialLinks .social-links { width: 19%; }
@@ -7685,8 +7694,9 @@ div.calendar table td.button {
  #search_mini_form input[type="search"] { width: 98%; }
  .header-right .header-right-top { margin: 0 0 4%; }
  .this-month-featured-retailer .featured-retailer .retailer-block .retailer-description { max-height: 200px; min-height: 200px; }
+ .collapsible .block-content { display: block ! important; }
  }
- @media only screen and (min-width: 965px) and (max-width: 968px) {
+ @media only screen and (min-width: 960px) and (max-width: 968px) {
  .nav-container #nav li.level-top { padding: 0 1.7% !important; }
  .header-right .header-right-top { margin: 0 0 2.5%; }
  .footer-newsletter .block-subscribe .subscribe-contant .subscriber-title-content { width: 87%; }
@@ -7705,6 +7715,8 @@ div.calendar table td.button {
  .footer .footer-connect { width: 28%; }
  .header-right .dropdown .login { margin: 0 13px 0 0; }
  .subscriber-title-content .subscriber-title-content1 { background: url(../images/whitestrip.png) repeat-x 0 62px; }
+ .collapsible .block-content { display: block ! important; }
+ .header-right .information-advice { float: none; }
 }
  @media only screen and (min-width: 601px) and (max-width:959px){
  .feature-product .products-grid .product-image:hover .actions { bottom: 7px; left: 20px; width: 85%; }
@@ -7738,7 +7750,8 @@ div.calendar table td.button {
 .this-month-featured-retailer .featured-retailer .feature-product .Featured-contant .products-grid > li + li + li { display: none; }
 .this-month-featured-retailer .featured-retailer .retailer-block { width: 39%; }
 .this-month-featured-retailer .featured-retailer .feature-product { width: 61%; }
-.blog-socialLinks .homepage-blog { width: 72%; padding: 4px 22px 4px 20px; }
+.blog-socialLinks .homepage-blog { width: 73%; padding: 4px 22px 4px 20px;   margin: 0 15px 0 0;}
+.connect .content-heading h1 { width: 120px; }
 .blog-socialLinks .social-links { width: 25%; }
 .subscriber-title-content .block-title .subscriber-label { display: none; }
 .subscriber-title-content .block-title { width: 38%; }
@@ -7791,6 +7804,10 @@ div.calendar table td.button {
 .logo { padding: 20px 10px 15px 0; }
 .header-right { padding: 0; }
 .header-right .header-right-top { margin: 0 0 7%; }
+#scroll-to-top { display: none !important; }
+.header-right .dropdown .login .after-login .logintext { width: 100%; height: auto; text-indent: 0; }
+.header-right .dropdown .login.active .after-login .logintext { background: none; }
+
 }
 
 
@@ -7802,7 +7819,7 @@ div.calendar table td.button {
 
 @media only screen and (min-width: 801px) 
 {
-.collapsible .block-content { display: block ! important; }
+
 }
 
 
@@ -7892,6 +7909,10 @@ div.calendar table td.button {
 .subscriber-title-content .block-content .input-box input[type="email"] { width: 228px; }
 .footer .footer-bottom  { margin: 31px 10px 0 10px; }
 .footer .collapsible.active { background: none; }
+#scroll-to-top { display: none !important; }
+.header-right .dropdown .login .after-login .logintext { width: 100%; height: auto; text-indent: 0; }
+.header-right .dropdown .login.active .after-login .logintext { background: none; }
+.products-grid .product-name a, .products-list .product-name a { font-size: 16px; }
 }
 
 @media only screen and (min-width: 300px) and (max-width:599px) {
@@ -8019,6 +8040,11 @@ div.calendar table td.button {
 .header-right .dropdown #loginheader .block-login .before-login .block-content .login-inputs { width: 72%; }
 .header-right .dropdown #loginheader .block-login .before-login .block-content { background: url(../images/spritestrip.png) repeat-x 0 139px; }
 .footer-bottom .ecommerce-logo { width: 35px; }
+#scroll-to-top { display: none !important; }
+.header-right .dropdown .login .after-login .logintext { width: 100%; height: auto; text-indent: 0; }
+.header-right .dropdown .login.active .after-login .logintext { background: none; }
+.header-right .dropdown #loginheader .block-login .after-login { width: 162px; }
+
 }
 @media only screen and (min-width: 301px) and (max-width:480px) {
 .header-right .header-right-btm { width: 200px; }
@@ -8028,11 +8054,18 @@ div.calendar table td.button {
 .header-right .dropdown #loginheader .block-login .before-login { padding: 12px 5px 20px; width: 392px; }
 .header-right .dropdown #loginheader .block-login .before-login .block-content .login-inputs { width: 79%; }
 .header-right .dropdown #loginheader .block-login .before-login .block-content { background: url(../images/spritestrip.png) repeat-x 0 110px; }
+#scroll-to-top { display: none !important; }
+.header-right .dropdown .login .after-login .logintext { width: 100%; height: auto; text-indent: 0; }
+.header-right .dropdown .login.active .after-login .logintext { background: none; }
+.header-right .dropdown #loginheader .block-login .after-login { width: 162px; }
+
 }
 
 @media only screen and (min-width: 300px) and (max-width:300px) {
 .this-month-featured-retailer .featured-retailer .retailer-block .retailer-description { width: 58%; padding: 15px; max-height: 180px; min-height: 180px; }
 .this-month-featured-retailer .featured-retailer .retailer-block a { bottom: 6px; }
+.header-right .dropdown #loginheader .block-login .after-login { width: 162px; }
+
 }
 
 @media only screen and (min-width: 240px) and (max-width:299px) {
@@ -8043,6 +8076,9 @@ div.calendar table td.button {
 .this-month-featured-retailer .featured-retailer .retailer-block .retailer-title { top: 0; }
 .this-month-featured-retailer .featured-retailer .retailer-block .retailer-description { padding: 10px 15px 15px; top: 50px; width: 54%; max-height: 190px; min-height: 190px; }
 .this-month-featured-retailer .featured-retailer .retailer-block a { bottom: 11px; left: 32px; }
+.header-right .dropdown #loginheader .block-login .after-login { width: 162px; }
+
+
 }
 
 
