@@ -36,7 +36,10 @@ $seller_page = Mage::getModel('marketplace/sellerprofile')->collectprofile($id);
 				   <p class="category-image">
 				   <img src="<?php echo Mage::getBaseUrl('media') . "marketplace/resized/" . $seller_page->getStoreLogo(); ?>" alt="store logo" class="market_place_store_img" />
 				   </p>
+				    <div class="com-des">
 				   <p><?php echo $seller_page->getDescription(); ?></p>
+				   </div>
+				   <div id="read-wapper" style="display:none"><div id="read" style="display:none"><a id="expand">Read more</a><a id="colapse">Close</a></div></div>
                    </div>
             </div>    
                    <p class="category-image">
@@ -45,7 +48,51 @@ $seller_page = Mage::getModel('marketplace/sellerprofile')->collectprofile($id);
                     
      </div>          
  </div>               
-               
+  <script type="text/javascript">
+jQuery(document).ready(function(){
+	setTimeout(function(){
+        descimage();
+    },500);
+ });
+ jQuery(window).resize(function(){
+	descimage();
+ });
+ function descimage(){
+	var desHeight = "";
+	var imgHeight = "";
+	if((jQuery(".category-title-description .com-des").length) && (jQuery(".category-title-description .category-image").length)){
+		jQuery('#read-wapper').show();
+	}else {
+		jQuery('#read-wapper').hide();
+	}
+	if(jQuery(".category-title-description .com-des").length){
+		desHeight = jQuery(".category-title-description .com-des").height();
+	}
+	if(jQuery(".category-image").length){
+		imgHeight = jQuery(".category-image").height();
+		//alert('viru '+imgHeight );
+	}
+	if(desHeight > imgHeight){
+		jQuery('#read').show();
+		jQuery('#expand').show();
+		jQuery('#colapse').hide();
+		jQuery(".category-title-description .category-description").css('height', imgHeight);
+	}else {
+		jQuery('#read').hide();
+		jQuery(".category-title-description .category-description").css('height', 'auto');
+	}
+	jQuery('#expand').click(function(){
+		jQuery(this).hide();
+		jQuery('#colapse').show();
+		jQuery(".category-title-description .category-description").css('height', 'auto');
+	})
+	jQuery('#colapse').click(function(){
+		jQuery(this).hide();
+		jQuery('#expand').show();
+		jQuery(".category-title-description .category-description").css('height', imgHeight);
+	})
+ };
+</script>             
 
          
          
