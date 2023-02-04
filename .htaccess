@@ -1,5 +1,5 @@
 ############################################
-## uncomment these lines for CGI mode
+ uncomment these lines for CGI mode
 ## make sure to specify the correct cgi php binary file name
 ## it might be /cgi-bin/php-cgi
 
@@ -15,8 +15,7 @@
 ##     cgi.fix_pathinfo = 1
 ## if it still doesn't work, rename php.ini to php5.ini
 
-############################################
-## this line is specific for 1and1 hosting
+############################################# this line is specific for 1and1 hosting
 
     #AddType x-mapp-php5 .php
     #AddHandler x-mapp-php5 .php
